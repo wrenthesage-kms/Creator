@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ammonia | Creator</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    :root {
+      --am-bg: #111116;
+      --am-panel: #1b1a22;
+      --am-panel-light: #23212c;
+      --am-border: #403749;
+      --am-text: #eae4ed;
+      --am-muted: #aaa2b2;
+      --am-violet: #b58bff;
+      --am-pink: #ef9ce5;
+      --am-lime: #c5d98b;
+      --am-dark: #17131e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--am-bg);
+      color: var(--am-text);
+    }
+
+    .ammonia-page {
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 70px;
+      font-family: inherit;
+      line-height: 1.7;
+    }
+
+    .am-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 6vw, 60px);
+      border: 1px solid var(--am-border);
+      border-radius: 20px;
+      background:
+        radial-gradient(ellipse at 90% 5%, rgba(181, 139, 255, 0.19), transparent 38%),
+        radial-gradient(ellipse at 5% 100%, rgba(239, 156, 229, 0.10), transparent 42%),
+        linear-gradient(140deg, #26202f, #19171f 66%, #201a28);
+    }
+
+    .am-hero::after {
+      content: "☽";
+      position: absolute;
+      top: -66px;
+      right: 2%;
+      color: rgba(181, 139, 255, 0.09);
+      font-size: clamp(190px, 36vw, 400px);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .am-eyebrow {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 12px;
+      color: var(--am-pink);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .am-hero h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      color: #f3eafa;
+      font-size: clamp(3rem, 10vw, 6.5rem);
+      font-weight: 950;
+      letter-spacing: -0.075em;
+      line-height: 0.95;
+      overflow-wrap: anywhere;
+    }
+
+    .am-subtitle {
+      position: relative;
+      z-index: 1;
+      margin: 18px 0 0;
+      color: #c8bcd3;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+    }
+
+    .am-tags {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 24px;
+    }
+
+    .am-tag {
+      padding: 6px 11px;
+      border: 1px solid rgba(181, 139, 255, 0.3);
+      border-radius: 999px;
+      background: rgba(181, 139, 255, 0.08);
+      color: #dfcbff;
+      font-size: 0.77rem;
+      font-weight: 750;
+    }
+
+    .am-sparkles {
+      margin-top: 24px;
+      color: var(--am-violet);
+      letter-spacing: 0.45em;
+      font-size: 0.9rem;
+    }
+
+    .am-overview {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0 36px;
+    }
+
+    .am-fact {
+      min-width: 0;
+      padding: 17px 19px;
+      border: 1px solid var(--am-border);
+      border-radius: 13px;
+      background: var(--am-panel);
+    }
+
+    .am-fact-label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--am-muted);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .am-fact-value {
+      color: var(--am-text);
+      font-size: 0.97rem;
+      font-weight: 750;
+      overflow-wrap: anywhere;
+    }
+
+    .am-section {
+      margin-top: 42px;
+    }
+
+    .am-section-heading {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 19px;
+    }
+
+    .am-section-icon {
+      display: grid;
+      width: 43px;
+      height: 43px;
+      flex: 0 0 43px;
+      place-items: center;
+      border: 1px solid var(--am-border);
+      border-radius: 13px;
+      background: var(--am-panel);
+      color: var(--am-violet);
+      font-size: 1.25rem;
+    }
+
+    .am-section-heading h2 {
+      margin: 0;
+      color: #f0e7f7;
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 850;
+      line-height: 1.2;
+    }
+
+    .am-section-heading p {
+      margin: 4px 0 0;
+      color: var(--am-muted);
+      font-size: 0.88rem;
+    }
+
+    .am-card {
+      min-width: 0;
+      padding: 24px;
+      border: 1px solid var(--am-border);
+      border-radius: 16px;
+      background: var(--am-panel);
+    }
+
+    .am-card p {
+      margin: 0 0 14px;
+      color: #c5bdcc;
+    }
+
+    .am-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .am-card strong {
+      color: #f0e4ff;
+    }
+
+    .am-appearance-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .am-detail {
+      padding: 19px;
+      border: 1px solid #37303f;
+      border-radius: 13px;
+      background: var(--am-panel);
+    }
+
+    .am-detail h3 {
+      margin: 0 0 8px;
+      color: var(--am-violet);
+      font-size: 0.95rem;
+      font-weight: 850;
+    }
+
+    .am-detail p {
+      margin: 0;
+      color: #c5bdcc;
+      font-size: 0.91rem;
+    }
+
+    .am-detail.wide {
+      grid-column: 1 / -1;
+    }
+
+    .am-clothing-note {
+      margin-top: 13px;
+      padding: 16px 19px;
+      border-left: 3px solid var(--am-pink);
+      border-radius: 0 10px 10px 0;
+      background: rgba(239, 156, 229, 0.06);
+      color: #d8c8d8;
+      font-size: 0.92rem;
+    }
+
+    .am-clothing-note strong {
+      color: var(--am-pink);
+    }
+
+    .am-traits {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .am-trait-box {
+      padding: 22px;
+      border: 1px solid var(--am-border);
+      border-radius: 15px;
+      background: var(--am-panel);
+    }
+
+    .am-trait-box h3 {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 13px;
+      color: #f0e7f7;
+      font-size: 1rem;
+    }
+
+    .am-trait-box.likes h3 span {
+      color: var(--am-lime);
+    }
+
+    .am-trait-box.dislikes h3 span {
+      color: var(--am-pink);
+    }
+
+    .am-trait-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .am-trait-list li {
+      padding: 6px 10px;
+      border: 1px solid #393340;
+      border-radius: 8px;
+      background: var(--am-dark);
+      color: #d0c7d7;
+      font-size: 0.83rem;
+    }
+
+    .am-quote {
+      margin-top: 16px;
+      padding: 25px;
+      border: 1px solid #4b3c58;
+      border-radius: 15px;
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(181, 139, 255, 0.1), transparent 60%),
+        #19161f;
+      text-align: center;
+    }
+
+    .am-quote-label {
+      margin: 0 0 8px;
+      color: var(--am-muted);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .am-quote blockquote {
+      margin: 0;
+      color: #f0dfff;
+      font-size: clamp(1.45rem, 4vw, 2.1rem);
+      font-weight: 850;
+      letter-spacing: -0.025em;
+    }
+
+    .am-quote-caption {
+      margin: 9px 0 0;
+      color: var(--am-muted);
+      font-size: 0.85rem;
+    }
+
+    .am-instinct-panel {
+      overflow: hidden;
+      border: 1px solid #453851;
+      border-radius: 16px;
+      background: var(--am-panel);
+    }
+
+    .am-instinct-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid #453851;
+      background: linear-gradient(100deg, rgba(181, 139, 255, 0.11), rgba(239, 156, 229, 0.05));
+    }
+
+    .am-instinct-header h3 {
+      margin: 0;
+      color: #ead8ff;
+      font-size: 1.08rem;
+    }
+
+    .am-instinct-header p {
+      margin: 5px 0 0;
+      color: var(--am-muted);
+      font-size: 0.88rem;
+    }
+
+    .am-instinct-body {
+      padding: 24px;
+    }
+
+    .am-instinct-body p {
+      margin: 0 0 15px;
+      color: #c5bdcc;
+    }
+
+    .am-instinct-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .am-instinct-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .am-instinct-item {
+      padding: 13px;
+      border: 1px solid #393340;
+      border-radius: 10px;
+      background: var(--am-dark);
+      color: #dfd3ec;
+      font-size: 0.86rem;
+      text-align: center;
+    }
+
+    .am-instinct-item span {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--am-violet);
+      font-size: 1.2rem;
+    }
+
+    .am-footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--am-border);
+      color: #82778b;
+      text-align: center;
+      font-size: 0.76rem;
+      letter-spacing: 0.1em;
+    }
+
+    @media (max-width: 700px) {
+      .am-overview {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .am-appearance-grid,
+      .am-traits {
+        grid-template-columns: 1fr;
+      }
+
+      .am-detail.wide {
+        grid-column: auto;
+      }
+
+      .am-instinct-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 420px) {
+      .ammonia-page {
+        width: calc(100% - 20px);
+        padding-top: 12px;
+      }
+
+      .am-hero {
+        padding: 27px 21px;
+        border-radius: 15px;
+      }
+
+      .am-overview {
+        gap: 8px;
+      }
+
+      .am-fact {
+        padding: 13px;
+      }
+
+      .am-card,
+      .am-trait-box,
+      .am-instinct-body {
+        padding: 18px;
+      }
+
+      .am-instinct-list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="ammonia-page">
+
+    <header class="am-hero">
+      <p class="am-eyebrow">Creator / Saint Jude’s Landing</p>
+      <h1>AMMONIA</h1>
+      <p class="am-subtitle">Bat demi-human · Leader of Ammonia’s group</p>
+
+      <div class="am-tags">
+        <span class="am-tag">Graffiti</span>
+        <span class="am-tag">Climbing</span>
+        <span class="am-tag">Unapologetic</span>
+        <span class="am-tag">Sharp Senses</span>
+        <span class="am-tag">Physical Instinct</span>
+      </div>
+
+      <div class="am-sparkles" aria-hidden="true">☽ ✦ ⛧ ✦ ☾</div>
+    </header>
+
+    <section class="am-overview" aria-label="Character information">
+      <div class="am-fact">
+        <span class="am-fact-label">Name</span>
+        <span class="am-fact-value">Ammonia</span>
+      </div>
+      <div class="am-fact">
+        <span class="am-fact-label">Species</span>
+        <span class="am-fact-value">Bat demi-human</span>
+      </div>
+      <div class="am-fact">
+        <span class="am-fact-label">Origin</span>
+        <span class="am-fact-value">Creator</span>
+      </div>
+      <div class="am-fact">
+        <span class="am-fact-label">Home</span>
+        <span class="am-fact-value">Saint Jude’s Landing</span>
+      </div>
+      <div class="am-fact">
+        <span class="am-fact-label">Role</span>
+        <span class="am-fact-value">Group leader</span>
+      </div>
+      <div class="am-fact">
+        <span class="am-fact-label">Known for</span>
+        <span class="am-fact-value">Watching before acting</span>
+      </div>
+    </section>
+
+    <section class="am-section" aria-labelledby="appearance-heading">
+      <div class="am-section-heading">
+        <span class="am-section-icon" aria-hidden="true">✧</span>
+        <div>
+          <h2 id="appearance-heading">Appearance</h2>
+          <p>Dark colors, sharp features, and a silhouette entirely her own.</p>
+        </div>
+      </div>
+
+      <div class="am-appearance-grid">
+        <article class="am-detail">
+          <h3>Physique</h3>
+          <p>
+            Petite through the shoulders and upper body, with an exaggerated
+            pear-shaped figure. A narrow waist, rounded stomach, extremely
+            wide hips, thick thighs, and a large, rounded butt.
+          </p>
+        </article>
+
+        <article class="am-detail">
+          <h3>Skin &amp; Face</h3>
+          <p>
+            Deep slate-gray to matte-black skin with a subtly leathery texture.
+            Sharp, avian-like cheekbones frame enormous black eyes with solid
+            black sclera.
+          </p>
+        </article>
+
+        <article class="am-detail">
+          <h3>Ears</h3>
+          <p>
+            Enormous, elongated, cone-shaped bat ears with pointed tips and
+            visible anatomical veins. They move independently, constantly
+            reacting to nearby sounds, movement, vibration, and changes in
+            the environment.
+          </p>
+        </article>
+
+        <article class="am-detail">
+          <h3>Hair</h3>
+          <p>
+            Long black and deep-purple layered hair, with a voluminous crown
+            and asymmetrical fringe. The longest strands reach her waist.
+          </p>
+        </article>
+
+        <article class="am-detail">
+          <h3>Hands &amp; Feet</h3>
+          <p>
+            Naturally claw-like fingernails and feet adapted for gripping
+            surfaces. She is comfortable hanging, crouching, perching, and
+            climbing.
+          </p>
+        </article>
+
+        <article class="am-detail">
+          <h3>Clothing</h3>
+          <p>
+            An oversized black cropped hoodie that leaves her breasts exposed,
+            fitted electric-violet micro shorts, mismatched black thigh-high
+            socks, and chunky black skate shoes. A silver chain hangs at her
+            waistband, and a paint-marker pouch sits on her hip.
+          </p>
+        </article>
+      </div>
+
+      <div class="am-clothing-note">
+        <strong>Her clothes are not precious.</strong>
+        They are routinely covered in paint, dirt, grease, dust, and whatever
+        else she has crawled through. She looks like a slut because she dresses
+        like one. She does not care.
+      </div>
+    </section>
+
+    <section class="am-section" aria-labelledby="personality-heading">
+      <div class="am-section-heading">
+        <span class="am-section-icon" aria-hidden="true">☾</span>
+        <div>
+          <h2 id="personality-heading">Personality</h2>
+          <p>Quiet when she has nothing to say. Entirely capable of making herself a problem.</p>
+        </div>
+      </div>
+
+      <div class="am-card">
+        <p>
+          Ammonia is observant, physically intuitive, blunt, comfortable with
+          herself, independent, curious, and impulsive. She doesn't waste words
+          when she has nothing to contribute, but silence should never be
+          mistaken for a lack of awareness.
+        </p>
+        <p>
+          <strong>She understands social rules perfectly well.</strong>
+          She simply does not always care about following them. She is not
+          stupid, naïve, emotionless, or socially incapable.
+        </p>
+        <p>
+          She watches first. Listens. Smells things. Notices movement,
+          vibration, structural changes, unfamiliar sounds, and tiny
+          environmental details other people overlook. When something
+          matters to her, her curiosity can become intense, unwavering focus.
+        </p>
+        <p>
+          Her humor is natural rather than performed. She can be funny without
+          trying to be funny, and she has little need to dress up her reactions
+          for an audience.
+        </p>
+        <p>
+          When angry, she may shove, bite, scratch, throw things, or leave.
+          Her aggression is physical and immediate rather than theatrical.
+          She does not need to turn a confrontation into a speech.
+        </p>
+      </div>
+    </section>
+
+    <section class="am-section" aria-labelledby="likes-heading">
+      <div class="am-section-heading">
+        <span class="am-section-icon" aria-hidden="true">✦</span>
+        <div>
+          <h2 id="likes-heading">Likes &amp; Dislikes</h2>
+          <p>Things worth investigating, things worth keeping, and things best left alone.</p>
+        </div>
+      </div>
+
+      <div class="am-traits">
+        <article class="am-trait-box likes">
+          <h3><span aria-hidden="true">＋</span> Likes</h3>
+          <ul class="am-trait-list">
+            <li>Paint</li>
+            <li>Graffiti</li>
+            <li>Climbing</li>
+            <li>Perching</li>
+            <li>Exploring</li>
+            <li>Interesting smells</li>
+            <li>Interesting textures</li>
+            <li>Food</li>
+            <li>Insects</li>
+            <li>Garbage</li>
+            <li>Her friends</li>
+            <li>Quiet places</li>
+            <li>Strange places</li>
+            <li>Getting into things she probably shouldn't</li>
+          </ul>
+        </article>
+
+        <article class="am-trait-box dislikes">
+          <h3><span aria-hidden="true">−</span> Dislikes</h3>
+          <ul class="am-trait-list">
+            <li>Boredom</li>
+            <li>Being controlled</li>
+            <li>Being told what she can and cannot do</li>
+            <li>People touching her without permission</li>
+            <li>Being underestimated</li>
+            <li>Being treated like she's stupid</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="am-section" aria-labelledby="food-heading">
+      <div class="am-section-heading">
+        <span class="am-section-icon" aria-hidden="true">☻</span>
+        <div>
+          <h2 id="food-heading">The Things She Doesn't Find Weird</h2>
+          <p>Other people have questions. Ammonia generally does not.</p>
+        </div>
+      </div>
+
+      <div class="am-card">
+        <p>
+          Ammonia eats insects. She eats garbage. She eats scraps. She eats
+          ordinary food, too.
+        </p>
+        <p>
+          Sometimes a bug looks edible. Sometimes something in a trash bin
+          smells good. Sometimes she is curious. Her curiosity about whether
+          something is worth eating does not require an elaborate explanation.
+        </p>
+        <p>
+          If someone catches her eating something questionable, she is not
+          necessarily embarrassed, defensive, or interested in justifying
+          herself. The question may be far more confusing to her than the
+          thing she was eating.
+        </p>
+      </div>
+
+      <div class="am-quote">
+        <p class="am-quote-label">A perfectly reasonable response</p>
+        <blockquote>“What?”</blockquote>
+        <p class="am-quote-caption">She does not understand what the fuss is about.</p>
+      </div>
+    </section>
+
+    <section class="am-section" aria-labelledby="instinct-heading">
+      <div class="am-section-heading">
+        <span class="am-section-icon" aria-hidden="true">⌁</span>
+        <div>
+          <h2 id="instinct-heading">Intelligence &amp; Instinct</h2>
+          <p>She reads a place through her entire body.</p>
+        </div>
+      </div>
+
+      <div class="am-instinct-panel">
+        <div class="am-instinct-header">
+          <h3>Physical awareness</h3>
+          <p>Movement, surfaces, sound, smell, and spatial memory.</p>
+        </div>
+
+        <div class="am-instinct-body">
+          <p>
+            Ammonia understands physical environments extraordinarily well.
+            She knows which surfaces can hold her weight, which structures
+            are weak, which ledges are comfortable to perch on, which routes
+            are easiest to climb, and which places feel wrong before anything
+            visibly happens.
+          </p>
+          <p>
+            She navigates through smell, sound, texture, height, movement,
+            memory, and physical landmarks. Her awareness is practical and
+            deeply embodied: she learns a place by noticing how it behaves
+            around her.
+          </p>
+          <p>
+            <strong>She does not need everything explained to her.</strong>
+          </p>
+
+          <div class="am-instinct-list">
+            <div class="am-instinct-item">
+              <span aria-hidden="true">⌁</span>
+              Sound &amp; vibration
+            </div>
+            <div class="am-instinct-item">
+              <span aria-hidden="true">⌖</span>
+              Smell &amp; texture
+            </div>
+            <div class="am-instinct-item">
+              <span aria-hidden="true">↟</span>
+              Height &amp; climbing
+            </div>
+            <div class="am-instinct-item">
+              <span aria-hidden="true">⌘</span>
+              Structural awareness
+            </div>
+            <div class="am-instinct-item">
+              <span aria-hidden="true">◌</span>
+              Movement &amp; change
+            </div>
+            <div class="am-instinct-item">
+              <span aria-hidden="true">✧</span>
+              Physical landmarks
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="am-footer">
+      CREATOR &nbsp; ✦ &nbsp; SAINT JUDE’S LANDING
+    </footer>
+
+  </main>
+</body>
+</html>
