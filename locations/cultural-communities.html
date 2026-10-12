@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cultural Communities — Creator</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    :root {
+      --culture-bg: #19151e;
+      --culture-panel: #25202d;
+      --culture-border: #514457;
+      --culture-text: #eee6ee;
+      --culture-muted: #bdb0c2;
+      --culture-pink: #e8a9cc;
+      --culture-purple: #c6afea;
+      --culture-gold: #e6cc95;
+      --culture-teal: #9fd4c9;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 10% 8%, rgba(177, 108, 159, 0.13), transparent 36%),
+        radial-gradient(ellipse at 90% 28%, rgba(121, 111, 183, 0.12), transparent 34%),
+        var(--culture-bg);
+      color: var(--culture-text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--culture-teal);
+      text-decoration: none;
+      border-bottom: 1px dotted currentColor;
+    }
+
+    a:hover {
+      color: var(--culture-pink);
+    }
+
+    .culture-page {
+      width: min(100% - 32px, 1000px);
+      margin: 0 auto;
+      padding: 34px 0 64px;
+    }
+
+    .culture-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+      color: var(--culture-muted);
+      font: 0.82rem/1.6 sans-serif;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .culture-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 6vw, 64px);
+      border: 1px solid var(--culture-border);
+      border-radius: 7px;
+      background:
+        linear-gradient(140deg, rgba(44, 32, 49, 0.97), rgba(25, 21, 32, 0.97)),
+        var(--culture-panel);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.24);
+    }
+
+    .culture-hero::before {
+      content: "✧  ❧  ✧";
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      color: rgba(198, 175, 234, 0.36);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      letter-spacing: 0.16em;
+      pointer-events: none;
+    }
+
+    .culture-kicker {
+      margin: 0 0 8px;
+      color: var(--culture-gold);
+      font: 0.76rem/1.5 sans-serif;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .culture-hero h1 {
+      margin: 0;
+      color: var(--culture-purple);
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: normal;
+      letter-spacing: 0.035em;
+      line-height: 1.08;
+    }
+
+    .culture-subtitle {
+      max-width: 680px;
+      margin: 18px 0 0;
+      color: var(--culture-text);
+      font-size: 1.08rem;
+      font-style: italic;
+    }
+
+    .culture-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 25px;
+    }
+
+    .culture-meta span {
+      padding: 5px 10px;
+      border: 1px solid var(--culture-border);
+      border-radius: 3px;
+      color: var(--culture-muted);
+      font: 0.72rem/1.5 sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .culture-divider {
+      margin: 26px 0;
+      color: var(--culture-pink);
+      text-align: center;
+      letter-spacing: 0.35em;
+      opacity: 0.85;
+    }
+
+    .culture-intro {
+      margin: 0 0 26px;
+      padding: 20px 24px;
+      border-left: 3px solid var(--culture-purple);
+      background: rgba(198, 175, 234, 0.055);
+      color: #ded4e3;
+      font-size: 1.04rem;
+    }
+
+    .culture-section-label {
+      margin: 34px 0 14px;
+      color: var(--culture-gold);
+      font: 0.76rem/1.5 sans-serif;
+      letter-spacing: 0.18em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .culture-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .culture-card {
+      padding: 21px 22px;
+      border: 1px solid var(--culture-border);
+      border-radius: 5px;
+      background: rgba(37, 32, 45, 0.9);
+    }
+
+    .culture-card h2 {
+      margin: 0 0 5px;
+      color: var(--culture-pink);
+      font-size: 1.4rem;
+      font-weight: normal;
+      letter-spacing: 0.035em;
+    }
+
+    .culture-type {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--culture-gold);
+      font: 0.72rem/1.6 sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .culture-card p {
+      margin: 0;
+      color: var(--culture-text);
+      font-size: 0.96rem;
+    }
+
+    .culture-details {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .culture-detail {
+      padding: 12px 14px;
+      border: 1px solid rgba(81, 68, 87, 0.8);
+      border-radius: 4px;
+      background: rgba(17, 15, 23, 0.35);
+    }
+
+    .culture-detail strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--culture-teal);
+      font: 0.7rem/1.5 sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .culture-detail span {
+      color: var(--culture-text);
+      font-size: 0.91rem;
+    }
+
+    .culture-card.wide {
+      grid-column: 1 / -1;
+    }
+
+    .culture-note {
+      margin-top: 22px;
+      padding: 22px 24px;
+      border: 1px solid var(--culture-border);
+      border-radius: 5px;
+      background:
+        linear-gradient(120deg, rgba(119, 94, 145, 0.13), rgba(74, 116, 112, 0.09)),
+        var(--culture-panel);
+    }
+
+    .culture-note h2 {
+      margin: 0 0 9px;
+      color: var(--culture-teal);
+      font-size: 1.2rem;
+      font-weight: normal;
+    }
+
+    .culture-note p {
+      margin: 0;
+    }
+
+    .culture-footer {
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid var(--culture-border);
+      color: var(--culture-muted);
+      font: 0.8rem/1.8 sans-serif;
+      text-align: center;
+    }
+
+    .culture-footer .flourish {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--culture-pink);
+      font: 1.1rem/1.5 Georgia, serif;
+      letter-spacing: 0.3em;
+    }
+
+    @media (max-width: 650px) {
+      .culture-page {
+        width: min(100% - 22px, 1000px);
+        padding-top: 18px;
+      }
+
+      .culture-grid,
+      .culture-details {
+        grid-template-columns: 1fr;
+      }
+
+      .culture-card.wide {
+        grid-column: auto;
+      }
+
+      .culture-card {
+        padding: 18px;
+      }
+
+      .culture-intro {
+        padding: 16px 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .culture-card {
+        transition: border-color 180ms ease, background-color 180ms ease;
+      }
+
+      .culture-card:hover {
+        border-color: #867395;
+        background-color: rgba(48, 40, 58, 0.97);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="culture-page">
+
+    <nav class="culture-nav" aria-label="Page navigation">
+      <a href="../index.html">← Creator home</a>
+      <a href="saint-judes-landing.html">Saint Jude’s Landing ↗</a>
+    </nav>
+
+    <header class="culture-hero">
+      <p class="culture-kicker">Creator · Regional communities</p>
+      <h1>Cultural Communities</h1>
+      <p class="culture-subtitle">
+        Established communities with distinct cultural influences, local
+        traditions, everyday routines, and identities of their own.
+      </p>
+
+      <div class="culture-meta">
+        <span>Five communities</span>
+        <span>Regional identities</span>
+        <span>Language &amp; tradition</span>
+        <span>Urban &amp; rural life</span>
+      </div>
+    </header>
+
+    <div class="culture-divider" aria-hidden="true">✧ · · · ❧ · · · ✧</div>
+
+    <p class="culture-intro">
+      Creator's cultural communities are established places shaped by their
+      own histories, languages, traditions, businesses, and everyday lives.
+      Their cultural influences inform local identity without making every
+      community identical. Some are dense urban settlements; others have
+      distinct environments and relationships to the wider world.
+    </p>
+
+    <p class="culture-section-label">Community directory</p>
+
+    <div class="culture-grid">
+
+      <article class="culture-card">
+        <h2>Kurobane</h2>
+        <span class="culture-type">Major community · Japanese influence</span>
+
+        <p>
+          A dense modern community with deep local history, traditional
+          architecture, gardens, family businesses, restaurants, markets,
+          nightlife, and strong craft traditions.
+        </p>
+
+        <div class="culture-details">
+          <div class="culture-detail">
+            <strong>Cultural influence</strong>
+            <span>Japanese</span>
+          </div>
+          <div class="culture-detail">
+            <strong>Languages</strong>
+            <span>Japanese and English</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="culture-card">
+        <h2>Muwon</h2>
+        <span class="culture-type">Major community · Korean influence</span>
+
+        <p>
+          A dense urban community with apartment neighborhoods, markets,
+          restaurants, family businesses, nightlife, music, fashion, and
+          long-established local traditions.
+        </p>
+
+        <div class="culture-details">
+          <div class="culture-detail">
+            <strong>Cultural influence</strong>
+            <span>Korean</span>
+          </div>
+          <div class="culture-detail">
+            <strong>Languages</strong>
+            <span>Korean and English</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="culture-card">
+        <h2>Xolapa</h2>
+        <span class="culture-type">Major community · Mexican influence</span>
+
+        <p>
+          A colorful established community containing dense residential
+          neighborhoods, plazas, markets, restaurants, family businesses,
+          music, celebrations, and older architecture.
+        </p>
+
+        <div class="culture-details">
+          <div class="culture-detail">
+            <strong>Cultural influence</strong>
+            <span>Mexican</span>
+          </div>
+          <div class="culture-detail">
+            <strong>Languages</strong>
+            <span>Spanish and English</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="culture-card">
+        <h2>Pugad</h2>
+        <span class="culture-type">Independent rural community · Filipino influence</span>
+
+        <p>
+          An established community outside Saint Jude’s Landing, surrounded
+          by alien wilderness, with local homes, businesses, schools, farms,
+          family networks, and its own strong community identity.
+        </p>
+
+        <div class="culture-details">
+          <div class="culture-detail">
+            <strong>Cultural influence</strong>
+            <span>Filipino</span>
+          </div>
+          <div class="culture-detail">
+            <strong>Languages</strong>
+            <span>Tagalog and English</span>
+          </div>
+        </div>
+
+        <div class="culture-details">
+          <div class="culture-detail" style="grid-column: 1 / -1;">
+            <strong>Relationship to Saint Jude’s Landing</strong>
+            <span>
+              Closely connected to SJL while remaining culturally and
+              socially independent.
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="culture-card wide">
+        <h2>Kaiwana</h2>
+        <span class="culture-type">Deep-water community · Orumai · Hawaiian influence</span>
+
+        <p>
+          An established deep-water community built among enormous reefs,
+          volcanic formations, submerged valleys, and island chains far from
+          Orumai’s major surface settlements. Homes, businesses, gathering
+          spaces, markets, schools, and family communities are integrated
+          directly into the surrounding ocean environment.
+        </p>
+
+        <div class="culture-details">
+          <div class="culture-detail">
+            <strong>Region</strong>
+            <span>Orumai</span>
+          </div>
+          <div class="culture-detail">
+            <strong>Cultural influence</strong>
+            <span>Hawaiian</span>
+          </div>
+          <div class="culture-detail">
+            <strong>Languages</strong>
+            <span>Hawaiian and English</span>
+          </div>
+          <div class="culture-detail">
+            <strong>Community type</strong>
+            <span>Established deep-water settlement</span>
+          </div>
+        </div>
+
+        <div class="culture-details">
+          <div class="culture-detail" style="grid-column: 1 / -1;">
+            <strong>Environment</strong>
+            <span>
+              Warm deep waters, towering reefs, volcanic rock, enormous
+              kelp-like vegetation, glowing marine life, underwater caves,
+              strong currents, and unusually diverse aquatic ecosystems.
+            </span>
+          </div>
+          <div class="culture-detail" style="grid-column: 1 / -1;">
+            <strong>Culture</strong>
+            <span>
+              Strong traditions surrounding ocean stewardship, navigation,
+              voyaging, fishing, canoe culture, music, dance, family, food,
+              storytelling, and relationships between people and the sea.
+            </span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <section class="culture-note">
+      <h2>✧ Distinct Places, Distinct Lives</h2>
+      <p>
+        These communities have their own cultural influences and local
+        identities. Pugad remains an independent rural community outside
+        Saint Jude’s Landing. Kaiwana belongs to the aquatic region of
+        Orumai and is defined by its deep-water environment as well as its
+        Hawaiian cultural influence.
+      </p>
+    </section>
+
+    <footer class="culture-footer">
+      <span class="flourish" aria-hidden="true">✧ ❧ ♡ ❧ ✧</span>
+      <a href="../index.html">Creator</a>
+      <span aria-hidden="true"> · </span>
+      Cultural communities
+    </footer>
+
+  </main>
+</body>
+</html>
