@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renga — Creator</title>
+<style>
+:root {
+  --bg: #111116;
+  --panel: #1b1a21;
+  --panel-light: #24222b;
+  --text: #eee8e5;
+  --muted: #b7aeb5;
+  --pink: #ed4fa4;
+  --orange: #cf815e;
+  --cream: #e7d8bf;
+  --line: #49333f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 30px 16px 50px;
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(237,79,164,.10), transparent 35%),
+    radial-gradient(ellipse at 95% 28%, rgba(207,129,94,.08), transparent 30%),
+    var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+a { color: var(--pink); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.page { max-width: 1000px; margin: 0 auto; }
+.topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 42px 36px 34px;
+  background: linear-gradient(135deg, #29212b, #19181f 65%, #30201f);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+.hero::after {
+  content: "〰";
+  position: absolute;
+  right: 20px;
+  bottom: -74px;
+  color: rgba(237,79,164,.08);
+  font-family: Georgia, serif;
+  font-size: 260px;
+  line-height: 1;
+  pointer-events: none;
+}
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--pink);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--cream);
+  font-size: clamp(46px, 9vw, 88px);
+  font-weight: 900;
+  letter-spacing: -4px;
+  line-height: .95;
+}
+.subtitle {
+  position: relative;
+  z-index: 1;
+  margin: 15px 0 0;
+  color: #e9a5c8;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.intro {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 24px 0 0;
+  color: #e1d7dd;
+  font-size: 16px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.tag {
+  padding: 5px 10px;
+  border: 1px solid #624151;
+  border-radius: 5px;
+  background: rgba(237,79,164,.07);
+  color: #f0bdd7;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.profile {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin: 16px 0 34px;
+  overflow: hidden;
+  border: 1px solid #39303b;
+  border-radius: 12px;
+  background: #39303b;
+}
+.fact {
+  min-width: 0;
+  padding: 14px 16px;
+  background: var(--panel);
+}
+.fact-label {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--pink);
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.fact-value { font-size: 13px; }
+section { margin-top: 34px; }
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 15px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--line);
+}
+.section-number {
+  color: var(--pink);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+h2 {
+  margin: 0;
+  color: var(--cream);
+  font-size: 20px;
+  letter-spacing: .5px;
+}
+h3 {
+  margin: 0 0 8px;
+  color: #e9a5c8;
+  font-size: 13px;
+  letter-spacing: .4px;
+}
+p { margin: 0 0 12px; }
+p:last-child { margin-bottom: 0; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.card {
+  min-width: 0;
+  padding: 19px;
+  border: 1px solid #38303b;
+  border-radius: 10px;
+  background: var(--panel);
+}
+.card p, .card li { color: #d3cbd0; font-size: 13px; }
+.card ul {
+  margin: 0;
+  padding-left: 18px;
+}
+.card li { margin: 5px 0; }
+.wide { grid-column: 1 / -1; }
+.highlight {
+  padding: 22px 24px;
+  border-left: 3px solid var(--pink);
+  border-radius: 0 10px 10px 0;
+  background: linear-gradient(90deg, rgba(237,79,164,.09), rgba(237,79,164,.015));
+}
+.highlight p { color: #e3d8df; }
+.tail-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.tail-state {
+  padding: 16px;
+  border: 1px solid #48313f;
+  border-radius: 9px;
+  background: #211a23;
+}
+.tail-state strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--pink);
+  font-size: 12px;
+}
+.tail-state span { color: #d3cbd0; font-size: 13px; }
+.member-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.member {
+  padding: 7px 11px;
+  border: 1px solid #49333f;
+  border-radius: 6px;
+  color: var(--cream);
+  background: #211b23;
+  font-size: 11px;
+  letter-spacing: .5px;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 44px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: #897e89;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+@media (max-width: 650px) {
+  body { padding: 18px 11px 35px; }
+  .hero { padding: 32px 22px 26px; }
+  h1 { letter-spacing: -2px; }
+  .profile { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid, .tail-box { grid-template-columns: 1fr; }
+  .wide { grid-column: auto; }
+  .card { padding: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="topline">
+    <span>CREATOR / SAINT JUDE'S LANDING</span>
+    <span>GOOD TEETH · MEMBER PROFILE</span>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">Synth · Keyboard · Electronic Architecture</p>
+    <h1>RENGA</h1>
+    <p class="subtitle">Small Man. Large Tail. Excellent Brain.</p>
+    <p class="intro">
+      A lanky, sleepy-looking ringtail demi-human with a gentle nature, a sharp little brain,
+      and absolutely no idea how much his tail gives away. Renga is quiet without being shy,
+      clever without showing off, and far more observant than his permanently tired expression
+      suggests. He isn't trying to be cute. Unfortunately for him, he is.
+    </p>
+    <div class="tags">
+      <span class="tag">Japanese Ringtail Demi-Human</span>
+      <span class="tag">Age 24</span>
+      <span class="tag">Human Ears</span>
+      <span class="tag">Synth & Keyboard</span>
+      <span class="tag">GOOD TEETH</span>
+    </div>
+  </header>
+
+  <div class="profile">
+    <div class="fact">
+      <span class="fact-label">Name</span>
+      <span class="fact-value">Renga</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Age</span>
+      <span class="fact-value">24</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Species</span>
+      <span class="fact-value">Japanese Ringtail Demi-Human</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Origin</span>
+      <span class="fact-value">Creator · Saint Jude's Landing</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Occupation</span>
+      <span class="fact-value">Synth / Keyboardist</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Band</span>
+      <span class="fact-value">GOOD TEETH</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Build</span>
+      <span class="fact-value">Small, lanky, narrow-framed</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Distinguishing Feature</span>
+      <span class="fact-value">Large, expressive ringtail</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">01</span>
+      <h2>Appearance</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Face & Expression</h3>
+        <p>
+          Renga has warm human skin and a soft, youthful, distinctly baby-faced appearance.
+          His narrow, tired monolid eyes are pale brown. He often looks mildly unimpressed,
+          half-asleep, or quietly amused, with expressions that shift just enough to reveal
+          that he has been paying attention the entire time.
+        </p>
+        <p>
+          His ears are completely human. He has no animal ears.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Hair</h3>
+        <p>
+          Short, tousled rusty orange-brown hair with a naturally sun-faded quality. It is
+          uneven and messy, with pieces sticking out wherever they please. The effect is
+          less deliberate styling than someone waking up, running a hand through his hair,
+          and deciding that was probably enough.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Build & Movement</h3>
+        <p>
+          Small and lightly built, with narrow shoulders, a slim waist, long limbs for his
+          height, and a delicate-looking frame. His clothes hang loosely rather than
+          emphasizing his shape. He lacks heavy muscle definition but has wiry, functional
+          strength beneath his soft appearance.
+        </p>
+        <p>
+          His skin feels warm and soft, particularly around his ribs and stomach. His hips
+          are narrow, his thighs long and lean, and the fur of his tail extends down to the
+          base of his spine.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Everyday Clothes</h3>
+        <p>
+          An oversized dusty-cream T-shirt and baggy, faded-blue denim pants made from
+          Behemoth hide. The pants sit unusually high, nearly reaching his armpits. They
+          are loose, worn, practical, and thoroughly lived-in.
+        </p>
+        <p>
+          A single hot-magenta carabiner is attached high on the pants, integrated into the
+          garment rather than hanging from an ordinary belt loop. It is a bright little
+          interruption in an otherwise faded outfit.
+        </p>
+      </article>
+      <article class="card wide">
+        <h3>The Tail</h3>
+        <p>
+          Renga's most conspicuous nonhuman feature is his enormous fluffy ringtail, marked
+          with distinct natural rings. It is large and expressive in proportion to his body,
+          moving with the casual independence of another limb. It curls around objects,
+          wraps around his legs, coils close to him when he is emotional, and sometimes
+          communicates feelings he would rather keep to himself.
+        </p>
+        <p>
+          The tail is part of his everyday physical life, not a decorative accessory. Renga
+          is completely accustomed to it. Other people may find it harder to ignore,
+          especially when it starts making his feelings obvious before he has said a word.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">02</span>
+      <h2>A Tail of Its Own</h2>
+    </div>
+    <div class="highlight">
+      <p>
+        Renga can keep his face almost perfectly still while his tail carries on having an
+        entire emotional experience. He does not always notice what it is doing until
+        someone points it out. Then he gets embarrassed and attempts to make it stop.
+        This is not a particularly reliable solution.
+      </p>
+    </div>
+    <div class="tail-box" style="margin-top: 12px;">
+      <div class="tail-state">
+        <strong>Comfortable</strong>
+        <span>His tail curls loosely around his legs or settles wherever he has made himself comfortable.</span>
+      </div>
+      <div class="tail-state">
+        <strong>Nervous</strong>
+        <span>It becomes restless, shifting and moving even while he stays outwardly composed.</span>
+      </div>
+      <div class="tail-state">
+        <strong>Embarrassed</strong>
+        <span>It may coil tightly around him, making his attempt to look unaffected rather unconvincing.</span>
+      </div>
+      <div class="tail-state">
+        <strong>Sleepy</strong>
+        <span>It drapes across whoever happens to be closest, as if this is a perfectly ordinary arrangement.</span>
+      </div>
+      <div class="tail-state wide">
+        <strong>Genuinely Upset</strong>
+        <span>
+          His face may remain almost motionless, but his tail becomes intensely expressive.
+          The contrast makes his emotional state difficult to miss for anyone who knows what
+          to look for.
+        </span>
+      </div>
+    </div>
+    <div class="card" style="margin-top: 12px;">
+      <h3>Boundaries</h3>
+      <p>
+        Renga dislikes people grabbing his tail without permission. He is comfortable with
+        familiar physical affection, including having his tail absentmindedly touched by
+        someone he trusts, but familiarity is not blanket permission for strangers to handle
+        him or his belongings.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">03</span>
+      <h2>Personality</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Quiet, Not Shy</h3>
+        <p>
+          Renga tends to sit back and watch before deciding whether he wants to participate.
+          He doesn't feel compelled to fill every silence or announce every observation.
+          When he speaks, he usually has an actual reason.
+        </p>
+        <p>
+          He is gentle by default, but that gentleness should not be confused with
+          delicacy, helplessness, or an inability to stand his ground.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Deadpan Humor</h3>
+        <p>
+          His sense of humor is sleepy, understated, and often ridiculous. Renga can deliver
+          something absurd in exactly the same tone he would use to ask somebody to pass him
+          a drink. The expression rarely warns anyone that a joke is coming.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Gentle & Stubborn</h3>
+        <p>
+          Renga prefers solutions that create the least amount of noise. He doesn't enjoy
+          unnecessary confrontation and is often content to let a situation resolve without
+          making himself its center.
+        </p>
+        <p>
+          When something genuinely matters to him, however, he can be surprisingly stubborn.
+          Quiet does not mean compliant.
+        </p>
+      </article>
+      <article class="card">
+        <h3>More Transparent Than He Thinks</h3>
+        <p>
+          Renga does not always realize how much he reveals through small movements,
+          expressions, and habits. His face might give very little away, but his tail is
+          another matter entirely. He is often less mysterious to other people than he
+          believes himself to be.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">04</span>
+      <h2>A Sharp Little Brain</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Pattern Recognition</h3>
+        <p>
+          Renga is good at noticing mechanical problems, patterns, inconsistencies,
+          shortcuts, and details other people overlook. He understands systems especially
+          well after he has had time to observe how they work.
+        </p>
+        <p>
+          He is clever without being showy. He doesn't need an audience for his conclusions,
+          and he rarely feels the urge to prove that he knows something.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Quiet Problem-Solving</h3>
+        <p>
+          Sometimes he will stare at a problem for several minutes, make one small
+          adjustment, and solve the whole thing. If somebody asks how he figured it out,
+          he may genuinely answer, “I dunno.”
+        </p>
+        <p>
+          He does know. He just doesn't always know how to explain the process that got him
+          there.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">05</span>
+      <h2>GOOD TEETH</h2>
+    </div>
+    <div class="card">
+      <p>
+        Renga is GOOD TEETH's synth and keyboard player. His work contributes electronic
+        architecture, unusual textures, strange melodies, loops, effects, atmospheric
+        layers, bright hooks, distorted electronics, and rhythms that can make a song feel
+        playful, futuristic, melancholy, abrasive, or wonderfully bizarre.
+      </p>
+      <p>
+        Electronic elements are not decoration added on top of the band's sound. They are
+        part of how GOOD TEETH builds its music, colliding with technical guitar, bass,
+        drums, vocals, and sudden changes in intensity. Renga's contribution can be bright
+        and catchy one moment, then strange and atmospheric the next.
+      </p>
+      <p>
+        The band is not organized around a designated cute member, mascot, or baby. Renga is
+        a twenty-four-year-old musician with his own opinions, habits, irritations, desires,
+        friendships, and private jokes. His small frame and baby face are simply part of
+        what he looks like.
+      </p>
+      <div class="member-strip">
+        <span class="member">IVES · VOCALS</span>
+        <span class="member">RENGA · SYNTH / KEYBOARD</span>
+        <span class="member">TŌGO · ELECTRIC GUITAR</span>
+        <span class="member">PURL · DRUMS</span>
+        <span class="member">RILEY · BASS</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">06</span>
+      <h2>Life on Tour</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Sleep Comes Easily</h3>
+        <p>
+          Renga can sleep almost anywhere when he is tired enough. Given the opportunity,
+          he curls up and gets comfortable, often with his tail wrapped around his legs.
+          Quiet mornings and long naps are among his favorite things.
+        </p>
+      </article>
+      <article class="card">
+        <h3>He Notices Things</h3>
+        <p>
+          He develops very specific preferences about where his belongings go, remembers
+          which convenience stores have good food, and notices strange noises in hotels.
+          Unfamiliar places tend to become familiar to him surprisingly quickly.
+        </p>
+      </article>
+      <article class="card wide">
+        <h3>The Missing Object Problem</h3>
+        <p>
+          Renga is often the person who notices that somebody has forgotten something
+          important. He may not announce it, make a fuss, or explain how he realized it was
+          missing. He simply appears beside the person holding the object they need.
+        </p>
+        <p>
+          His attention is quiet and practical. He notices what is happening, remembers
+          useful details, and acts when he has a reason to.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">07</span>
+      <h2>Habits & Little Things</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <ul>
+          <li>Sleeps curled up whenever he gets the chance.</li>
+          <li>Wraps his tail around his legs when sitting.</li>
+          <li>Fiddles with his hot-magenta carabiner while thinking.</li>
+          <li>Gravitates toward warm surfaces.</li>
+          <li>Likes quiet places where he can watch without joining in.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <ul>
+          <li>Gets noticeably animated when discussing something he genuinely likes.</li>
+          <li>Eats slowly when relaxed and extremely quickly when starving.</li>
+          <li>Sometimes stares into space long enough to look completely checked out.</li>
+          <li>Is usually still listening, even when he looks as though he isn't.</li>
+          <li>Can become embarrassed when someone points out what his tail is doing.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">08</span>
+      <h2>Likes & Dislikes</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Likes</h3>
+        <ul>
+          <li>Quiet mornings and long naps</li>
+          <li>Warm food and warm surfaces</li>
+          <li>Interesting machines and small discoveries</li>
+          <li>Rain against windows</li>
+          <li>Old clothes that have become perfectly comfortable</li>
+          <li>Being around trusted people without constant conversation</li>
+          <li>Places with strange architecture</li>
+          <li>His tail being absentmindedly touched by someone he trusts</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>Dislikes</h3>
+        <ul>
+          <li>Being rushed</li>
+          <li>Being shouted at</li>
+          <li>People grabbing his tail without permission</li>
+          <li>Being treated like a child because he is small</li>
+          <li>People assuming quietness means ignorance</li>
+          <li>Clothing that fits too tightly</li>
+          <li>People touching his belongings without asking</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">09</span>
+      <h2>The Whole Renga</h2>
+    </div>
+    <div class="highlight">
+      <p>
+        Renga is a sleepy little bastard with a good heart. He is clever without being
+        showy, gentle without being passive, strange without trying to be strange, and
+        affectionate without making a production out of affection.
+      </p>
+      <p>
+        He can be quietly stubborn, observant, practical, funny, and surprisingly quick to
+        understand a problem. He likes warm food, strange machines, long naps, familiar
+        company, and the comfort of not having to talk just to prove he is there.
+      </p>
+      <p>
+        His tail says everything he refuses to say. He usually notices a little too late.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <span>CREATOR · SAINT JUDE'S LANDING</span>
+    <span>GOOD TEETH ARCHIVE</span>
+  </footer>
+
+</div>
+</body>
+</html>
