@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#211a22">
+
+  <title>Nine | Saint Jude’s Landing — Creator</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+    :root {
+      --nine-bg: #211a22;
+      --nine-panel: #302630;
+      --nine-panel-dark: #271e29;
+      --nine-rust: #ff956e;
+      --nine-acid: #d8ff82;
+      --nine-pink: #ff83b8;
+      --nine-blue: #91e8ff;
+      --nine-text: #fff0e8;
+      --nine-muted: #d1bdc8;
+      --nine-border: #68505f;
+    }
+
+    body {
+      background: var(--nine-bg);
+      color: var(--nine-text);
+    }
+
+    .nine-page {
+      width: min(1100px, 100%);
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .nine-back {
+      display: inline-block;
+      margin-bottom: 24px;
+      color: var(--nine-acid);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .nine-back:hover {
+      color: var(--nine-pink);
+    }
+
+    .nine-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 6vw, 68px);
+      border: 2px solid var(--nine-rust);
+      border-radius: 5px 24px 5px 24px;
+      background:
+        radial-gradient(
+          ellipse at 90% 10%,
+          #594039 0,
+          transparent 36%
+        ),
+        radial-gradient(
+          ellipse at 5% 100%,
+          #38442a 0,
+          transparent 35%
+        ),
+        var(--nine-panel);
+      box-shadow: 7px 7px 0 #110d14;
+    }
+
+    .nine-eyebrow {
+      margin: 0 0 18px;
+      color: var(--nine-acid);
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .nine-hero h1 {
+      margin: 0;
+      color: var(--nine-rust);
+      font-size: clamp(4rem, 13vw, 9rem);
+      font-weight: 950;
+      line-height: 0.85;
+      letter-spacing: -0.08em;
+      text-shadow: 4px 4px 0 #59352f;
+    }
+
+    .nine-subtitle {
+      max-width: 650px;
+      margin: 26px 0 0;
+      color: var(--nine-text);
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      line-height: 1.8;
+    }
+
+    .nine-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .nine-tag {
+      padding: 7px 11px;
+      border: 1px solid var(--nine-border);
+      border-radius: 4px;
+      background: var(--nine-panel-dark);
+      color: var(--nine-acid);
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.04em;
+    }
+
+    .nine-index {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 28px 0;
+      padding: 18px;
+      border: 1px dashed var(--nine-rust);
+      border-radius: 8px;
+      background: var(--nine-panel-dark);
+    }
+
+    .nine-index a {
+      padding: 7px 10px;
+      border: 1px solid var(--nine-border);
+      border-radius: 4px;
+      background: var(--nine-panel);
+      color: var(--nine-text);
+      font-size: 0.82rem;
+      font-weight: 750;
+      text-decoration: none;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .nine-index a:hover {
+      background: var(--nine-acid);
+      color: var(--nine-bg);
+    }
+
+    .nine-intro {
+      margin: 0 0 24px;
+      padding: 24px;
+      border-left: 4px solid var(--nine-acid);
+      background: var(--nine-panel-dark);
+    }
+
+    .nine-intro h2 {
+      margin: 0 0 12px;
+      color: var(--nine-acid);
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nine-intro p {
+      margin: 0;
+      color: var(--nine-muted);
+      line-height: 1.85;
+    }
+
+    .nine-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .nine-section {
+      min-width: 0;
+      padding: 22px;
+      border: 1px solid var(--nine-border);
+      border-top: 3px solid var(--nine-rust);
+      border-radius: 7px;
+      background: var(--nine-panel);
+      scroll-margin-top: 20px;
+    }
+
+    .nine-section:nth-child(4n + 2) {
+      border-top-color: var(--nine-acid);
+    }
+
+    .nine-section:nth-child(4n + 3) {
+      border-top-color: var(--nine-pink);
+    }
+
+    .nine-section:nth-child(4n) {
+      border-top-color: var(--nine-blue);
+    }
+
+    .nine-section h2 {
+      margin: 0 0 12px;
+      color: var(--nine-rust);
+      font-size: 1.05rem;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .nine-section:nth-child(4n + 2) h2 {
+      color: var(--nine-acid);
+    }
+
+    .nine-section:nth-child(4n + 3) h2 {
+      color: var(--nine-pink);
+    }
+
+    .nine-section:nth-child(4n) h2 {
+      color: var(--nine-blue);
+    }
+
+    .nine-section h2::before {
+      content: "✳ ";
+    }
+
+    .nine-section p {
+      margin: 0;
+      color: var(--nine-muted);
+      font-size: 0.96rem;
+      line-height: 1.85;
+      overflow-wrap: anywhere;
+    }
+
+    .nine-section strong {
+      color: var(--nine-text);
+    }
+
+    .nine-benoit {
+      border-color: var(--nine-acid);
+      background: #303426;
+    }
+
+    .nine-benoit h2 {
+      color: var(--nine-acid) !important;
+    }
+
+    .nine-footer {
+      margin-top: 30px;
+      padding: 20px 0;
+      border-top: 1px solid var(--nine-border);
+      color: var(--nine-muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-align: center;
+    }
+
+    @media (max-width: 680px) {
+      .nine-page {
+        padding: 16px;
+      }
+
+      .nine-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nine-section {
+        padding: 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="nine-page">
+
+    <a class="nine-back" href="saint-judes-landing.html">
+      ← SAINT JUDE’S LANDING
+    </a>
+
+    <header class="nine-hero">
+      <p class="nine-eyebrow">
+        ✳ SAINT JUDE’S LANDING / DISTRICT ARCHIVE ✳
+      </p>
+
+      <h1>Nine</h1>
+
+      <p class="nine-subtitle">
+        The industrial mass of Saint Jude’s Landing. Enormous machinery,
+        biological remains, alien ecosystems, monstrous inhabitants,
+        and working-class life collide across a sprawling industrial
+        district.
+      </p>
+
+      <div class="nine-tags">
+        <span class="nine-tag">TYPE: INDUSTRIAL DISTRICT</span>
+        <span class="nine-tag">CITY: SAINT JUDE’S LANDING</span>
+        <span class="nine-tag">PLANET: CREATOR</span>
+      </div>
+    </header>
+
+    <nav class="nine-index" aria-label="Nine page sections">
+      <a href="#general">General</a>
+      <a href="#industry">Industry</a>
+      <a href="#behemoths">Behemoths</a>
+      <a href="#monsters">Monsters</a>
+      <a href="#monsterfucking">Monsterfucking</a>
+      <a href="#industrial-romance">Industrial Romance</a>
+      <a href="#body-horror">Body Horror</a>
+      <a href="#workers">Workers</a>
+      <a href="#environment">Environment</a>
+      <a href="#daily-life">Daily Life</a>
+      <a href="#danger">Danger</a>
+      <a href="#culture">Culture</a>
+      <a href="#benoit">Benoit</a>
+    </nav>
+
+    <section class="nine-intro">
+      <h2>A district built to accommodate enormous life</h2>
+      <p>
+        Nine is where Creator’s alien biology, monstrous inhabitants,
+        and Saint Jude’s Landing’s heavy industry collide most directly.
+        Its immense scale and industrial infrastructure make it a
+        particularly comfortable place for many large demi-human species
+        and monsters to live and work.
+      </p>
+    </section>
+
+    <div class="nine-grid">
+
+      <section class="nine-section" id="general">
+        <h2>General</h2>
+        <p>
+          Nine is the industrial mass of Saint Jude’s Landing: enormous
+          factories, processing plants, warehouses, foundries, chemical
+          facilities, transport systems, scrapyards, machinery yards,
+          and worker housing packed into a sprawling working district.
+        </p>
+      </section>
+
+      <section class="nine-section" id="industry">
+        <h2>Industry</h2>
+        <p>
+          Nine processes raw materials, biological matter, minerals,
+          Behemoth remains, and other resources produced by Creator.
+          Heavy industry operates constantly. Trains, freight vehicles,
+          conveyor systems, cranes, furnaces, processing equipment, pipes,
+          and enormous machines dominate the district.
+        </p>
+      </section>
+
+      <section class="nine-section" id="behemoths">
+        <h2>Behemoths</h2>
+        <p>
+          Behemoth remains are common throughout Nine. Some are processed
+          for industrial use, incorporated into machinery, or left where
+          they are because they are too large to move. Buildings, machines,
+          industrial waste, and enormous biological remains sometimes
+          become almost impossible to distinguish from one another.
+        </p>
+      </section>
+
+      <section class="nine-section" id="monsters">
+        <h2>Monsters</h2>
+        <p>
+          Nine has an unusually large population of monstrous and heavily
+          nonhuman residents because industrial work, creature handling,
+          biological processing, heavy labor, and dangerous environments
+          attract species that are particularly suited to them. Some
+          creatures are employees, mechanics, drivers, technicians,
+          contractors, business owners, neighbors, lovers, or families.
+        </p>
+      </section>
+
+      <section class="nine-section" id="monsterfucking">
+        <h2>Monsterfucking</h2>
+        <p>
+          Interspecies attraction is deeply embedded in Nine’s adult
+          culture. Humans, demi-humans, and monsters date, hook up, marry,
+          raise families, and form long-term relationships. Large size
+          differences, claws, fangs, tails, fur, scales, unusual anatomy,
+          and other monstrous traits are not inherently considered
+          incompatible with romance or sex. Some bars, clubs, brothels,
+          dating scenes, and private communities specifically cater to
+          human/monster and interspecies attraction.
+        </p>
+      </section>
+
+      <section class="nine-section" id="industrial-romance">
+        <h2>Industrial Romance</h2>
+        <p>
+          Nine’s working culture produces its own particular kind of
+          attraction. Huge mechanics covered in grease, scarred workers,
+          monstrous laborers, exhausted factory employees, enormous
+          creatures in protective gear, rough-looking truck drivers,
+          and physically powerful people are common sights. Dating
+          coworkers, meeting partners after shifts, workplace affairs,
+          and relationships between people from radically different
+          species are ordinary parts of local life.
+        </p>
+      </section>
+
+      <section class="nine-section" id="body-horror">
+        <h2>Body Horror</h2>
+        <p>
+          Nine’s industrial ecosystem produces bizarre forms of life.
+          Scrap-metal-and-flesh creatures crawl through machinery.
+          Centipede-like organisms inhabit pipes and tunnels. Some
+          creatures are all teeth, slime, raw muscle, exposed biological
+          material, or strange combinations of organic and manufactured
+          matter.
+        </p>
+      </section>
+
+      <section class="nine-section" id="workers">
+        <h2>Workers</h2>
+        <p>
+          Nine is full of factory workers, mechanics, engineers,
+          processors, drivers, cleaners, technicians, contractors,
+          laborers, creature handlers, and people whose lives revolve
+          around keeping the district functioning. Worker housing,
+          cheap apartments, bars, shops, clinics, food stalls, dating
+          scenes, and other ordinary necessities exist among the
+          industrial infrastructure.
+        </p>
+      </section>
+
+      <section class="nine-section" id="environment">
+        <h2>Environment</h2>
+        <p>
+          Nine is dirty, loud, hot, wet, chemically stained, greasy,
+          and frequently humid. Strange alien growth pushes through
+          cracks in concrete and machinery. Waterways, vegetation,
+          wildlife, industrial waste, and monstrous life can exist
+          together in the same environment.
+        </p>
+      </section>
+
+      <section class="nine-section" id="daily-life">
+        <h2>Daily Life</h2>
+        <p>
+          Despite its grotesque surroundings, Nine is a functioning
+          neighborhood where people live ordinary lives. Workers clock
+          in, families go home, people shop for groceries, couples fight,
+          lovers meet after shifts, friends drink after work, children
+          grow up around machinery, and residents become accustomed
+          to things outsiders would find horrifying.
+        </p>
+      </section>
+
+      <section class="nine-section" id="danger">
+        <h2>Danger</h2>
+        <p>
+          Industrial accidents, toxic materials, malfunctioning machinery,
+          dangerous wildlife, criminal activity, unstable structures,
+          and hostile creatures are ordinary hazards. Some parts of Nine
+          are heavily regulated; others operate with little oversight.
+        </p>
+      </section>
+
+      <section class="nine-section" id="culture">
+        <h2>Culture</h2>
+        <p>
+          Nine has a rough, practical working-class culture. People tend
+          to know how to repair things, improvise, survive unpleasant
+          conditions, and ignore whatever bizarre thing is making noises
+          inside the wall. Its monster population is not a novelty or
+          tourist attraction; they are part of the neighborhood.
+        </p>
+      </section>
+
+      <section class="nine-section" id="atmosphere">
+        <h2>Atmosphere</h2>
+        <p>
+          Industrial, filthy, enormous, grotesque, hardworking, humid,
+          mechanical, biological, sexually charged, and intensely alive.
+          Nine is where Creator’s alien biology, monstrous inhabitants,
+          and Saint Jude’s Landing’s heavy industry collide most directly.
+        </p>
+      </section>
+
+      <section class="nine-section nine-benoit" id="benoit">
+        <h2>Benoit</h2>
+        <p>
+          Benoit is associated with Nine.
+        </p>
+      </section>
+
+    </div>
+
+    <footer class="nine-footer">
+      ✳ NINE · SAINT JUDE’S LANDING · CREATOR ✳
+    </footer>
+
+  </main>
+</body>
+</html>
