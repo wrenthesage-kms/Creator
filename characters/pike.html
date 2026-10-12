@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pike — Creator</title>
+<style>
+:root {
+  --bg: #10171b;
+  --panel: #182126;
+  --panel2: #202c32;
+  --text: #e7eff0;
+  --muted: #a7b9be;
+  --cyan: #83dce9;
+  --ice: #c5f4f5;
+  --blue: #508f9d;
+  --line: #344f58;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 30px 16px 50px;
+  background:
+    radial-gradient(ellipse at 88% 0%, rgba(131,220,233,.12), transparent 34%),
+    radial-gradient(ellipse at 0% 58%, rgba(80,143,157,.13), transparent 35%),
+    var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+.page { max-width: 1000px; margin: 0 auto; }
+.topline {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 42px 36px 34px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(135deg, #22363d, #182126 62%, #1c2d33);
+}
+.hero::after {
+  content: "〰";
+  position: absolute;
+  right: 4px;
+  bottom: -95px;
+  color: rgba(131,220,233,.08);
+  font-size: 260px;
+  line-height: 1;
+  pointer-events: none;
+}
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--cyan);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--ice);
+  font-size: clamp(46px, 9vw, 88px);
+  font-weight: 900;
+  letter-spacing: -4px;
+  line-height: .95;
+}
+.subtitle {
+  position: relative;
+  z-index: 1;
+  margin: 15px 0 0;
+  color: var(--cyan);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.intro {
+  position: relative;
+  z-index: 1;
+  max-width: 740px;
+  margin: 24px 0 0;
+  color: #d4e3e6;
+  font-size: 16px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.tag {
+  padding: 5px 10px;
+  border: 1px solid #4b7580;
+  border-radius: 5px;
+  background: rgba(131,220,233,.07);
+  color: var(--ice);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.profile {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin: 16px 0 34px;
+  overflow: hidden;
+  border: 1px solid #344f58;
+  border-radius: 12px;
+  background: #344f58;
+}
+.fact { padding: 14px 16px; background: var(--panel); min-width: 0; }
+.fact-label {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--cyan);
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.fact-value { font-size: 13px; }
+section { margin-top: 34px; }
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 15px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--line);
+}
+.section-number { color: var(--cyan); font-size: 11px; letter-spacing: 1px; }
+h2 { margin: 0; color: var(--ice); font-size: 20px; letter-spacing: .5px; }
+h3 { margin: 0 0 8px; color: var(--cyan); font-size: 13px; letter-spacing: .4px; }
+p { margin: 0 0 12px; }
+p:last-child { margin-bottom: 0; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.card {
+  min-width: 0;
+  padding: 19px;
+  border: 1px solid #30464e;
+  border-radius: 10px;
+  background: var(--panel);
+}
+.card p, .card li { color: #d1e0e3; font-size: 13px; }
+.card ul { margin: 0; padding-left: 18px; }
+.card li { margin: 5px 0; }
+.wide { grid-column: 1 / -1; }
+.highlight {
+  padding: 22px 24px;
+  border-left: 3px solid var(--cyan);
+  border-radius: 0 10px 10px 0;
+  background: linear-gradient(90deg, rgba(131,220,233,.09), rgba(131,220,233,.015));
+}
+.highlight p { color: #d7e7e9; }
+.watch {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 21px;
+  border: 1px solid #3c5962;
+  border-radius: 10px;
+  background: linear-gradient(115deg, #203239, #182126);
+}
+.watch-icon {
+  flex: 0 0 65px;
+  display: grid;
+  place-items: center;
+  width: 65px;
+  height: 65px;
+  border: 3px solid #f26d55;
+  border-radius: 15px;
+  background: #ef9b45;
+  color: #172127;
+  font-size: 25px;
+  font-weight: 900;
+  transform: rotate(-5deg);
+}
+.watch p { margin: 0; color: #d1e0e3; font-size: 13px; }
+.watch strong { color: var(--ice); }
+.member-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.member {
+  padding: 7px 11px;
+  border: 1px solid #3c5962;
+  border-radius: 6px;
+  background: #202d33;
+  color: var(--ice);
+  font-size: 11px;
+  letter-spacing: .5px;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 44px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: #8fa6ad;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+@media (max-width: 650px) {
+  body { padding: 18px 11px 35px; }
+  .hero { padding: 32px 22px 26px; }
+  h1 { letter-spacing: -2px; }
+  .profile { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid { grid-template-columns: 1fr; }
+  .wide { grid-column: auto; }
+  .card { padding: 16px; }
+  .watch { align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="topline">
+    <span>CREATOR / SAINT JUDE'S LANDING</span>
+    <span>CHARACTER ARCHIVE</span>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">Glass Squid · Underground Music · The Hollows</p>
+    <h1>PIKE</h1>
+    <p class="subtitle">A Bit Much, Apparently</p>
+    <p class="intro">
+      A glass squid demi-human with translucent blue skin, an extraordinary
+      collection of local music connections, and a catastrophic sense of direction.
+      Pike works at Saint Jude's Landing's most popular underground club concert
+      venue, knows an absurd number of people, and is almost always comfortable
+      wherever he happens to end up. He looks like something that ought to haunt a
+      flooded cathedral. In practice, he mostly wants to know what everyone ordered
+      at the bar.
+    </p>
+    <div class="tags">
+      <span class="tag">Glass Squid Demi-Human</span>
+      <span class="tag">Age 26</span>
+      <span class="tag">Bisexual</span>
+      <span class="tag">Nightlife</span>
+      <span class="tag">Ammonia's Group</span>
+    </div>
+  </header>
+
+  <div class="profile">
+    <div class="fact">
+      <span class="fact-label">Name</span>
+      <span class="fact-value">Pike</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Age</span>
+      <span class="fact-value">26</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Gender</span>
+      <span class="fact-value">Male</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Sexuality</span>
+      <span class="fact-value">Bisexual</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Species</span>
+      <span class="fact-value">Glass Squid Demi-Human</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Height</span>
+      <span class="fact-value">5'9"</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Home</span>
+      <span class="fact-value">The Hollows, SJL</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Origin</span>
+      <span class="fact-value">Sivai, Orumai</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">01</span>
+      <h2>Appearance</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Glasslike Skin</h3>
+        <p>
+          Pike's skin is translucent, with a cool, clear blue tint and subtle
+          internal translucency. Faint veins and natural variations in color are
+          visible beneath the surface. His skin has a naturally dewy, perpetually
+          damp appearance, catching light in glossy, reflective highlights.
+        </p>
+        <p>
+          His unusual coloring is part of his ordinary physical existence. He
+          doesn't carry himself as though his body needs to be explained.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Face & Hair</h3>
+        <p>
+          Pike is strikingly handsome, with unusual natural proportions: high
+          cheekbones, a straight narrow nose with a distinctly crooked bridge and
+          slightly off-center tip, a smooth rounded chin, and a wide, relaxed mouth.
+        </p>
+        <p>
+          His upper lip is exceptionally plush and full, without a cupid's bow;
+          his lower lip is unusually thin. Pale blue-gray irises sit beneath heavy,
+          relaxed eyelids, with large dark pupils and a slightly uneven eye shape.
+          His short black hair is tousled, naturally textured, and prone to loose
+          strands falling across his forehead.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Build & Hands</h3>
+        <p>
+          At 5'9", Pike has a lean athletic build with unusually broad shoulders,
+          a broad chest, long limbs and legs, and a very narrow waist and pelvis.
+          His silhouette is long and distinctive without being bulky.
+        </p>
+        <p>
+          His human hands have unusually long, elegant fingers, narrow palms, and
+          tapered proportions. He also has human ears and feet, with small silver
+          hoop earrings as his usual piercings.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Tentacles</h3>
+        <p>
+          Pike's tentacles are an ordinary extension of his glass squid body.
+          They curl around railings, drape over furniture, hold objects, brush
+          against friends, and react subtly to his mood. They are not independently
+          sentient; Pike often barely notices what they are doing.
+        </p>
+        <p>
+          Their movement is as habitual as leaning against a wall or resting a
+          hand on a table. They are part of how he occupies physical space.
+        </p>
+      </article>
+      <article class="card wide">
+        <h3>Clothing & Personal Style</h3>
+        <p>
+          Pike favors loose, sensual, slightly impractical nightlife clothing:
+          an oversized sheer charcoal button-up worn open over a fitted black
+          sleeveless tank, enormous loose dark charcoal trousers sitting low on
+          his hips, and black leather boots.
+        </p>
+        <p>
+          His style leans toward sheer fabrics, oversized silhouettes, dark
+          neutrals, good boots, and cheap jewelry. He dresses for comfort and
+          aesthetics rather than practicality, and routinely underestimates how
+          strange he looks to people seeing him for the first time.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">02</span>
+      <h2>The Watch</h2>
+    </div>
+    <div class="watch">
+      <div class="watch-icon">⌚</div>
+      <div>
+        <h3>The Most Ridiculous Thing He Owns</h3>
+        <p>
+          Pike wears a cheap, brightly colored plastic children's watch. It is
+          completely at odds with the rest of his appearance, and he refuses to
+          replace it. It remains his signature possession, looking cheerfully
+          out of place against his sheer charcoal shirt and silver jewelry.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">03</span>
+      <h2>Personality</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Easygoing & Social</h3>
+        <p>
+          Pike is extremely easygoing, socially confident, curious, dryly funny,
+          and casually tactile. He has an unhurried way of moving through the world,
+          but that isn't aloofness or a deliberate attempt to seem mysterious.
+        </p>
+        <p>
+          He likes people and tends to assume most people are interesting until
+          proven otherwise. He can talk to strangers, flirt, sit silently with
+          friends, or disappear into a crowd without making any of it into a big deal.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Nosy as Fuck</h3>
+        <p>
+          Pike is deeply curious about other people and their lives. He asks
+          follow-up questions because he genuinely wants to know the answers.
+          His nosiness is usually driven by interest rather than malice.
+        </p>
+        <p>
+          He is perfectly comfortable asking what someone ordered, why they made
+          a particular decision, or what happened after the interesting part of
+          a story. He enjoys learning how people work.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Hard to Rattle</h3>
+        <p>
+          Pike rarely reacts immediately when something goes wrong. He tends to
+          decide whether the situation actually matters before responding. His
+          temper is exceptionally relaxed, and he doesn't feel obliged to turn
+          every inconvenience into a confrontation.
+        </p>
+        <p>
+          He isn't helpless or incapable of anger. When genuinely pushed, his
+          calmness becomes more noticeable rather than disappearing.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Dry Humor</h3>
+        <p>
+          His humor is dry, understated, and occasionally absurd. Pike can say
+          something bizarre in a completely serious voice and not immediately
+          realize how funny it sounded.
+        </p>
+        <p>
+          His relaxed delivery makes it difficult to tell whether he is teasing,
+          stating a fact, or asking a question he sincerely expects someone to answer.
+          Sometimes even Pike doesn't see a reason to distinguish between them.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">04</span>
+      <h2>Comfort in His Own Skin</h2>
+    </div>
+    <div class="highlight">
+      <p>
+        Pike is profoundly comfortable with himself. His unusual body, appearance,
+        sexuality, friendships, and place in the city are not sources of angst he
+        needs to overcome. He is simply a strange-looking guy with a good social
+        life who happens to be a glass squid demi-human.
+      </p>
+      <p>
+        He doesn't cultivate an image of being mysterious, nor does he treat his
+        appearance as a performance. He is not always aware of how unusual he looks
+        to someone who has never met a glass squid demi-human before.
+      </p>
+      <p>
+        The contrast is part of his ordinary presence: he looks like something
+        that should be haunting a flooded cathedral, but behaves like a completely
+        approachable man who wants to know what everyone ordered at the bar.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">05</span>
+      <h2>Aquatic Life & Sensory Preferences</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Water, Always</h3>
+        <p>
+          Pike loves being wet. Rain, swimming, fountains, mist, damp pavement,
+          humid nights, and cool water all suit him. He strongly prefers humidity
+          and cool air, and dry heat makes him miserable.
+        </p>
+        <p>
+          Towels are, in his opinion, aggressive. Being dried off is an experience
+          he would rather avoid.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Vibrations & Movement</h3>
+        <p>
+          Pike is highly sensitive to vibrations and movement around him. The
+          physical activity of a crowded venue, the motion of people nearby, and
+          the feel of a space are part of how he experiences his surroundings.
+        </p>
+        <p>
+          His tentacles often respond to nearby objects and surfaces without
+          conscious thought, curling around railings or resting against whatever
+          is close at hand.
+        </p>
+      </article>
+      <article class="card wide">
+        <h3>Ordinary Physical Habits</h3>
+        <p>
+          Pike frequently leans against walls, railings, doorframes, or other
+          people instead of standing normally. He dresses inappropriately for
+          the weather, loves swimming, and can be found enjoying rain or mist
+          whenever the opportunity presents itself.
+        </p>
+        <p>
+          His tentacles interact absentmindedly with the environment, much as
+          someone else might tap their fingers or shift their weight. They are
+          simply part of his habitual movement.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">06</span>
+      <h2>Boundaries & Affection</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Curiosity Isn't Permission</h3>
+        <p>
+          Pike doesn't mind curious people. He is curious himself and is usually
+          happy to answer a genuine question. What he doesn't tolerate is being
+          treated like a novelty exhibit.
+        </p>
+        <p>
+          Grabbing his tentacles without permission or demanding demonstrations
+          of his body crosses a line. His unusual anatomy doesn't make him public
+          property, and his easygoing nature doesn't mean he has no boundaries.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Casual Closeness</h3>
+        <p>
+          Pike is physically affectionate and comfortable with proximity. He
+          likes leaning against people, sitting shoulder-to-shoulder, touching
+          someone's arm while talking, and letting his tentacles rest against
+          people he trusts.
+        </p>
+        <p>
+          His affection is natural and unceremonious. Being close to someone
+          doesn't automatically require a serious conversation about what it means.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Quietly Protective</h3>
+        <p>
+          Pike notices when someone is uncomfortable and tends to intervene
+          practically, without making them explain themselves or turning the
+          situation into a public spectacle.
+        </p>
+        <p>
+          He is not confrontational by default, but he is not helpless. His
+          reliability shows most clearly when somebody matters to him.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Reliable by Nature</h3>
+        <p>
+          Pike doesn't make dramatic promises. When someone becomes his person,
+          he simply shows up. His loyalty is steady and practical rather than
+          theatrical.
+        </p>
+        <p>
+          He can be playful, nosy, and relaxed while still taking his relationships
+          seriously. His easygoing manner doesn't make his attachments shallow.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">07</span>
+      <h2>Attraction & Intimacy</h2>
+    </div>
+    <div class="highlight">
+      <p>
+        Pike is bisexual and attracted to people across genders. Unusual physical
+        features, confidence, humor, competence, and people who are comfortable
+        being strange tend to catch his interest.
+      </p>
+      <p>
+        He is comfortable with attraction and physical affection without needing
+        either to become dramatic. He approaches intimacy with the same playful
+        curiosity and relaxed confidence that characterize the rest of his life,
+        without treating it as a performance.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">08</span>
+      <h2>Work & Reputation</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>The Venue</h3>
+        <p>
+          Pike works at the most popular underground club concert venue in
+          Saint Jude's Landing. The job places him in the middle of the city's
+          constantly changing music and nightlife scenes: shows, performers,
+          regulars, staff, promoters, and musicians cycling through the venue.
+        </p>
+        <p>
+          He is a familiar presence without needing to be the center of attention.
+          He can move between conversations, check in with people he knows, or
+          quietly settle into the atmosphere of a busy night.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Everybody Knows Pike</h3>
+        <p>
+          Pike knows an absurd number of musicians, performers, bartenders,
+          promoters, venue workers, and nightlife regulars. Musicians like him,
+          regulars recognize him, and staff trust him.
+        </p>
+        <p>
+          If he likes someone enough, he can usually get them into a sold-out show.
+          His network is the accumulated result of being around the scene, knowing
+          people, and genuinely enjoying their company.
+        </p>
+      </article>
+      <article class="card wide">
+        <h3>A Connective Point in the Music Scene</h3>
+        <p>
+          Pike knows who is playing where, which shows are impossible to get into,
+          and which strange little venue is doing something interesting this
+          weekend. His social world stretches across performers, venues, and the
+          people who keep underground music running.
+        </p>
+        <p>
+          His job connects him to a large, constantly rotating community without
+          making him a celebrity or demanding that every interaction revolve around
+          him. He is one of the people who makes a scene feel connected.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">09</span>
+      <h2>Sivai to Saint Jude's Landing</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Home in Orumai</h3>
+        <p>
+          Pike grew up in Sivai, an island community in Orumai, surrounded by
+          interconnected waterways, island settlements, and everyday aquatic life.
+          His upbringing took place in a region where water and community are
+          woven into ordinary life.
+        </p>
+        <p>
+          Sivai remains part of his identity, and he retains a connection to
+          his hometown even as his adult life has taken him elsewhere.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Life in the Hollows</h3>
+        <p>
+          Pike moved to Saint Jude's Landing as an adult and gradually built a
+          life around the city's underground music scene. He now lives in the
+          Hollows, with his work, friendships, and social life firmly rooted in SJL.
+        </p>
+        <p>
+          His aquatic background and his city life coexist comfortably. He belongs
+          to both without needing to treat either connection as a conflict.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">10</span>
+      <h2>Tansy</h2>
+    </div>
+    <div class="highlight">
+      <p>
+        Pike and Tansy are best friends. Their friendship is an established part
+        of both of their lives, grounded in familiarity rather than spectacle.
+        Pike knows Tansy well and is comfortable with him in the unhurried, casual
+        way he is comfortable around people he trusts.
+      </p>
+      <p>
+        Through his job, Pike regularly gets Tansy tickets to GOOD TEETH shows.
+        It is one of the many ordinary ways their lives intersect with the local
+        music scene.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">11</span>
+      <h2>Likes & Dislikes</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Likes</h3>
+        <ul>
+          <li>Rain, swimming, and damp weather</li>
+          <li>Fountains, mist, and humid nights</li>
+          <li>Cooking and seafood</li>
+          <li>Nightlife and live music</li>
+          <li>Physical affection and quiet company</li>
+          <li>Crowded venues and interesting people</li>
+          <li>Finding new bands</li>
+          <li>Exploring SJL after dark</li>
+          <li>People-watching and knowing far too much about local music</li>
+          <li>Staying out late</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>Dislikes</h3>
+        <ul>
+          <li>Towels</li>
+          <li>Dry heat</li>
+          <li>Being rushed</li>
+          <li>People grabbing his tentacles without permission</li>
+          <li>Being treated like a spectacle</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">12</span>
+      <h2>Everyday Pike</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Habits</h3>
+        <ul>
+          <li>Leans against walls, railings, doorframes, and friends.</li>
+          <li>Lets his tentacles interact with nearby objects absentmindedly.</li>
+          <li>Frequently asks follow-up questions.</li>
+          <li>Wears clothing better suited to aesthetics than weather.</li>
+          <li>Finds opportunities to swim or get rained on.</li>
+          <li>Has a catastrophically bad sense of direction.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>Social Life</h3>
+        <ul>
+          <li>Knows musicians and performers throughout SJL.</li>
+          <li>Recognizes bartenders, venue workers, promoters, and regulars.</li>
+          <li>Flirts easily without making every interaction sexual.</li>
+          <li>Enjoys conversation and comfortable silence alike.</li>
+          <li>Maintains friendships through showing up.</li>
+          <li>Can disappear into a crowd without needing to be noticed.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">13</span>
+      <h2>The Whole Pike</h2>
+    </div>
+    <div class="highlight">
+      <p>
+        Pike is not an aloof mystery, an exotic novelty, or a walking nightlife
+        stereotype. He is a relaxed, curious, socially confident man with a job,
+        a hometown, a best friend, a sprawling network of acquaintances, and a
+        life he genuinely enjoys.
+      </p>
+      <p>
+        He can be nosy, funny, affectionate, quietly protective, and completely
+        unbothered by things that would leave other people flustered. He has
+        preferences, boundaries, habits, and relationships that exist independently
+        of his unusual appearance.
+      </p>
+      <p>
+        He is a glass squid demi-human. He loves rain, hates towels, wears a
+        ridiculous children's watch, gets lost constantly, and somehow knows
+        everyone worth knowing in the underground music scene.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <span>CREATOR · SAINT JUDE'S LANDING</span>
+    <span>CHARACTER ARCHIVE</span>
+  </footer>
+
+</div>
+</body>
+</html>
