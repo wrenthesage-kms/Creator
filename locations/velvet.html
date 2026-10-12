@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velvet — Saint Jude’s Landing</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    :root {
+      --velvet-bg: #190f19;
+      --velvet-panel: #261823;
+      --velvet-border: #594052;
+      --velvet-text: #eee2e9;
+      --velvet-muted: #bba8b7;
+      --velvet-pink: #f0a5c8;
+      --velvet-purple: #c9a6ed;
+      --velvet-gold: #e7c78c;
+      --velvet-red: #d985a0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 12% 8%, rgba(185, 75, 126, 0.15), transparent 35%),
+        radial-gradient(ellipse at 88% 30%, rgba(139, 86, 167, 0.12), transparent 33%),
+        var(--velvet-bg);
+      color: var(--velvet-text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--velvet-gold);
+      text-decoration: none;
+      border-bottom: 1px dotted currentColor;
+    }
+
+    a:hover {
+      color: var(--velvet-pink);
+    }
+
+    .velvet-page {
+      width: min(100% - 32px, 1000px);
+      margin: 0 auto;
+      padding: 34px 0 64px;
+    }
+
+    .velvet-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+      color: var(--velvet-muted);
+      font: 0.82rem/1.6 sans-serif;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .velvet-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 6vw, 64px);
+      border: 1px solid var(--velvet-border);
+      border-radius: 7px;
+      background:
+        linear-gradient(140deg, rgba(41, 22, 38, 0.97), rgba(27, 15, 27, 0.96)),
+        var(--velvet-panel);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.26);
+    }
+
+    .velvet-hero::before {
+      content: "✦  ♡  ✦";
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      color: rgba(240, 165, 200, 0.36);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      letter-spacing: 0.18em;
+      pointer-events: none;
+    }
+
+    .velvet-kicker {
+      margin: 0 0 8px;
+      color: var(--velvet-gold);
+      font: 0.76rem/1.5 sans-serif;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .velvet-hero h1 {
+      margin: 0;
+      color: var(--velvet-pink);
+      font-size: clamp(3rem, 9vw, 6rem);
+      font-weight: normal;
+      letter-spacing: 0.09em;
+      line-height: 1.05;
+      text-shadow: 0 0 28px rgba(240, 165, 200, 0.15);
+    }
+
+    .velvet-subtitle {
+      max-width: 650px;
+      margin: 18px 0 0;
+      color: var(--velvet-text);
+      font-size: 1.08rem;
+      font-style: italic;
+    }
+
+    .velvet-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 25px;
+    }
+
+    .velvet-meta span {
+      padding: 5px 10px;
+      border: 1px solid var(--velvet-border);
+      border-radius: 3px;
+      color: var(--velvet-muted);
+      font: 0.72rem/1.5 sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .velvet-divider {
+      margin: 26px 0;
+      color: var(--velvet-pink);
+      text-align: center;
+      letter-spacing: 0.35em;
+      opacity: 0.85;
+    }
+
+    .velvet-intro {
+      margin: 0 0 26px;
+      padding: 20px 24px;
+      border-left: 3px solid var(--velvet-pink);
+      background: rgba(240, 165, 200, 0.055);
+      color: #e1d3dc;
+      font-size: 1.04rem;
+    }
+
+    .velvet-section-label {
+      margin: 34px 0 14px;
+      color: var(--velvet-gold);
+      font: 0.76rem/1.5 sans-serif;
+      letter-spacing: 0.18em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .velvet-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .velvet-card {
+      padding: 21px 22px;
+      border: 1px solid var(--velvet-border);
+      border-radius: 5px;
+      background: rgba(38, 24, 35, 0.88);
+    }
+
+    .velvet-card h2 {
+      margin: 0 0 11px;
+      color: var(--velvet-pink);
+      font-size: 1.13rem;
+      font-weight: normal;
+      letter-spacing: 0.025em;
+    }
+
+    .velvet-card h2 span {
+      margin-right: 7px;
+      color: var(--velvet-gold);
+      font-size: 0.95em;
+    }
+
+    .velvet-card p {
+      margin: 0;
+      color: var(--velvet-text);
+      font-size: 0.96rem;
+    }
+
+    .velvet-card.wide {
+      grid-column: 1 / -1;
+    }
+
+    .velvet-feature {
+      margin-top: 20px;
+      padding: 25px;
+      border: 1px solid #6a4059;
+      border-radius: 5px;
+      background:
+        linear-gradient(120deg, rgba(128, 48, 94, 0.17), rgba(91, 57, 106, 0.12)),
+        var(--velvet-panel);
+    }
+
+    .velvet-feature h2 {
+      margin: 0 0 10px;
+      color: var(--velvet-gold);
+      font-size: 1.25rem;
+      font-weight: normal;
+    }
+
+    .velvet-feature p {
+      margin: 0;
+    }
+
+    .velvet-footer {
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid var(--velvet-border);
+      color: var(--velvet-muted);
+      font: 0.8rem/1.8 sans-serif;
+      text-align: center;
+    }
+
+    .velvet-footer .flourish {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--velvet-pink);
+      font: 1.1rem/1.5 Georgia, serif;
+      letter-spacing: 0.3em;
+    }
+
+    @media (max-width: 650px) {
+      .velvet-page {
+        width: min(100% - 22px, 1000px);
+        padding-top: 18px;
+      }
+
+      .velvet-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .velvet-card.wide {
+        grid-column: auto;
+      }
+
+      .velvet-card {
+        padding: 18px;
+      }
+
+      .velvet-intro {
+        padding: 16px 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .velvet-card {
+        transition: border-color 180ms ease, background-color 180ms ease;
+      }
+
+      .velvet-card:hover {
+        border-color: #95647f;
+        background-color: rgba(54, 31, 49, 0.96);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="velvet-page">
+
+    <nav class="velvet-nav" aria-label="Page navigation">
+      <a href="../index.html">← Creator home</a>
+      <a href="saint-judes-landing.html">Saint Jude’s Landing ↑</a>
+    </nav>
+
+    <header class="velvet-hero">
+      <p class="velvet-kicker">Saint Jude’s Landing · District dossier</p>
+      <h1>Velvet</h1>
+      <p class="velvet-subtitle">
+        The city stays awake here. Come for the music, the money, the
+        company, the trouble—or whatever you hope nobody asks about tomorrow.
+      </p>
+
+      <div class="velvet-meta">
+        <span>Nightlife</span>
+        <span>Luxury &amp; indulgence</span>
+        <span>Adult culture</span>
+        <span>After dark</span>
+      </div>
+    </header>
+
+    <div class="velvet-divider" aria-hidden="true">✦ · · · ♡ · · · ✦</div>
+
+    <p class="velvet-intro">
+      Velvet is Saint Jude’s Landing’s district of indulgence, nightlife,
+      luxury, entertainment, and adult culture. Crowded from dusk until
+      morning, it attracts residents and visitors from across the city.
+      Glamour and grime share the same streets, and a night out can become
+      almost anything.
+    </p>
+
+    <p class="velvet-section-label">The district</p>
+
+    <div class="velvet-grid">
+
+      <section class="velvet-card">
+        <h2><span>♫</span> Nightlife</h2>
+        <p>
+          Velvet is packed with bars, clubs, lounges, dance halls, theaters,
+          restaurants, hotels, private clubs, brothels, sex shops, adult
+          entertainment venues, and businesses that remain open long after
+          most of the city has gone to sleep.
+        </p>
+      </section>
+
+      <section class="velvet-card">
+        <h2><span>♡</span> Adult Culture</h2>
+        <p>
+          Sex and sexuality are openly integrated into Velvet’s culture.
+          Human, demi-human, and monster attraction is commonplace.
+          Interspecies dating, monsterfucking, kink communities, fetish
+          scenes, BDSM, exhibitionism, unconventional relationships, and
+          other consenting-adult subcultures have established spaces
+          throughout the district.
+        </p>
+      </section>
+
+      <section class="velvet-card wide">
+        <h2><span>✧</span> People</h2>
+        <p>
+          Velvet attracts every kind of adult: wealthy patrons, performers,
+          sex workers, musicians, criminals, tourists, regulars, celebrities,
+          service workers, monsters, demi-humans, and people simply looking
+          for somewhere to disappear for the night. Physical beauty is not
+          restricted to one type. Fat bodies, muscular bodies, scars,
+          unusual anatomy, monstrous bodies, older bodies, short men, pretty
+          boys, femboys, and unconventional appearances are all part of
+          Velvet’s social landscape.
+        </p>
+      </section>
+
+      <section class="velvet-card">
+        <h2><span>♜</span> Luxury</h2>
+        <p>
+          Velvet contains expensive hotels, private residences, exclusive
+          clubs, high-end restaurants, designer shops, private entertainment
+          rooms, and invitation-only establishments. Wealthy residents can
+          live extremely comfortably here.
+        </p>
+      </section>
+
+      <section class="velvet-card">
+        <h2><span>♧</span> Monsters</h2>
+        <p>
+          Monster residents and visitors are common throughout Velvet. Some
+          venues specifically cater to monstrous species or interspecies
+          relationships. Fangs, claws, tails, horns, fur, scales, unusual
+          anatomy, enormous size differences, and other nonhuman traits can
+          be part of the district’s erotic culture without making the beings
+          involved less ordinary members of society.
+        </p>
+      </section>
+
+    </div>
+
+    <div class="velvet-divider" aria-hidden="true">❧ · · · ✦ · · · ❧</div>
+
+    <p class="velvet-section-label">Behind the velvet rope</p>
+
+    <div class="velvet-grid">
+
+      <section class="velvet-card">
+        <h2><span>⚠</span> Underbelly</h2>
+        <p>
+          Luxury exists alongside exploitation, crime, addiction, trafficking,
+          blackmail, organized crime, predatory businesses, and people
+          willing to take advantage of vulnerable patrons or workers. Not
+          every establishment is safe simply because it is expensive.
+        </p>
+      </section>
+
+      <section class="velvet-card">
+        <h2><span>♬</span> Performers</h2>
+        <p>
+          Musicians, dancers, actors, drag performers, burlesque artists,
+          comedians, escorts, adult performers, and other entertainers work
+          throughout Velvet. Many performers develop dedicated local
+          followings.
+        </p>
+      </section>
+
+      <section class="velvet-card wide">
+        <h2><span>♡</span> Social Life</h2>
+        <p>
+          Velvet is a place where people meet strangers, lovers, business
+          partners, enemies, future spouses, temporary hookups, lifelong
+          friends, and people they immediately regret meeting. Relationships
+          can begin casually and become complicated very quickly.
+        </p>
+      </section>
+
+      <section class="velvet-card wide">
+        <h2><span>⌂</span> Architecture</h2>
+        <p>
+          Velvet contains a mixture of old buildings, renovated venues,
+          apartments, hotels, theaters, restaurants, storefronts, private
+          residences, and purpose-built entertainment spaces. The district’s
+          buildings vary enormously rather than following one unified
+          architectural style.
+        </p>
+      </section>
+
+    </div>
+
+    <section class="velvet-feature">
+      <h2>✦ A Night in Velvet</h2>
+      <p>
+        Lush, crowded, decadent, sensual, loud, intimate, expensive, filthy,
+        glamorous, and occasionally dangerous. Velvet is adult, erotic,
+        romantic, hedonistic, dramatic, funny, messy, and unpredictable. It
+        can be luxurious or sleazy, tender or depraved, depending entirely
+        on where someone ends up.
+      </p>
+    </section>
+
+    <footer class="velvet-footer">
+      <span class="flourish" aria-hidden="true">✦ ♡ ❧ ♡ ✦</span>
+      <a href="saint-judes-landing.html">Saint Jude’s Landing</a>
+      <span aria-hidden="true"> · </span>
+      <a href="../index.html">Creator</a>
+    </footer>
+
+  </main>
+</body>
+</html>
