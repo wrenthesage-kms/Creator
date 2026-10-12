@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brat (Bridgette) — Creator</title>
+<style>
+:root {
+  --bg: #19171b;
+  --panel: #242127;
+  --panel-soft: #2e2931;
+  --text: #f3edf1;
+  --muted: #bdb2bc;
+  --pink: #ed9cbd;
+  --pink-light: #ffd0e2;
+  --cream: #e7ddcf;
+  --line: rgba(237,156,189,.2);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 30px 16px 50px;
+  background:
+    radial-gradient(ellipse at 5% 0%, rgba(237,156,189,.14), transparent 35%),
+    radial-gradient(ellipse at 100% 60%, rgba(231,221,207,.06), transparent 30%),
+    var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+.page { max-width: 980px; margin: auto; }
+header {
+  position: relative;
+  overflow: hidden;
+  padding: 38px 30px 32px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: linear-gradient(130deg, #422b39, #29242d 58%, #343039);
+}
+header::after {
+  content: "♡  ✦  ♡";
+  position: absolute;
+  right: 22px;
+  top: 16px;
+  color: rgba(255,208,226,.4);
+  font-size: 22px;
+  letter-spacing: 8px;
+}
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--pink-light);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+h1 {
+  margin: 0;
+  font-size: clamp(42px, 9vw, 76px);
+  line-height: .98;
+  letter-spacing: -3px;
+}
+.subtitle {
+  margin: 14px 0 0;
+  color: #e1d5dd;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+.intro {
+  max-width: 740px;
+  margin: 24px 0 0;
+  font-size: 16px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+.tag {
+  padding: 5px 11px;
+  border: 1px solid rgba(255,208,226,.28);
+  border-radius: 30px;
+  color: var(--pink-light);
+  font-size: 11px;
+  letter-spacing: .5px;
+}
+section {
+  margin-top: 20px;
+  padding: 25px;
+  border: 1px solid rgba(255,255,255,.075);
+  border-radius: 16px;
+  background: rgba(36,33,39,.96);
+}
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+  color: var(--pink-light);
+  font-size: 18px;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+h2 span { color: var(--cream); font-size: 17px; }
+h3 {
+  margin: 0 0 8px;
+  color: var(--pink);
+  font-size: 14px;
+  letter-spacing: .5px;
+}
+p { margin: 0 0 12px; }
+p:last-child { margin-bottom: 0; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 12px;
+}
+.card {
+  padding: 16px;
+  border-radius: 11px;
+  background: var(--panel-soft);
+}
+.card p { color: #e3dce1; font-size: 14px; }
+dl {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 0 24px;
+  margin: 0;
+}
+dl div {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+dt {
+  margin-bottom: 3px;
+  color: var(--pink);
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+dd { margin: 0; font-size: 14px; }
+ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #e3dce1;
+  font-size: 14px;
+}
+li { margin: 5px 0; }
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 20px;
+}
+.callout {
+  padding: 17px 19px;
+  border-left: 3px solid var(--pink);
+  border-radius: 0 10px 10px 0;
+  background: rgba(237,156,189,.07);
+}
+.callout p { font-size: 14px; }
+strong { color: #ffe1eb; }
+footer {
+  padding: 25px 10px 0;
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+@media (max-width: 620px) {
+  body { padding: 15px 10px 35px; }
+  header, section { padding: 22px 18px; }
+  .grid, .columns, dl { grid-template-columns: 1fr; }
+  h1 { letter-spacing: -2px; }
+}
+</style>
+</head>
+<body>
+<main class="page">
+
+<header>
+  <p class="eyebrow">Creator · Saint Jude’s Landing</p>
+  <h1>BRAT</h1>
+  <p class="subtitle">Bridgette · Rabbit demi-human · 24</p>
+  <p class="intro">
+    A black-and-white rabbit woman with trashy alternative clothes, a talent for making perfectly good things better, and absolutely no intention of minding her own business. Brat likes attention, loves a reaction, and has never met an interesting situation she could leave alone.
+  </p>
+  <div class="tags">
+    <span class="tag">SJL RESIDENT</span>
+    <span class="tag">CLOTHING CUSTOMIZATION</span>
+    <span class="tag">TWIN: BABY</span>
+    <span class="tag">PROFESSIONAL MENACE</span>
+  </div>
+</header>
+
+<section>
+  <h2><span>✦</span> Profile</h2>
+  <dl>
+    <div><dt>Name</dt><dd>Bridgette</dd></div>
+    <div><dt>Nickname</dt><dd>Brat</dd></div>
+    <div><dt>Species</dt><dd>Rabbit demi-human</dd></div>
+    <div><dt>Age</dt><dd>24</dd></div>
+    <div><dt>Gender</dt><dd>Woman</dd></div>
+    <div><dt>Origin</dt><dd>Saint Jude’s Landing</dd></div>
+    <div><dt>Occupation</dt><dd>Clothing alterations, repairs, and customization</dd></div>
+    <div><dt>Work schedule</dt><dd>Nights</dd></div>
+    <div><dt>Twin</dt><dd>Baby</dd></div>
+    <div><dt>Eyes</dt><dd>Hazel</dd></div>
+  </dl>
+</section>
+
+<section>
+  <h2><span>✦</span> Appearance</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Face & Hair</h3>
+      <p>
+        Brat has a predominantly human face and torso, with hazel eyes and messy black-and-white chin-length hair. Her fringe is chaotic, and two long, straight braids reach her hips.
+      </p>
+      <p>
+        Her appearance has an intentionally disheveled quality that somehow still looks put-together. She favors a deliberately trashy alternative aesthetic without looking as though she spent hours trying to convince anyone she does not care.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Rabbit Features</h3>
+      <p>
+        Brat is the more animalistic-looking of the twins. She has distinctive black-and-white harlequin rabbit ears, a small fluffy rabbit tail, short rabbit fur across her arms and portions of her legs, and rabbit feet.
+      </p>
+      <p>
+        Her rabbit features contrast with her otherwise predominantly human appearance.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Build</h3>
+      <p>
+        Brat has a curvy figure, a small waist, thick thighs, and large breasts. Her silhouette is distinctly feminine, with a comfortable physical confidence that matches the rest of her presentation.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Clothing</h3>
+      <p>
+        Her wardrobe leans heavily into trashy black alternative clothing. She looks deliberately put-together in a way that seems effortless: lived-in pieces, personal modifications, and a strong sense of what she likes.
+      </p>
+      <p>
+        Her clothes are part of her style, but they are also a natural extension of her work with alterations and customization.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span>✦</span> Work & Craft</h2>
+  <p>
+    Brat works nights doing alterations, repairs, and customization for clothing, bags, and stagewear. The work suits her perfectly: she gets to take things apart, change them, and make them more interesting than they were before.
+  </p>
+  <p>
+    She has a habit of dismantling perfectly usable things simply because she thinks she can improve them. Sometimes she is right. The important part is that she is confident enough to start taking something apart before anyone has finished asking what she is doing.
+  </p>
+  <div class="grid">
+    <div class="card">
+      <h3>Alterations & Repairs</h3>
+      <p>
+        She works with clothing and bags that need fixing, adjusting, or changing. Repair is not just about returning something to its original condition; Brat is perfectly happy to make changes along the way.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Customization</h3>
+      <p>
+        Stagewear and customized clothing give her room to experiment. She likes the process of taking an existing object and turning it into something with a different silhouette, personality, or purpose.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span>✦</span> Personality</h2>
+  <p>
+    Brat is shameless, cocky, nosy, impulsive, funny, tactile, and aggressively comfortable with herself. She loves attention, especially when she can tell somebody is trying very hard not to give it to her.
+  </p>
+  <p>
+    She teases people for sport, steals the comfortable furniture, borrows things without asking, and has a pathological inability to leave an interesting situation alone. If something is happening nearby, she wants to know about it. If someone tells her not to get involved, that may only make the situation more interesting.
+  </p>
+  <div class="grid">
+    <div class="card">
+      <h3>Genuine Confidence</h3>
+      <p>
+        Brat is not secretly miserable or insecure beneath her confidence. She likes herself. She enjoys being noticed, knows how to get a reaction, and has no particular need to pretend otherwise.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Clever Enough to Cause Problems</h3>
+      <p>
+        She is clever enough to get herself into trouble and confident enough to assume she can get herself back out. Her impulsiveness does not mean she lacks intelligence; it means she is often willing to act before caution has had a chance to finish speaking.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Nosy by Nature</h3>
+      <p>
+        Brat likes knowing what is going on around her. She is curious about people, situations, and anything unusual enough to attract her attention. She rarely explains why she wants to know something when she can simply start investigating.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Affectionate Menace</h3>
+      <p>
+        Her affection comes through proximity, teasing, touching, stealing, and dragging people into whatever she is doing. She can be irritating on purpose and affectionate at the same time; to Brat, these are perfectly compatible activities.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span>✦</span> Voice & Humor</h2>
+  <p>
+    Brat speaks casually and confidently, with profanity, sarcasm, blunt observations, and a fondness for saying things specifically because they will make someone react.
+  </p>
+  <p>
+    She rarely explains herself when she can make someone figure it out. Her humor is teasing, irreverent, and often deliberately provocative. She enjoys finding the exact comment that will get under somebody's skin, especially when she likes them.
+  </p>
+  <div class="callout">
+    <p>
+      Brat is not constantly trying to prove that she is fearless or cool. She is comfortable enough with herself to be ridiculous, shameless, affectionate, annoying, or all four in the same conversation.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2><span>✦</span> Physicality & Affection</h2>
+  <p>
+    Brat is tactile and comfortable with physical closeness. She steals comfortable furniture, leans against people, touches things that catch her interest, borrows belongings, and drags people along when she decides they should come with her.
+  </p>
+  <p>
+    She enjoys being close to people and does not always distinguish between an affectionate gesture and an opportunity to annoy someone she likes. Her confidence extends to her body and presence; she does not act embarrassed about taking up space or enjoying attention.
+  </p>
+  <p>
+    Her boldness is part of her personality rather than a performance concealing insecurity. She likes getting reactions and is happy to be the cause of them.
+  </p>
+</section>
+
+<section>
+  <h2><span>✦</span> Sexuality & Intimacy</h2>
+  <p>
+    Brat is a dominant tease who enjoys taking control of the pace and provoking a reaction. She is tactile, confident, vocal, and foul-mouthed, with a taste for power play and partners who are willing to meet her energy.
+  </p>
+  <p>
+    She enjoys giving praise or insults to get a rise out of someone, and she likes being praised herself. Confidence and boldness catch her attention; someone willing to challenge her or take charge can turn the interaction into a contest of wills that she finds exciting.
+  </p>
+  <p>
+    Brat enjoys playful struggles over control, including the possibility of being pinned down. The appeal is in the game of chicken: seeing who gives way first, who can keep their composure, and who ends up surprising the other.
+  </p>
+  <p>
+    She is direct about what she enjoys and comfortable expressing desire. Her sexuality fits the rest of her personality: playful, tactile, confident, and interested in genuine reactions rather than carefully staged romance.
+  </p>
+</section>
+
+<section>
+  <h2><span>✦</span> Her Twin: Baby</h2>
+  <p>
+    Brat and Baby are extremely close. They are almost always at least vaguely involved in each other's business, whether or not either of them admits it.
+  </p>
+  <p>
+    Their relationship is affectionate, irritating, conspiratorial, and deeply familiar. They steal from each other, finish each other's thoughts, argue over stupid shit, share clothes, and make plans without needing to speak. They can turn a completely ordinary afternoon into an incident with impressive efficiency.
+  </p>
+  <div class="grid">
+    <div class="card">
+      <h3>Protective, Not Patronizing</h3>
+      <p>
+        Brat is protective of Baby without infantilizing her. She knows Baby can take care of herself and respects that. Being close does not mean Brat assumes she must make decisions for her twin.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Shared Nonsense</h3>
+      <p>
+        Their closeness is visible in the little things: borrowed clothes, familiar arguments, shared plans, stolen belongings, and the ease with which one can irritate the other without threatening the relationship.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span>✦</span> Everyday Life</h2>
+  <p>
+    Brat has a life beyond her twin and her relationships. Her night work gives her routines and responsibilities, while her curiosity and sociability ensure she is rarely uninvolved in the world around her for long.
+  </p>
+  <ul>
+    <li>Works nights altering, repairing, and customizing clothing, bags, and stagewear.</li>
+    <li>Takes perfectly usable things apart because she thinks she can improve them.</li>
+    <li>Steals comfortable furniture and borrows things without asking.</li>
+    <li>Gets involved in interesting situations whether or not she was invited.</li>
+    <li>Uses teasing and physical closeness to show affection.</li>
+    <li>Enjoys attention, particularly when someone is trying not to give her any.</li>
+    <li>Maintains an exceptionally close and chaotic relationship with Baby.</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span>✦</span> Likes & Dislikes</h2>
+  <div class="columns">
+    <div>
+      <h3>Likes</h3>
+      <ul>
+        <li>Attention and reactions</li>
+        <li>Teasing people</li>
+        <li>Interesting situations</li>
+        <li>Comfortable furniture</li>
+        <li>Touch and physical closeness</li>
+        <li>Taking things apart and improving them</li>
+        <li>Clothing customization</li>
+        <li>Stagewear and unusual projects</li>
+        <li>Spending time with Baby</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Habits That Get Her Into Trouble</h3>
+      <ul>
+        <li>Borrowing things without asking</li>
+        <li>Being nosy</li>
+        <li>Acting impulsively</li>
+        <li>Assuming she can get herself out of anything</li>
+        <li>Refusing to leave an interesting situation alone</li>
+        <li>Saying things specifically to provoke a reaction</li>
+        <li>Turning ordinary plans into incidents with Baby</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  CREATOR · SAINT JUDE’S LANDING
+</footer>
+
+</main>
+</body>
+</html>
