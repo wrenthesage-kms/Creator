@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midge — Characters of Creator</title>
+<style>
+:root {
+  --bg: #171713;
+  --panel: #22221c;
+  --panel-soft: #29291f;
+  --cream: #f3e8d0;
+  --muted: #b9ad94;
+  --gold: #d7b86e;
+  --mustard: #c4a34f;
+  --rust: #b96f51;
+  --rose: #d69a9a;
+  --line: rgba(215,184,110,.24);
+  --green: #899875;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 8% 0%, rgba(185,111,81,.13), transparent 35rem),
+    radial-gradient(ellipse at 100% 45%, rgba(137,152,117,.08), transparent 32rem),
+    var(--bg);
+  color: var(--cream);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.75;
+}
+a { color: var(--gold); }
+.page {
+  width: min(1080px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 42px 0 70px;
+}
+.topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font: 10px/1.5 monospace;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.topline span:last-child { text-align: right; }
+.hero {
+  position: relative;
+  overflow: hidden;
+  margin: 24px 0;
+  padding: clamp(26px, 6vw, 60px);
+  background:
+    radial-gradient(ellipse at 88% 16%, rgba(215,184,110,.14), transparent 34%),
+    linear-gradient(140deg, #343022, #25231b 55%, #30221d);
+  border: 1px solid rgba(215,184,110,.3);
+  border-radius: 7px 36px 7px 7px;
+}
+.hero::after {
+  content: "❀";
+  position: absolute;
+  right: 28px;
+  bottom: -56px;
+  font-size: clamp(130px, 25vw, 250px);
+  line-height: 1;
+  color: rgba(215,184,110,.075);
+  pointer-events: none;
+}
+.eyebrow {
+  color: var(--gold);
+  font: 11px/1.5 monospace;
+  letter-spacing: .19em;
+  text-transform: uppercase;
+}
+h1 {
+  position: relative;
+  z-index: 1;
+  margin: 10px 0 0;
+  font-size: clamp(54px, 11vw, 108px);
+  font-weight: normal;
+  line-height: .95;
+  letter-spacing: -.065em;
+}
+.subtitle {
+  position: relative;
+  z-index: 1;
+  max-width: 610px;
+  margin: 22px 0 0;
+  color: #e0cfaa;
+  font-size: clamp(16px, 2.5vw, 20px);
+}
+.tags {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 26px;
+}
+.tag {
+  padding: 5px 10px;
+  border: 1px solid rgba(215,184,110,.3);
+  border-radius: 2px 12px 2px 12px;
+  color: #e5d5b6;
+  background: rgba(18,18,14,.25);
+  font: 10px/1.6 monospace;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 18px;
+  margin: 18px 0;
+}
+.card {
+  min-width: 0;
+  padding: 24px;
+  background: rgba(34,34,28,.91);
+  border: 1px solid var(--line);
+  border-radius: 5px 22px 5px 5px;
+}
+.card h2, .section-title {
+  margin: 0 0 16px;
+  color: var(--gold);
+  font-size: 23px;
+  font-weight: normal;
+  line-height: 1.2;
+}
+.card p { margin: 0 0 12px; }
+.card p:last-child { margin-bottom: 0; }
+.section {
+  margin-top: 38px;
+}
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.section-heading .number {
+  color: var(--rust);
+  font: 11px monospace;
+  letter-spacing: .1em;
+}
+.section-title { margin: 0; }
+.section-heading .flourish {
+  margin-left: auto;
+  color: var(--green);
+  font-size: 18px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.info {
+  padding: 20px;
+  background: var(--panel);
+  border-left: 2px solid rgba(215,184,110,.45);
+  border-radius: 2px 12px 2px 2px;
+}
+.info h3 {
+  margin: 0 0 8px;
+  color: #e3c985;
+  font-size: 17px;
+  font-weight: normal;
+}
+.info p { margin: 0; color: #ddd1b9; }
+.info ul {
+  margin: 0;
+  padding-left: 19px;
+  color: #ddd1b9;
+}
+.info li { padding: 2px 0; }
+.full { grid-column: 1 / -1; }
+.quote-card {
+  margin: 26px 0;
+  padding: 30px clamp(20px, 5vw, 48px);
+  border-top: 1px solid rgba(214,154,154,.4);
+  border-bottom: 1px solid rgba(214,154,154,.4);
+  background: linear-gradient(90deg, rgba(214,154,154,.075), transparent);
+}
+.quote-card .quote-label {
+  color: var(--rose);
+  font: 10px monospace;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.quote-card blockquote {
+  margin: 12px 0;
+  color: #f1dfc4;
+  font-size: clamp(21px, 4vw, 34px);
+  font-style: italic;
+  line-height: 1.4;
+}
+.quote-card p { margin: 0; color: var(--muted); }
+.fact-list { display: grid; gap: 0; }
+.fact {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(215,184,110,.12);
+}
+.fact:last-child { border-bottom: 0; }
+.fact strong {
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: normal;
+}
+.fact span { color: #ddd1b9; }
+.pregnancy {
+  padding: 25px;
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(214,154,154,.1), transparent 60%),
+    #29231f;
+  border: 1px solid rgba(214,154,154,.3);
+  border-radius: 5px 24px 5px 5px;
+}
+.pregnancy h2 {
+  margin: 0 0 12px;
+  color: #e1b2a8;
+  font-size: 24px;
+  font-weight: normal;
+}
+.pregnancy p { margin: 0 0 12px; }
+.pregnancy p:last-child { margin-bottom: 0; }
+.mystery {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 20px;
+  margin-top: 15px;
+  padding: 20px;
+  background: rgba(16,16,13,.3);
+  border: 1px dashed rgba(214,154,154,.38);
+  border-radius: 4px 16px 4px 4px;
+}
+.mystery strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #e1b2a8;
+  font-size: 16px;
+  font-weight: normal;
+}
+.mystery p { margin: 0; color: var(--muted); }
+.spider {
+  width: 68px;
+  height: 68px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(214,154,154,.3);
+  border-radius: 50%;
+  color: #d69a9a;
+  font-size: 31px;
+  background: rgba(214,154,154,.06);
+}
+.relationships {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.relationship {
+  padding: 18px;
+  background: var(--panel-soft);
+  border-radius: 4px 14px 4px 4px;
+}
+.relationship h3 {
+  margin: 0 0 6px;
+  color: var(--gold);
+  font-size: 16px;
+  font-weight: normal;
+}
+.relationship p { margin: 0; color: #ddd1b9; }
+.callout {
+  margin-top: 20px;
+  padding: 22px;
+  background: rgba(137,152,117,.08);
+  border: 1px solid rgba(137,152,117,.28);
+  border-radius: 5px 18px 5px 5px;
+}
+.callout h3 {
+  margin: 0 0 8px;
+  color: #b5c39c;
+  font-size: 18px;
+  font-weight: normal;
+}
+.callout p { margin: 0; }
+.footer {
+  margin-top: 44px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: var(--muted);
+  font: 10px/1.7 monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1080px); padding-top: 22px; }
+  .intro-grid, .grid, .relationships { grid-template-columns: 1fr; }
+  .full { grid-column: auto; }
+  .card { padding: 20px; }
+  .fact { grid-template-columns: 105px 1fr; gap: 10px; }
+  .mystery { grid-template-columns: 1fr; }
+  .spider { width: 50px; height: 50px; font-size: 24px; }
+  .footer { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<main class="page">
+
+  <div class="topline">
+    <span>CREATOR / CHARACTER ARCHIVE</span>
+    <span>SAINT JUDE'S LANDING · ESTABLISHED RESIDENT</span>
+  </div>
+
+  <header class="hero">
+    <div class="eyebrow">✿ A local sweetheart · A neighborhood fixture ✿</div>
+    <h1>Midge</h1>
+    <p class="subtitle">Red panda demi-human. Professional extra pair of hands. Beloved by practically everyone. Pregnant by a four-armed spider man the entire city has somehow failed to identify.</p>
+    <div class="tags">
+      <span class="tag">Adult woman</span>
+      <span class="tag">Red panda demi-human</span>
+      <span class="tag">Ammonia's group</span>
+      <span class="tag">Originally from Velvet</span>
+      <span class="tag">Currently pregnant</span>
+    </div>
+  </header>
+
+  <div class="intro-grid">
+    <section class="card">
+      <h2>♡ The sweetheart of SJL</h2>
+      <p>Midge is the sort of person who wanders into a shop, notices the owner is juggling three tasks at once, and starts helping before anybody has even asked. She carries things, tidies things, runs errands, finds missing objects, and remembers the people she sees around the city.</p>
+      <p>Her kindness isn't a performance. She doesn't need to be thanked, admired, or told she's wonderful. Helping is simply something she likes doing, and making somebody's day a little easier is reason enough.</p>
+      <p>She's also nosy, playful, silly, curious, and very much her own person. Being sweet doesn't mean she has no opinions or never gets up to nonsense.</p>
+    </section>
+
+    <section class="card">
+      <h2>Little facts</h2>
+      <div class="fact-list">
+        <div class="fact"><strong>Species</strong><span>Red panda demi-human</span></div>
+        <div class="fact"><strong>Age</strong><span>Adult</span></div>
+        <div class="fact"><strong>Gender</strong><span>Female</span></div>
+        <div class="fact"><strong>Home</strong><span>Saint Jude's Landing</span></div>
+        <div class="fact"><strong>Group</strong><span>Ammonia's group</span></div>
+        <div class="fact"><strong>Known for</strong><span>Being genuinely, almost absurdly helpful</span></div>
+        <div class="fact"><strong>Current mystery</strong><span>A pretty spider man with four arms</span></div>
+      </div>
+    </section>
+  </div>
+
+  <section class="section">
+    <div class="section-heading">
+      <span class="number">01</span>
+      <h2 class="section-title">Appearance</h2>
+      <span class="flourish">❀</span>
+    </div>
+    <div class="grid">
+      <article class="info">
+        <h3>Face & expression</h3>
+        <p>Midge has warm russet-brown skin, dark expressive brown eyes, soft round cheeks, and a slightly crooked smile. Her face has an approachable softness that makes people feel comfortable around her. She often looks like she's just remembered something nice—or spotted somebody who could use a hand.</p>
+      </article>
+      <article class="info">
+        <h3>Hair & ears</h3>
+        <p>Her thick, dark copper hair falls into an unruly chin-length mop, never quite sitting the way it was meant to. Enormous rounded red-panda ears rise from her hair, their inner fur a soft cream color. They're an unmistakable part of her silhouette.</p>
+      </article>
+      <article class="info">
+        <h3>Build</h3>
+        <p>She's petite and compact, with narrow shoulders, a small waist, rounded hips, thick thighs, a soft lower body, and a plush belly. Her build is naturally soft rather than delicate or frail.</p>
+      </article>
+      <article class="info">
+        <h3>Tail, hands & feet</h3>
+        <p>Midge has an enormous, fluffy red-panda tail that makes her silhouette considerably bigger than the rest of her might suggest. Her hands and feet are human, without specialized paws or altered extremities.</p>
+      </article>
+      <article class="info full">
+        <h3>Her usual clothes</h3>
+        <p>A slightly oversized faded mustard cardigan, a faded floral dress buttoned a little crookedly, thick cream socks, scuffed brown boots, and a small canvas satchel. Her clothes feel comfortable, familiar, and thoroughly lived in—not carefully coordinated, but somehow unmistakably hers.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <span class="number">02</span>
+      <h2 class="section-title">Personality</h2>
+      <span class="flourish">✿</span>
+    </div>
+    <div class="grid">
+      <article class="info">
+        <h3>Sweet as pie</h3>
+        <p>Midge is warm, bubbly, affectionate, gentle, and genuinely happy to help. She makes people feel welcome through ordinary gestures: sharing food, carrying something heavy, remembering a familiar face, or staying for a little conversation.</p>
+      </article>
+      <article class="info">
+        <h3>Helpful by instinct</h3>
+        <p>She notices practical problems and likes doing something about them. If a shop needs tidying, a neighbor needs an errand run, or somebody is looking for a missing object, Midge is likely to get involved. She doesn't turn a small favor into a grand act of generosity.</p>
+      </article>
+      <article class="info">
+        <h3>Nosy & curious</h3>
+        <p>Midge likes knowing what's happening around her. She stops to talk, asks questions, notices little details, and takes an interest in the people she encounters. Her curiosity is part of her social life, not a lack of intelligence or awareness.</p>
+      </article>
+      <article class="info">
+        <h3>Playful & silly</h3>
+        <p>She's capable of being ridiculous without making a big deal out of it. Sometimes she says something so bizarre with such sincere sweetness that everyone else needs a moment to catch up. She can be funny without trying to tell a joke.</p>
+      </article>
+      <article class="info full">
+        <h3>A whole person, not a symbol of kindness</h3>
+        <p>Midge has her own interests, opinions, routines, preferences, and nonsense. She can be curious about things that have nothing to do with helping people. Her gentle nature doesn't make her helpless, gullible, or endlessly available to everyone who wants something from her.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <span class="number">03</span>
+      <h2 class="section-title">Everyday Midge</h2>
+      <span class="flourish">☼</span>
+    </div>
+    <div class="grid">
+      <article class="info">
+        <h3>Always lending a hand</h3>
+        <p>Midge regularly wanders into local shops and ends up helping employees with small tasks. She carries things, runs errands, tidies up, and offers an extra pair of hands when something needs doing. She can become a temporary part of somebody else's afternoon without ever planning to.</p>
+      </article>
+      <article class="info">
+        <h3>Everybody knows her</h3>
+        <p>She stops to talk to familiar faces as she moves through the city. A quick errand can turn into three conversations, a favor for a shopkeeper, a shared snack, and a detour because somebody mentioned needing something carried.</p>
+      </article>
+      <article class="info">
+        <h3>Quiet rooftops</h3>
+        <p>Midge likes quiet rooftops and watching the activity below. She enjoys having somewhere comfortable to sit and observe the city without needing to be in the middle of everything. Being social doesn't mean she needs constant company every minute of the day.</p>
+      </article>
+      <article class="info">
+        <h3>Small pleasures</h3>
+        <p>Candy, sweet foods, comfortable clothes, little objects, and the people she cares about all make her happy. She has room in her life for tiny delights that don't need to become a project or have some greater purpose.</p>
+      </article>
+    </div>
+  </section>
+
+  <div class="quote-card">
+    <div class="quote-label">A piece of the city's ongoing mystery</div>
+    <blockquote>“Oh, that pretty spider man?”</blockquote>
+    <p>Midge has never offered the city a more useful identification than that.</p>
+  </div>
+
+  <section class="section">
+    <div class="section-heading">
+      <span class="number">04</span>
+      <h2 class="section-title">The Pregnancy Mystery</h2>
+      <span class="flourish">♡</span>
+    </div>
+    <div class="pregnancy">
+      <h2>Everybody knows. Nobody knows.</h2>
+      <p>Midge is pregnant, and this is not a secret. People throughout Saint Jude's Landing know about it. They know she didn't have a boyfriend or a husband, and they know there's a father somewhere out there.</p>
+      <p>What nobody knows is who he actually is. When people ask, Midge has offered only the vaguest possible information, with the dreamy fondness of somebody remembering a pleasant encounter.</p>
+
+      <div class="mystery">
+        <div>
+          <strong>The father's entire known description</strong>
+          <p>He was pretty. He was a spider man. He had four arms.</p>
+          <p>That's it. No name, no address, no reliable identifying details, and no explanation for how a city full of people who know Midge has failed to work out his identity.</p>
+        </div>
+        <div class="spider" aria-label="Spider symbol">✳</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <span class="number">05</span>
+      <h2 class="section-title">Her Place in Saint Jude's Landing</h2>
+      <span class="flourish">✿</span>
+    </div>
+    <div class="grid">
+      <article class="info">
+        <h3>A familiar face</h3>
+        <p>Midge is widely known and liked across the city. Shop employees, regular customers, passersby, and people from all kinds of neighborhoods recognize her. She can walk into a random shop and be greeted by name because someone there has met her before.</p>
+      </article>
+      <article class="info">
+        <h3>Beloved, not famous</h3>
+        <p>Her reputation isn't the result of celebrity, status, or a deliberate attempt to become everybody's favorite person. It's the accumulated result of countless ordinary encounters in which she was kind, useful, or simply pleasant to have around.</p>
+      </article>
+      <article class="info">
+        <h3>Part of the neighborhood</h3>
+        <p>Midge belongs to the everyday life of Saint Jude's Landing. She knows people, visits places, develops familiar routines, and has a life that continues whether or not anyone is currently talking about her.</p>
+      </article>
+      <article class="info">
+        <h3>Her own life</h3>
+        <p>Being beloved doesn't mean Midge exists to take care of everyone. She has her own preferences, relationships, interests, and private moments. The city may adore her, but she is still a person living her own life within it.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <span class="number">06</span>
+      <h2 class="section-title">Affection & Relationships</h2>
+      <span class="flourish">♡</span>
+    </div>
+    <div class="grid">
+      <article class="info">
+        <h3>How Midge cares</h3>
+        <p>Her affection is warm, easy, and practical. She likes sharing food, sitting close, helping with little problems, carrying things, and making sure people feel welcome. She tends to express care through what she does rather than making speeches about how much she cares.</p>
+      </article>
+      <article class="info">
+        <h3>How she connects</h3>
+        <p>Midge is naturally approachable and comfortable talking to people. She builds relationships through familiarity, repeated encounters, curiosity, and small kindnesses. Her sweetness is sincere, but it doesn't make every relationship identical.</p>
+      </article>
+      <article class="info full">
+        <h3>Ammonia's group</h3>
+        <p>Midge is the mother of Ammonia's group: a deeply loved, nurturing presence among the people closest to her. That description captures an important part of her relationships, but it does not replace her identity. She is a member of the group with her own life, rather than a caretaker whose entire purpose is to look after everybody else.</p>
+      </article>
+    </div>
+    <div class="callout">
+      <h3>Her kindness has a life beyond her inner circle.</h3>
+      <p>Midge's affection for her people and her warmth toward the wider city are both genuine. She doesn't reserve being a decent person for those she loves most. The shopkeeper she helps, the stranger she chats with, and the friend she shares candy with all get to encounter the same fundamentally kind woman.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <span class="number">07</span>
+      <h2 class="section-title">Characterization Notes</h2>
+      <span class="flourish">❀</span>
+    </div>
+    <div class="card">
+      <div class="fact-list">
+        <div class="fact"><strong>Core trait</strong><span>The sweetheart of Saint Jude's Landing: genuinely kind, endlessly helpful, and beloved by practically everyone.</span></div>
+        <div class="fact"><strong>Pregnancy</strong><span>Currently pregnant. The father is an unidentified, four-armed spider man whom Midge remembers as pretty.</span></div>
+        <div class="fact"><strong>Personality</strong><span>Sweet, bubbly, affectionate, curious, playful, nosy, gentle, and practically helpful.</span></div>
+        <div class="fact"><strong>Humor</strong><span>Gentle and occasionally silly; sometimes unintentionally funny because she says strange things with complete sincerity.</span></div>
+        <div class="fact"><strong>Voice</strong><span>Soft, warm, conversational, and naturally affectionate. She speaks plainly instead of performing sweetness.</span></div>
+        <div class="fact"><strong>Interests</strong><span>Candy, sweet foods, comfortable clothes, little objects, quiet rooftops, watching the city, and helping people she cares about.</span></div>
+        <div class="fact"><strong>Role</strong><span>An established resident of Saint Jude's Landing and a beloved member of Ammonia's group.</span></div>
+      </div>
+    </div>
+    <div class="callout">
+      <h3>Do not reduce Midge to one defining trait.</h3>
+      <p>She is not merely “the mom,” the pregnant woman, the sweet one, or the woman with the mysterious spider-man father. Her kindness is neither helplessness nor naivety. Midge is a whole adult woman with her own personality, opinions, interests, relationships, routines, and bullshit. Her sweetness is a real part of who she is—not the only thing she is.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>CREATOR · SAINT JUDE'S LANDING</span>
+    <span>CHARACTER ARCHIVE ✿ MIDGE</span>
+  </footer>
+
+</main>
+</body>
+</html>
