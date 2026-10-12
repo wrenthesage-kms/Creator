@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purl — Creator</title>
+<style>
+:root {
+  --bg: #17110f;
+  --panel: #211a18;
+  --panel2: #2c211e;
+  --text: #f0e7df;
+  --muted: #c1aaa0;
+  --orange: #ff7138;
+  --orange-soft: #ffbd91;
+  --rust: #9d432b;
+  --line: #583527;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 30px 16px 50px;
+  background:
+    radial-gradient(ellipse at 87% 0%, rgba(255,113,56,.12), transparent 34%),
+    radial-gradient(ellipse at 0% 54%, rgba(157,67,43,.12), transparent 34%),
+    var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+.page { max-width: 1000px; margin: 0 auto; }
+.topline {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 42px 36px 34px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(135deg, #38251d, #211917 65%, #342019);
+}
+.hero::after {
+  content: "✷";
+  position: absolute;
+  right: 14px;
+  bottom: -75px;
+  color: rgba(255,113,56,.08);
+  font-size: 270px;
+  line-height: 1;
+  pointer-events: none;
+}
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--orange-soft);
+  font-size: clamp(46px, 9vw, 88px);
+  font-weight: 900;
+  letter-spacing: -4px;
+  line-height: .95;
+}
+.subtitle {
+  position: relative;
+  z-index: 1;
+  margin: 15px 0 0;
+  color: #f5a47c;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.intro {
+  position: relative;
+  z-index: 1;
+  max-width: 730px;
+  margin: 24px 0 0;
+  color: #e6d7ce;
+  font-size: 16px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.tag {
+  padding: 5px 10px;
+  border: 1px solid #78452f;
+  border-radius: 5px;
+  background: rgba(255,113,56,.07);
+  color: var(--orange-soft);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.profile {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin: 16px 0 34px;
+  overflow: hidden;
+  border: 1px solid #493229;
+  border-radius: 12px;
+  background: #493229;
+}
+.fact { padding: 14px 16px; background: var(--panel); min-width: 0; }
+.fact-label {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--orange);
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.fact-value { font-size: 13px; }
+section { margin-top: 34px; }
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 15px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--line);
+}
+.section-number { color: var(--orange); font-size: 11px; letter-spacing: 1px; }
+h2 { margin: 0; color: var(--orange-soft); font-size: 20px; letter-spacing: .5px; }
+h3 { margin: 0 0 8px; color: #ffb28c; font-size: 13px; letter-spacing: .4px; }
+p { margin: 0 0 12px; }
+p:last-child { margin-bottom: 0; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.card {
+  min-width: 0;
+  padding: 19px;
+  border: 1px solid #483128;
+  border-radius: 10px;
+  background: var(--panel);
+}
+.card p, .card li { color: #dfd0c8; font-size: 13px; }
+.card ul { margin: 0; padding-left: 18px; }
+.card li { margin: 5px 0; }
+.wide { grid-column: 1 / -1; }
+.highlight {
+  padding: 22px 24px;
+  border-left: 3px solid var(--orange);
+  border-radius: 0 10px 10px 0;
+  background: linear-gradient(90deg, rgba(255,113,56,.09), rgba(255,113,56,.015));
+}
+.highlight p { color: #e8d8cf; }
+.satchel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.satchel-item {
+  padding: 13px;
+  border: 1px solid #56392b;
+  border-radius: 8px;
+  background: #291e19;
+  color: #e8d8cf;
+  font-size: 12px;
+}
+.satchel-item strong {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--orange-soft);
+  font-size: 12px;
+}
+.member-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.member {
+  padding: 7px 11px;
+  border: 1px solid #56392b;
+  border-radius: 6px;
+  background: #291e19;
+  color: var(--orange-soft);
+  font-size: 11px;
+  letter-spacing: .5px;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 44px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: #a48b7e;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+@media (max-width: 650px) {
+  body { padding: 18px 11px 35px; }
+  .hero { padding: 32px 22px 26px; }
+  h1 { letter-spacing: -2px; }
+  .profile { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid { grid-template-columns: 1fr; }
+  .satchel-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .wide { grid-column: auto; }
+  .card { padding: 16px; }
+}
+@media (max-width: 390px) {
+  .satchel-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="topline">
+    <span>CREATOR / SAINT JUDE'S LANDING</span>
+    <span>GOOD TEETH · MEMBER PROFILE</span>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">Drums · Curiosity · Things Found Along the Way</p>
+    <h1>PURL</h1>
+    <p class="subtitle">Hang On. What's That?</p>
+    <p class="intro">
+      A cheerful, peculiar British salamander demi-human with an endless appetite
+      for novelty. Purl is curious, sociable, easily fascinated, and perfectly
+      comfortable asking questions other people would consider ridiculous. He
+      collects objects, facts, stories, and people because he finds them interesting.
+      The world is full of things he hasn't encountered yet, and he would very much
+      like to get on with encountering them.
+    </p>
+    <div class="tags">
+      <span class="tag">British Salamander Demi-Human</span>
+      <span class="tag">Age 21</span>
+      <span class="tag">Drummer</span>
+      <span class="tag">GOOD TEETH</span>
+      <span class="tag">Violent Orange</span>
+    </div>
+  </header>
+
+  <div class="profile">
+    <div class="fact">
+      <span class="fact-label">Name</span>
+      <span class="fact-value">Purl</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Age</span>
+      <span class="fact-value">21</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Species</span>
+      <span class="fact-value">British Salamander Demi-Human</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Origin</span>
+      <span class="fact-value">Creator · Saint Jude's Landing</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Occupation</span>
+      <span class="fact-value">Drummer</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Band</span>
+      <span class="fact-value">GOOD TEETH</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Build</span>
+      <span class="fact-value">Compact, sturdy, soft-built</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Signature Color</span>
+      <span class="fact-value">Violent orange</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">01</span>
+      <h2>Appearance</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Face & Eyes</h3>
+        <p>
+          Purl has a youthful, open, expressive face. His large pale hazel-green
+          eyes constantly seem to be searching for something interesting, and his
+          reactions are usually easy to read. Curiosity has a way of making itself
+          visible before he even starts asking questions.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Skin & Hair</h3>
+        <p>
+          His pale salamander skin has subtle mottling and a naturally smooth,
+          slightly damp-looking texture. The coloration is distinctive without
+          being unnaturally bright. His butter-blond hair is short, soft, fluffy,
+          and slightly untidy, rarely staying perfectly arranged for long.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Build & Tail</h3>
+        <p>
+          Purl is compact and soft-built, with a sturdy little body that gives him
+          a surprisingly substantial presence for his height. He is not delicate.
+          His strength feels grounded and resilient rather than lean or wiry.
+        </p>
+        <p>
+          A true salamander tail extends naturally from his body. It is substantial
+          enough to help with balance and expressive enough to reveal his mood.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Ears & Clothing</h3>
+        <p>
+          Purl has elf-like ears. His usual outfit includes a well-worn navy peacoat,
+          practical trousers, comfortable shoes, and a cap that has become almost
+          inseparable from him.
+        </p>
+        <p>
+          A violent orange piece of hardware, unique to Purl, is incorporated into
+          his clothing or satchel.
+        </p>
+      </article>
+      <article class="card wide">
+        <h3>The Satchel</h3>
+        <p>
+          Purl carries a small satchel almost everywhere. It is stuffed with things
+          he has decided might become useful, interesting, or entertaining. Some
+          objects are practical. Some are sentimental. Some are completely
+          inexplicable.
+        </p>
+        <p>
+          He knows approximately where everything is. If asked for something
+          specific, he will usually find it after digging through the entire bag.
+          Every so often he uncovers an object he forgot he owned and becomes
+          delighted all over again.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">02</span>
+      <h2>What's in the Bag?</h2>
+    </div>
+    <div class="satchel-grid">
+      <div class="satchel-item">
+        <strong>Actually Useful</strong>
+        A screwdriver, string, snacks, and whatever else might come in handy.
+      </div>
+      <div class="satchel-item">
+        <strong>Possibly Useful</strong>
+        A dead battery whose future purpose remains uncertain.
+      </div>
+      <div class="satchel-item">
+        <strong>Sentimental</strong>
+        Ticket stubs, receipts, and little reminders of places he's been.
+      </div>
+      <div class="satchel-item">
+        <strong>Found Objects</strong>
+        A small rock he thought looked interesting and other things picked up along the way.
+      </div>
+      <div class="satchel-item">
+        <strong>Writing Implements</strong>
+        A pen that barely works, kept anyway.
+      </div>
+      <div class="satchel-item">
+        <strong>Unexplained</strong>
+        Something he picked up three cities ago and has completely forgotten the purpose of.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">03</span>
+      <h2>Curiosity, as a Lifestyle</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Personally Curious</h3>
+        <p>
+          Purl is curious about almost everything, but his curiosity is personal
+          rather than purely academic. He wants to know what a strange object is,
+          why someone wears a particular jacket, where an unfamiliar road goes,
+          what something tastes like, and whether a creature he has never seen
+          before is friendly.
+        </p>
+        <p>
+          He asks because he genuinely wants an answer. There is no elaborate
+          performance behind it.
+        </p>
+      </article>
+      <article class="card">
+        <h3>People Are Interesting, Too</h3>
+        <p>
+          Purl is outgoing without being aggressively social. He can walk into a
+          room full of strangers and find someone to talk to within minutes. He
+          doesn't need everyone to like him; he simply enjoys finding out who
+          people are.
+        </p>
+        <p>
+          He is interested in stories, opinions, habits, experiences, and the
+          little details that make one person different from another.
+        </p>
+      </article>
+      <article class="card wide">
+        <h3>Collecting Experiences</h3>
+        <p>
+          Purl collects experiences as much as objects. He remembers strange
+          restaurants, unusual animals, interesting people, local expressions,
+          tiny neighborhood traditions, and buildings that made him stop and stare.
+        </p>
+        <p>
+          He does not need to photograph everything. Sometimes he simply remembers.
+          His memory for details that seem useless to everyone else can be
+          surprisingly good.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">04</span>
+      <h2>Cheerful, Not Oblivious</h2>
+    </div>
+    <div class="highlight">
+      <p>
+        Purl is genuinely cheerful, but he is not relentlessly positive, incapable
+        of sadness, or stupidly optimistic. He simply has a strong tendency to find
+        something interesting even in unpleasant situations.
+      </p>
+      <p>
+        A terrible hotel can have fascinating wallpaper. A delayed train can mean
+        time to investigate the bird outside. A disastrous meal at least establishes
+        what not to order next time.
+      </p>
+      <p>
+        His curiosity gives him a strange resilience. He can be miserable and still
+        notice something interesting.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">05</span>
+      <h2>Britishness</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Ordinary, Not Caricatured</h3>
+        <p>
+          Purl has his own accent, slang, habits, manners, and cultural references.
+          His Britishness is an ordinary part of his identity, not a running joke
+          or a costume made of stereotypes.
+        </p>
+        <p>
+          He can be polite and automatically apologizes when he bumps into somebody.
+          He can also be startlingly blunt when surprised.
+        </p>
+      </article>
+      <article class="card">
+        <h3>A Particular Kind of Complaint</h3>
+        <p>
+          Purl has a very particular way of complaining that can sound almost
+          cheerful. He can be deeply unimpressed by something while describing it
+          as “a bit much.”
+        </p>
+        <p>
+          His manner stays recognizably his own whether he is fascinated, annoyed,
+          disappointed, or having a perfectly lovely time.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">06</span>
+      <h2>Food</h2>
+    </div>
+    <div class="highlight">
+      <p>
+        Purl likes food. A lot. He is willing to try almost anything at least once,
+        especially if he has never encountered it before.
+      </p>
+      <p>
+        He asks what things are made from and how they are prepared. He remembers
+        restaurants he liked years later and has extremely strong opinions about
+        snacks despite claiming he does not.
+      </p>
+      <p>
+        Offer him something unusual and he is likely to ask what is in it, followed
+        almost immediately by whether he can try it.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">07</span>
+      <h2>Life on Tour</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Every City Is New</h3>
+        <p>
+          Touring is almost perfectly designed to feed Purl's curiosity. Every
+          city has new food, streets, people, shops, wildlife, accents, buildings,
+          and things he has never encountered before.
+        </p>
+        <p>
+          He wants to explore. Constantly.
+        </p>
+      </article>
+      <article class="card">
+        <h3>The Detour Problem</h3>
+        <p>
+          Purl will absolutely suggest taking a detour because he saw something
+          interesting through a window. He has gotten the band mildly lost doing
+          this more than once.
+        </p>
+        <p>
+          He maintains that the detours were worth it. They usually were.
+        </p>
+      </article>
+      <article class="card wide">
+        <h3>Things Worth Remembering</h3>
+        <p>
+          He notices local traditions, unusual architecture, tiny shops, strange
+          animals, neighborhood habits, and expressions he has never heard before.
+          He may wander off to investigate something, then return with a story,
+          a new fact, and a small object he has decided to keep.
+        </p>
+        <p>
+          Touring gives him a constantly changing world to explore, and he is
+          determined to see as much of it as he can between shows.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">08</span>
+      <h2>Affection</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Little Gifts</h3>
+        <p>
+          Purl shares food, remembers preferences, and gives people little things
+          he finds. He might turn up with some bizarre object and explain that he
+          saw it and thought of them.
+        </p>
+        <p>
+          The object does not need to be valuable. Its importance is that it caught
+          his attention and made him think of someone else.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Easy Closeness</h3>
+        <p>
+          He is comfortable with casual physical affection and tends to treat
+          closeness as a natural part of friendship and romance rather than
+          something that requires a dramatic declaration.
+        </p>
+        <p>
+          He sits close, invites people along when he discovers something
+          interesting, and enjoys sharing the experience with someone else.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">09</span>
+      <h2>GOOD TEETH</h2>
+    </div>
+    <div class="card">
+      <p>
+        Purl is GOOD TEETH's drummer and the physical engine of the band's sound.
+        His playing drives catchy electronic music, supports vulnerable passages,
+        follows complicated guitar work, locks in with Riley's bass, and reinforces
+        rhythms built from electronic production.
+      </p>
+      <p>
+        When a song becomes heavy, Purl can take that intensity all the way. The
+        band's arrangements move freely between playful hooks, strange electronic
+        textures, technical guitar, melodic sections, and aggressive passages.
+        Purl's drumming helps those contrasts feel like parts of the same song
+        rather than unrelated ideas stitched together.
+      </p>
+      <p>
+        His musical role is one part of a larger collaborative sound. GOOD TEETH
+        is made by five musicians reacting to one another, experimenting, changing
+        arrangements, and allowing unexpected ideas to become something new.
+      </p>
+      <div class="member-strip">
+        <span class="member">IVES · VOCALS</span>
+        <span class="member">RENGA · SYNTH / KEYBOARD</span>
+        <span class="member">TŌGO · ELECTRIC GUITAR</span>
+        <span class="member">PURL · DRUMS</span>
+        <span class="member">RILEY · BASS</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">10</span>
+      <h2>Habits & Little Things</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <ul>
+          <li>Carries his satchel everywhere.</li>
+          <li>Touches the brim of his cap while thinking.</li>
+          <li>Collects small objects and strange souvenirs.</li>
+          <li>Asks questions constantly.</li>
+          <li>Wanders toward anything interesting.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <ul>
+          <li>Shares food without being asked.</li>
+          <li>Forgets where he put things while holding them.</li>
+          <li>Gets distracted by animals.</li>
+          <li>Reads signs other people ignore.</li>
+          <li>Says “hang on” before wandering off to investigate something.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">11</span>
+      <h2>Likes & Dislikes</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Likes</h3>
+        <ul>
+          <li>New places and long walks</li>
+          <li>Strange food and interesting animals</li>
+          <li>Old shops and weird objects</li>
+          <li>Interesting people and their stories</li>
+          <li>Rain and local traditions</li>
+          <li>Being invited along</li>
+          <li>Discovering something he has never seen before</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>Dislikes</h3>
+        <ul>
+          <li>Being bored</li>
+          <li>People destroying interesting things for no reason</li>
+          <li>Cruelty toward animals</li>
+          <li>Having his belongings thrown away</li>
+          <li>Being treated as stupid because he is curious</li>
+          <li>Being forced to stay somewhere when something interesting is happening elsewhere</li>
+          <li>Being dismissed when he is genuinely concerned</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">12</span>
+      <h2>The Whole Purl</h2>
+    </div>
+    <div class="highlight">
+      <p>
+        Purl wants to see what happens next. He wants to know what is around the
+        corner, taste the weird thing, meet the stranger, hear the story, and find
+        out why.
+      </p>
+      <p>
+        His cheerfulness does not make him innocent or childish. He can be perceptive,
+        stubborn, and deeply serious when something matters to him. He can become
+        genuinely angry when someone is cruel, hold a grudge, keep a secret, and
+        make difficult decisions.
+      </p>
+      <p>
+        Curiosity is one of his defining traits, but it is not his entire personality.
+        It is simply the thing that keeps drawing him toward the next person, place,
+        question, or strange little object waiting to be discovered.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <span>CREATOR · SAINT JUDE'S LANDING</span>
+    <span>GOOD TEETH ARCHIVE</span>
+  </footer>
+
+</div>
+</body>
+</html>
