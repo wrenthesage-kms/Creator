@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ives — Creator</title>
+<style>
+:root {
+  --bg: #171417;
+  --panel: #221d22;
+  --panel-alt: #2d242c;
+  --text: #f5edf0;
+  --muted: #c5b6bf;
+  --red: #ed594e;
+  --red-light: #ffaaa0;
+  --violet: #7776ff;
+  --violet-light: #b4b1ff;
+  --line: rgba(237,89,78,.22);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 28px 15px 45px;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(237,89,78,.14), transparent 34%),
+    radial-gradient(ellipse at 100% 65%, rgba(119,118,255,.10), transparent 33%),
+    var(--bg);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+.page { max-width: 960px; margin: auto; }
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 40px 30px 32px;
+  border: 1px solid rgba(255,170,160,.2);
+  border-radius: 19px;
+  background: linear-gradient(130deg, #442321, #2b2029 60%, #25233b);
+}
+.hero::after {
+  content: "✦";
+  position: absolute;
+  top: -48px;
+  right: 18px;
+  color: rgba(255,170,160,.10);
+  font-size: 190px;
+  line-height: 1;
+  transform: rotate(12deg);
+}
+.eyebrow {
+  position: relative;
+  margin: 0 0 10px;
+  color: var(--red-light);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+h1 {
+  position: relative;
+  margin: 0;
+  font-size: clamp(54px, 10vw, 92px);
+  line-height: .9;
+  letter-spacing: -4px;
+}
+.subtitle {
+  position: relative;
+  margin: 15px 0 0;
+  color: #e5d4e0;
+  font-size: 13px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+.intro {
+  position: relative;
+  max-width: 740px;
+  margin: 23px 0 0;
+  font-size: 16px;
+}
+.tags {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+.tag {
+  padding: 5px 10px;
+  border: 1px solid rgba(255,170,160,.25);
+  border-radius: 30px;
+  color: #ffcec8;
+  font-size: 11px;
+  letter-spacing: .5px;
+}
+section {
+  margin-top: 19px;
+  padding: 25px;
+  border: 1px solid rgba(255,255,255,.075);
+  border-radius: 15px;
+  background: rgba(34,29,34,.97);
+}
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 17px;
+  color: var(--red-light);
+  font-size: 17px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+h2 span { color: var(--violet-light); }
+h3 {
+  margin: 0 0 8px;
+  color: #ffaaa0;
+  font-size: 14px;
+  letter-spacing: .5px;
+}
+p { margin: 0 0 12px; }
+p:last-child { margin-bottom: 0; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 12px;
+}
+.card {
+  padding: 16px;
+  border-radius: 11px;
+  background: var(--panel-alt);
+}
+.card p { color: #e2d7df; font-size: 14px; }
+dl {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 0 24px;
+  margin: 0;
+}
+dl div {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+dt {
+  margin-bottom: 3px;
+  color: var(--red-light);
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+dd { margin: 0; font-size: 14px; }
+ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #e2d7df;
+  font-size: 14px;
+}
+li { margin: 5px 0; }
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 20px;
+}
+.callout {
+  padding: 17px 19px;
+  border-left: 3px solid var(--violet);
+  border-radius: 0 10px 10px 0;
+  background: rgba(119,118,255,.08);
+}
+.callout p { font-size: 14px; }
+strong { color: #fff0f2; }
+footer {
+  padding: 24px 10px 0;
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+  letter-spacing: 1.8px;
+}
+@media (max-width: 600px) {
+  body { padding: 14px 9px 32px; }
+  .hero, section { padding: 21px 17px; }
+  .grid, .columns, dl { grid-template-columns: 1fr; }
+  h1 { letter-spacing: -2px; }
+}
+</style>
+</head>
+<body>
+<main class="page">
+
+<header class="hero">
+  <p class="eyebrow">Creator · Saint Jude’s Landing · GOOD TEETH</p>
+  <h1>IVES</h1>
+  <p class="subtitle">26 · Human · Lead Singer</p>
+  <p class="intro">
+    Ives feels everything at full volume. He argues loudly, laughs loudly, plays loudly, gets pissed loudly, and cares far more than he wants anyone to notice. Restless, expressive, stubborn, and physically incapable of leaving an interesting situation alone, he is very, very difficult to ignore.
+  </p>
+  <div class="tags">
+    <span class="tag">LEAD VOCALS</span>
+    <span class="tag">PUNK STREAK</span>
+    <span class="tag">FIRE-RED BRAID</span>
+    <span class="tag">COBALT-VIOLET CARABINER</span>
+  </div>
+</header>
+
+<section>
+  <h2><span>✦</span> Profile</h2>
+  <dl>
+    <div><dt>Name</dt><dd>Ives</dd></div>
+    <div><dt>Age</dt><dd>26</dd></div>
+    <div><dt>Species</dt><dd>Human</dd></div>
+    <div><dt>Origin</dt><dd>Creator · Saint Jude’s Landing</dd></div>
+    <div><dt>Occupation</dt><dd>Musician and touring performer</dd></div>
+    <div><dt>Band</dt><dd>GOOD TEETH</dd></div>
+    <div><dt>Role</dt><dd>Lead singer</dd></div>
+    <div><dt>Hair</dt><dd>Fire-red, worn in one side braid</dd></div>
+    <div><dt>Eyes</dt><dd>Deep gray-green with dirty gold rings around the pupils</dd></div>
+    <div><dt>Signature Accessory</dt><dd>Violent cobalt-violet carabiner</dd></div>
+  </dl>
+</section>
+
+<section>
+  <h2><span>✦</span> Appearance</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Build & Movement</h3>
+      <p>
+        Ives is tall and lean, with a wiry, active build. He looks like someone who spends more time moving than sitting still. His shoulders are broad for his frame, and lean abdominal definition gives his physique a spring-loaded, athletic quality.
+      </p>
+      <p>
+        His limbs look built for explosive movement rather than stillness. Even at rest, he can give the impression of someone already halfway into his next action.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Face & Eyes</h3>
+      <p>
+        His pale skin and youthful, sharp-featured face make his expressions especially readable. Ives has never mastered the art of maintaining a neutral reaction when something excites, irritates, or interests him.
+      </p>
+      <p>
+        His deep gray-green eyes have a dirty gold ring around each pupil. They tend to look even more intense when he gets excited or irritated.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Fire-Red Hair</h3>
+      <p>
+        Ives wears his vivid fire-red hair in a single side braid. The color is distinctive enough to remain recognizable in a crowded room, and the braid is one of his most immediately identifiable features.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Touring Clothes</h3>
+      <p>
+        His wardrobe leans toward worn punk clothing and practical touring pieces. His clothes need to survive being slept in, sweated through, dragged across venue floors, and worn again the next night.
+      </p>
+      <p>
+        Nothing stays pristine for long. His appearance is lived-in rather than carefully polished.
+      </p>
+    </div>
+  </div>
+  <div class="callout" style="margin-top: 13px;">
+    <p>
+      <strong>The carabiner:</strong> A violently cobalt-violet carabiner is incorporated into his clothing. Its obnoxious color is deliberate, and it is impossible to mistake for ordinary hardware.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2><span>✦</span> Personality</h2>
+  <p>
+    Ives has a lot of feelings. He also has absolutely no interest in pretending he does not.
+  </p>
+  <p>
+    He gets excited loudly, gets annoyed visibly, and becomes invested quickly. He argues when something matters to him and can be stubborn to an almost comical degree. He is expressive, physical, impulsive, affectionate in his own messy way, and intensely interested in the people and things that capture his attention.
+  </p>
+  <div class="grid">
+    <div class="card">
+      <h3>Restless</h3>
+      <p>
+        Sitting still for too long makes Ives feel like he is wasting something, even when there is objectively nothing he needs to do. He gravitates toward movement, noise, people, music, and environments that feel immediate.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Stubborn</h3>
+      <p>
+        Once something gets under his skin, he has difficulty leaving it alone. He wants to argue it out, work it through, fix it, or at least make his feelings about it unmistakably clear.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Impulsive</h3>
+      <p>
+        He can start projects without thinking through the practicalities, follow an interesting idea into an unnecessary detour, or get himself involved in something simply because it is happening in front of him.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Loyal</h3>
+      <p>
+        Once somebody matters to him, he does not casually stop caring just because the relationship becomes inconvenient. His loyalty is persistent, practical, and often more obvious through what he does than what he admits.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span>✦</span> Anger & Frustration</h2>
+  <p>
+    Ives gets angry quickly. The important distinction is that anger does not automatically make him cruel. He can snap, pace, swear, slam something down, storm outside, and need ten minutes before he is capable of having a normal conversation again.
+  </p>
+  <p>
+    He is capable of recognizing when he has gone too far, even if that recognition takes time. His temper is real, but it is not the whole of his character.
+  </p>
+  <div class="grid">
+    <div class="card">
+      <h3>Being Ignored</h3>
+      <p>
+        Ives hates feeling ignored more than he hates being disagreed with. A direct challenge gives him something to engage with. Being dismissed makes him feel as though the other person has decided he is not worth taking seriously.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Being Challenged</h3>
+      <p>
+        If somebody challenges him directly, he will engage. He can argue passionately, dig his heels in, and become louder as the disagreement escalates. He does not need everyone to agree with him, but he wants them to actually engage.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span>✦</span> The Softer Parts</h2>
+  <p>
+    Ives is considerably softer than his temperament initially suggests. He remembers small things about people, notices when someone is uncomfortable, checks whether people got home, and gets protective without always realizing that is what he is doing.
+  </p>
+  <p>
+    He is the sort of person who complains loudly about having to help and then becomes the first person to actually show up. His affection often arrives disguised as irritation.
+  </p>
+  <div class="callout">
+    <p>
+      “Give me that.”
+    </p>
+    <p>
+      “You’re doing it wrong.”
+    </p>
+    <p>
+      “Move.”
+    </p>
+    <p>
+      “Jesus Christ, come here.”
+    </p>
+    <p>
+      And then he fixes whatever was wrong.
+    </p>
+  </div>
+  <p style="margin-top: 15px;">
+    He is physically affectionate with people he trusts. His care tends to be immediate and practical: noticing a problem, getting involved, and doing something about it before he has to explain why he cares.
+  </p>
+</section>
+
+<section>
+  <h2><span>✦</span> Music</h2>
+  <p>
+    Music is not simply something Ives does. It is one of the primary ways he processes himself.
+  </p>
+  <p>
+    He is physically engaged when he performs, moving with the music rather than standing still and producing sound. His energy is part of his stage presence: visible, immediate, and difficult to separate from the performance itself.
+  </p>
+  <div class="grid">
+    <div class="card">
+      <h3>Obsession With the Details</h3>
+      <p>
+        Ives can become obsessive about particular passages. He may replay something over and over because one tiny part does not feel right. He is willing to keep working at it until the music finally matches what he hears in his head.
+      </p>
+    </div>
+    <div class="card">
+      <h3>The Room Becomes an Audience</h3>
+      <p>
+        He loves the moment when a room stops being a collection of strangers and becomes an audience moving together. The connection between the band and the people listening is part of what makes performing worth the effort.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Physical Performance</h3>
+      <p>
+        Ives does not treat singing as a stationary job. His body stays involved: moving, reacting, leaning into the music, and putting the full force of his energy into the performance.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Emotional Outlet</h3>
+      <p>
+        Music gives his intensity somewhere to go. It lets him turn restless energy, frustration, vulnerability, and excitement into something shared with other people.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span>✦</span> GOOD TEETH</h2>
+  <p>
+    Ives is the lead singer of GOOD TEETH, the five-man touring band that became the most popular band on Creator. His voice can move from polished, melodic frontman delivery to cocky party vocals, vulnerable singing, rasp, shouting, and full hardcore screams.
+  </p>
+  <p>
+    His range is not limited to a single vocal identity. He can change his delivery inside one song, responding to shifts in the arrangement without losing the sense that it is still the same person singing.
+  </p>
+  <p>
+    GOOD TEETH's music brings together electronic architecture, atmospheric and technical guitar, emotionally significant bass, explosive drumming, and Ives's wide-ranging vocals. The band's identity comes from how its five musicians collide, not from any one genre or member.
+  </p>
+  <p>
+    Their arrangements are collaborative and reactive. They experiment, rewrite, improvise, extend sections live, and occasionally keep happy accidents. Ives is part of that process, not a separate frontman performing over a backing track.
+  </p>
+</section>
+
+<section>
+  <h2><span>✦</span> Touring Life</h2>
+  <p>
+    Touring amplifies everything about Ives. He loves the energy of arriving somewhere new, loves playing, hates being cramped in vehicles, hates being tired, and complains about almost everything immediately before enjoying himself anyway.
+  </p>
+  <div class="grid">
+    <div class="card">
+      <h3>New Places</h3>
+      <p>
+        Unfamiliar places give him something to investigate. He will wander around simply because staying inside feels unbearable, often following curiosity rather than a particularly sensible plan.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Long Drives</h3>
+      <p>
+        Cramped vehicles and long stretches of nothing happening are a particular challenge for someone who is restless by nature. He has difficulty settling into prolonged inactivity.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Before the Show</h3>
+      <p>
+        He loves the smell of a venue before a performance: the particular atmosphere of a place getting ready to fill with people and music.
+      </p>
+    </div>
+    <div class="card">
+      <h3>After the Show</h3>
+      <p>
+        The few minutes immediately after performing are among his favorite moments. His body is still buzzing, the room has just been full of sound, and the energy of the performance has not entirely worn off.
+      </p>
+    </div>
+  </div>
+  <p style="margin-top: 15px;">
+    He collects little objects from places the band visits without necessarily admitting that he is doing so.
+  </p>
+</section>
+
+<section>
+  <h2><span>✦</span> Habits & Mannerisms</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Always Moving</h3>
+      <ul>
+        <li>Paces when thinking.</li>
+        <li>Talks with his entire body.</li>
+        <li>Gets louder when excited.</li>
+        <li>Wanders around unfamiliar places.</li>
+        <li>Starts projects impulsively.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Hands & Objects</h3>
+      <ul>
+        <li>Fidgets with his cobalt-violet carabiner.</li>
+        <li>Runs his hands through his braids when frustrated.</li>
+        <li>Cannot resist touching interesting equipment.</li>
+        <li>Leaves things in strange places.</li>
+        <li>Becomes convinced somebody moved the things he misplaced.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Speech</h3>
+      <ul>
+        <li>Swears casually.</li>
+        <li>Argues when something matters.</li>
+        <li>Expresses excitement openly.</li>
+        <li>Can be extremely blunt when irritated.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Emotional Tells</h3>
+      <ul>
+        <li>Has a hard time hiding irritation.</li>
+        <li>Becomes visibly more intense when excited.</li>
+        <li>May say “I'm fine” while being extremely obviously not fine.</li>
+        <li>Shows affection through practical help and complaints.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span>✦</span> Likes & Dislikes</h2>
+  <div class="columns">
+    <div>
+      <h3>Likes</h3>
+      <ul>
+        <li>Loud music</li>
+        <li>Late-night food</li>
+        <li>Small venues</li>
+        <li>New places</li>
+        <li>People who can keep up with him</li>
+        <li>Physical affection from people he trusts</li>
+        <li>Handmade things</li>
+        <li>The smell of a venue before a show</li>
+        <li>The post-performance rush</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Dislikes</h3>
+      <ul>
+        <li>Being micromanaged</li>
+        <li>Being ignored</li>
+        <li>Being told to calm down when excited</li>
+        <li>People treating music as disposable</li>
+        <li>Long, boring car rides</li>
+        <li>People who act superior</li>
+        <li>Having nothing to do</li>
+        <li>Being vulnerable around people he does not trust</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span>✦</span> The Whole Person</h2>
+  <p>
+    Ives is not simply the angry one, the punk one, or the band's designated asshole. Those descriptions can capture pieces of him without coming close to containing him.
+  </p>
+  <p>
+    He is intense, impulsive, loud, stubborn, affectionate, restless, and deeply invested in the people and things he loves. Sometimes that makes him exhausting. Sometimes it makes him exactly the person everyone needs around.
+  </p>
+  <p>
+    He is not trying to be intimidating. He is simply someone who feels everything at full volume and has never been particularly interested in making himself smaller for the convenience of other people.
+  </p>
+  <div class="callout">
+    <p><strong>He is very, very difficult to ignore.</strong></p>
+  </div>
+</section>
+
+<footer>
+  CREATOR · SAINT JUDE’S LANDING · GOOD TEETH
+</footer>
+
+</main>
+</body>
+</html>
