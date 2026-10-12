@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riley — Creator</title>
+<style>
+:root {
+  --bg: #10151b;
+  --panel: #19212a;
+  --panel2: #222c36;
+  --text: #e9edf0;
+  --muted: #aab9c6;
+  --blue: #42aaff;
+  --blue-soft: #a7d9ff;
+  --steel: #526d83;
+  --line: #30485c;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 30px 16px 50px;
+  background:
+    radial-gradient(ellipse at 88% 0%, rgba(66,170,255,.12), transparent 34%),
+    radial-gradient(ellipse at 0% 55%, rgba(82,109,131,.10), transparent 35%),
+    var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+.page { max-width: 1000px; margin: 0 auto; }
+.topline {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 42px 36px 34px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(135deg, #202e3b, #171c24 65%, #1b2b38);
+}
+.hero::after {
+  content: "⌁";
+  position: absolute;
+  right: 18px;
+  bottom: -88px;
+  color: rgba(66,170,255,.08);
+  font-family: Georgia, serif;
+  font-size: 300px;
+  line-height: 1;
+  pointer-events: none;
+}
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--blue-soft);
+  font-size: clamp(46px, 9vw, 88px);
+  font-weight: 900;
+  letter-spacing: -4px;
+  line-height: .95;
+}
+.subtitle {
+  position: relative;
+  z-index: 1;
+  margin: 15px 0 0;
+  color: #9bc9ee;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.intro {
+  position: relative;
+  z-index: 1;
+  max-width: 730px;
+  margin: 24px 0 0;
+  color: #d8e2e9;
+  font-size: 16px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.tag {
+  padding: 5px 10px;
+  border: 1px solid #3e607a;
+  border-radius: 5px;
+  background: rgba(66,170,255,.07);
+  color: var(--blue-soft);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.profile {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin: 16px 0 34px;
+  overflow: hidden;
+  border: 1px solid #304252;
+  border-radius: 12px;
+  background: #304252;
+}
+.fact { padding: 14px 16px; background: var(--panel); min-width: 0; }
+.fact-label {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.fact-value { font-size: 13px; }
+section { margin-top: 34px; }
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 15px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--line);
+}
+.section-number { color: var(--blue); font-size: 11px; letter-spacing: 1px; }
+h2 { margin: 0; color: var(--blue-soft); font-size: 20px; letter-spacing: .5px; }
+h3 { margin: 0 0 8px; color: #a9d7fa; font-size: 13px; letter-spacing: .4px; }
+p { margin: 0 0 12px; }
+p:last-child { margin-bottom: 0; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.card {
+  min-width: 0;
+  padding: 19px;
+  border: 1px solid #2d414f;
+  border-radius: 10px;
+  background: var(--panel);
+}
+.card p, .card li { color: #d0dce5; font-size: 13px; }
+.card ul { margin: 0; padding-left: 18px; }
+.card li { margin: 5px 0; }
+.wide { grid-column: 1 / -1; }
+.highlight {
+  padding: 22px 24px;
+  border-left: 3px solid var(--blue);
+  border-radius: 0 10px 10px 0;
+  background: linear-gradient(90deg, rgba(66,170,255,.09), rgba(66,170,255,.015));
+}
+.highlight p { color: #dbe5ed; }
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.detail {
+  padding: 16px;
+  border: 1px solid #30485c;
+  border-radius: 9px;
+  background: #1c2630;
+}
+.detail strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--blue);
+  font-size: 12px;
+}
+.detail span { color: #d0dce5; font-size: 13px; }
+.member-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.member {
+  padding: 7px 11px;
+  border: 1px solid #30485c;
+  border-radius: 6px;
+  background: #1c2630;
+  color: var(--blue-soft);
+  font-size: 11px;
+  letter-spacing: .5px;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 44px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: #8295a5;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+@media (max-width: 650px) {
+  body { padding: 18px 11px 35px; }
+  .hero { padding: 32px 22px 26px; }
+  h1 { letter-spacing: -2px; }
+  .profile { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid, .detail-grid { grid-template-columns: 1fr; }
+  .wide { grid-column: auto; }
+  .card { padding: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="topline">
+    <span>CREATOR / SAINT JUDE'S LANDING</span>
+    <span>GOOD TEETH · MEMBER PROFILE</span>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">Bass · Pattern Recognition · Contingency Planning</p>
+    <h1>RILEY</h1>
+    <p class="subtitle">Noticing Problems Before They Exist Since Forever</p>
+    <p class="intro">
+      A lanky, watchful American marten demi-human who thinks before he speaks,
+      notices considerably more than he says, and can turn a perfectly ordinary
+      noise into a mental list of possible mechanical failures. Riley is cautious,
+      intelligent, easily overwhelmed, and quietly funny. The irritating part is
+      that sometimes he is right.
+    </p>
+    <div class="tags">
+      <span class="tag">American Marten Demi-Human</span>
+      <span class="tag">Age 20</span>
+      <span class="tag">Bassist</span>
+      <span class="tag">GOOD TEETH</span>
+      <span class="tag">Electric Blue</span>
+    </div>
+  </header>
+
+  <div class="profile">
+    <div class="fact">
+      <span class="fact-label">Name</span>
+      <span class="fact-value">Riley</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Age</span>
+      <span class="fact-value">20</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Species</span>
+      <span class="fact-value">American Marten Demi-Human</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Origin</span>
+      <span class="fact-value">Creator · Saint Jude's Landing</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Occupation</span>
+      <span class="fact-value">Bassist</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Band</span>
+      <span class="fact-value">GOOD TEETH</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Build</span>
+      <span class="fact-value">Lanky, narrow, wiry</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Signature Color</span>
+      <span class="fact-value">Electric blue</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">01</span>
+      <h2>Appearance</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Face & Eyes</h3>
+        <p>
+          Riley has light human skin and a soft, somewhat tired face. His dark brown
+          eyes are so deep in color they appear nearly black. They are alert and
+          watchful, often darting toward unfamiliar sounds or movement before the
+          rest of him reacts.
+        </p>
+        <p>
+          His expressions are subtle but readable once someone knows him. He often
+          looks as though he is quietly working something out, because he usually is.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Hair & Ears</h3>
+        <p>
+          His hair is soft, slightly messy, and kept at a practical length. It rarely
+          stays perfectly arranged for long. Small, rounded marten ears covered in
+          short fur sit naturally among his hair.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Build & Movement</h3>
+        <p>
+          Riley is lanky and narrow, with long limbs and a slightly awkward posture.
+          His frame is angular, with prominent collarbones and lean, corded muscle
+          in his arms and legs from constant restless movement.
+        </p>
+        <p>
+          He looks more comfortable moving quickly than standing confidently in one
+          place. His skin is pale and sensitive, reacting quickly to temperature
+          changes or touch, and often feels cooler than Renga's: smooth, taut over
+          the bones, and sensitive to its surroundings.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Clothing & Hardware</h3>
+        <p>
+          Riley favors practical touring clothes with pockets and room to move. He
+          tends to layer pieces because he is never entirely sure whether the next
+          location will be too hot, too cold, too crowded, or somehow all three.
+        </p>
+        <p>
+          An electric-blue carabiner is integrated into his clothing. It is distinctive
+          to Riley rather than a shared band accessory.
+        </p>
+      </article>
+      <article class="card wide">
+        <h3>The Tail</h3>
+        <p>
+          Riley has a long, full marten tail covered in dense fur. It is highly
+          expressive despite his attempts to keep his emotions under control. He
+          often touches it when nervous, whether as a small comfort or an unconscious
+          outlet for restless energy.
+        </p>
+        <p>
+          Like the rest of Riley's body language, his tail can reveal what he is
+          feeling before he has decided whether he wants to discuss it.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">02</span>
+      <h2>A Mind That Won't Clock Out</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Think First. Then Think Again.</h3>
+        <p>
+          Riley thinks before he speaks. Sometimes he thinks for so long that he
+          constructs what he considers the safest possible way to say something,
+          only to eventually say the simplest version anyway.
+        </p>
+        <p>
+          He is cautious, not cowardly. He notices potential problems quickly and
+          tends to scan unfamiliar environments, check exits, watch body language,
+          and mentally prepare for things that might go wrong.
+        </p>
+        <p>
+          That can make him look nervous even when he is actually having a perfectly
+          good time.
+        </p>
+      </article>
+      <article class="card">
+        <h3>The Disaster Forecast</h3>
+        <p>
+          A strange noise means something may be broken. Whispering nearby makes him
+          wonder whether he is being discussed. A weird sound from the touring van
+          means he is already imagining a roadside breakdown.
+        </p>
+        <p>
+          The problem is that Riley is occasionally correct. Rather than teaching him
+          to worry less, this has given his predictions an extremely unhelpful track
+          record of being vindicated.
+        </p>
+      </article>
+      <article class="card wide">
+        <h3>When the Hypothetical Becomes Real</h3>
+        <p>
+          Riley can become calmer once something actually goes wrong. A hypothetical
+          disaster offers endless possibilities to worry about; a real problem has
+          specific details, immediate needs, and something concrete to solve.
+        </p>
+        <p>
+          When there is an actual issue in front of him, his observation and analysis
+          become useful. He can assess what happened, identify what needs attention,
+          and quietly start fixing things instead of imagining every possible outcome.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">03</span>
+      <h2>Observant by Nature</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Details Stick</h3>
+        <p>
+          Riley remembers conversations other people have forgotten. He catches
+          inconsistencies, recognizes patterns, and notices small behavioral changes
+          in people he knows. He may not ask about something immediately; he simply
+          files the information away.
+        </p>
+        <p>
+          Days later, he might mention a habit that someone had not realized they
+          were repeating. Riley has often been aware of it for a while.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Quiet Problem-Solving</h3>
+        <p>
+          He frequently fixes small problems before telling anyone they existed.
+          He notices what has shifted, what sounds wrong, what has been misplaced,
+          and what is likely to become an issue if nobody addresses it.
+        </p>
+        <p>
+          Riley doesn't always need recognition for noticing something. Sometimes
+          he just wants the problem handled so everyone can get on with their day.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">04</span>
+      <h2>Humor</h2>
+    </div>
+    <div class="highlight">
+      <p>
+        Riley is funny in an extremely understated way. He rarely tells jokes in
+        the conventional sense. Instead, he makes observations, sometimes waiting
+        several seconds before saying something devastatingly accurate.
+      </p>
+      <p>
+        He can also say something completely ridiculous with a perfectly straight
+        face, then look confused when everyone starts laughing. He was serious.
+        Mostly.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">05</span>
+      <h2>Life on Tour</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>New Places</h3>
+        <p>
+          Touring is fascinating and exhausting for Riley in roughly equal measure.
+          He likes seeing new places, learning how different cities work, and finding
+          strange little restaurants and shops. He dislikes not knowing where he is,
+          sleeping somewhere unfamiliar, and losing track of his belongings.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Maps in His Head</h3>
+        <p>
+          Riley builds mental maps of unfamiliar places surprisingly quickly. He
+          keeps track of routes, remembers where people are supposed to be, and
+          notices when somebody is missing.
+        </p>
+        <p>
+          He is often the person who knows where everyone was last seen and how
+          they were supposed to get where they were going.
+        </p>
+      </article>
+      <article class="card wide">
+        <h3>Prepared for Something</h3>
+        <p>
+          Riley checks his pockets repeatedly, counts belongings before leaving
+          somewhere, reads signs other people walk past, and keeps backup supplies.
+          He adjusts his clothes when uncomfortable and watches exits in unfamiliar
+          places.
+        </p>
+        <p>
+          These habits are partly practical and partly the result of a mind that
+          prefers knowing what is available before it needs anything. He likes clear
+          plans, specific instructions, and the satisfying experience of everything
+          working the way it was supposed to.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">06</span>
+      <h2>Softness</h2>
+    </div>
+    <div class="highlight">
+      <p>
+        Riley's affection is quiet. He remembers. He notices. He brings somebody the
+        thing they mentioned wanting three weeks ago. He saves them a seat, checks
+        whether they ate, and walks beside them instead of ahead.
+      </p>
+      <p>
+        If somebody he cares about is having a difficult night, he may stay awake
+        with them even when he has to be up at an unreasonable hour the next morning.
+        He does not necessarily say that he cares. He demonstrates it.
+      </p>
+    </div>
+    <div class="grid" style="margin-top: 12px;">
+      <article class="card">
+        <h3>Small Acts of Care</h3>
+        <p>
+          His attention often shows up as practical consideration: remembering
+          preferences, noticing discomfort, saving space, bringing something useful,
+          or quietly making a difficult situation easier.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Comfortable Company</h3>
+        <p>
+          Riley likes quiet conversations and being able to sit beside someone without
+          having to keep talking. He values people who let silence happen naturally
+          and who don't make him feel that he must constantly explain himself.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">07</span>
+      <h2>GOOD TEETH</h2>
+    </div>
+    <div class="card">
+      <p>
+        Riley is GOOD TEETH's bassist. His playing provides much of the band's
+        emotional and harmonic gravity. The bass does not simply follow the guitar:
+        it can deepen a bright, catchy section with an undercurrent of melancholy,
+        reinforce a heavy passage, or lock closely with Purl's drums to give an
+        arrangement its physical momentum.
+      </p>
+      <p>
+        His part can be restrained without being unimportant. A shift in the bass
+        can change how an entire section feels, making something ridiculous sound
+        unexpectedly sad or giving a vulnerable passage a firmer foundation.
+      </p>
+      <p>
+        GOOD TEETH's music is built through collaboration and contrast. Electronic
+        production, atmospheric and technical guitar, heavy drums, bass, and Ives's
+        wide-ranging vocals collide within individual songs. Riley's role is part
+        of that shared construction, not a designated position as the sensible
+        observer watching everyone else make bad decisions.
+      </p>
+      <div class="member-strip">
+        <span class="member">IVES · VOCALS</span>
+        <span class="member">RENGA · SYNTH / KEYBOARD</span>
+        <span class="member">TŌGO · ELECTRIC GUITAR</span>
+        <span class="member">PURL · DRUMS</span>
+        <span class="member">RILEY · BASS</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">08</span>
+      <h2>Likes & Dislikes</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Likes</h3>
+        <ul>
+          <li>Quiet conversations</li>
+          <li>Rain and warm drinks</li>
+          <li>Being given specific instructions</li>
+          <li>People he can sit beside without talking</li>
+          <li>Interesting places and small restaurants</li>
+          <li>Being trusted</li>
+          <li>Plans that actually work</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>Dislikes</h3>
+        <ul>
+          <li>Crowds and being rushed</li>
+          <li>Unexpected touching</li>
+          <li>Loud arguments</li>
+          <li>Being the center of attention</li>
+          <li>People moving his belongings</li>
+          <li>Unclear plans</li>
+          <li>Having his predictions dismissed and then being proven right</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">09</span>
+      <h2>The Whole Riley</h2>
+    </div>
+    <div class="highlight">
+      <p>
+        Riley notices everything. He worries about half of it. He quietly fixes a
+        quarter of it. And occasionally he is the only person in the room who noticed
+        the other quarter was happening at all.
+      </p>
+      <p>
+        He is cautious, but not cowardly; thoughtful, but not passive; nervous, but
+        not incapable. He can be curious, stubborn, petty, funny, angry, impulsive,
+        and unexpectedly bold. His attention is not only a source of anxiety. It is
+        also how he learns, solves problems, remembers people, and cares for them.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <span>CREATOR · SAINT JUDE'S LANDING</span>
+    <span>GOOD TEETH ARCHIVE</span>
+  </footer>
+
+</div>
+</body>
+</html>
