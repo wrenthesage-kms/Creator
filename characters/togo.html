@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tōgo — Creator</title>
+<style>
+:root {
+  --bg: #111511;
+  --panel: #1b211b;
+  --panel2: #242b22;
+  --text: #eeeae0;
+  --muted: #b9c0ad;
+  --lime: #c9f23a;
+  --lime-soft: #e0f69a;
+  --green: #64783b;
+  --line: #414c2b;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 30px 16px 50px;
+  background:
+    radial-gradient(ellipse at 85% 5%, rgba(201,242,58,.11), transparent 32%),
+    radial-gradient(ellipse at 0% 55%, rgba(100,120,59,.10), transparent 34%),
+    var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+.page { max-width: 1000px; margin: 0 auto; }
+.topline {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 42px 36px 34px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(135deg, #293020, #191e19 64%, #30351d);
+}
+.hero::after {
+  content: "✳";
+  position: absolute;
+  right: 15px;
+  bottom: -75px;
+  color: rgba(201,242,58,.07);
+  font-size: 280px;
+  line-height: 1;
+  pointer-events: none;
+}
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--lime);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--lime-soft);
+  font-size: clamp(46px, 9vw, 88px);
+  font-weight: 900;
+  letter-spacing: -4px;
+  line-height: .95;
+}
+.subtitle {
+  position: relative;
+  z-index: 1;
+  margin: 15px 0 0;
+  color: #d4e98d;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.intro {
+  position: relative;
+  z-index: 1;
+  max-width: 730px;
+  margin: 24px 0 0;
+  color: #e0e5d7;
+  font-size: 16px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.tag {
+  padding: 5px 10px;
+  border: 1px solid #58663b;
+  border-radius: 5px;
+  background: rgba(201,242,58,.06);
+  color: var(--lime-soft);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.profile {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin: 16px 0 34px;
+  overflow: hidden;
+  border: 1px solid #37402d;
+  border-radius: 12px;
+  background: #37402d;
+}
+.fact { padding: 14px 16px; background: var(--panel); min-width: 0; }
+.fact-label {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--lime);
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.fact-value { font-size: 13px; }
+section { margin-top: 34px; }
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 15px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--line);
+}
+.section-number { color: var(--lime); font-size: 11px; letter-spacing: 1px; }
+h2 { margin: 0; color: var(--lime-soft); font-size: 20px; letter-spacing: .5px; }
+h3 { margin: 0 0 8px; color: #d7ed91; font-size: 13px; letter-spacing: .4px; }
+p { margin: 0 0 12px; }
+p:last-child { margin-bottom: 0; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.card {
+  min-width: 0;
+  padding: 19px;
+  border: 1px solid #35402e;
+  border-radius: 10px;
+  background: var(--panel);
+}
+.card p, .card li { color: #d4dbcb; font-size: 13px; }
+.card ul { margin: 0; padding-left: 18px; }
+.card li { margin: 5px 0; }
+.wide { grid-column: 1 / -1; }
+.highlight {
+  padding: 22px 24px;
+  border-left: 3px solid var(--lime);
+  border-radius: 0 10px 10px 0;
+  background: linear-gradient(90deg, rgba(201,242,58,.09), rgba(201,242,58,.015));
+}
+.highlight p { color: #e0e5d7; }
+.trait-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.trait {
+  padding: 16px;
+  border: 1px solid #414b30;
+  border-radius: 9px;
+  background: #20271d;
+}
+.trait strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--lime);
+  font-size: 12px;
+}
+.trait span { color: #d4dbcb; font-size: 13px; }
+.member-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.member {
+  padding: 7px 11px;
+  border: 1px solid #414b30;
+  border-radius: 6px;
+  background: #20271d;
+  color: var(--lime-soft);
+  font-size: 11px;
+  letter-spacing: .5px;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 44px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: #87907a;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+@media (max-width: 650px) {
+  body { padding: 18px 11px 35px; }
+  .hero { padding: 32px 22px 26px; }
+  h1 { letter-spacing: -2px; }
+  .profile { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid, .trait-grid { grid-template-columns: 1fr; }
+  .wide { grid-column: auto; }
+  .card { padding: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="topline">
+    <span>CREATOR / SAINT JUDE'S LANDING</span>
+    <span>GOOD TEETH · MEMBER PROFILE</span>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">Electric Guitar · Human Contact · Unsolicited Assistance</p>
+    <h1>TŌGO</h1>
+    <p class="subtitle">Looks Like Trouble. Offers to Carry Your Bags.</p>
+    <p class="intro">
+      A compact, energetic Japanese musk deer demi-human with real branching antlers,
+      dangerously long fangs, and the kind of friendly enthusiasm that can catch an entire
+      room off guard. Tōgo is outgoing, curious, physically affectionate, and almost
+      aggressively helpful. He looks considerably more intimidating than he actually is,
+      which he finds mildly confusing.
+    </p>
+    <div class="tags">
+      <span class="tag">Japanese Musk Deer Demi-Human</span>
+      <span class="tag">Age 22</span>
+      <span class="tag">Human Ears</span>
+      <span class="tag">Electric Guitar</span>
+      <span class="tag">GOOD TEETH</span>
+    </div>
+  </header>
+
+  <div class="profile">
+    <div class="fact">
+      <span class="fact-label">Name</span>
+      <span class="fact-value">Tōgo</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Age</span>
+      <span class="fact-value">22</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Species</span>
+      <span class="fact-value">Japanese Musk Deer Demi-Human</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Origin</span>
+      <span class="fact-value">Creator · Saint Jude's Landing</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Occupation</span>
+      <span class="fact-value">Electric Guitarist</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Band</span>
+      <span class="fact-value">GOOD TEETH</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Build</span>
+      <span class="fact-value">Compact, sturdy, athletic</span>
+    </div>
+    <div class="fact">
+      <span class="fact-label">Signature Color</span>
+      <span class="fact-value">Violent acid-lime</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">01</span>
+      <h2>Appearance</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Face & Expression</h3>
+        <p>
+          Tōgo has warm human skin, a youthful face, and soft features that change
+          constantly with whatever is happening around him. His bright, expressive warm
+          brown eyes make it difficult for him to conceal what he is thinking. Excitement,
+          curiosity, concern, amusement, and surprise tend to appear across his face before
+          he has a chance to say anything.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Hair & Ears</h3>
+        <p>
+          His short black hair is practical and slightly messy, with shaved lines through
+          the sides that give the otherwise simple cut a deliberate edge.
+        </p>
+        <p>
+          Tōgo has completely human ears. He does not have deer ears.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Build & Movement</h3>
+        <p>
+          Short and compact, Tōgo has a sturdy, athletic build without being bulky. His
+          shoulders are solid, his core is tight, and his limbs carry dense, functional
+          strength. Beneath his warm, smooth skin is a substantial amount of muscle for
+          someone his size.
+        </p>
+        <p>
+          He carries himself with energetic confidence and moves like he is always ready to
+          get up, go somewhere, or help with something.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Clothing & Hardware</h3>
+        <p>
+          Tōgo favors comfortable, practical clothes that let him move easily and survive
+          touring, dirt, and repeated washing. His outfits tend to become rumpled quickly
+          because he is constantly doing something in them.
+        </p>
+        <p>
+          A piece of violent acid-lime hardware is incorporated directly into his clothing.
+          It is distinctive to him rather than a shared band accessory.
+        </p>
+      </article>
+      <article class="card wide">
+        <h3>Antlers</h3>
+        <p>
+          True musk-deer antlers grow from Tōgo's head. They are real, branching structures
+          and an ordinary part of his anatomy, not decorative accessories. They also take
+          up space, which becomes a practical consideration in doorways, crowded rooms,
+          unfamiliar buildings, and anywhere he gets excited enough to forget how far they
+          extend.
+        </p>
+        <p>
+          His antlers are sensitive. Tōgo is careful around low doorframes and tight spaces,
+          dislikes people grabbing them without warning, and has developed specific ways
+          to sleep without putting pressure on them. He can still accidentally catch them
+          on things or knock something over when his attention gets ahead of his spatial
+          awareness.
+        </p>
+      </article>
+      <article class="card wide">
+        <h3>Fangs</h3>
+        <p>
+          Tōgo has unusually long, prominent canine teeth. They are genuinely sharp and
+          much too long to pass for ordinary human teeth, giving his smile an unexpectedly
+          predatory appearance.
+        </p>
+        <p>
+          He has accidentally bitten his own lip more than once and learned to eat around
+          his fangs without consciously thinking about it. He does not consider his teeth
+          particularly frightening. Other people sometimes do. If someone is fascinated
+          by them, he can become immediately enthusiastic about explaining how they work
+          to a complete stranger.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">02</span>
+      <h2>Personality</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Almost Aggressively Helpful</h3>
+        <p>
+          Tōgo has trouble watching someone struggle with something he knows how to solve.
+          If someone needs help carrying something, he is already reaching for it. If
+          somebody looks lost, he asks whether they need directions. If a person mentions
+          being hungry, he starts thinking about food.
+        </p>
+        <p>
+          He genuinely likes being useful. Praise is not the point. Helping is simply one
+          of the ways he engages with the world and shows people that he cares.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Outgoing & Curious</h3>
+        <p>
+          Tōgo likes people, meeting people, hearing about their interests, and being
+          included in whatever is going on. He can talk to almost anyone and is easily
+          fascinated by things other people might mention only in passing.
+        </p>
+        <p>
+          When something catches his attention, he wants to know more. He asks questions,
+          leans closer, and gets visibly invested in the answer.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Earnest Enthusiasm</h3>
+        <p>
+          Tōgo has difficulty pretending not to be excited. His eyes widen, his speech
+          speeds up, his hands start moving, and his antlers tilt along with the motion of
+          his head. His whole body participates in a conversation when he is interested.
+        </p>
+        <p>
+          His enthusiasm can overwhelm quieter people. He does try to dial it back when
+          somebody tells him he is being a lot. He is not always successful for very long.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Gentle Does Not Mean Harmless</h3>
+        <p>
+          His sweetness is a genuine personality trait, not proof that he is incapable of
+          anger, stubbornness, jealousy, or mistakes. Tōgo can be intrusive, get carried
+          away, and struggle to accept that someone might not want his help.
+        </p>
+        <p>
+          He means well, but his intentions do not automatically make every action helpful.
+          He knows that offering help repeatedly—or simply starting to help when someone
+          seems overwhelmed—can become annoying. He is working on it, with mixed success.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">03</span>
+      <h2>Emotional Life</h2>
+    </div>
+    <div class="highlight">
+      <p>
+        Tōgo is emotionally straightforward. He likes people he likes. He misses people
+        when they leave and gets excited when they return. He gets jealous, embarrassed,
+        lonely, and hurt. His energetic personality does not make him immune to any of it.
+      </p>
+      <p>
+        He is not ashamed of affection. If he cares about someone, he tends to make that
+        fairly obvious through his attention, his enthusiasm, and the practical little
+        things he does for them.
+      </p>
+    </div>
+    <div class="grid" style="margin-top: 12px;">
+      <article class="card">
+        <h3>Affection</h3>
+        <p>
+          Tōgo is physically affectionate and comfortable expressing warmth. He gravitates
+          toward people when he is excited, enjoys closeness, and likes being trusted with
+          something important. He can be openly delighted by another person's company
+          without treating that affection as embarrassing.
+        </p>
+      </article>
+      <article class="card">
+        <h3>When He Is Hurt</h3>
+        <p>
+          His openness means that exclusion and rejection can sting more than people might
+          expect. Being deliberately left out is particularly painful for him. He may not
+          disguise his reaction very successfully, even if he tries to keep moving and
+          act as though everything is fine.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">04</span>
+      <h2>Antlers, Teeth & Everyday Logistics</h2>
+    </div>
+    <div class="trait-grid">
+      <div class="trait">
+        <strong>Doorways</strong>
+        <span>He is careful around them, except when he gets excited and forgets how much room his antlers need.</span>
+      </div>
+      <div class="trait">
+        <strong>Crowds</strong>
+        <span>He pays attention to where his antlers are in tight spaces, though he can still misjudge an awkward angle.</span>
+      </div>
+      <div class="trait">
+        <strong>Unexpected Touch</strong>
+        <span>He hates people grabbing his antlers without warning. Curiosity does not make his body public property.</span>
+      </div>
+      <div class="trait">
+        <strong>Eating</strong>
+        <span>He has learned to maneuver around his long fangs and occasionally reminds himself of their existence the hard way.</span>
+      </div>
+      <div class="trait">
+        <strong>Sleeping</strong>
+        <span>He has developed specific ways to get comfortable without putting pressure on his sensitive antlers.</span>
+      </div>
+      <div class="trait">
+        <strong>Explaining His Anatomy</strong>
+        <span>If someone asks an interesting question about his teeth, he may happily explain far more than they expected.</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">05</span>
+      <h2>GOOD TEETH</h2>
+    </div>
+    <div class="card">
+      <p>
+        Tōgo is GOOD TEETH's electric guitarist. His playing contributes atmospheric
+        textures, intricate technical riffs, layered harmonics, melodic passages, effects,
+        and sudden explosions of heavy guitar. He can make the instrument feel almost
+        celestial before turning it into something aggressive and physically overwhelming.
+      </p>
+      <p>
+        The band's sound moves between electronic hooks, catchy songwriting, atmospheric
+        passages, and heavy sections without treating those sounds as separate identities.
+        Tōgo's guitar can behave like a synth, carry a melody, build a strange atmosphere,
+        or become a weapon when the arrangement calls for it.
+      </p>
+      <p>
+        GOOD TEETH's members are five different musicians working together, not a collection
+        of assigned character types. Tōgo is not the designated sweetheart, mascot, or
+        harmless one. He is a twenty-two-year-old man who happens to be extraordinarily
+        friendly—and who can still be stubborn, intrusive, jealous, angry, and wrong.
+      </p>
+      <div class="member-strip">
+        <span class="member">IVES · VOCALS</span>
+        <span class="member">RENGA · SYNTH / KEYBOARD</span>
+        <span class="member">TŌGO · ELECTRIC GUITAR</span>
+        <span class="member">PURL · DRUMS</span>
+        <span class="member">RILEY · BASS</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">06</span>
+      <h2>Habits & Little Things</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <ul>
+          <li>Offers to carry things before anyone has finished asking.</li>
+          <li>Brings people food when they mention being hungry.</li>
+          <li>Touches his fangs with his tongue when thinking.</li>
+          <li>Gets distracted by interesting animals.</li>
+          <li>Asks an absurd number of questions when fascinated.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <ul>
+          <li>Talks with his hands and leans closer when excited.</li>
+          <li>Forgets how much room his antlers take up.</li>
+          <li>Gets physically closer to people when interested in a conversation.</li>
+          <li>Sleeps extremely deeply when exhausted.</li>
+          <li>Tries to restrain his enthusiasm when asked, with limited success.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">07</span>
+      <h2>Likes & Dislikes</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Likes</h3>
+        <ul>
+          <li>Meeting new people</li>
+          <li>Animals and unfamiliar places</li>
+          <li>Good food</li>
+          <li>Being useful</li>
+          <li>Learning weird facts</li>
+          <li>Physical affection</li>
+          <li>People who let him ramble</li>
+          <li>Being trusted with something important</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>Dislikes</h3>
+        <ul>
+          <li>Being deliberately excluded</li>
+          <li>People treating him as dangerous because of his appearance</li>
+          <li>People grabbing his antlers</li>
+          <li>Being told he is “too much”</li>
+          <li>Watching someone struggle when he could help</li>
+          <li>Being unable to fix something</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-number">08</span>
+      <h2>The Whole Tōgo</h2>
+    </div>
+    <div class="highlight">
+      <p>
+        Tōgo looks like he could bite through somebody's hand. He probably could.
+      </p>
+      <p>
+        He is also the guy who holds the door open, carries your bags, remembers your
+        favorite snack, and becomes genuinely excited when you tell him about something
+        you love. His antlers and fangs are real; so is his warmth. Neither cancels out
+        the other.
+      </p>
+      <p>
+        He can be stubborn, intrusive, jealous, and occasionally overwhelming. He is also
+        curious, affectionate, emotionally open, and sincerely interested in the people
+        around him. His first instinct is almost always to ask whether he can help.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <span>CREATOR · SAINT JUDE'S LANDING</span>
+    <span>GOOD TEETH ARCHIVE</span>
+  </footer>
+
+</div>
+</body>
+</html>
