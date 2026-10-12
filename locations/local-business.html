@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Businesses | Creator</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    :root {
+      --business-bg: #111313;
+      --business-panel: #1b2020;
+      --business-border: #414b43;
+      --business-text: #eee9dc;
+      --business-muted: #b8b7a9;
+      --business-gold: #e6bd76;
+      --business-green: #9dc49b;
+      --business-pink: #dca3b4;
+      --business-blue: #9dc5d5;
+    }
+
+    body {
+      background:
+        radial-gradient(ellipse at 8% 5%, rgba(157, 196, 155, 0.09), transparent 32rem),
+        radial-gradient(ellipse at 95% 22%, rgba(220, 163, 180, 0.07), transparent 30rem),
+        var(--business-bg);
+      color: var(--business-text);
+    }
+
+    .business-page {
+      width: min(1160px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 3rem 0 5rem;
+    }
+
+    .business-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(2rem, 6vw, 4.5rem);
+      border: 1px solid var(--business-border);
+      border-radius: 1.4rem;
+      background:
+        linear-gradient(125deg, rgba(230, 189, 118, 0.09), transparent 48%),
+        linear-gradient(315deg, rgba(157, 196, 155, 0.08), transparent 50%),
+        #191d1b;
+      margin-bottom: 2.5rem;
+    }
+
+    .business-hero::after {
+      content: "✳";
+      position: absolute;
+      right: clamp(1rem, 5vw, 4rem);
+      top: 50%;
+      transform: translateY(-50%) rotate(-12deg);
+      font-size: clamp(6rem, 18vw, 13rem);
+      color: rgba(230, 189, 118, 0.12);
+      pointer-events: none;
+    }
+
+    .business-eyebrow {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 0.8rem;
+      color: var(--business-green);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .business-hero h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+    }
+
+    .business-hero p:last-child {
+      position: relative;
+      z-index: 1;
+      max-width: 660px;
+      margin: 1.4rem 0 0;
+      color: var(--business-muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .business-intro {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 0 0 1.5rem;
+    }
+
+    .business-intro::before {
+      content: "✦";
+      color: var(--business-gold);
+      font-size: 1.5rem;
+    }
+
+    .business-intro h2 {
+      margin: 0;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      letter-spacing: -0.025em;
+    }
+
+    .business-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.15rem;
+    }
+
+    .business-card {
+      --accent: var(--business-gold);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 1.6rem;
+      border: 1px solid var(--business-border);
+      border-radius: 1rem;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.025), transparent 65%), var(--business-panel);
+      transition: border-color 180ms ease, transform 180ms ease;
+    }
+
+    .business-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .business-card::before {
+      content: "";
+      position: absolute;
+      top: 1.2rem;
+      bottom: 1.2rem;
+      left: 0;
+      width: 3px;
+      border-radius: 0 3px 3px 0;
+      background: var(--accent);
+      opacity: 0.85;
+    }
+
+    .business-card:nth-child(4n + 1) { --accent: var(--business-gold); }
+    .business-card:nth-child(4n + 2) { --accent: var(--business-green); }
+    .business-card:nth-child(4n + 3) { --accent: var(--business-pink); }
+    .business-card:nth-child(4n + 4) { --accent: var(--business-blue); }
+
+    .business-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .business-card h3 {
+      margin: 0;
+      color: var(--accent);
+      font-size: clamp(1.35rem, 3vw, 1.8rem);
+      line-height: 1.1;
+      overflow-wrap: anywhere;
+    }
+
+    .business-symbol {
+      flex: 0 0 auto;
+      color: var(--accent);
+      font-size: 1.35rem;
+      opacity: 0.9;
+    }
+
+    .business-type {
+      display: inline-block;
+      align-self: flex-start;
+      margin: 0 0 1rem;
+      padding: 0.35rem 0.65rem;
+      border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+      border-radius: 99px;
+      color: var(--business-text);
+      font-size: 0.74rem;
+      letter-spacing: 0.04em;
+    }
+
+    .business-location {
+      margin: 0 0 1rem;
+      color: var(--business-muted);
+      font-size: 0.83rem;
+      line-height: 1.6;
+    }
+
+    .business-location strong {
+      color: var(--business-text);
+      font-weight: 700;
+    }
+
+    .business-description {
+      margin: 0;
+      color: var(--business-muted);
+      font-size: 0.94rem;
+      line-height: 1.8;
+    }
+
+    .business-detail {
+      margin-top: 1.2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .business-detail h4 {
+      margin: 0 0 0.45rem;
+      color: var(--accent);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .business-detail p {
+      margin: 0;
+      color: var(--business-muted);
+      font-size: 0.9rem;
+      line-height: 1.75;
+    }
+
+    .business-detail strong {
+      color: var(--business-text);
+    }
+
+    .business-footer {
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      border: 1px dashed var(--business-border);
+      border-radius: 1rem;
+      text-align: center;
+    }
+
+    .business-footer .ornament {
+      display: block;
+      margin-bottom: 0.6rem;
+      color: var(--business-gold);
+      font-size: 1.3rem;
+      letter-spacing: 0.4em;
+    }
+
+    .business-footer p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--business-muted);
+      font-size: 0.92rem;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 700px) {
+      .business-page {
+        width: min(100% - 1rem, 600px);
+        padding-top: 1rem;
+      }
+
+      .business-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .business-hero {
+        border-radius: 1rem;
+      }
+
+      .business-card {
+        padding: 1.35rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .business-card {
+        transition: none;
+      }
+
+      .business-card:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="business-page">
+
+    <header class="business-hero">
+      <p class="business-eyebrow">Creator · Places &amp; People</p>
+      <h1>Local<br>Businesses</h1>
+      <p>
+        The places people return to: familiar counters, crowded shelves,
+        neighborhood bars, repair shops, music venues, and restaurants that
+        become part of everyday life. Saint Jude’s Landing runs on businesses
+        of every size, from small independent shops to beloved local institutions.
+      </p>
+    </header>
+
+    <section aria-labelledby="business-list-heading">
+      <div class="business-intro">
+        <h2 id="business-list-heading">Around the Neighborhood</h2>
+      </div>
+
+      <div class="business-grid">
+
+        <article class="business-card">
+          <div class="business-card-top">
+            <h3>PICO</h3>
+            <span class="business-symbol" aria-hidden="true">✳</span>
+          </div>
+          <span class="business-type">Convenience Store</span>
+          <p class="business-location"><strong>Location:</strong> Nine, Saint Jude’s Landing</p>
+          <p class="business-description">
+            A small neighborhood convenience store carrying snacks, drinks,
+            household necessities, cigarettes, basic groceries, and miscellaneous
+            everyday items.
+          </p>
+          <div class="business-detail">
+            <h4>Staff</h4>
+            <p>Kevin works here.</p>
+          </div>
+          <div class="business-detail">
+            <h4>Reputation</h4>
+            <p>
+              A familiar neighborhood business with regular customers and
+              employees who know the surrounding community.
+            </p>
+          </div>
+        </article>
+
+        <article class="business-card">
+          <div class="business-card-top">
+            <h3>DOGEAR</h3>
+            <span class="business-symbol" aria-hidden="true">❧</span>
+          </div>
+          <span class="business-type">Independent Bookstore</span>
+          <p class="business-location"><strong>Location:</strong> Saint Jude’s Landing</p>
+          <p class="business-description">
+            An independent bookstore specializing in new and used books, old
+            editions, strange finds, and locally relevant material.
+          </p>
+          <div class="business-detail">
+            <h4>Atmosphere</h4>
+            <p>
+              Crowded shelves, handwritten recommendations, uneven stacks, and
+              books that have clearly been handled by thousands of people.
+            </p>
+          </div>
+        </article>
+
+        <article class="business-card">
+          <div class="business-card-top">
+            <h3>FUCK IT, WE FIX IT</h3>
+            <span class="business-symbol" aria-hidden="true">⚒</span>
+          </div>
+          <span class="business-type">Repair Shop</span>
+          <p class="business-location"><strong>Location:</strong> Saint Jude’s Landing</p>
+          <p class="business-description">
+            An independent repair business handling appliances, electronics,
+            household equipment, tools, and miscellaneous broken objects.
+          </p>
+          <div class="business-detail">
+            <h4>Reputation</h4>
+            <p>
+              Known for taking jobs other repair shops refuse. If somebody else
+              has given up on a broken object, this is the place to try next.
+            </p>
+          </div>
+        </article>
+
+        <article class="business-card">
+          <div class="business-card-top">
+            <h3>MILEWEL</h3>
+            <span class="business-symbol" aria-hidden="true">♨</span>
+          </div>
+          <span class="business-type">Dive Bar</span>
+          <p class="business-location"><strong>Location:</strong> Saint Jude’s Landing</p>
+          <p class="business-description">
+            A small, filthy neighborhood bar with cheap drinks, old furniture,
+            regular customers, questionable bathrooms, and unexpectedly good food.
+          </p>
+          <div class="business-detail">
+            <h4>Reputation</h4>
+            <p>
+              Beloved by locals despite looking like it should have been
+              condemned years ago.
+            </p>
+          </div>
+        </article>
+
+        <article class="business-card">
+          <div class="business-card-top">
+            <h3>SIDE A</h3>
+            <span class="business-symbol" aria-hidden="true">♫</span>
+          </div>
+          <span class="business-type">Live-Music Venue</span>
+          <p class="business-location"><strong>Location:</strong> Saint Jude’s Landing</p>
+          <p class="business-description">
+            A popular underground venue hosting local bands, touring musicians,
+            experimental performers, and small shows.
+          </p>
+          <div class="business-detail">
+            <h4>Atmosphere</h4>
+            <p>
+              Crowded, sweaty, loud, intimate, and constantly changing depending
+              on who's playing.
+            </p>
+          </div>
+          <div class="business-detail">
+            <h4>Social Scene</h4>
+            <p>
+              Musicians, bartenders, promoters, venue workers, regulars, and fans
+              overlap heavily here.
+            </p>
+          </div>
+        </article>
+
+        <article class="business-card">
+          <div class="business-card-top">
+            <h3>SOMEBODY’S</h3>
+            <span class="business-symbol" aria-hidden="true">✿</span>
+          </div>
+          <span class="business-type">Thrift Store</span>
+          <p class="business-location"><strong>Location:</strong> Saint Jude’s Landing</p>
+          <p class="business-description">
+            A large secondhand shop selling clothing, furniture, jewelry, books,
+            household objects, decorations, and completely inexplicable
+            miscellaneous items.
+          </p>
+          <div class="business-detail">
+            <h4>Reputation</h4>
+            <p>
+              Regulars frequently find things they absolutely did not come there
+              looking for.
+            </p>
+          </div>
+        </article>
+
+        <article class="business-card">
+          <div class="business-card-top">
+            <h3>GOOD HAIR</h3>
+            <span class="business-symbol" aria-hidden="true">✂</span>
+          </div>
+          <span class="business-type">Beauty-Supply Store</span>
+          <p class="business-location"><strong>Location:</strong> Saint Jude’s Landing</p>
+          <p class="business-description">
+            A local beauty-supply shop carrying hair products, cosmetics, styling
+            tools, accessories, dyes, extensions, and salon supplies.
+          </p>
+          <div class="business-detail">
+            <h4>Customers</h4>
+            <p>
+              Used by professional stylists and ordinary people doing questionable
+              things to their hair at home.
+            </p>
+          </div>
+        </article>
+
+        <article class="business-card">
+          <div class="business-card-top">
+            <h3>RED TABLE</h3>
+            <span class="business-symbol" aria-hidden="true">◈</span>
+          </div>
+          <span class="business-type">Neighborhood Restaurant</span>
+          <p class="business-location"><strong>Location:</strong> Saint Jude’s Landing</p>
+          <p class="business-description">
+            A casual family restaurant serving a rotating menu influenced by
+            multiple Creator communities.
+          </p>
+          <div class="business-detail">
+            <h4>Reputation</h4>
+            <p>
+              Reliable, busy, inexpensive, and popular with people who live nearby.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <footer class="business-footer">
+      <span class="ornament" aria-hidden="true">✳ ✦ ✳</span>
+      <p>
+        Small businesses, familiar faces, questionable establishments, and
+        places worth returning to are part of what makes a city feel lived in.
+        Every shop has its own customers, routines, and place in the community.
+      </p>
+    </footer>
+
+  </main>
+</body>
+</html>
