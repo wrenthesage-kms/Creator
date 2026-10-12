@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Characters — Creator</title>
+<style>
+:root {
+  --bg: #121315;
+  --panel: #1c1d21;
+  --panel2: #24252a;
+  --text: #eee9e4;
+  --muted: #b2aaa5;
+  --line: #39363b;
+  --pink: #f28bb8;
+  --orange: #ff986b;
+  --blue: #8bc9ef;
+  --green: #b4d69c;
+  --purple: #c5a7ed;
+  --gold: #e9ca86;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 30px 16px 50px;
+  background:
+    radial-gradient(ellipse at 8% 0%, rgba(242,139,184,.09), transparent 30%),
+    radial-gradient(ellipse at 92% 18%, rgba(139,201,239,.08), transparent 32%),
+    var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.65;
+}
+.page { max-width: 1120px; margin: 0 auto; }
+.topline {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 42px 36px 35px;
+  border: 1px solid #494047;
+  border-radius: 18px;
+  background: linear-gradient(130deg, #33252e, #201e24 58%, #202b32);
+}
+.hero::after {
+  content: "✳";
+  position: absolute;
+  right: 12px;
+  bottom: -95px;
+  color: rgba(242,139,184,.07);
+  font-size: 280px;
+  line-height: 1;
+  pointer-events: none;
+}
+.eyebrow {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 9px;
+  color: var(--pink);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #f6dce8;
+  font-size: clamp(42px, 8vw, 78px);
+  font-weight: 900;
+  letter-spacing: -3px;
+  line-height: 1;
+}
+.subtitle {
+  position: relative;
+  z-index: 1;
+  margin: 15px 0 0;
+  color: #d9b7d5;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.intro {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 24px 0 0;
+  color: #e1d7dd;
+  font-size: 15px;
+}
+.stats {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.stat {
+  padding: 6px 10px;
+  border: 1px solid #65505d;
+  border-radius: 5px;
+  background: rgba(255,255,255,.035);
+  color: #f3dbe7;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.notice {
+  margin: 18px 0 32px;
+  padding: 15px 19px;
+  border-left: 3px solid var(--pink);
+  border-radius: 0 8px 8px 0;
+  background: rgba(242,139,184,.055);
+  color: #d8cbd3;
+  font-size: 13px;
+}
+.notice strong { color: #f3c3d9; }
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 34px 0 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.section-symbol {
+  color: var(--pink);
+  font-size: 12px;
+}
+h2 {
+  margin: 0;
+  color: #f0dce6;
+  font-size: 20px;
+  letter-spacing: .3px;
+}
+.count {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.character {
+  --accent: var(--pink);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 190px;
+  padding: 19px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: linear-gradient(145deg, var(--panel2), var(--panel));
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color .18s ease, transform .18s ease, background .18s ease;
+}
+.character::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent);
+  opacity: .8;
+}
+.character:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  background: #29282e;
+}
+.character:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.character-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.species {
+  color: var(--accent);
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 1.4px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+.arrow {
+  flex: 0 0 auto;
+  color: var(--accent);
+  font-size: 17px;
+}
+.character h3 {
+  margin: 0 0 6px;
+  color: #f2e9ed;
+  font-size: 20px;
+  line-height: 1.2;
+}
+.character .role {
+  margin: 0 0 11px;
+  color: #d5b9c8;
+  font-size: 11px;
+  letter-spacing: .5px;
+}
+.character .description {
+  margin: 0;
+  color: #c5bdc1;
+  font-size: 12px;
+  line-height: 1.65;
+}
+.character .location {
+  margin-top: auto;
+  padding-top: 14px;
+  color: #a9a0a6;
+  font-size: 10px;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+}
+.ammonia { --accent: #bda2f3; }
+.benoit { --accent: #c1aa72; }
+.mold { --accent: #b3d78d; }
+.midge { --accent: #e7a2bc; }
+.tansy { --accent: #b9d9cc; }
+.bell { --accent: #e7c68b; }
+.cheche { --accent: #72c9f4; }
+.nadia { --accent: #b9c9b7; }
+.brat { --accent: #f28bb8; }
+.baby { --accent: #d5b4e9; }
+.ives { --accent: #fa7770; }
+.renga { --accent: #ef9aa9; }
+.togo { --accent: #b8d96a; }
+.riley { --accent: #82b9f6; }
+.purl { --accent: #ff986b; }
+.pike { --accent: #83dce9; }
+.unlinked {
+  cursor: default;
+  opacity: .75;
+}
+.unlinked:hover {
+  transform: none;
+  border-color: var(--line);
+  background: linear-gradient(145deg, var(--panel2), var(--panel));
+}
+.unlinked .arrow { visibility: hidden; }
+.unlinked .description { color: #b5adb1; }
+.band-note {
+  margin: 15px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+.band-link {
+  display: inline-block;
+  margin-top: 17px;
+  padding: 9px 13px;
+  border: 1px solid #66516d;
+  border-radius: 6px;
+  color: #e0c9f1;
+  font-size: 11px;
+  letter-spacing: .6px;
+  text-decoration: none;
+  background: rgba(197,167,237,.06);
+}
+.band-link:hover { border-color: var(--purple); }
+footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 45px;
+  padding-top: 17px;
+  border-top: 1px solid var(--line);
+  color: #928990;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+@media (max-width: 850px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  body { padding: 18px 11px 35px; }
+  .hero { padding: 32px 22px 26px; }
+  h1 { letter-spacing: -2px; }
+  .grid { grid-template-columns: 1fr; }
+  .character { min-height: 0; }
+  .character .location { padding-top: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .character { transition: none; }
+  .character:hover { transform: none; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="topline">
+    <span>CREATOR / CHARACTER ARCHIVE</span>
+    <span>Saint Jude's Landing & Beyond</span>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">People · Demi-Humans · Monsters · Musicians</p>
+    <h1>CHARACTERS</h1>
+    <p class="subtitle">Everybody's got a life here.</p>
+    <p class="intro">
+      A growing directory of the people who live on Creator, from Saint Jude's
+      Landing regulars and strange neighborhood fixtures to musicians whose songs
+      have taken over the planet. Humans, demi-humans, and monsters share cities,
+      homes, workplaces, friendships, complicated histories, and ordinary daily
+      life. No two people fit into quite the same box, and most of them have
+      something going on.
+    </p>
+    <div class="stats">
+      <span class="stat">Creator</span>
+      <span class="stat">Saint Jude's Landing</span>
+      <span class="stat">Original Characters</span>
+      <span class="stat">GOOD TEETH</span>
+    </div>
+  </header>
+
+  <div class="notice">
+    <strong>Directory note:</strong> Character names link to individual profiles
+    when a page is available. This archive will grow as more characters are added.
+  </div>
+
+  <div class="section-head">
+    <div class="section-title">
+      <span class="section-symbol">✳</span>
+      <h2>Ammonia's Group</h2>
+    </div>
+    <span class="count">The usual suspects</span>
+  </div>
+
+  <div class="grid">
+
+    <a class="character ammonia" href="ammonia.html">
+      <div class="character-top">
+        <span class="species">Bat Demi-Human</span>
+        <span class="arrow">↗</span>
+      </div>
+      <h3>Ammonia</h3>
+      <p class="role">Graffiti · Climbing · General Menace</p>
+      <p class="description">
+        A petite, sharp-eyed bat demi-human with enormous ears, a paint-stained
+        wardrobe, and an instinct for exploring anywhere she probably shouldn't.
+        Curious, blunt, impulsive, and entirely comfortable being herself.
+      </p>
+      <span class="location">Saint Jude's Landing</span>
+    </a>
+
+    <a class="character benoit" href="benoit.html">
+      <div class="character-top">
+        <span class="species">Alligator Demi-Human</span>
+        <span class="arrow">↗</span>
+      </div>
+      <h3>Benoit</h3>
+      <p class="role">Heavy Labor · Nine · Vaudreaux</p>
+      <p class="description">
+        A massive alligator demi-human with a Cajun-Creole background, an easy
+        smile, a mischievous streak, and a genuine love of people. Warm, practical,
+        flirtatious, and capable of making a terrible idea considerably worse.
+      </p>
+      <span class="location">Nine · From Vaudreaux</span>
+    </a>
+
+    <a class="character mold" href="mold.html">
+      <div class="character-top">
+        <span class="species">Opossum Demi-Human</span>
+        <span class="arrow">↗</span>
+      </div>
+      <h3>Mold</h3>
+      <p class="role">Scavenging · Finding Things</p>
+      <p class="description">
+        A sweet, bubbly, affectionate possum who finds treasures in places other
+        people refuse to look. Filthy, enthusiastic, and delighted by strange
+        objects, she can probably find what someone needs.
+      </p>
+      <span class="location">Saint Jude's Landing</span>
+    </a>
+
+    <a class="character midge" href="midge.html">
+      <div class="character-top">
+        <span class="species">Red Panda Demi-Human</span>
+        <span class="arrow">↗</span>
+      </div>
+      <h3>Midge</h3>
+      <p class="role">Community Favorite · Helpful Hands</p>
+      <p class="description">
+        A soft, warm, endlessly helpful woman known throughout the city for her
+        kindness. She remembers people, lends a hand without fuss, and has somehow
+        become the center of a particularly baffling local mystery.
+      </p>
+      <span class="location">Saint Jude's Landing</span>
+    </a>
+
+    <a class="character cheche" href="cheche.html">
+      <div class="character-top">
+        <span class="species">Skunk Demi-Human</span>
+        <span class="arrow">↗</span>
+      </div>
+      <h3>Cheche</h3>
+      <p class="role">Skateboarding · Clothing Customization</p>
+      <p class="description">
+        A nineteen-year-old skater from Pugad with vivid blue braids, an irreverent
+        sense of humor, and an effortless personal style. An excellent skateboarder
+        who helps people without making a production of it.
+      </p>
+      <span class="location">Pugad · Frequent SJL Visitor</span>
+    </a>
+
+    <a class="character nadia" href="nadia.html">
+      <div class="character-top">
+        <span class="species">Crane Demi-Human</span>
+        <span class="arrow">↗</span>
+      </div>
+      <h3>Nadia</h3>
+      <p class="role">Streamer · Internet Culture</p>
+      <p class="description">
+        An unusually tall crane demi-human with a deadpan sense of humor, a
+        practical approach to life, and a talent for finding the funny side of
+        deeply bizarre situations.
+      </p>
+      <span class="location">Nine</span>
+    </a>
+
+    <a class="character bell" href="bell.html">
+      <div class="character-top">
+        <span class="species">Secretary Bird Demi-Human</span>
+        <span class="arrow">↗</span>
+      </div>
+      <h3>Bell</h3>
+      <p class="role">High-End Hairstylist · Vintage Glamour</p>
+      <p class="description">
+        A tall, muscular, glamorous lesbian with excellent taste, strong opinions
+        about cold brew, and an embarrassingly expressive face when an attractive
+        woman catches her attention.
+      </p>
+      <span class="location">Saint Jude's Landing</span>
+    </a>
+
+    <a class="character tansy" href="tansy.html">
+      <div class="character-top">
+        <span class="species">Moth Demi-Human</span>
+        <span class="arrow">↗</span>
+      </div>
+      <h3>Tansy</h3>
+      <p class="role">Park Ranger · Nature · Local History</p>
+      <p class="description">
+        A small moth demi-human with enormous wings, a dry sense of humor, and a
+        deep appreciation for things other people consider ugly, damaged, or strange.
+        Sentimental, funny, curious, and not interested in being romanticized.
+      </p>
+      <span class="location">The Hollows</span>
+    </a>
+
+    <a class="character pike" href="pike.html">
+      <div class="character-top">
+        <span class="species">Glass Squid Demi-Human</span>
+        <span class="arrow">↗</span>
+      </div>
+      <h3>Pike</h3>
+      <p class="role">Underground Concert Venue · Nightlife</p>
+      <p class="description">
+        A relaxed, sociable glass squid demi-human who knows practically everyone
+        in the underground music scene. Loves rain, hates towels, asks far too many
+        questions, and has a catastrophically bad sense of direction.
+      </p>
+      <span class="location">The Hollows · From Sivai</span>
+    </a>
+
+    <div class="character unlinked" aria-disabled="true">
+      <div class="character-top">
+        <span class="species">Character Profile Pending</span>
+        <span class="arrow">↗</span>
+      </div>
+      <h3>Doll</h3>
+      <p class="role">Mouse Demi-Human · Explosives in a Handbag</p>
+      <p class="description">
+        A small, porcelain-pale mouse demi-human with a battered embroidered
+        handbag, a vicious temper, a practical streak, and absolutely no interest
+        in being treated as fragile.
+      </p>
+      <span class="location">Saint Jude's Landing · From Velvet</span>
+    </div>
+
+  </div>
+
+  <div class="section-head">
+    <div class="section-title">
+      <span class="section-symbol">✳</span>
+      <h2>The Rabbit Twins</h2>
+    </div>
+    <span class="count">Two very different problems</span>
+  </div>
+
+  <div class="grid">
+
+    <a class="character brat" href="brat.html">
+      <div class="character-top">
+        <span class="species">Rabbit Demi-Human</span>
+        <span class="arrow">↗</span>
+      </div>
+      <h3>Brat · Bridgette</h3>
+      <p class="role">Clothing Alterations · Customization</p>
+      <p class="description">
+        A shameless, cocky, tactile rabbit demi-human who loves attention,
+        interesting situations, and taking perfectly good things apart to improve
+        them. Clever enough to get into trouble and confident enough to continue.
+      </p>
+      <span class="location">Saint Jude's Landing</span>
+    </a>
+
+    <a class="character baby" href="baby.html">
+      <div class="character-top">
+        <span class="species">Rabbit Demi-Human</span>
+        <span class="arrow">↗</span>
+      </div>
+      <h3>Baby · Bethany</h3>
+      <p class="role">Bookshop · Restoration · Hand-Lettering</p>
+      <p class="description">
+        Brat's quieter twin: observant, soft-spoken, sweet, stubborn, and more
+        mischievous than she first appears. A bookshop worker with a dry sense
+        of humor and a private language shared with her sister.
+      </p>
+      <span class="location">Saint Jude's Landing</span>
+    </a>
+
+  </div>
+
+  <div class="section-head">
+    <div class="section-title">
+      <span class="section-symbol">✳</span>
+      <h2>GOOD TEETH</h2>
+    </div>
+    <span class="count">Five musicians · One band</span>
+  </div>
+
+  <div class="grid">
+
+    <a class="character ives" href="ives.html">
+      <div class="character-top">
+        <span class="species">Human</span>
+        <span class="arrow">↗</span>
+      </div>
+      <h3>Ives</h3>
+      <p class="role">Age 26 · Lead Vocals</p>
+      <p class="description">
+        A vivid red-haired frontman who feels everything at full volume. Restless,
+        stubborn, physically expressive, quick to argue, quick to laugh, and far
+        more emotionally invested than he likes to admit.
+      </p>
+      <span class="location">Creator · Saint Jude's Landing</span>
+    </a>
+
+    <a class="character renga" href="renga.html">
+      <div class="character-top">
+        <span class="species">Ringtail Demi-Human</span>
+        <span class="arrow">↗</span>
+      </div>
+      <h3>Renga</h3>
+      <p class="role">Age 24 · Synth / Keyboard</p>
+      <p class="description">
+        A sleepy, clever Japanese ringtail demi-human with a deadpan sense of
+        humor, a knack for solving mechanical problems, and an expressive tail
+        that often reveals what his face doesn't.
+      </p>
+      <span class="location">Creator · Saint Jude's Landing</span>
+    </a>
+
+    <a class="character togo" href="togo.html">
+      <div class="character-top">
+        <span class="species">Musk Deer Demi-Human</span>
+        <span class="arrow">↗</span>
+      </div>
+      <h3>Tōgo</h3>
+      <p class="role">Age 22 · Electric Guitar</p>
+      <p class="description">
+        A compact, sturdy Japanese musk deer demi-human with prominent fangs,
+        real branching antlers, boundless enthusiasm, and a genuine desire to
+        help. Looks intimidating; remembers your favorite snack.
+      </p>
+      <span class="location">Creator · Saint Jude's Landing</span>
+    </a>
+
+    <a class="character purl" href="purl.html">
+      <div class="character-top">
+        <span class="species">British Salamander Demi-Human</span>
+        <span class="arrow">↗</span>
+      </div>
+      <h3>Purl</h3>
+      <p class="role">Age 21 · Drums</p>
+      <p class="description">
+        A cheerful, peculiar salamander with a bottomless appetite for novelty.
+        Collects strange objects and stories, asks questions about everything,
+        and considers almost every detour worth taking.
+      </p>
+      <span class="location">Creator · Saint Jude's Landing</span>
+    </a>
+
+    <a class="character riley" href="riley.html">
+      <div class="character-top">
+        <span class="species">American Marten Demi-Human</span>
+        <span class="arrow">↗</span>
+      </div>
+      <h3>Riley</h3>
+      <p class="role">Age 20 · Bass</p>
+      <p class="description">
+        A watchful, anxious, observant marten demi-human who notices everything,
+        worries about half of it, and quietly fixes what he can. Thoughtful,
+        analytical, and more affectionate through actions than declarations.
+      </p>
+      <span class="location">Creator · Saint Jude's Landing</span>
+    </a>
+
+  </div>
+
+  <p class="band-note">
+    GOOD TEETH's five members make music that moves between electronic production,
+    hyperpop-adjacent hooks, emo, post-hardcore, technical guitar, melodic
+    songwriting, and full-force hardcore. No one member defines the band's sound.
+  </p>
+  <a class="band-link" href="../bands/good-teeth.html">Explore GOOD TEETH →</a>
+
+  <footer>
+    <span>CREATOR · CHARACTER DIRECTORY</span>
+    <span>A Growing Archive of People & Places</span>
+  </footer>
+
+</div>
+</body>
+</html>
