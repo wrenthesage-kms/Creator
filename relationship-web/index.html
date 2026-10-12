@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relationship Web — Creator</title>
+<style>
+:root {
+  --bg: #131317;
+  --panel: #1d1d24;
+  --panel2: #25252e;
+  --text: #f0eaf0;
+  --muted: #b6abb8;
+  --line: #403743;
+  --pink: #f19bc5;
+  --purple: #c2a3ef;
+  --blue: #91c9f2;
+  --green: #b7d7a0;
+  --orange: #f6a17c;
+  --gold: #e7cf8d;
+  --teal: #8dd9d1;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 30px 16px 50px;
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(193,151,227,.09), transparent 32%),
+    radial-gradient(ellipse at 100% 25%, rgba(241,155,197,.08), transparent 30%),
+    var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+.page { max-width: 1120px; margin: 0 auto; }
+.topline {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 42px 36px 35px;
+  border: 1px solid #4c3c50;
+  border-radius: 18px;
+  background: linear-gradient(130deg, #332638, #211e27 60%, #202d32);
+}
+.hero::after {
+  content: "∞";
+  position: absolute;
+  right: 12px;
+  bottom: -100px;
+  color: rgba(241,155,197,.07);
+  font-size: 310px;
+  line-height: 1;
+  pointer-events: none;
+}
+.eyebrow {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 9px;
+  color: var(--pink);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #f7dfed;
+  font-size: clamp(40px, 8vw, 76px);
+  font-weight: 900;
+  letter-spacing: -3px;
+  line-height: 1;
+}
+.subtitle {
+  position: relative;
+  z-index: 1;
+  margin: 15px 0 0;
+  color: #d8b8e6;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.intro {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 24px 0 0;
+  color: #e0d6e2;
+  font-size: 15px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.tag {
+  padding: 6px 10px;
+  border: 1px solid #66516c;
+  border-radius: 5px;
+  background: rgba(255,255,255,.03);
+  color: #eedcf2;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.notice {
+  margin: 18px 0 30px;
+  padding: 16px 19px;
+  border-left: 3px solid var(--purple);
+  border-radius: 0 8px 8px 0;
+  background: rgba(194,163,239,.06);
+  color: #d8cedf;
+  font-size: 13px;
+}
+.notice strong { color: #e0c9fa; }
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 35px 0 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.symbol { color: var(--pink); font-size: 12px; }
+h2 { margin: 0; color: #f0ddec; font-size: 20px; }
+.count {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.card {
+  min-width: 0;
+  padding: 19px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: linear-gradient(145deg, var(--panel2), var(--panel));
+}
+.card h3 {
+  margin: 0 0 9px;
+  color: var(--accent, var(--pink));
+  font-size: 15px;
+}
+.card p {
+  margin: 0 0 10px;
+  color: #d0c6d2;
+  font-size: 13px;
+}
+.card p:last-child { margin-bottom: 0; }
+.wide { grid-column: 1 / -1; }
+.ammonia { --accent: #c2a3ef; }
+.tansy { --accent: #b7d7ca; }
+.pike { --accent: #91dce8; }
+.benoit { --accent: #e7cf8d; }
+.bell { --accent: #f2c990; }
+.doll { --accent: #f19bc5; }
+.mold { --accent: #b7d7a0; }
+.midge { --accent: #e7a6bf; }
+.riley { --accent: #91bdf2; }
+.ives { --accent: #fa8b81; }
+.renga { --accent: #e7a1b4; }
+.togo { --accent: #c1dc7b; }
+.purl { --accent: #f6a17c; }
+.brattwins { --accent: #f19bc5; }
+.connection {
+  display: grid;
+  grid-template-columns: minmax(110px, .7fr) minmax(0, 2fr);
+  gap: 12px;
+  align-items: start;
+  padding: 14px 0;
+  border-top: 1px solid #39323c;
+}
+.connection:first-of-type { border-top: 0; padding-top: 0; }
+.names {
+  color: var(--accent, var(--pink));
+  font-size: 12px;
+  font-weight: bold;
+}
+.detail { color: #d0c6d2; font-size: 13px; }
+.pillrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 13px;
+}
+.pill {
+  padding: 5px 9px;
+  border: 1px solid #49404e;
+  border-radius: 5px;
+  background: #211f27;
+  color: #d9cde0;
+  font-size: 10px;
+}
+.band-row {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 14px;
+}
+.band-member {
+  padding: 13px 10px;
+  border: 1px solid #49404e;
+  border-radius: 8px;
+  background: #211f27;
+  text-align: center;
+}
+.band-member strong {
+  display: block;
+  color: var(--accent, var(--pink));
+  font-size: 12px;
+}
+.band-member span {
+  color: var(--muted);
+  font-size: 10px;
+}
+.ammonia-accent { --accent: #c2a3ef; }
+.ives-accent { --accent: #fa8b81; }
+.renga-accent { --accent: #e7a1b4; }
+.togo-accent { --accent: #c1dc7b; }
+.purl-accent { --accent: #f6a17c; }
+.riley-accent { --accent: #91bdf2; }
+.tansy-accent { --accent: #b7d7ca; }
+.pike-accent { --accent: #91dce8; }
+.benoit-accent { --accent: #e7cf8d; }
+.mold-accent { --accent: #b7d7a0; }
+.midge-accent { --accent: #e7a6bf; }
+.bell-accent { --accent: #f2c990; }
+.doll-accent { --accent: #f19bc5; }
+footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 45px;
+  padding-top: 17px;
+  border-top: 1px solid var(--line);
+  color: #928990;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+@media (max-width: 760px) {
+  .grid { grid-template-columns: 1fr; }
+  .wide { grid-column: auto; }
+  .band-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  body { padding: 18px 11px 35px; }
+  .hero { padding: 32px 22px 26px; }
+  h1 { letter-spacing: -2px; }
+  .connection { grid-template-columns: 1fr; gap: 3px; }
+  .band-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="topline">
+    <span>CREATOR / CHARACTER ARCHIVE</span>
+    <span>Connections · Friendships · Community</span>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">People Are Rarely Separate Stories</p>
+    <h1>RELATIONSHIP WEB</h1>
+    <p class="subtitle">Who knows whom, and how they fit together.</p>
+    <p class="intro">
+      Creator's characters live in an interconnected world. They have old friends,
+      new acquaintances, shared workplaces, complicated histories, familiar hangouts,
+      and social circles that overlap in unexpected ways. This page tracks established
+      connections between characters without assuming that every acquaintance is
+      a best friend or that every relationship needs a dramatic label.
+    </p>
+    <div class="tags">
+      <span class="tag">Friendships</span>
+      <span class="tag">Found Family</span>
+      <span class="tag">GOOD TEETH</span>
+      <span class="tag">SJL Nightlife</span>
+      <span class="tag">Community</span>
+    </div>
+  </header>
+
+  <div class="notice">
+    <strong>Canon note:</strong> This web records established relationships and
+    connections. Being part of the same social circle does not mean characters
+    are constantly together, share identical opinions, or have the same level
+    of closeness with every member.
+  </div>
+
+  <div class="section-head">
+    <div class="section-title">
+      <span class="symbol">✳</span>
+      <h2>Ammonia's Group</h2>
+    </div>
+    <span class="count">A loose, familiar circle</span>
+  </div>
+
+  <div class="grid">
+    <article class="card ammonia">
+      <h3>Ammonia at the Center</h3>
+      <p>
+        Ammonia's group is an informal social circle rather than a rigid organization.
+        Its members have their own lives, interests, work, and relationships; they
+        can come and go on their own terms.
+      </p>
+      <p>
+        Ammonia, Benoit, Riot, and Doll are among the people most often present.
+        The wider circle includes Mold, Midge, Nadia, Cheche, and others whose
+        lives intersect through friendship, shared spaces, and the people they know.
+      </p>
+      <div class="pillrow">
+        <span class="pill">Ammonia</span>
+        <span class="pill">Benoit</span>
+        <span class="pill">Riot</span>
+        <span class="pill">Doll</span>
+        <span class="pill">Mold</span>
+        <span class="pill">Midge</span>
+        <span class="pill">Nadia</span>
+        <span class="pill">Cheche</span>
+      </div>
+    </article>
+
+    <article class="card benoit">
+      <h3>Benoit & Bell</h3>
+      <p>
+        Benoit and Bell are very good friends. Their friendship began when Bell
+        was a young adult working hard-labor jobs in Nine to support herself
+        through college, long before she built her career as a high-end hairstylist.
+      </p>
+      <p>
+        They have a history that predates Bell's polished professional life and
+        remain connected beyond their different day-to-day worlds.
+      </p>
+    </article>
+
+    <article class="card mold">
+      <h3>Doll & Mold</h3>
+      <p>
+        Doll first met Mold in a dirty alleyway a few years ago. Her immediate
+        reaction was: “Disgusting. I fucking love it.”
+      </p>
+      <p>
+        Their friendship grew naturally from there. Doll genuinely enjoys Mold's
+        filthy, strange, disgusting nature rather than merely putting up with it.
+        Mold is accepted as herself, without needing to become more conventional.
+      </p>
+    </article>
+
+    <article class="card midge">
+      <h3>Midge & the Group</h3>
+      <p>
+        Midge is deeply loved by the people around her. Her kindness is well known
+        throughout Saint Jude's Landing, where shopkeepers and ordinary residents
+        often recognize her and greet her by name.
+      </p>
+      <p>
+        Her reputation comes from years of everyday kindness rather than fame.
+        She is an important presence in the group's social world.
+      </p>
+    </article>
+
+    <article class="card pike">
+      <h3>Pike & the Social Circle</h3>
+      <p>
+        Pike belongs to Ammonia's group while maintaining a large independent
+        network through the underground music and nightlife scene. He is comfortable
+        around different people and can move easily between the group and his wider
+        circle of musicians, performers, venue staff, and regulars.
+      </p>
+    </article>
+
+    <article class="card">
+      <h3>Connections Across the City</h3>
+      <p>
+        Members of the group have different routines and social worlds. Some work
+        in Nine, some spend time in the Hollows, and some travel regularly between
+        Pugad and SJL. Shared membership creates familiarity, not a requirement
+        to be together all the time.
+      </p>
+    </article>
+  </div>
+
+  <div class="section-head">
+    <div class="section-title">
+      <span class="symbol">✳</span>
+      <h2>Tansy & Pike</h2>
+    </div>
+    <span class="count">Best friends</span>
+  </div>
+
+  <div class="grid">
+    <article class="card tansy wide">
+      <h3>A Longstanding Friendship</h3>
+      <p>
+        Tansy and Pike are best friends. Pike's relaxed, socially confident nature
+        complements Tansy's more introspective and emotionally perceptive way of
+        moving through the world. Their friendship is familiar and established,
+        not a connection that needs to be constantly explained or made into a spectacle.
+      </p>
+      <p>
+        Pike works at Saint Jude's Landing's most popular underground club concert
+        venue and regularly gets Tansy tickets to GOOD TEETH shows. Their friendship
+        is one of the ways Tansy's love of music intersects with the city's wider
+        underground scene.
+      </p>
+    </article>
+
+    <article class="card tansy">
+      <h3>Tansy & Riot</h3>
+      <p>
+        Tansy and Riot are close friends. Tansy accepts Riot's unusual behavior
+        without constantly explaining or correcting him, which makes Riot unusually
+        comfortable around him.
+      </p>
+      <p>
+        Tansy can recognize the person beneath Riot's relentless energy without
+        turning their friendship into a project to fix him.
+      </p>
+    </article>
+
+    <article class="card pike">
+      <h3>Pike's Wider Network</h3>
+      <p>
+        Pike's work gives him an extensive network of musicians, performers,
+        bartenders, promoters, venue workers, and nightlife regulars. He is a
+        connective point in SJL's underground music scene, with relationships
+        that extend well beyond his closest friends.
+      </p>
+    </article>
+  </div>
+
+  <div class="section-head">
+    <div class="section-title">
+      <span class="symbol">✳</span>
+      <h2>GOOD TEETH</h2>
+    </div>
+    <span class="count">Five bandmates</span>
+  </div>
+
+  <article class="card">
+    <h3>A Collaborative Band</h3>
+    <p>
+      GOOD TEETH consists of five musicians whose different approaches collide
+      to create the band's distinctive sound. Their working relationship is
+      collaborative: arrangements develop through experimentation, reactions,
+      disagreements, and ideas passed between members.
+    </p>
+    <p>
+      The band is not organized around one member being the sole creative force.
+      Each musician contributes something distinct, and the music changes through
+      their interaction.
+    </p>
+    <div class="band-row">
+      <div class="band-member ives-accent">
+        <strong>Ives</strong>
+        <span>Vocals · 26</span>
+      </div>
+      <div class="band-member renga-accent">
+        <strong>Renga</strong>
+        <span>Synth / Keyboard · 24</span>
+      </div>
+      <div class="band-member togo-accent">
+        <strong>Tōgo</strong>
+        <span>Electric Guitar · 22</span>
+      </div>
+      <div class="band-member purl-accent">
+        <strong>Purl</strong>
+        <span>Drums · 21</span>
+      </div>
+      <div class="band-member riley-accent">
+        <strong>Riley</strong>
+        <span>Bass · 20</span>
+      </div>
+    </div>
+    <p style="margin-top:15px;">
+      GOOD TEETH's music ranges from catchy electronic hooks and playful production
+      to technical guitar, emo, post-hardcore, vulnerable melodies, and full-force
+      hardcore. No single member owns one genre or emotional role.
+    </p>
+  </article>
+
+  <div class="section-head">
+    <div class="section-title">
+      <span class="symbol">✳</span>
+      <h2>Individual Band Connections</h2>
+    </div>
+    <span class="count">Established details</span>
+  </div>
+
+  <div class="grid">
+    <article class="card ives">
+      <h3>Ives & the Band</h3>
+      <p>
+        Ives is GOOD TEETH's lead singer. His intense, expressive performance
+        style is one part of the band's broader collaborative identity, not a
+        substitute for the other members' musical contributions.
+      </p>
+    </article>
+
+    <article class="card renga">
+      <h3>Renga & the Band</h3>
+      <p>
+        Renga handles synth and keyboard, building electronic architecture,
+        unusual melodies, digital textures, loops, and atmospheric layers into
+        the band's sound.
+      </p>
+    </article>
+
+    <article class="card togo">
+      <h3>Tōgo & the Band</h3>
+      <p>
+        Tōgo plays electric guitar, contributing atmospheric and technical riffs,
+        layered harmonics, melodic passages, heavy riffs, and sudden bursts of
+        intensity.
+      </p>
+    </article>
+
+    <article class="card purl">
+      <h3>Purl & the Band</h3>
+      <p>
+        Purl's drumming drives the band's physical energy, reinforces electronic
+        rhythms, supports vulnerable sections, and helps carry songs into their
+        heavier passages.
+      </p>
+    </article>
+
+    <article class="card riley">
+      <h3>Riley & the Band</h3>
+      <p>
+        Riley's bass provides emotional and harmonic gravity. His parts interact
+        closely with Purl's drumming and can bring a melancholy undertone to music
+        that otherwise sounds bright or playful.
+      </p>
+    </article>
+
+    <article class="card pike">
+      <h3>Pike & GOOD TEETH</h3>
+      <p>
+        Pike's connection to the band comes through his work in SJL's underground
+        music scene and his friendship with Tansy, whom he regularly gets tickets
+        to GOOD TEETH shows.
+      </p>
+    </article>
+  </div>
+
+  <div class="section-head">
+    <div class="section-title">
+      <span class="symbol">✳</span>
+      <h2>Connections Across Places</h2>
+    </div>
+    <span class="count">Home, work & community</span>
+  </div>
+
+  <div class="grid">
+    <article class="card cheche">
+      <h3>Cheche & Pugad</h3>
+      <p>
+        Cheche is closely connected to her family and community in Pugad, an
+        independent rural community outside Saint Jude's Landing. She visits SJL
+        frequently, but does not consider the city her home.
+      </p>
+      <p>
+        Her life connects the two communities through travel, friendships,
+        skateboarding, and the local styles she brings back to Pugad.
+      </p>
+    </article>
+
+    <article class="card benoit">
+      <h3>Benoit & Vaudreaux</h3>
+      <p>
+        Benoit grew up in Vaudreaux before settling in Nine. His Cajun-Creole
+        background, regional food, speech, and familiarity with waterways remain
+        ordinary parts of his identity in SJL.
+      </p>
+    </article>
+
+    <article class="card bell">
+      <h3>Bell & Nine</h3>
+      <p>
+        Bell's friendship with Benoit reaches back to her time working hard-labor
+        jobs in Nine while supporting herself through college. Her current career
+        and polished lifestyle developed later; her history with Nine is part of
+        her own story.
+      </p>
+    </article>
+
+    <article class="card pike">
+      <h3>Pike & Sivai</h3>
+      <p>
+        Pike grew up in Sivai, an island community in Orumai. Although his adult
+        work and social life are now rooted in Saint Jude's Landing, his connection
+        to his hometown remains part of his background.
+      </p>
+    </article>
+  </div>
+
+  <div class="section-head">
+    <div class="section-title">
+      <span class="symbol">✳</span>
+      <h2>How to Read the Web</h2>
+    </div>
+  </div>
+
+  <div class="grid">
+    <article class="card">
+      <h3>Friendship Isn't Uniform</h3>
+      <p>
+        A group can contain best friends, close friends, casual acquaintances,
+        and people who get along without spending every day together. Shared
+        connections do not automatically create equal closeness.
+      </p>
+    </article>
+    <article class="card">
+      <h3>People Have Separate Lives</h3>
+      <p>
+        Workplaces, music venues, neighborhoods, hometowns, and existing friendships
+        connect characters naturally. Those connections can overlap without making
+        every character part of every event.
+      </p>
+    </article>
+    <article class="card wide">
+      <h3>A Living Network</h3>
+      <p>
+        Saint Jude's Landing is a city, not a closed cast list. Characters have
+        routines, coworkers, neighbors, relatives, favorite places, and people
+        they know from entirely different parts of their lives. Some connections
+        are longstanding and intimate; others are as simple as recognizing
+        someone at a venue or knowing who can get you through the door.
+      </p>
+    </article>
+  </div>
+
+  <footer>
+    <span>CREATOR · RELATIONSHIP WEB</span>
+    <span>Connections Grow Over Time</span>
+  </footer>
+
+</div>
+</body>
+</html>
