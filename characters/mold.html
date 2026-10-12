@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mold — Creator</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    :root {
+      --mold-bg: #111714;
+      --mold-panel: #1c2520;
+      --mold-panel-light: #263129;
+      --mold-green: #b4d69b;
+      --mold-green-bright: #d7f1b8;
+      --mold-pink: #d69aaa;
+      --mold-cream: #f0ebdc;
+      --mold-muted: #b7c0ae;
+      --mold-border: rgba(180, 214, 155, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--mold-cream);
+      background:
+        radial-gradient(ellipse at 8% 5%, rgba(180, 214, 155, 0.11), transparent 32rem),
+        radial-gradient(ellipse at 96% 52%, rgba(214, 154, 170, 0.08), transparent 32rem),
+        var(--mold-bg);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.75;
+    }
+
+    .mold-page {
+      width: min(1050px, 100%);
+      margin: 0 auto;
+      padding: 32px 22px 64px;
+    }
+
+    .mold-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      color: var(--mold-muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.73rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .mold-topline span:last-child {
+      color: var(--mold-pink);
+      text-align: right;
+    }
+
+    .mold-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(26px, 6vw, 58px);
+      border: 1px solid var(--mold-border);
+      border-radius: 8px 32px 8px 32px;
+      background:
+        radial-gradient(ellipse at 94% 0%, rgba(214, 154, 170, 0.12), transparent 50%),
+        linear-gradient(140deg, rgba(180, 214, 155, 0.08), transparent 65%),
+        var(--mold-panel);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.25);
+    }
+
+    .mold-hero::after {
+      content: "♡";
+      position: absolute;
+      right: 20px;
+      bottom: -72px;
+      color: rgba(180, 214, 155, 0.075);
+      font-size: clamp(150px, 27vw, 280px);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .mold-kicker {
+      position: relative;
+      margin: 0 0 12px;
+      color: var(--mold-green);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .mold-hero h1 {
+      position: relative;
+      margin: 0;
+      color: var(--mold-green-bright);
+      font-size: clamp(4rem, 13vw, 8rem);
+      letter-spacing: -0.075em;
+      line-height: 0.9;
+      overflow-wrap: anywhere;
+    }
+
+    .mold-subtitle {
+      position: relative;
+      margin: 22px 0 0;
+      color: var(--mold-pink);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .mold-intro {
+      position: relative;
+      max-width: 700px;
+      margin: 22px 0 0;
+      font-size: 1.08rem;
+    }
+
+    .mold-tags {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 25px;
+    }
+
+    .mold-tag {
+      padding: 5px 11px;
+      border: 1px solid var(--mold-border);
+      border-radius: 3px 12px 3px 12px;
+      background: rgba(180, 214, 155, 0.06);
+      color: var(--mold-green-bright);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.73rem;
+      font-weight: 800;
+      letter-spacing: 0.045em;
+    }
+
+    .mold-section {
+      margin-top: 35px;
+    }
+
+    .mold-section-heading {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin: 0 0 17px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--mold-border);
+    }
+
+    .mold-section-heading span {
+      color: var(--mold-pink);
+      font-size: 1.1rem;
+    }
+
+    .mold-section-heading h2 {
+      margin: 0;
+      color: var(--mold-green-bright);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.05rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .mold-card {
+      min-width: 0;
+      padding: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.075);
+      border-radius: 5px 19px 5px 19px;
+      background: var(--mold-panel);
+    }
+
+    .mold-card h3 {
+      margin: 0 0 9px;
+      color: var(--mold-green);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.91rem;
+      font-weight: 850;
+      letter-spacing: 0.035em;
+    }
+
+    .mold-card p {
+      margin: 0;
+    }
+
+    .mold-card p + p {
+      margin-top: 13px;
+    }
+
+    .mold-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .mold-grid .mold-card {
+      height: 100%;
+    }
+
+    .mold-profile {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 24px;
+      padding: 8px 22px;
+      border: 1px solid rgba(255, 255, 255, 0.075);
+      border-radius: 5px 19px 5px 19px;
+      background: var(--mold-panel);
+    }
+
+    .mold-detail {
+      display: grid;
+      grid-template-columns: 105px minmax(0, 1fr);
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.065);
+    }
+
+    .mold-detail strong {
+      color: var(--mold-green);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.73rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .mold-detail span {
+      overflow-wrap: anywhere;
+    }
+
+    .mold-full {
+      grid-column: 1 / -1;
+    }
+
+    .mold-callout {
+      padding: 24px;
+      border-left: 4px solid var(--mold-green);
+      border-radius: 0 17px 17px 0;
+      background:
+        linear-gradient(100deg, rgba(180, 214, 155, 0.075), transparent 85%),
+        var(--mold-panel);
+    }
+
+    .mold-callout p {
+      margin: 0;
+    }
+
+    .mold-callout p + p {
+      margin-top: 12px;
+    }
+
+    .mold-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .mold-list li {
+      padding: 6px 11px;
+      border: 1px solid rgba(180, 214, 155, 0.22);
+      border-radius: 3px 11px 3px 11px;
+      background: rgba(180, 214, 155, 0.05);
+      font-size: 0.9rem;
+    }
+
+    .mold-relationship {
+      border-color: rgba(214, 154, 170, 0.22);
+      background:
+        linear-gradient(120deg, rgba(214, 154, 170, 0.045), transparent),
+        var(--mold-panel);
+    }
+
+    .mold-relationship h3 {
+      color: var(--mold-pink);
+    }
+
+    .mold-grievance {
+      border: 1px dashed rgba(214, 154, 170, 0.4);
+      background:
+        linear-gradient(110deg, rgba(214, 154, 170, 0.07), transparent),
+        var(--mold-panel);
+    }
+
+    .mold-grievance h3 {
+      color: var(--mold-pink);
+    }
+
+    .mold-footer {
+      margin-top: 44px;
+      padding-top: 18px;
+      border-top: 1px solid var(--mold-border);
+      color: var(--mold-muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.74rem;
+      letter-spacing: 0.13em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .mold-footer span {
+      color: var(--mold-pink);
+    }
+
+    @media (max-width: 650px) {
+      .mold-page {
+        padding: 20px 13px 42px;
+      }
+
+      .mold-grid,
+      .mold-profile {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .mold-detail {
+        grid-template-columns: 94px minmax(0, 1fr);
+      }
+
+      .mold-full {
+        grid-column: auto;
+      }
+
+      .mold-topline {
+        font-size: 0.63rem;
+        letter-spacing: 0.08em;
+      }
+
+      .mold-hero {
+        border-radius: 5px 24px 5px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="mold-page">
+
+    <div class="mold-topline">
+      <span>♡ Creator Character Archive ♡</span>
+      <span>Saint Jude’s Landing</span>
+    </div>
+
+    <header class="mold-hero">
+      <p class="mold-kicker">Ammonia’s Group · Professional Finder of Things</p>
+      <h1>Mold</h1>
+      <p class="mold-subtitle">Opossum Demi-Human // She/They</p>
+      <p class="mold-intro">
+        Sweet, bubbly, affectionate, and filthy enough to make a dumpster
+        feel like a perfectly reasonable place to take a nap. Mold can
+        probably find whatever you need. It might be broken, covered in
+        something questionable, or inexplicably sticky—but she found it
+        for you, and she's really excited about that.
+      </p>
+      <div class="mold-tags">
+        <span class="mold-tag">SWEET-NATURED</span>
+        <span class="mold-tag">FILTHY</span>
+        <span class="mold-tag">AFFECTIONATE</span>
+        <span class="mold-tag">RESOURCEFUL</span>
+        <span class="mold-tag">PROFESSIONAL SCAVENGER</span>
+      </div>
+    </header>
+
+    <section class="mold-section">
+      <div class="mold-section-heading">
+        <span>♡</span>
+        <h2>At a Glance</h2>
+      </div>
+
+      <div class="mold-profile">
+        <div class="mold-detail">
+          <strong>Name</strong>
+          <span>Mold</span>
+        </div>
+        <div class="mold-detail">
+          <strong>Species</strong>
+          <span>Opossum demi-human</span>
+        </div>
+        <div class="mold-detail">
+          <strong>Age</strong>
+          <span>Adult</span>
+        </div>
+        <div class="mold-detail">
+          <strong>Gender</strong>
+          <span>She/They</span>
+        </div>
+        <div class="mold-detail">
+          <strong>Location</strong>
+          <span>Saint Jude’s Landing, Creator</span>
+        </div>
+        <div class="mold-detail">
+          <strong>Group</strong>
+          <span>Ammonia’s group</span>
+        </div>
+        <div class="mold-detail">
+          <strong>Build</strong>
+          <span>Plush, compact body; short waist, wide rounded hips, very thick thighs, heavy soft lower body, soft rounded stomach, and long slightly awkward limbs</span>
+        </div>
+        <div class="mold-detail">
+          <strong>Skin</strong>
+          <span>Pale, soft skin</span>
+        </div>
+        <div class="mold-detail">
+          <strong>Eyes</strong>
+          <span>Half-lidded pale blue eyes</span>
+        </div>
+        <div class="mold-detail">
+          <strong>Hair</strong>
+          <span>Messy black-and-white hair hacked unevenly around her shoulders</span>
+        </div>
+        <div class="mold-detail">
+          <strong>Ears</strong>
+          <span>Enormous pink-gray opossum ears</span>
+        </div>
+        <div class="mold-detail">
+          <strong>Face</strong>
+          <span>Blunt little nose, crooked grin, faint freckles, and small sharp teeth</span>
+        </div>
+        <div class="mold-detail">
+          <strong>Tail</strong>
+          <span>Long, bald, pink opossum tail</span>
+        </div>
+        <div class="mold-detail">
+          <strong>Hands</strong>
+          <span>Opossum fingers with dark, chipped nails</span>
+        </div>
+        <div class="mold-detail mold-full">
+          <strong>Clothing</strong>
+          <span>
+            Clothing found in the trash: usually oversized filthy graphic
+            tees, tiny athletic shorts, mismatched socks, battered sneakers,
+            and stretched hoodies. Cheap plastic jewelry, cigarette burns,
+            and other signs of wear are common.
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="mold-section">
+      <div class="mold-section-heading">
+        <span>♡</span>
+        <h2>Appearance &amp; Style</h2>
+      </div>
+
+      <div class="mold-grid">
+        <article class="mold-card">
+          <h3>Soft, Plush Build</h3>
+          <p>
+            Mold has a plush, compact body with a short waist, wide rounded
+            hips, very thick thighs, a heavy soft lower body, and a softly
+            rounded stomach. Her limbs are long and slightly awkward beside
+            her compact proportions. She has a distinctly soft physical
+            presence without being reduced to her body.
+          </p>
+        </article>
+
+        <article class="mold-card">
+          <h3>Half-Lidded Eyes</h3>
+          <p>
+            Her pale blue eyes are half-lidded, set in a face with a blunt
+            little nose, faint freckles, a crooked grin, and small sharp
+            teeth. Her expression often pairs naturally with her relaxed,
+            cheerful attitude toward things other people find disgusting.
+          </p>
+        </article>
+
+        <article class="mold-card">
+          <h3>Opossum Features</h3>
+          <p>
+            Enormous pink-gray opossum ears frame her messy black-and-white
+            hair, which has been hacked unevenly around her shoulders.
+            Her long, bald pink tail and opossum fingers make her
+            nonhuman features unmistakable.
+          </p>
+        </article>
+
+        <article class="mold-card">
+          <h3>Found, Worn, Kept</h3>
+          <p>
+            Mold wears oversized filthy graphic tees, tiny athletic shorts,
+            mismatched socks, battered sneakers, and stretched hoodies.
+            Cheap plastic jewelry and cigarette burns are ordinary details
+            of her appearance. Her clothing looks found and worn because
+            it often was.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="mold-section">
+      <div class="mold-section-heading">
+        <span>♡</span>
+        <h2>Personality</h2>
+      </div>
+
+      <div class="mold-card">
+        <p>
+          Mold is sweet, bubbly, affectionate, friendly, and genuinely
+          happy to see people. She has an uncomplicated enthusiasm for
+          people, objects, and whatever strange thing she has stumbled
+          across lately. She enjoys sharing discoveries and likes being
+          useful, especially when she can find something somebody needs.
+        </p>
+        <p>
+          She is also filthy. Not in a tragic, brooding, or deliberately
+          provocative way. Mold simply has extremely loose standards for
+          what counts as clean, appropriate, or worth throwing away.
+          Crawling through garbage, digging through abandoned places,
+          getting covered in grime, sleeping in dumpsters, and bringing
+          home things other people would immediately consider disgusting
+          are all perfectly ordinary parts of her life.
+        </p>
+        <p>
+          Mold is comfortable with herself. She is not embarrassed by
+          her habits, does not need to defend every strange thing she
+          does, and is unlikely to understand why someone is making such
+          a fuss over a little dirt. If she finds something interesting,
+          she wants to show somebody. If she finds something useful,
+          she wants to give it to them.
+        </p>
+        <p>
+          Her warmth is genuine. She is not secretly miserable beneath
+          the grime, nor is her friendliness merely a setup for a joke.
+          Mold likes people, enjoys their company, and takes real pleasure
+          in small discoveries and shared moments.
+        </p>
+      </div>
+    </section>
+
+    <section class="mold-section">
+      <div class="mold-section-heading">
+        <span>♡</span>
+        <h2>Scavenging &amp; Finding Things</h2>
+      </div>
+
+      <div class="mold-grid">
+        <article class="mold-card">
+          <h3>Experienced Scavenger</h3>
+          <p>
+            Mold knows where discarded objects end up. She explores
+            places other people overlook, recognizes useful materials,
+            and notices things that disappear into the background for
+            everyone else.
+          </p>
+        </article>
+
+        <article class="mold-card">
+          <h3>Uncanny Timing</h3>
+          <p>
+            She has an uncanny ability to locate exactly the bizarre
+            item someone needs. Her finds may be useful, strange,
+            disgusting, broken, valuable, or all four at once.
+            The combination rarely bothers her.
+          </p>
+        </article>
+
+        <article class="mold-card">
+          <h3>Useful, Useless, Interesting</h3>
+          <p>
+            Mold collects useful and useless objects indiscriminately.
+            Strange mechanical parts, broken toys, discarded materials,
+            and peculiar little treasures can all catch her attention.
+            She does not need an object to look impressive before
+            deciding it is worth keeping.
+          </p>
+        </article>
+
+        <article class="mold-card">
+          <h3>She Thought of You!</h3>
+          <p>
+            Finding things for people is one of Mold's favorite ways
+            to be useful. She disappears while scavenging and may
+            reappear carrying something she thinks a friend could
+            use. The item might be perfect. It might also require
+            considerable explanation.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="mold-section">
+      <div class="mold-section-heading">
+        <span>♡</span>
+        <h2>Living Arrangements</h2>
+      </div>
+
+      <div class="mold-card">
+        <p>
+          Mold sleeps in dumpsters and is completely comfortable living
+          around discarded things. Places other people consider filthy
+          or uninhabitable are ordinary parts of her environment.
+        </p>
+        <p>
+          She may fall asleep wherever she happens to settle. A pile of
+          junk, an abandoned structure, or some other unexpected place
+          can become a resting spot without any particular ceremony.
+          Mold does not automatically treat discomfort or mess as a
+          problem that needs solving.
+        </p>
+        <p>
+          Her way of living is not presented as a tragic backstory or
+          a symbol of secret misery. It is simply part of her life.
+          Mold has her own routines, preferences, relationships, and
+          ways of navigating Saint Jude’s Landing.
+        </p>
+      </div>
+    </section>
+
+    <section class="mold-section">
+      <div class="mold-section-heading">
+        <span>♡</span>
+        <h2>Affection &amp; Social Life</h2>
+      </div>
+
+      <div class="mold-card">
+        <p>
+          Mold is warm, physical, enthusiastic, and easy with affection.
+          She likes hugs, leaning against people, sitting close, sharing
+          things she finds, and showing people interesting objects.
+          She enjoys including others in whatever she is doing.
+        </p>
+        <p>
+          Her excitement is often immediate and sincere. When she
+          discovers something fascinating, she wants to share the
+          discovery rather than keep it to herself. When she likes
+          someone, she is happy to see them and comfortable showing it.
+        </p>
+        <p>
+          Mold's physical affection is not a performance or an attempt
+          to make everyone like her. She is simply an affectionate
+          person. Her relationships exist alongside her scavenging,
+          her routines, and the other strange little things that
+          occupy her attention.
+        </p>
+      </div>
+    </section>
+
+    <section class="mold-section">
+      <div class="mold-section-heading">
+        <span>♡</span>
+        <h2>Voice &amp; Humor</h2>
+      </div>
+
+      <div class="mold-grid">
+        <article class="mold-card">
+          <h3>Bubbly &amp; Casual</h3>
+          <p>
+            Mold speaks in a bubbly, casual, affectionate, conversational
+            way. She gets excited easily and talks about interesting
+            finds with genuine enthusiasm. She is not embarrassed by
+            how filthy she is and does not need to apologize for it
+            every time someone notices.
+          </p>
+        </article>
+
+        <article class="mold-card">
+          <h3>Little Chirps</h3>
+          <p>
+            Mold occasionally makes small chirping noises, especially
+            when greeting someone or becoming excited. They are little
+            expressions of her enthusiasm, not a replacement for
+            ordinary conversation.
+          </p>
+        </article>
+
+        <article class="mold-card">
+          <h3>Cheerful &amp; Filthy</h3>
+          <p>
+            Her humor is cheerful, filthy, absurd, and often completely
+            sincere. Mold can present something absolutely disgusting
+            with the enthusiasm of someone showing off a treasured gift.
+            She does not necessarily understand why the reaction is
+            different from the one she expected.
+          </p>
+        </article>
+
+        <article class="mold-card">
+          <h3>No Shame About the Find</h3>
+          <p>
+            Mold is comfortable explaining where she found something,
+            even when the answer would make another person reconsider
+            touching it. Her enthusiasm comes from the discovery itself,
+            not from trying to shock anybody.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="mold-section">
+      <div class="mold-section-heading">
+        <span>♡</span>
+        <h2>Habits</h2>
+      </div>
+
+      <div class="mold-card">
+        <ul class="mold-list">
+          <li>Suddenly emerging from dumpsters</li>
+          <li>Appearing from piles of junk</li>
+          <li>Exploring abandoned structures</li>
+          <li>Chewing on questionable things</li>
+          <li>Spitting something out and greeting people</li>
+          <li>Digging through trash while chatting normally</li>
+          <li>Disappearing without warning while scavenging</li>
+          <li>Reappearing with something a friend might need</li>
+          <li>Collecting useful and useless objects</li>
+          <li>Falling asleep wherever she settles</li>
+          <li>Sharing her finds with people she likes</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mold-section">
+      <div class="mold-section-heading">
+        <span>♡</span>
+        <h2>Likes</h2>
+      </div>
+
+      <div class="mold-card">
+        <ul class="mold-list">
+          <li>Finding things</li>
+          <li>Discarded objects</li>
+          <li>Weird junk</li>
+          <li>Useful scraps</li>
+          <li>Strange mechanical parts</li>
+          <li>Broken toys</li>
+          <li>Cigarettes</li>
+          <li>Stimulants</li>
+          <li>Fresh-baked bread</li>
+          <li>Riot’s candy</li>
+          <li>Exploring</li>
+          <li>Getting dirty</li>
+          <li>People she likes</li>
+          <li>Giving people things she found</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mold-section">
+      <div class="mold-section-heading">
+        <span>♡</span>
+        <h2>Dislikes &amp; Personal Grievances</h2>
+      </div>
+
+      <div class="mold-grid">
+        <article class="mold-card">
+          <h3>Opioids</h3>
+          <p>
+            Mold dislikes opioids. It is a straightforward personal
+            dislike, not a reason to assume she dislikes every substance
+            or that substance use defines her entire life.
+          </p>
+        </article>
+
+        <article class="mold-card">
+          <h3>Old Man Smell</h3>
+          <p>
+            Old man smell is on the list. Mold has her own preferences,
+            and not every one of them needs a complicated explanation.
+          </p>
+        </article>
+
+        <article class="mold-card mold-grievance">
+          <h3>The Tail Incident</h3>
+          <p>
+            There is a monster in Nine who stepped on Mold's tail and
+            then farted instead of apologizing.
+          </p>
+          <p>
+            Mold remembers this as a personal grievance. She does not
+            care that the monster lacked true self-awareness. It stepped
+            on her tail and farted instead of apologizing. The matter
+            remains unresolved in her mind.
+          </p>
+        </article>
+
+        <article class="mold-card">
+          <h3>Everything Else</h3>
+          <p>
+            Mold's dislikes also include whatever else she personally
+            finds unpleasant. Her established grievances do not exhaust
+            her opinions, and her personality is not limited to a list
+            of things that annoy her.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="mold-section">
+      <div class="mold-section-heading">
+        <span>♡</span>
+        <h2>Relationships</h2>
+      </div>
+
+      <div class="mold-card mold-relationship">
+        <h3>Ammonia’s Group</h3>
+        <p>
+          Mold is close with Ammonia, Benoit, Riot, and Doll through
+          Ammonia's group. These friendships are part of her established
+          life in Saint Jude’s Landing, alongside her own interests,
+          routines, and scavenging.
+        </p>
+        <p>
+          The group is informal and mobile. Its members leave and return
+          on their own terms rather than remaining constantly together.
+          Ammonia, Benoit, Riot, and Doll are the members most often
+          present, but Mold's connections with them do not require
+          everyone to be together all the time.
+        </p>
+      </div>
+
+      <div class="mold-card mold-relationship" style="margin-top: 14px;">
+        <h3>Doll</h3>
+        <p>
+          Doll and Mold are friends. When Doll first encountered Mold
+          in a dirty alleyway a few years ago, her immediate reaction
+          was: <em>“Disgusting. I fucking love it.”</em>
+        </p>
+        <p>
+          Doll genuinely likes Mold's filthy, strange, disgusting
+          nature rather than merely tolerating it. Mold is one of
+          the people Doll accepts without needing them to become
+          more socially conventional.
+        </p>
+      </div>
+
+      <div class="mold-card mold-relationship" style="margin-top: 14px;">
+        <h3>Riot</h3>
+        <p>
+          Riot always has candy, and Mold likes whatever he has.
+          His candy is one of the small, familiar pleasures she
+          associates with him.
+        </p>
+      </div>
+    </section>
+
+    <section class="mold-section">
+      <div class="mold-section-heading">
+        <span>♡</span>
+        <h2>Core Trait</h2>
+      </div>
+
+      <div class="mold-callout">
+        <p>
+          A sweet, bubbly, affectionate filthy trash possum who can
+          find almost anything. If you need it, Mold can probably
+          find it.
+        </p>
+        <p>
+          She is genuinely warm, happy to see people, and enthusiastic
+          about sharing what she discovers. Her habits are filthy,
+          her finds can be horrifying, and her standards for cleanliness
+          are questionable—but her affection is real.
+        </p>
+      </div>
+    </section>
+
+    <section class="mold-section">
+      <div class="mold-section-heading">
+        <span>♡</span>
+        <h2>Characterization Notes</h2>
+      </div>
+
+      <div class="mold-card">
+        <h3>A Whole Person, Not a Gross-Out Joke</h3>
+        <p>
+          Do not reduce Mold to a gross-out joke, a scavenger gimmick,
+          or an animalistic character. She is a genuinely warm adult
+          woman with her own life, relationships, interests, and
+          bullshit.
+        </p>
+        <p>
+          Her filthy habits are simply part of who she is. She can
+          be disgusting without being cruel, strange without being
+          incomprehensible, and cheerful without being childish.
+          Her love of scavenging is a real interest and a practical
+          skill, not her only personality trait.
+        </p>
+        <p>
+          Mold has relationships she values, objects she finds
+          interesting, people she enjoys being around, and a life
+          that continues whether anyone is watching her or not.
+          She is not defined exclusively by garbage, and she does
+          not need to become cleaner or more conventional to be
+          a complete character.
+        </p>
+      </div>
+    </section>
+
+    <footer class="mold-footer">
+      <span>♡</span> Creator · Saint Jude’s Landing <span>♡</span>
+    </footer>
+
+  </main>
+</body>
+</html>
