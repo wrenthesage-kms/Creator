@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pugad — Creator</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    :root {
+      --pugad-bg: #151b18;
+      --pugad-panel: #202a23;
+      --pugad-border: #465b49;
+      --pugad-text: #e6e9df;
+      --pugad-muted: #b0bca9;
+      --pugad-green: #b8d69b;
+      --pugad-gold: #e2c88c;
+      --pugad-teal: #a1d0c1;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 12% 8%, rgba(128, 166, 105, 0.15), transparent 36%),
+        radial-gradient(ellipse at 88% 30%, rgba(125, 167, 143, 0.10), transparent 34%),
+        var(--pugad-bg);
+      color: var(--pugad-text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--pugad-gold);
+      text-decoration: none;
+      border-bottom: 1px dotted currentColor;
+    }
+
+    a:hover {
+      color: var(--pugad-green);
+    }
+
+    .pugad-page {
+      width: min(100% - 32px, 1000px);
+      margin: 0 auto;
+      padding: 34px 0 64px;
+    }
+
+    .pugad-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+      color: var(--pugad-muted);
+      font: 0.82rem/1.6 sans-serif;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .pugad-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 6vw, 64px);
+      border: 1px solid var(--pugad-border);
+      border-radius: 7px;
+      background:
+        linear-gradient(140deg, rgba(33, 48, 37, 0.97), rgba(22, 32, 27, 0.96)),
+        var(--pugad-panel);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.24);
+    }
+
+    .pugad-hero::before {
+      content: "☘  ✧  ❧";
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      color: rgba(184, 214, 155, 0.36);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      letter-spacing: 0.16em;
+      pointer-events: none;
+    }
+
+    .pugad-kicker {
+      margin: 0 0 8px;
+      color: var(--pugad-gold);
+      font: 0.76rem/1.5 sans-serif;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .pugad-hero h1 {
+      margin: 0;
+      color: var(--pugad-green);
+      font-size: clamp(3rem, 9vw, 6rem);
+      font-weight: normal;
+      letter-spacing: 0.07em;
+      line-height: 1.05;
+    }
+
+    .pugad-subtitle {
+      max-width: 650px;
+      margin: 18px 0 0;
+      color: var(--pugad-text);
+      font-size: 1.08rem;
+      font-style: italic;
+    }
+
+    .pugad-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 25px;
+    }
+
+    .pugad-meta span {
+      padding: 5px 10px;
+      border: 1px solid var(--pugad-border);
+      border-radius: 3px;
+      color: var(--pugad-muted);
+      font: 0.72rem/1.5 sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .pugad-divider {
+      margin: 26px 0;
+      color: var(--pugad-green);
+      text-align: center;
+      letter-spacing: 0.35em;
+      opacity: 0.85;
+    }
+
+    .pugad-intro {
+      margin: 0 0 26px;
+      padding: 20px 24px;
+      border-left: 3px solid var(--pugad-green);
+      background: rgba(184, 214, 155, 0.055);
+      color: #d9e0d4;
+      font-size: 1.04rem;
+    }
+
+    .pugad-notice {
+      margin: 0 0 26px;
+      padding: 14px 18px;
+      border: 1px solid #687b5d;
+      border-radius: 4px;
+      color: var(--pugad-green);
+      font: 0.82rem/1.7 sans-serif;
+      letter-spacing: 0.035em;
+      text-align: center;
+    }
+
+    .pugad-section-label {
+      margin: 34px 0 14px;
+      color: var(--pugad-gold);
+      font: 0.76rem/1.5 sans-serif;
+      letter-spacing: 0.18em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .pugad-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .pugad-card {
+      padding: 21px 22px;
+      border: 1px solid var(--pugad-border);
+      border-radius: 5px;
+      background: rgba(32, 42, 35, 0.88);
+    }
+
+    .pugad-card h2 {
+      margin: 0 0 11px;
+      color: var(--pugad-green);
+      font-size: 1.13rem;
+      font-weight: normal;
+      letter-spacing: 0.025em;
+    }
+
+    .pugad-card h2 span {
+      margin-right: 7px;
+      color: var(--pugad-gold);
+      font-size: 0.95em;
+    }
+
+    .pugad-card p {
+      margin: 0;
+      color: var(--pugad-text);
+      font-size: 0.96rem;
+    }
+
+    .pugad-card.wide {
+      grid-column: 1 / -1;
+    }
+
+    .pugad-feature {
+      margin-top: 20px;
+      padding: 25px;
+      border: 1px solid #536b5b;
+      border-radius: 5px;
+      background:
+        linear-gradient(120deg, rgba(91, 127, 83, 0.17), rgba(52, 91, 81, 0.12)),
+        var(--pugad-panel);
+    }
+
+    .pugad-feature h2 {
+      margin: 0 0 10px;
+      color: var(--pugad-teal);
+      font-size: 1.25rem;
+      font-weight: normal;
+    }
+
+    .pugad-feature p {
+      margin: 0;
+    }
+
+    .pugad-footer {
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid var(--pugad-border);
+      color: var(--pugad-muted);
+      font: 0.8rem/1.8 sans-serif;
+      text-align: center;
+    }
+
+    .pugad-footer .flourish {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--pugad-green);
+      font: 1.1rem/1.5 Georgia, serif;
+      letter-spacing: 0.3em;
+    }
+
+    @media (max-width: 650px) {
+      .pugad-page {
+        width: min(100% - 22px, 1000px);
+        padding-top: 18px;
+      }
+
+      .pugad-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pugad-card.wide {
+        grid-column: auto;
+      }
+
+      .pugad-card {
+        padding: 18px;
+      }
+
+      .pugad-intro {
+        padding: 16px 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .pugad-card {
+        transition: border-color 180ms ease, background-color 180ms ease;
+      }
+
+      .pugad-card:hover {
+        border-color: #829778;
+        background-color: rgba(41, 55, 44, 0.96);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="pugad-page">
+
+    <nav class="pugad-nav" aria-label="Page navigation">
+      <a href="../index.html">← Creator home</a>
+      <a href="saint-judes-landing.html">Saint Jude’s Landing ↗</a>
+    </nav>
+
+    <header class="pugad-hero">
+      <p class="pugad-kicker">Creator · Independent community</p>
+      <h1>Pugad</h1>
+      <p class="pugad-subtitle">
+        A rural community with its own roots, its own routines, and a whole
+        lot of alien wilderness beyond the edge of town.
+      </p>
+
+      <div class="pugad-meta">
+        <span>Outside SJL</span>
+        <span>Rural community</span>
+        <span>Self-sufficient</span>
+        <span>Generational roots</span>
+      </div>
+    </header>
+
+    <div class="pugad-divider" aria-hidden="true">☘ · · · ✧ · · · ☘</div>
+
+    <p class="pugad-intro">
+      Pugad is an established rural community on Creator, surrounded by
+      lush alien wilderness. Its homes, local businesses, self-sufficient
+      infrastructure, and generations of residents give it a strong local
+      identity. It is quieter and less densely developed than Saint Jude’s
+      Landing, but it remains firmly connected to the modern world.
+    </p>
+
+    <div class="pugad-notice">
+      INDEPENDENT COMMUNITY · OUTSIDE SAINT JUDE’S LANDING · NOT A DISTRICT
+    </div>
+
+    <p class="pugad-section-label">Life in Pugad</p>
+
+    <div class="pugad-grid">
+
+      <section class="pugad-card">
+        <h2><span>❧</span> Environment</h2>
+        <p>
+          Pugad is rural, lush, open, and surrounded by alien vegetation and
+          wildlife. Life here is quieter than in Saint Jude’s Landing, with
+          an established, practical, lived-in character shaped by the
+          community and its surroundings.
+        </p>
+      </section>
+
+      <section class="pugad-card">
+        <h2><span>⌂</span> Community</h2>
+        <p>
+          Families, long-term residents, local businesses, schools,
+          teenagers, daily routines, and generational familiarity shape
+          everyday life. Residents share a strong sense of local identity
+          built over generations.
+        </p>
+      </section>
+
+      <section class="pugad-card">
+        <h2><span>⚒</span> Self-Sufficiency</h2>
+        <p>
+          Pugad has established, self-sufficient infrastructure alongside
+          homes and local businesses. It functions as a community in its
+          own right, rather than depending on its identity or existence
+          upon Saint Jude’s Landing.
+        </p>
+      </section>
+
+      <section class="pugad-card">
+        <h2><span>♧</span> Rural Life</h2>
+        <p>
+          Less densely developed and less industrially dense than Saint
+          Jude’s Landing, Pugad has more open space and a quieter pace of
+          life. Its rural character exists alongside the practical routines
+          and established infrastructure of a modern community.
+        </p>
+      </section>
+
+    </div>
+
+    <div class="pugad-divider" aria-hidden="true">✧ · · · ☘ · · · ✧</div>
+
+    <p class="pugad-section-label">Connected, not absorbed</p>
+
+    <div class="pugad-grid">
+
+      <section class="pugad-card wide">
+        <h2><span>↔</span> Relationship to Saint Jude’s Landing</h2>
+        <p>
+          Pugad is physically outside Saint Jude’s Landing but culturally
+          connected to it. Younger residents travel into the city and bring
+          back music, fashion, food, technology, gossip, trends, and niche
+          interests. The city influences local life without replacing
+          Pugad’s own identity.
+        </p>
+      </section>
+
+      <section class="pugad-card">
+        <h2><span>✦</span> Local Identity</h2>
+        <p>
+          Pugad is its own community, with its own residents, routines,
+          businesses, and generational connections. It is not an extension
+          of Saint Jude’s Landing and is not one of the city’s districts.
+        </p>
+      </section>
+
+      <section class="pugad-card">
+        <h2><span>♡</span> Connection</h2>
+        <p>
+          Cheche is associated with Pugad.
+        </p>
+      </section>
+
+    </div>
+
+    <section class="pugad-feature">
+      <h2>☘ Pugad, in a Nutshell</h2>
+      <p>
+        Rural, lush, open, practical, established, self-sufficient, and
+        lived-in. Pugad is quieter than Saint Jude’s Landing, surrounded by
+        Creator’s alien wilderness, and shaped by generations of community
+        life. It belongs to the same modern civilization while remaining
+        unmistakably its own place.
+      </p>
+    </section>
+
+    <footer class="pugad-footer">
+      <span class="flourish" aria-hidden="true">☘ ❧ ✧ ❧ ☘</span>
+      <a href="../index.html">Creator</a>
+      <span aria-hidden="true"> · </span>
+      An independent community beyond Saint Jude’s Landing
+    </footer>
+
+  </main>
+</body>
+</html>
