@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOOD TEETH — Creator</title>
+<style>
+:root {
+  --bg: #111116;
+  --panel: #1d1c24;
+  --panel-alt: #26232e;
+  --text: #f2edf5;
+  --muted: #bcb5c7;
+  --red: #f05b68;
+  --pink: #ff79c6;
+  --violet: #bba0ff;
+  --blue: #79d7ff;
+  --lime: #d5f76a;
+  --orange: #ffad73;
+  --line: rgba(255,255,255,.11);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 28px 15px 45px;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(240,91,104,.13), transparent 32%),
+    radial-gradient(ellipse at 100% 30%, rgba(187,160,255,.12), transparent 35%),
+    radial-gradient(ellipse at 40% 100%, rgba(121,215,255,.07), transparent 35%),
+    var(--bg);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+.page { max-width: 1020px; margin: auto; }
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 42px 32px 34px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 20px;
+  background: linear-gradient(125deg, #39202d, #24212f 48%, #182a34);
+}
+.hero::before {
+  content: "✳";
+  position: absolute;
+  right: 25px;
+  top: -55px;
+  color: rgba(255,121,198,.12);
+  font-size: 210px;
+  line-height: 1;
+  transform: rotate(15deg);
+}
+.eyebrow {
+  position: relative;
+  margin: 0 0 12px;
+  color: var(--lime);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+h1 {
+  position: relative;
+  margin: 0;
+  font-size: clamp(48px, 11vw, 100px);
+  line-height: .88;
+  font-weight: 900;
+  letter-spacing: -5px;
+  overflow-wrap: anywhere;
+  text-shadow: 4px 4px 0 rgba(240,91,104,.28);
+}
+.hero-subtitle {
+  position: relative;
+  margin: 18px 0 0;
+  color: #e3d9ef;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.hero-copy {
+  position: relative;
+  max-width: 780px;
+  margin: 24px 0 0;
+  font-size: 16px;
+}
+.member-strip {
+  display: grid;
+  grid-template-columns: repeat(5,minmax(0,1fr));
+  gap: 8px;
+  margin-top: 25px;
+}
+.member {
+  padding: 12px 9px;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 10px;
+  background: rgba(10,10,15,.28);
+}
+.member strong {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+.member small {
+  color: var(--muted);
+  font-size: 11px;
+}
+.ives strong { color: var(--red); }
+.renga strong { color: var(--pink); }
+.togo strong { color: var(--lime); }
+.purl strong { color: var(--orange); }
+.riley strong { color: var(--blue); }
+section {
+  margin-top: 19px;
+  padding: 25px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(29,28,36,.96);
+}
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin: 0 0 18px;
+  font-size: 18px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+h2 .symbol { color: var(--pink); }
+h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  letter-spacing: .6px;
+}
+p { margin: 0 0 12px; }
+p:last-child { margin-bottom: 0; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 12px;
+}
+.card {
+  padding: 17px;
+  border: 1px solid rgba(255,255,255,.055);
+  border-radius: 12px;
+  background: var(--panel-alt);
+}
+.card p { color: #ddd6e4; font-size: 14px; }
+.card ul {
+  margin: 0;
+  padding-left: 19px;
+  color: #ddd6e4;
+  font-size: 14px;
+}
+.card li { margin: 4px 0; }
+.renga-card { border-top: 3px solid var(--pink); }
+.riley-card { border-top: 3px solid var(--blue); }
+.togo-card { border-top: 3px solid var(--lime); }
+.purl-card { border-top: 3px solid var(--orange); }
+.ives-card { border-top: 3px solid var(--red); }
+.wide { grid-column: 1 / -1; }
+.member-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.member-name h3 { margin: 0; font-size: 19px; }
+.member-name span {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.renga-card .member-name h3 { color: var(--pink); }
+.riley-card .member-name h3 { color: var(--blue); }
+.togo-card .member-name h3 { color: var(--lime); }
+.purl-card .member-name h3 { color: var(--orange); }
+.ives-card .member-name h3 { color: var(--red); }
+.callout {
+  padding: 18px 20px;
+  border-left: 3px solid var(--pink);
+  border-radius: 0 10px 10px 0;
+  background: rgba(255,121,198,.07);
+}
+.callout p { font-size: 14px; }
+.genre-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+.genre {
+  padding: 6px 11px;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 30px;
+  background: rgba(255,255,255,.035);
+  color: #e8e0ef;
+  font-size: 12px;
+}
+.contrast {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+.contrast div {
+  padding: 15px;
+  border-radius: 10px;
+  background: var(--panel-alt);
+}
+.contrast strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--violet);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.contrast p { color: #dcd5e3; font-size: 13px; }
+.timeline {
+  display: grid;
+  gap: 10px;
+}
+.step {
+  display: grid;
+  grid-template-columns: 115px minmax(0,1fr);
+  gap: 15px;
+  padding: 13px 15px;
+  border-radius: 10px;
+  background: var(--panel-alt);
+}
+.step-label {
+  color: var(--lime);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.step p { color: #ded7e5; font-size: 14px; }
+strong { color: #fff0f7; }
+footer {
+  padding: 24px 10px 0;
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+@media (max-width: 720px) {
+  .member-strip { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .member:last-child { grid-column: 1 / -1; }
+  .contrast { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  body { padding: 14px 9px 32px; }
+  .hero, section { padding: 21px 17px; }
+  h1 { letter-spacing: -3px; }
+  .grid { grid-template-columns: 1fr; }
+  .wide { grid-column: auto; }
+  .step { grid-template-columns: 1fr; gap: 4px; }
+  .member-name { align-items: flex-start; flex-direction: column; gap: 3px; }
+}
+</style>
+</head>
+<body>
+<main class="page">
+
+<header class="hero">
+  <p class="eyebrow">Creator · Touring Band · Five Musicians</p>
+  <h1>GOOD<br>TEETH</h1>
+  <p class="hero-subtitle">Five people. No formula. Absolutely no fucking genre.</p>
+  <p class="hero-copy">
+    A record label gave five musicians instruments, equipment, studio resources, rehearsal space, and creative freedom. They already had audiences of their own. The label simply put them together and told them to make something. GOOD TEETH became the most popular band on Creator—and changed what its music could sound like.
+  </p>
+
+  <div class="member-strip">
+    <div class="member ives"><strong>IVES</strong><small>26 · Vocals</small></div>
+    <div class="member renga"><strong>RENGA</strong><small>24 · Synth / Keyboard</small></div>
+    <div class="member togo"><strong>TŌGO</strong><small>22 · Electric Guitar</small></div>
+    <div class="member purl"><strong>PURL</strong><small>21 · Drums</small></div>
+    <div class="member riley"><strong>RILEY</strong><small>20 · Bass</small></div>
+  </div>
+</header>
+
+<section>
+  <h2><span class="symbol">✳</span> The Band</h2>
+  <p>
+    GOOD TEETH consists of five distinct musicians with different tastes, personalities, and musical instincts. They were not assembled to fill predetermined roles in a marketable concept. Each member already had an audience; the label supplied the resources and gave them room to work.
+  </p>
+  <p>
+    Nobody dictated a genre, image, sound, or songwriting formula. There was no prescribed identity they had to grow into, no sound they were expected to reproduce, and no instruction to make their existing audiences fit together neatly.
+  </p>
+  <div class="callout">
+    <p>
+      <strong>The assignment was simple:</strong> five musicians, a pile of resources, and the freedom to make something together.
+    </p>
+    <p>
+      They did. The result became GOOD TEETH.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="symbol">✳</span> The Sound of Creator</h2>
+  <p>
+    GOOD TEETH's music feels like Creator itself made into widely accessible music: strange, beautiful, filthy, emotional, technological, organic, catchy, aggressive, playful, melancholic, and impossible to confine to one genre.
+  </p>
+  <p>
+    Its appeal crosses species, cultures, ages, and musical tastes. A song can be immediate and infectious without being simple, technically complicated without becoming inaccessible, or brutally heavy without losing its melody.
+  </p>
+  <div class="genre-cloud">
+    <span class="genre">Electronic Music</span>
+    <span class="genre">Hyperpop-Adjacent Production</span>
+    <span class="genre">Trashy Party Energy</span>
+    <span class="genre">Emo</span>
+    <span class="genre">Post-Hardcore</span>
+    <span class="genre">Hardcore</span>
+    <span class="genre">Technical Guitar</span>
+    <span class="genre">Atmospheric Guitar</span>
+    <span class="genre">Melodic Songwriting</span>
+    <span class="genre">Experimental Production</span>
+  </div>
+  <p>
+    These influences are not separate phases or neatly divided styles. They collide inside individual songs. Electronics can turn abrasive, party music can become sincere, beautiful melodies can break into screaming, and heavy passages can open into something delicate.
+  </p>
+  <div class="contrast">
+    <div>
+      <strong>Immediate</strong>
+      <p>Hooks, memorable melodies, infectious rhythms, and music that gets stuck in your head.</p>
+    </div>
+    <div>
+      <strong>Unpredictable</strong>
+      <p>Distortion, technical passages, strange textures, abrupt changes in intensity, and unexpected turns.</p>
+    </div>
+    <div>
+      <strong>Emotional</strong>
+      <p>Melancholy underneath bright production, vulnerability inside aggression, and sincerity where nobody expected it.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="symbol">✳</span> Five Musicians, One Band</h2>
+  <p>
+    Each member brings a distinct musical instinct. Their contributions matter individually, but GOOD TEETH's sound emerges from the way those contributions interact.
+  </p>
+
+  <div class="grid">
+    <article class="card ives-card">
+      <div class="member-name">
+        <h3>Ives</h3>
+        <span>26 · Vocals</span>
+      </div>
+      <p>
+        Ives has an absurd vocal range and an equally broad range of delivery. He can sound like a polished popular frontman, a cocky trashy party singer, or a genuinely beautiful and vulnerable vocalist. He can shout, rasp, and unleash full hardcore screams without losing the thread of the song.
+      </p>
+      <p>
+        His voice can move between those modes inside a single track. A sudden change in delivery can transform a section's emotional meaning, turning swagger into desperation or a beautiful melody into something ferocious.
+      </p>
+    </article>
+
+    <article class="card renga-card">
+      <div class="member-name">
+        <h3>Renga</h3>
+        <span>24 · Synth / Keyboard</span>
+      </div>
+      <p>
+        Renga builds the band's electronic architecture: strange melodies, digital textures, loops, effects, atmospheric layers, bright hooks, distorted electronics, and unusual rhythmic ideas.
+      </p>
+      <p>
+        His parts can be beautiful, playful, futuristic, melancholy, abrasive, or completely bizarre. He gives GOOD TEETH much of its unmistakably strange character, using electronics as a source of melody, atmosphere, rhythm, and aggression.
+      </p>
+    </article>
+
+    <article class="card togo-card">
+      <div class="member-name">
+        <h3>Tōgo</h3>
+        <span>22 · Electric Guitar</span>
+      </div>
+      <p>
+        Tōgo moves between celestial atmospheric playing and fucking sick technical riffs. He uses loops, effects, layered harmonics, melodic passages, fast playing, and sudden guitar explosions.
+      </p>
+      <p>
+        His guitar can function like another synthesizer, weaving itself into Renga's electronic arrangements, or become the band's sharpest weapon. He can make a section feel enormous and weightless before tearing straight through it.
+      </p>
+    </article>
+
+    <article class="card purl-card">
+      <div class="member-name">
+        <h3>Purl</h3>
+        <span>21 · Drums</span>
+      </div>
+      <p>
+        Purl is the physical engine of the band. He can drive catchy music, support vulnerable passages, follow complicated guitar parts, lock tightly with Riley, reinforce electronic rhythms, and build tension without overwhelming the arrangement.
+      </p>
+      <p>
+        Then he can absolutely obliterate the kit during a heavy section. Hardcore intensity is always available to him, whether the song begins as a polished electronic hook or a delicate melodic passage.
+      </p>
+    </article>
+
+    <article class="card riley-card wide">
+      <div class="member-name">
+        <h3>Riley</h3>
+        <span>20 · Bass</span>
+      </div>
+      <p>
+        Riley provides emotional and harmonic gravity. His bass rarely just follows the guitar. He creates melancholy underneath bright music, reinforces heavy sections, and interacts closely with Purl to shape the physical movement of a song.
+      </p>
+      <p>
+        His playing can be restrained without being unimportant. A bass line can change the emotional meaning of an otherwise ridiculous track, making it unexpectedly sad, or give a heavy passage its weight without demanding attention for itself.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section>
+  <h2><span class="symbol">✳</span> Nobody Owns a Genre</h2>
+  <p>
+    GOOD TEETH does not divide its sound into individual genre assignments. No member is responsible for a single mood, style, or level of intensity. Hardcore belongs to everyone.
+  </p>
+  <div class="grid">
+    <div class="card renga-card">
+      <h3>Electronics Can Bite</h3>
+      <p>Renga can make digital textures distorted, abrasive, rhythmic, and aggressive rather than merely atmospheric or decorative.</p>
+    </div>
+    <div class="card riley-card">
+      <h3>The Low End Has Feelings</h3>
+      <p>Riley can make a bright or absurd song unexpectedly melancholy, or give a heavy arrangement its emotional and physical weight.</p>
+    </div>
+    <div class="card togo-card">
+      <h3>Guitar Can Become Anything</h3>
+      <p>Tōgo can build shimmering atmosphere, intricate melodic passages, technical riffs, and sudden bursts of overwhelming noise.</p>
+    </div>
+    <div class="card purl-card">
+      <h3>The Kit Is Not Safe</h3>
+      <p>Purl can hold a delicate rhythm together or turn a song into a full-force physical assault without losing his connection to the arrangement.</p>
+    </div>
+    <div class="card ives-card wide">
+      <h3>The Voice Can Change the Whole Song</h3>
+      <p>Ives can move from polished pop vocals to cocky party delivery, vulnerability, rasp, shouting, and full hardcore screaming as the music demands. Those shifts belong to one singer and one continuous performance.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="symbol">✳</span> Contrast Is the Point</h2>
+  <p>
+    GOOD TEETH relies on contrast, not as a novelty trick but as a central part of its musical identity. Their songs can change emotional and sonic direction dramatically while still feeling like coherent pieces of music.
+  </p>
+  <div class="timeline">
+    <div class="step">
+      <div class="step-label">The Hook</div>
+      <p>A polished, catchy opening with bright electronics, accessible melodies, and enough momentum to get stuck in someone's head.</p>
+    </div>
+    <div class="step">
+      <div class="step-label">The Shift</div>
+      <p>Distortion builds. Guitar parts become technical, the rhythm grows more aggressive, and electronic textures begin to bite.</p>
+    </div>
+    <div class="step">
+      <div class="step-label">The Collision</div>
+      <p>Purl drives the kit harder, Riley makes the low end hit, Tōgo tears into the arrangement, Renga transforms the electronics, and Ives may break into a full scream.</p>
+    </div>
+    <div class="step">
+      <div class="step-label">The Collapse</div>
+      <p>The intensity can suddenly give way to quiet vulnerability. A trashy party song might turn sincere; a beautiful section might erupt into screaming; a heavy passage might resolve into an unexpectedly melodic moment.</p>
+    </div>
+  </div>
+  <p>
+    None of these shifts has to follow a fixed sequence. The contrast works because the musicians are responding to each other, not following a formula for when the heavy part is supposed to happen.
+  </p>
+</section>
+
+<section>
+  <h2><span class="symbol">✳</span> How They Make Music</h2>
+  <p>
+    Their arrangements are collaborative and reactive. Ideas change as they pass between the five musicians. An electronic hook can inspire a guitar part; the bass can change its emotional meaning; the drums can reshape its rhythm; a vocal decision can transform the entire section.
+  </p>
+  <div class="grid">
+    <div class="card">
+      <h3>Build, Break, Rebuild</h3>
+      <p>
+        They rehearse, rewrite, experiment with sounds, argue over arrangements, improvise, extend sections, and try ideas that may not work. A song is something they actively discover together rather than a fixed blueprint handed down by one person.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Keep the Accident</h3>
+      <p>
+        Not every useful idea begins as a plan. Sometimes an unexpected sound, mistake, or improvised change works better than the original arrangement. Those happy accidents can become part of the music.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Listen to Each Other</h3>
+      <p>
+        Their individual parts are not isolated performances stacked together. Each musician can respond to a change in another part, shifting their own contribution and changing where the song goes next.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Make It Work Live</h3>
+      <p>
+        The arrangements leave room for interaction and movement. A section can grow, change intensity, or take a different route during a performance because the musicians are playing with one another in real time.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="symbol">✳</span> Live Performances</h2>
+  <p>
+    GOOD TEETH's performances feel live rather than perfectly reproduced. The band moves, sweats, reacts, communicates through glances, makes mistakes, improvises, extends sections, alters vocal phrasing, builds loops, and changes intensity in response to the crowd and each other.
+  </p>
+  <p>
+    Their songs are recognizable, but the performance is not simply a flawless recreation of the recording. A familiar section might stretch longer than expected. A transition might become heavier. A vocal phrase might land differently. The musicians can take a moment somewhere unexpected and bring the song back together.
+  </p>
+  <div class="callout">
+    <p>
+      The recordings contain the music. The performances contain five musicians making that music happen right now.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="symbol">✳</span> Fame on Creator</h2>
+  <p>
+    GOOD TEETH is the most popular band on Creator. Their music revolutionized the planet's music scene, reaching audiences across species, cultures, ages, and musical tastes.
+  </p>
+  <p>
+    Their fame is enormous, but celebrity culture on Creator does not operate like an Earth-style spectacle. Being famous does not mean a person stops being part of ordinary life.
+  </p>
+  <div class="grid">
+    <div class="card">
+      <h3>Recognized, Not Sealed Away</h3>
+      <p>
+        People recognize them, listen to them, discuss them, take photographs, and occasionally approach them. Recognition is part of their lives, but it does not automatically turn every public appearance into an event.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Still People in Public</h3>
+      <p>
+        They can eat at restaurants, walk through neighborhoods, shop, travel, and spend time in public without constant paparazzi, limo convoys, bodyguards, or a permanent celebrity bubble.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Famous Across Creator</h3>
+      <p>
+        Their audience crosses regional and cultural boundaries. Their popularity is not confined to one scene, one species, or one particular kind of listener.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Ordinary Life Continues</h3>
+      <p>
+        Their careers are extraordinary. Their daily lives can still contain restaurants, errands, travel, conversations, work, and all the unremarkable activities that make up a life.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="symbol">✳</span> What Makes GOOD TEETH</h2>
+  <p>
+    GOOD TEETH is not defined by electronic music, hardcore, technical guitar, emo, pop hooks, or any one of the sounds that appear in its songs. Its defining quality is the collision between five different musicians who were given the freedom to make something together.
+  </p>
+  <p>
+    Renga can make the music strange. Riley can make it ache. Tōgo can make it soar or hit like a weapon. Purl can give it a body. Ives can make it beautiful, ridiculous, vicious, or vulnerable. Any of them can take the song somewhere the others did not expect.
+  </p>
+  <p>
+    The result is music that can feel alien and immediately familiar, technically intricate and effortlessly catchy, filthy and sincere, playful and devastating. It can be all of those things without having to choose which one it is.
+  </p>
+  <div class="callout">
+    <p><strong>Five different musicians were given freedom to make something together. The collision became the sound of Creator.</strong></p>
+  </div>
+</section>
+
+<footer>
+  CREATOR · GOOD TEETH · FIVE MUSICIANS, ONE IMPOSSIBLE SOUND
+</footer>
+
+</main>
+</body>
+</html>
