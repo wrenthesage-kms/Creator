@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aquatic Regions — Creator</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    :root {
+      --water-bg: #101b22;
+      --water-panel: #192a33;
+      --water-border: #355361;
+      --water-text: #e0edf0;
+      --water-muted: #a7c0c8;
+      --water-cyan: #8edbd8;
+      --water-blue: #9ec9ed;
+      --water-green: #b6d8b0;
+      --water-gold: #e4d09a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 12% 8%, rgba(67, 166, 164, 0.15), transparent 36%),
+        radial-gradient(ellipse at 88% 30%, rgba(83, 139, 190, 0.13), transparent 34%),
+        var(--water-bg);
+      color: var(--water-text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--water-cyan);
+      text-decoration: none;
+      border-bottom: 1px dotted currentColor;
+    }
+
+    a:hover {
+      color: var(--water-gold);
+    }
+
+    .aquatic-page {
+      width: min(100% - 32px, 1000px);
+      margin: 0 auto;
+      padding: 34px 0 64px;
+    }
+
+    .aquatic-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+      color: var(--water-muted);
+      font: 0.82rem/1.6 sans-serif;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .aquatic-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 6vw, 64px);
+      border: 1px solid var(--water-border);
+      border-radius: 7px;
+      background:
+        linear-gradient(140deg, rgba(24, 52, 62, 0.97), rgba(16, 29, 39, 0.97)),
+        var(--water-panel);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.25);
+    }
+
+    .aquatic-hero::before {
+      content: "≈  ✧  ≋";
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      color: rgba(142, 219, 216, 0.34);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      letter-spacing: 0.18em;
+      pointer-events: none;
+    }
+
+    .aquatic-kicker {
+      margin: 0 0 8px;
+      color: var(--water-green);
+      font: 0.76rem/1.5 sans-serif;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .aquatic-hero h1 {
+      margin: 0;
+      color: var(--water-cyan);
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: normal;
+      letter-spacing: 0.035em;
+      line-height: 1.08;
+    }
+
+    .aquatic-subtitle {
+      max-width: 680px;
+      margin: 18px 0 0;
+      color: var(--water-text);
+      font-size: 1.08rem;
+      font-style: italic;
+    }
+
+    .aquatic-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 25px;
+    }
+
+    .aquatic-meta span {
+      padding: 5px 10px;
+      border: 1px solid var(--water-border);
+      border-radius: 3px;
+      color: var(--water-muted);
+      font: 0.72rem/1.5 sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .aquatic-divider {
+      margin: 26px 0;
+      color: var(--water-cyan);
+      text-align: center;
+      letter-spacing: 0.35em;
+      opacity: 0.85;
+    }
+
+    .aquatic-intro {
+      margin: 0 0 26px;
+      padding: 20px 24px;
+      border-left: 3px solid var(--water-cyan);
+      background: rgba(142, 219, 216, 0.055);
+      color: #d5e5e9;
+      font-size: 1.04rem;
+    }
+
+    .aquatic-section-label {
+      margin: 34px 0 14px;
+      color: var(--water-green);
+      font: 0.76rem/1.5 sans-serif;
+      letter-spacing: 0.18em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .aquatic-region {
+      margin-bottom: 25px;
+      padding: 24px;
+      border: 1px solid var(--water-border);
+      border-radius: 6px;
+      background: rgba(25, 42, 51, 0.88);
+    }
+
+    .aquatic-region-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px 16px;
+      margin-bottom: 15px;
+      padding-bottom: 13px;
+      border-bottom: 1px solid var(--water-border);
+    }
+
+    .aquatic-region h2 {
+      margin: 0;
+      color: var(--water-cyan);
+      font-size: clamp(1.7rem, 4vw, 2.3rem);
+      font-weight: normal;
+      letter-spacing: 0.06em;
+    }
+
+    .aquatic-type {
+      color: var(--water-gold);
+      font: 0.74rem/1.5 sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .aquatic-region > p {
+      margin: 0;
+      color: var(--water-text);
+    }
+
+    .aquatic-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 17px;
+    }
+
+    .aquatic-card {
+      padding: 19px 20px;
+      border: 1px solid var(--water-border);
+      border-radius: 5px;
+      background: rgba(15, 30, 38, 0.58);
+    }
+
+    .aquatic-card h3 {
+      margin: 0 0 9px;
+      color: var(--water-blue);
+      font-size: 1.04rem;
+      font-weight: normal;
+    }
+
+    .aquatic-card h3 span {
+      margin-right: 7px;
+      color: var(--water-green);
+    }
+
+    .aquatic-card p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .aquatic-card.wide {
+      grid-column: 1 / -1;
+    }
+
+    .aquatic-community-intro {
+      margin: 0 0 20px;
+      color: var(--water-muted);
+      text-align: center;
+      font-style: italic;
+    }
+
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .community-card {
+      padding: 21px 22px;
+      border: 1px solid var(--water-border);
+      border-radius: 5px;
+      background: rgba(25, 42, 51, 0.88);
+    }
+
+    .community-card h3 {
+      margin: 0 0 5px;
+      color: var(--water-cyan);
+      font-size: 1.25rem;
+      font-weight: normal;
+      letter-spacing: 0.04em;
+    }
+
+    .community-card .community-type {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--water-gold);
+      font: 0.72rem/1.6 sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .community-card p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .community-card.wide {
+      grid-column: 1 / -1;
+    }
+
+    .aquatic-footer {
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid var(--water-border);
+      color: var(--water-muted);
+      font: 0.8rem/1.8 sans-serif;
+      text-align: center;
+    }
+
+    .aquatic-footer .flourish {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--water-cyan);
+      font: 1.1rem/1.5 Georgia, serif;
+      letter-spacing: 0.3em;
+    }
+
+    @media (max-width: 650px) {
+      .aquatic-page {
+        width: min(100% - 22px, 1000px);
+        padding-top: 18px;
+      }
+
+      .aquatic-grid,
+      .community-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .aquatic-card.wide,
+      .community-card.wide {
+        grid-column: auto;
+      }
+
+      .aquatic-region,
+      .aquatic-card,
+      .community-card {
+        padding: 17px;
+      }
+
+      .aquatic-intro {
+        padding: 16px 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .aquatic-card,
+      .community-card {
+        transition: border-color 180ms ease, background-color 180ms ease;
+      }
+
+      .aquatic-card:hover,
+      .community-card:hover {
+        border-color: #648b99;
+        background-color: rgba(31, 54, 65, 0.96);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="aquatic-page">
+
+    <nav class="aquatic-nav" aria-label="Page navigation">
+      <a href="../index.html">← Creator home</a>
+      <a href="saint-judes-landing.html">Saint Jude’s Landing ↗</a>
+    </nav>
+
+    <header class="aquatic-hero">
+      <p class="aquatic-kicker">Creator · Regional geography</p>
+      <h1>Aquatic Regions</h1>
+      <p class="aquatic-subtitle">
+        Vast waters, branching rivers, inhabited islands, wetland communities,
+        and entire ways of life built around the water.
+      </p>
+
+      <div class="aquatic-meta">
+        <span>Orumai</span>
+        <span>Kaluwa</span>
+        <span>Waterfront settlements</span>
+        <span>Regional communities</span>
+      </div>
+    </header>
+
+    <div class="aquatic-divider" aria-hidden="true">≈ · · · ✧ · · · ≋</div>
+
+    <p class="aquatic-intro">
+      Creator's aquatic regions encompass enormous interconnected waters,
+      branching river systems, wetlands, islands, coastal areas, and
+      established communities shaped by their surroundings. These are
+      inhabited regions with their own towns, cities, businesses, cultures,
+      and connections to the wider world—not empty wilderness between
+      settlements.
+    </p>
+
+    <p class="aquatic-section-label">Major aquatic regions</p>
+
+    <section class="aquatic-region">
+      <div class="aquatic-region-header">
+        <h2>Orumai</h2>
+        <span class="aquatic-type">Major aquatic region</span>
+      </div>
+
+      <p>
+        Orumai is a vast interconnected aquatic region containing enormous
+        inland waters, river systems, wetlands, islands, coastal areas, and
+        dense aquatic communities.
+      </p>
+
+      <div class="aquatic-grid">
+
+        <article class="aquatic-card">
+          <h3><span>❧</span> Environment</h3>
+          <p>
+            Intensely lush and humid, with strange aquatic vegetation,
+            enormous waterways, colorful wildlife, and frequent storms.
+          </p>
+        </article>
+
+        <article class="aquatic-card">
+          <h3><span>⌂</span> Civilization</h3>
+          <p>
+            Numerous established towns, cities, fishing communities, ports,
+            islands, and waterfront settlements exist throughout Orumai.
+          </p>
+        </article>
+
+        <article class="aquatic-card wide">
+          <h3><span>↔</span> Relationship to Saint Jude’s Landing</h3>
+          <p>
+            Orumai has strong trade, travel, family, cultural, and
+            entertainment connections with Saint Jude’s Landing.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="aquatic-region">
+      <div class="aquatic-region-header">
+        <h2>Kaluwa</h2>
+        <span class="aquatic-type">Major aquatic region</span>
+      </div>
+
+      <p>
+        Kaluwa is an enormous freshwater basin containing sprawling lakes,
+        branching rivers, marshes, islands, and communities built directly
+        around the water.
+      </p>
+
+      <div class="aquatic-grid">
+
+        <article class="aquatic-card">
+          <h3><span>❧</span> Environment</h3>
+          <p>
+            Dense vegetation, warm humid weather, colorful freshwater
+            ecosystems, enormous aquatic wildlife, and unusual waterways.
+          </p>
+        </article>
+
+        <article class="aquatic-card">
+          <h3><span>⌂</span> Civilization</h3>
+          <p>
+            Kaluwa contains old established communities, busy ports, rural
+            settlements, floating structures, farms, and modern cities.
+          </p>
+        </article>
+
+        <article class="aquatic-card">
+          <h3><span>♫</span> Culture</h3>
+          <p>
+            Kaluwa has its own regional traditions, food, music, businesses,
+            and local identities rather than functioning as one uniform
+            culture.
+          </p>
+        </article>
+
+        <article class="aquatic-card">
+          <h3><span>↔</span> Relationship to Saint Jude’s Landing</h3>
+          <p>
+            Kaluwa is closely connected to Saint Jude’s Landing through
+            transportation, commerce, employment, tourism, and family
+            networks.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="aquatic-divider" aria-hidden="true">✧ · · · ≋ · · · ✧</div>
+
+    <p class="aquatic-section-label">Aquatic communities</p>
+
+    <p class="aquatic-community-intro">
+      Established settlements throughout Orumai and Kaluwa, each with its
+      own relationship to the surrounding water.
+    </p>
+
+    <div class="community-grid">
+
+      <article class="community-card">
+        <h3>Tavira</h3>
+        <span class="community-type">Waterfront city · Orumai</span>
+        <p>
+          A large, busy aquatic city built around several connected
+          waterways, with dense neighborhoods, docks, markets, restaurants,
+          and ferry routes.
+        </p>
+      </article>
+
+      <article class="community-card">
+        <h3>Mabiko</h3>
+        <span class="community-type">Fishing and river community · Kaluwa</span>
+        <p>
+          An older community surrounded by wetlands and branching rivers,
+          known for fishing, food production, local markets, and family
+          businesses.
+        </p>
+      </article>
+
+      <article class="community-card">
+        <h3>Sivai</h3>
+        <span class="community-type">Island community · Orumai</span>
+        <p>
+          A compact island settlement with dense housing, small businesses,
+          boat transportation, and a strong local identity.
+        </p>
+      </article>
+
+      <article class="community-card">
+        <h3>Talua</h3>
+        <span class="community-type">Wetland community · Kaluwa</span>
+        <p>
+          A low-lying community connected by raised walkways, small bridges,
+          boats, and narrow waterways.
+        </p>
+      </article>
+
+      <article class="community-card wide">
+        <h3>Kaiwana</h3>
+        <span class="community-type">Deep-water community · Orumai</span>
+        <p>
+          An established deep-water community built around enormous
+          submerged formations, deep reefs, underwater valleys, and
+          interconnected marine settlements. Dense residential areas,
+          businesses, gathering spaces, markets, schools, and transportation
+          routes are integrated directly into the surrounding deep-water
+          environment.
+        </p>
+      </article>
+
+    </div>
+
+    <footer class="aquatic-footer">
+      <span class="flourish" aria-hidden="true">≈ ❧ ✧ ❧ ≈</span>
+      <a href="../index.html">Creator</a>
+      <span aria-hidden="true"> · </span>
+      Aquatic regions &amp; communities
+    </footer>
+
+  </main>
+</body>
+</html>
