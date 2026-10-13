@@ -3,307 +3,665 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Velvet — Saint Jude’s Landing</title>
+  <title>Velvet | Saint Jude’s Landing</title>
   <link rel="stylesheet" href="../style.css">
   <style>
     :root {
-      --velvet-bg: #190f19;
-      --velvet-panel: #261823;
-      --velvet-border: #594052;
-      --velvet-text: #eee2e9;
-      --velvet-muted: #bba8b7;
-      --velvet-pink: #f0a5c8;
-      --velvet-purple: #c9a6ed;
-      --velvet-gold: #e7c78c;
-      --velvet-red: #d985a0;
+      --velvet-ink: #24101e;
+      --velvet-wine: #4a1939;
+      --velvet-plum: #71315d;
+      --velvet-rose: #ff83b7;
+      --velvet-peach: #ffc4a8;
+      --velvet-cream: #fff0db;
+      --velvet-gold: #f7d36e;
+      --velvet-lilac: #d9b8ff;
+      --velvet-muted: #c5a7bd;
+      --velvet-line: #8b5277;
+      --velvet-paper: #f5e6d5;
+      --velvet-paper-ink: #381c31;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      background:
-        radial-gradient(ellipse at 12% 8%, rgba(185, 75, 126, 0.15), transparent 35%),
-        radial-gradient(ellipse at 88% 30%, rgba(139, 86, 167, 0.12), transparent 33%),
-        var(--velvet-bg);
-      color: var(--velvet-text);
-      font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.75;
+      background-color: var(--velvet-ink);
+      background-image:
+        radial-gradient(ellipse at 0% 15%, rgba(255, 131, 183, 0.13), transparent 28rem),
+        radial-gradient(ellipse at 100% 65%, rgba(217, 184, 255, 0.09), transparent 30rem);
+      color: var(--velvet-cream);
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      line-height: 1.7;
     }
 
     a {
       color: var(--velvet-gold);
-      text-decoration: none;
-      border-bottom: 1px dotted currentColor;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
     }
 
     a:hover {
-      color: var(--velvet-pink);
+      color: var(--velvet-rose);
     }
 
-    .velvet-page {
-      width: min(100% - 32px, 1000px);
+    a:focus-visible {
+      outline: 2px solid var(--velvet-gold);
+      outline-offset: 4px;
+    }
+
+    .velvet-shell {
+      width: min(1120px, calc(100% - 36px));
       margin: 0 auto;
-      padding: 34px 0 64px;
+      padding: 24px 0 60px;
     }
 
-    .velvet-nav {
+    .topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .topline a {
+      text-decoration: none;
+    }
+
+    .topline-label {
+      color: var(--velvet-muted);
+    }
+
+    .marquee {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 160px;
+      border: 2px solid var(--velvet-rose);
+      background: var(--velvet-wine);
+      box-shadow: 8px 8px 0 var(--velvet-plum);
+    }
+
+    .marquee-main {
+      position: relative;
+      min-width: 0;
+      padding: clamp(26px, 6vw, 68px);
+      overflow: hidden;
+    }
+
+    .marquee-main::after {
+      content: "♡";
+      position: absolute;
+      right: 12px;
+      bottom: -70px;
+      color: rgba(255, 131, 183, 0.09);
+      font-family: Georgia, serif;
+      font-size: clamp(12rem, 32vw, 26rem);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .marquee-kicker {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 12px;
+      color: var(--velvet-gold);
+      font-size: 0.77rem;
+      font-weight: 900;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      color: var(--velvet-rose);
+      font-size: clamp(4rem, 13vw, 9.5rem);
+      font-weight: 1000;
+      letter-spacing: -0.09em;
+      line-height: 0.82;
+      text-transform: uppercase;
+      overflow-wrap: anywhere;
+      text-shadow: 4px 4px 0 var(--velvet-ink);
+    }
+
+    .marquee-subtitle {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+      margin: 27px 0 0;
+      color: var(--velvet-cream);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.05rem, 2.3vw, 1.35rem);
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .marquee-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 20px 12px;
+      border-left: 2px solid var(--velvet-rose);
+      background: var(--velvet-gold);
+      color: var(--velvet-ink);
+      text-align: center;
+    }
+
+    .side-star {
+      font-size: 2.2rem;
+      line-height: 1;
+    }
+
+    .side-copy {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 0.8rem;
+      font-weight: 1000;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+    }
+
+    .side-bottom {
+      font-family: Georgia, serif;
+      font-size: 1.6rem;
+    }
+
+    .marquee-tags {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 24px;
-      color: var(--velvet-muted);
-      font: 0.82rem/1.6 sans-serif;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .marquee-tags span {
+      position: relative;
+      z-index: 1;
+      padding: 5px 10px;
+      border: 1px solid var(--velvet-line);
+      background: rgba(36, 16, 30, 0.58);
+      color: var(--velvet-peach);
+      font-size: 0.7rem;
+      font-weight: 900;
       letter-spacing: 0.06em;
       text-transform: uppercase;
     }
 
-    .velvet-hero {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(28px, 6vw, 64px);
-      border: 1px solid var(--velvet-border);
-      border-radius: 7px;
-      background:
-        linear-gradient(140deg, rgba(41, 22, 38, 0.97), rgba(27, 15, 27, 0.96)),
-        var(--velvet-panel);
-      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.26);
+    .opening-note {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 17px;
+      align-items: start;
+      margin: 34px 0 42px;
+      padding: 22px 25px;
+      border-left: 5px solid var(--velvet-gold);
+      background: var(--velvet-paper);
+      color: var(--velvet-paper-ink);
     }
 
-    .velvet-hero::before {
-      content: "✦  ♡  ✦";
+    .opening-icon {
+      color: #a72e68;
+      font-family: Georgia, serif;
+      font-size: 2.8rem;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .opening-note p {
+      margin: 0;
+    }
+
+    .opening-note strong {
+      color: #9a275d;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 48px 0 17px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--velvet-line);
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      color: var(--velvet-peach);
+      font-size: clamp(1.45rem, 4vw, 2.1rem);
+      font-weight: 1000;
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+
+    .section-heading span {
+      flex-shrink: 0;
+      color: var(--velvet-rose);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .district-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .district-card {
+      position: relative;
+      min-width: 0;
+      padding: 22px;
+      border: 1px solid var(--velvet-line);
+      background: rgba(74, 25, 57, 0.72);
+    }
+
+    .district-card:nth-child(1),
+    .district-card:nth-child(4) {
+      grid-column: span 3;
+    }
+
+    .district-card:nth-child(2),
+    .district-card:nth-child(3),
+    .district-card:nth-child(5) {
+      grid-column: span 3;
+    }
+
+    .district-card:nth-child(2) {
+      background: rgba(94, 34, 76, 0.82);
+    }
+
+    .district-card:nth-child(3) {
+      background: rgba(58, 28, 64, 0.86);
+    }
+
+    .district-card:nth-child(4) {
+      background: rgba(101, 38, 62, 0.76);
+    }
+
+    .district-card:nth-child(5) {
+      background: rgba(54, 26, 49, 0.92);
+    }
+
+    .card-index {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--velvet-gold);
+      font-size: 0.7rem;
+      font-weight: 1000;
+      letter-spacing: 0.16em;
+    }
+
+    .district-card h3 {
+      margin: 0 0 12px;
+      color: var(--velvet-rose);
+      font-size: 1.3rem;
+      font-weight: 1000;
+      letter-spacing: -0.035em;
+      line-height: 1.2;
+    }
+
+    .district-card p {
+      margin: 0;
+      color: #f0dfe9;
+      font-size: 0.94rem;
+    }
+
+    .district-card p + p {
+      margin-top: 11px;
+    }
+
+    .card-sticker {
       position: absolute;
-      top: 12px;
-      right: 20px;
-      color: rgba(240, 165, 200, 0.36);
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
-      letter-spacing: 0.18em;
+      top: 14px;
+      right: 14px;
+      color: var(--velvet-lilac);
+      font-size: 1.25rem;
+    }
+
+    .people-strip {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      margin-top: 14px;
+      border: 2px solid var(--velvet-lilac);
+    }
+
+    .people-stamp {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(24px, 4vw, 40px);
+      background: var(--velvet-lilac);
+      color: var(--velvet-ink);
+    }
+
+    .people-stamp .stamp-small {
+      margin-bottom: 12px;
+      font-size: 0.7rem;
+      font-weight: 1000;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .people-stamp h3 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3.7rem);
+      font-weight: 1000;
+      letter-spacing: -0.07em;
+      line-height: 0.98;
+      text-transform: uppercase;
+    }
+
+    .people-copy {
+      padding: clamp(22px, 4vw, 38px);
+      background: #321b31;
+    }
+
+    .people-copy p {
+      margin: 0;
+      color: #f2e2ef;
+      font-size: 0.96rem;
+    }
+
+    .people-copy p + p {
+      margin-top: 13px;
+    }
+
+    .people-copy strong {
+      color: var(--velvet-peach);
+    }
+
+    .backstage-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .backstage-card {
+      padding: 22px;
+      border-top: 4px solid var(--velvet-rose);
+      background: #30202f;
+    }
+
+    .backstage-card:nth-child(2) {
+      border-color: var(--velvet-gold);
+    }
+
+    .backstage-card:nth-child(3) {
+      border-color: var(--velvet-lilac);
+    }
+
+    .backstage-card:nth-child(4) {
+      border-color: var(--velvet-peach);
+    }
+
+    .backstage-card h3 {
+      margin: 0 0 10px;
+      color: var(--velvet-gold);
+      font-size: 1.17rem;
+      font-weight: 1000;
+      letter-spacing: -0.025em;
+    }
+
+    .backstage-card p {
+      margin: 0;
+      color: #e9d8e4;
+      font-size: 0.93rem;
+    }
+
+    .night-out {
+      position: relative;
+      margin-top: 46px;
+      padding: clamp(25px, 5vw, 50px);
+      overflow: hidden;
+      border: 2px solid var(--velvet-gold);
+      background:
+        repeating-linear-gradient(
+          -45deg,
+          rgba(247, 211, 110, 0.035) 0,
+          rgba(247, 211, 110, 0.035) 10px,
+          transparent 10px,
+          transparent 20px
+        ),
+        #38172f;
+    }
+
+    .night-out::after {
+      content: "OPEN";
+      position: absolute;
+      right: -15px;
+      bottom: -37px;
+      color: rgba(255, 131, 183, 0.07);
+      font-size: clamp(5rem, 15vw, 10rem);
+      font-weight: 1000;
+      letter-spacing: -0.09em;
+      line-height: 1;
       pointer-events: none;
     }
 
-    .velvet-kicker {
-      margin: 0 0 8px;
+    .night-out-label {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 12px;
       color: var(--velvet-gold);
-      font: 0.76rem/1.5 sans-serif;
+      font-size: 0.74rem;
+      font-weight: 1000;
       letter-spacing: 0.2em;
       text-transform: uppercase;
     }
 
-    .velvet-hero h1 {
+    .night-out h2 {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 0 15px;
+      color: var(--velvet-rose);
+      font-size: clamp(2rem, 6vw, 4.3rem);
+      font-weight: 1000;
+      letter-spacing: -0.065em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .night-out p {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
       margin: 0;
-      color: var(--velvet-pink);
-      font-size: clamp(3rem, 9vw, 6rem);
-      font-weight: normal;
-      letter-spacing: 0.09em;
-      line-height: 1.05;
-      text-shadow: 0 0 28px rgba(240, 165, 200, 0.15);
+      color: var(--velvet-cream);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.05rem;
+      line-height: 1.85;
     }
 
-    .velvet-subtitle {
-      max-width: 650px;
-      margin: 18px 0 0;
-      color: var(--velvet-text);
-      font-size: 1.08rem;
-      font-style: italic;
+    .night-out p + p {
+      margin-top: 12px;
     }
 
-    .velvet-meta {
+    .bottom-doodle {
+      margin: 36px 0 15px;
+      color: var(--velvet-rose);
+      font-family: Georgia, serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.45em;
+      text-align: center;
+    }
+
+    .page-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      padding-top: 20px;
+      border-top: 1px solid var(--velvet-line);
+      color: var(--velvet-muted);
+      font-size: 0.78rem;
+    }
+
+    .page-footer a {
+      text-decoration: none;
+    }
+
+    .footer-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 25px;
+      gap: 17px;
     }
 
-    .velvet-meta span {
-      padding: 5px 10px;
-      border: 1px solid var(--velvet-border);
-      border-radius: 3px;
-      color: var(--velvet-muted);
-      font: 0.72rem/1.5 sans-serif;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .velvet-divider {
-      margin: 26px 0;
-      color: var(--velvet-pink);
-      text-align: center;
-      letter-spacing: 0.35em;
-      opacity: 0.85;
-    }
-
-    .velvet-intro {
-      margin: 0 0 26px;
-      padding: 20px 24px;
-      border-left: 3px solid var(--velvet-pink);
-      background: rgba(240, 165, 200, 0.055);
-      color: #e1d3dc;
-      font-size: 1.04rem;
-    }
-
-    .velvet-section-label {
-      margin: 34px 0 14px;
-      color: var(--velvet-gold);
-      font: 0.76rem/1.5 sans-serif;
-      letter-spacing: 0.18em;
-      text-align: center;
-      text-transform: uppercase;
-    }
-
-    .velvet-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .velvet-card {
-      padding: 21px 22px;
-      border: 1px solid var(--velvet-border);
-      border-radius: 5px;
-      background: rgba(38, 24, 35, 0.88);
-    }
-
-    .velvet-card h2 {
-      margin: 0 0 11px;
-      color: var(--velvet-pink);
-      font-size: 1.13rem;
-      font-weight: normal;
-      letter-spacing: 0.025em;
-    }
-
-    .velvet-card h2 span {
-      margin-right: 7px;
-      color: var(--velvet-gold);
-      font-size: 0.95em;
-    }
-
-    .velvet-card p {
-      margin: 0;
-      color: var(--velvet-text);
-      font-size: 0.96rem;
-    }
-
-    .velvet-card.wide {
-      grid-column: 1 / -1;
-    }
-
-    .velvet-feature {
-      margin-top: 20px;
-      padding: 25px;
-      border: 1px solid #6a4059;
-      border-radius: 5px;
-      background:
-        linear-gradient(120deg, rgba(128, 48, 94, 0.17), rgba(91, 57, 106, 0.12)),
-        var(--velvet-panel);
-    }
-
-    .velvet-feature h2 {
-      margin: 0 0 10px;
-      color: var(--velvet-gold);
-      font-size: 1.25rem;
-      font-weight: normal;
-    }
-
-    .velvet-feature p {
-      margin: 0;
-    }
-
-    .velvet-footer {
-      margin-top: 36px;
-      padding-top: 20px;
-      border-top: 1px solid var(--velvet-border);
-      color: var(--velvet-muted);
-      font: 0.8rem/1.8 sans-serif;
-      text-align: center;
-    }
-
-    .velvet-footer .flourish {
-      display: block;
-      margin-bottom: 10px;
-      color: var(--velvet-pink);
-      font: 1.1rem/1.5 Georgia, serif;
-      letter-spacing: 0.3em;
-    }
-
-    @media (max-width: 650px) {
-      .velvet-page {
-        width: min(100% - 22px, 1000px);
-        padding-top: 18px;
+    @media (max-width: 680px) {
+      .velvet-shell {
+        width: min(100% - 24px, 1120px);
+        padding-top: 16px;
       }
 
-      .velvet-grid {
-        grid-template-columns: 1fr;
+      .marquee {
+        grid-template-columns: minmax(0, 1fr) 48px;
+        box-shadow: 4px 4px 0 var(--velvet-plum);
       }
 
-      .velvet-card.wide {
-        grid-column: auto;
+      .marquee-main {
+        padding: 30px 19px;
       }
 
-      .velvet-card {
+      .marquee-side {
+        padding: 15px 7px;
+      }
+
+      .side-copy {
+        font-size: 0.63rem;
+      }
+
+      .side-star {
+        font-size: 1.4rem;
+      }
+
+      .marquee-tags span {
+        font-size: 0.64rem;
+      }
+
+      .opening-note {
+        grid-template-columns: 30px minmax(0, 1fr);
+        gap: 12px;
         padding: 18px;
       }
 
-      .velvet-intro {
-        padding: 16px 18px;
+      .opening-icon {
+        font-size: 2rem;
+      }
+
+      .district-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .district-card,
+      .district-card:nth-child(n) {
+        grid-column: auto;
+      }
+
+      .people-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .people-stamp {
+        min-height: 175px;
+      }
+
+      .backstage-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+      }
+
+      .section-heading span {
+        max-width: 100px;
+        text-align: right;
+      }
+
+      .page-footer {
+        align-items: flex-start;
+        flex-direction: column;
       }
     }
 
-    @media (prefers-reduced-motion: no-preference) {
-      .velvet-card {
-        transition: border-color 180ms ease, background-color 180ms ease;
-      }
-
-      .velvet-card:hover {
-        border-color: #95647f;
-        background-color: rgba(54, 31, 49, 0.96);
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
       }
     }
   </style>
 </head>
 
 <body>
-  <main class="velvet-page">
+  <main class="velvet-shell">
 
-    <nav class="velvet-nav" aria-label="Page navigation">
+    <nav class="topline" aria-label="Page navigation">
       <a href="../index.html">← Creator home</a>
-      <a href="saint-judes-landing.html">Saint Jude’s Landing ↑</a>
+      <span class="topline-label">Saint Jude’s Landing / District life</span>
+      <a href="saint-judes-landing.html">City guide ↑</a>
     </nav>
 
-    <header class="velvet-hero">
-      <p class="velvet-kicker">Saint Jude’s Landing · District dossier</p>
-      <h1>Velvet</h1>
-      <p class="velvet-subtitle">
-        The city stays awake here. Come for the music, the money, the
-        company, the trouble—or whatever you hope nobody asks about tomorrow.
-      </p>
+    <header class="marquee">
+      <div class="marquee-main">
+        <p class="marquee-kicker">SJL after dark · No cover charge for trouble</p>
+        <h1>Velvet</h1>
+        <p class="marquee-subtitle">
+          The city stays awake here. Come for the music, the money, the
+          company, the trouble—or whatever you hope nobody asks about tomorrow.
+        </p>
 
-      <div class="velvet-meta">
-        <span>Nightlife</span>
-        <span>Luxury &amp; indulgence</span>
-        <span>Adult culture</span>
-        <span>After dark</span>
+        <div class="marquee-tags" aria-label="District themes">
+          <span>Nightlife</span>
+          <span>Luxury &amp; indulgence</span>
+          <span>Adult culture</span>
+          <span>After dark</span>
+        </div>
       </div>
+
+      <aside class="marquee-side" aria-label="Velvet district sign">
+        <span class="side-star" aria-hidden="true">✦</span>
+        <span class="side-copy">Bad decisions welcome</span>
+        <span class="side-bottom" aria-hidden="true">♡</span>
+      </aside>
     </header>
 
-    <div class="velvet-divider" aria-hidden="true">✦ · · · ♡ · · · ✦</div>
+    <section class="opening-note" aria-label="District introduction">
+      <div class="opening-icon" aria-hidden="true">♡</div>
+      <p>
+        <strong>Velvet is Saint Jude’s Landing’s district of indulgence.</strong>
+        Nightlife, luxury, entertainment, and adult culture draw residents and
+        visitors from across the city. The streets stay crowded from dusk
+        until morning. Glamour and grime share the same blocks, and a night
+        out can become almost anything.
+      </p>
+    </section>
 
-    <p class="velvet-intro">
-      Velvet is Saint Jude’s Landing’s district of indulgence, nightlife,
-      luxury, entertainment, and adult culture. Crowded from dusk until
-      morning, it attracts residents and visitors from across the city.
-      Glamour and grime share the same streets, and a night out can become
-      almost anything.
-    </p>
+    <div class="section-heading">
+      <h2>Welcome to the party</h2>
+      <span>01 / The district</span>
+    </div>
 
-    <p class="velvet-section-label">The district</p>
+    <div class="district-grid">
 
-    <div class="velvet-grid">
-
-      <section class="velvet-card">
-        <h2><span>♫</span> Nightlife</h2>
+      <section class="district-card">
+        <span class="card-index">01 — ALL NIGHT</span>
+        <span class="card-sticker" aria-hidden="true">♫</span>
+        <h3>Nightlife</h3>
         <p>
           Velvet is packed with bars, clubs, lounges, dance halls, theaters,
           restaurants, hotels, private clubs, brothels, sex shops, adult
@@ -312,8 +670,10 @@
         </p>
       </section>
 
-      <section class="velvet-card">
-        <h2><span>♡</span> Adult Culture</h2>
+      <section class="district-card">
+        <span class="card-index">02 — NO SHOCK HERE</span>
+        <span class="card-sticker" aria-hidden="true">♡</span>
+        <h3>Adult Culture</h3>
         <p>
           Sex and sexuality are openly integrated into Velvet’s culture.
           Human, demi-human, and monster attraction is commonplace.
@@ -324,22 +684,10 @@
         </p>
       </section>
 
-      <section class="velvet-card wide">
-        <h2><span>✧</span> People</h2>
-        <p>
-          Velvet attracts every kind of adult: wealthy patrons, performers,
-          sex workers, musicians, criminals, tourists, regulars, celebrities,
-          service workers, monsters, demi-humans, and people simply looking
-          for somewhere to disappear for the night. Physical beauty is not
-          restricted to one type. Fat bodies, muscular bodies, scars,
-          unusual anatomy, monstrous bodies, older bodies, short men, pretty
-          boys, femboys, and unconventional appearances are all part of
-          Velvet’s social landscape.
-        </p>
-      </section>
-
-      <section class="velvet-card">
-        <h2><span>♜</span> Luxury</h2>
+      <section class="district-card">
+        <span class="card-index">03 — EVERYBODY'S SOMEBODY</span>
+        <span class="card-sticker" aria-hidden="true">✧</span>
+        <h3>Luxury</h3>
         <p>
           Velvet contains expensive hotels, private residences, exclusive
           clubs, high-end restaurants, designer shops, private entertainment
@@ -348,8 +696,10 @@
         </p>
       </section>
 
-      <section class="velvet-card">
-        <h2><span>♧</span> Monsters</h2>
+      <section class="district-card">
+        <span class="card-index">04 — NONHUMAN, NO PROBLEM</span>
+        <span class="card-sticker" aria-hidden="true">♧</span>
+        <h3>Monsters</h3>
         <p>
           Monster residents and visitors are common throughout Velvet. Some
           venues specifically cater to monstrous species or interspecies
@@ -362,14 +712,38 @@
 
     </div>
 
-    <div class="velvet-divider" aria-hidden="true">❧ · · · ✦ · · · ❧</div>
+    <section class="people-strip" aria-labelledby="people-heading">
+      <div class="people-stamp">
+        <span class="stamp-small">The Velvet dress code</span>
+        <h3 id="people-heading">Come as<br>you are.</h3>
+      </div>
 
-    <p class="velvet-section-label">Behind the velvet rope</p>
+      <div class="people-copy">
+        <p>
+          <strong>Velvet attracts every kind of adult.</strong> Wealthy patrons,
+          performers, sex workers, musicians, criminals, tourists, regulars,
+          celebrities, service workers, monsters, demi-humans, and people
+          simply looking for somewhere to disappear for the night all move
+          through the district.
+        </p>
+        <p>
+          Physical beauty is not restricted to one type. Fat bodies, muscular
+          bodies, scars, unusual anatomy, monstrous bodies, older bodies,
+          short men, pretty boys, femboys, and unconventional appearances are
+          all part of Velvet’s social landscape.
+        </p>
+      </div>
+    </section>
 
-    <div class="velvet-grid">
+    <div class="section-heading">
+      <h2>Pretty lights, ugly business</h2>
+      <span>02 / Behind the scenes</span>
+    </div>
 
-      <section class="velvet-card">
-        <h2><span>⚠</span> Underbelly</h2>
+    <div class="backstage-grid">
+
+      <section class="backstage-card">
+        <h3>⚠ The Underbelly</h3>
         <p>
           Luxury exists alongside exploitation, crime, addiction, trafficking,
           blackmail, organized crime, predatory businesses, and people
@@ -378,8 +752,8 @@
         </p>
       </section>
 
-      <section class="velvet-card">
-        <h2><span>♬</span> Performers</h2>
+      <section class="backstage-card">
+        <h3>♫ The Performers</h3>
         <p>
           Musicians, dancers, actors, drag performers, burlesque artists,
           comedians, escorts, adult performers, and other entertainers work
@@ -388,8 +762,8 @@
         </p>
       </section>
 
-      <section class="velvet-card wide">
-        <h2><span>♡</span> Social Life</h2>
+      <section class="backstage-card">
+        <h3>♡ The Complications</h3>
         <p>
           Velvet is a place where people meet strangers, lovers, business
           partners, enemies, future spouses, temporary hookups, lifelong
@@ -398,8 +772,8 @@
         </p>
       </section>
 
-      <section class="velvet-card wide">
-        <h2><span>⌂</span> Architecture</h2>
+      <section class="backstage-card">
+        <h3>⌂ The Streetscape</h3>
         <p>
           Velvet contains a mixture of old buildings, renovated venues,
           apartments, hotels, theaters, restaurants, storefronts, private
@@ -411,22 +785,28 @@
 
     </div>
 
-    <section class="velvet-feature">
-      <h2>✦ A Night in Velvet</h2>
+    <section class="night-out">
+      <p class="night-out-label">03 / Last call is a suggestion</p>
+      <h2>A night in Velvet</h2>
       <p>
         Lush, crowded, decadent, sensual, loud, intimate, expensive, filthy,
         glamorous, and occasionally dangerous. Velvet is adult, erotic,
-        romantic, hedonistic, dramatic, funny, messy, and unpredictable. It
-        can be luxurious or sleazy, tender or depraved, depending entirely
+        romantic, hedonistic, dramatic, funny, messy, and unpredictable.
+      </p>
+      <p>
+        It can be luxurious or sleazy, tender or depraved, depending entirely
         on where someone ends up.
       </p>
     </section>
 
-    <footer class="velvet-footer">
-      <span class="flourish" aria-hidden="true">✦ ♡ ❧ ♡ ✦</span>
-      <a href="saint-judes-landing.html">Saint Jude’s Landing</a>
-      <span aria-hidden="true"> · </span>
-      <a href="../index.html">Creator</a>
+    <div class="bottom-doodle" aria-hidden="true">✦ ♡ ✧ ♡ ✦</div>
+
+    <footer class="page-footer">
+      <span>Saint Jude’s Landing · Creator</span>
+      <div class="footer-links">
+        <a href="saint-judes-landing.html">Back to the city</a>
+        <a href="../index.html">Creator home</a>
+      </div>
     </footer>
 
   </main>
