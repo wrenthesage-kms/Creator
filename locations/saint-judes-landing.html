@@ -3,249 +3,531 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#211725">
-
-  <title>Saint Jude’s Landing | Creator</title>
-
+  <meta name="theme-color" content="#241b2b">
+  <title>Saint Jude’s Landing — Creator</title>
   <link rel="stylesheet" href="../style.css">
 
   <style>
     :root {
-      --sjl-bg: #211725;
-      --sjl-panel: #302238;
-      --sjl-pink: #ff83b8;
-      --sjl-purple: #bd9bff;
-      --sjl-lime: #d9ff82;
-      --sjl-blue: #91e8ff;
-      --sjl-text: #fff0f5;
-      --sjl-muted: #d0bdcf;
-      --sjl-border: #604768;
+      --city-ink: #241b2b;
+      --city-plum: #39263e;
+      --city-paper: #f4e9d9;
+      --city-pink: #ff78aa;
+      --city-acid: #d9f477;
+      --city-blue: #8ce3e8;
+      --city-orange: #ff9b70;
+      --city-muted: #d2c1d1;
+      --city-rule: #735779;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      background: var(--sjl-bg);
-      color: var(--sjl-text);
-    }
-
-    .sjl-page {
-      width: min(1100px, 100%);
-      margin: 0 auto;
-      padding: 24px;
-    }
-
-    .sjl-back {
-      display: inline-block;
-      margin-bottom: 24px;
-      color: var(--sjl-lime);
-      font-weight: 800;
-      text-decoration: none;
-    }
-
-    .sjl-back:hover {
-      color: var(--sjl-pink);
-    }
-
-    .sjl-hero {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(28px, 6vw, 68px);
-      border: 2px solid var(--sjl-pink);
-      border-radius: 8px 28px 8px 28px;
+      margin: 0;
       background:
-        radial-gradient(
-          circle at 90% 12%,
-          #60416d 0,
-          transparent 32%
-        ),
-        radial-gradient(
-          circle at 8% 100%,
-          #512d53 0,
-          transparent 38%
-        ),
-        var(--sjl-panel);
-      box-shadow: 7px 7px 0 #110d14;
+        radial-gradient(ellipse at 0 0, rgba(255, 120, 170, 0.12), transparent 35rem),
+        radial-gradient(ellipse at 100% 45%, rgba(140, 227, 232, 0.08), transparent 32rem),
+        var(--city-ink);
+      color: var(--city-paper);
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      line-height: 1.75;
     }
 
-    .sjl-hero::after {
-      content: "✦ ✧ ✦";
-      position: absolute;
-      right: 22px;
-      bottom: 15px;
-      color: var(--sjl-pink);
-      font-size: 28px;
-      letter-spacing: 8px;
-      opacity: 0.8;
+    a {
+      color: inherit;
+      text-underline-offset: 4px;
     }
 
-    .sjl-eyebrow {
-      margin: 0 0 16px;
-      color: var(--sjl-lime);
-      font-size: 0.8rem;
+    a:hover {
+      color: var(--city-acid);
+    }
+
+    .city-page {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 22px 0 50px;
+    }
+
+    .city-topline {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 22px;
+      font-size: 0.76rem;
       font-weight: 900;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
     }
 
-    .sjl-hero h1 {
-      max-width: 850px;
-      margin: 0;
-      color: var(--sjl-pink);
-      font-size: clamp(2.5rem, 8vw, 6rem);
-      font-weight: 950;
-      line-height: 0.95;
-      letter-spacing: -0.06em;
-      overflow-wrap: anywhere;
-      text-shadow: 3px 3px 0 #633d68;
-    }
-
-    .sjl-description {
-      max-width: 720px;
-      margin: 24px 0 0;
-      color: var(--sjl-text);
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      line-height: 1.8;
-    }
-
-    .sjl-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 24px;
-    }
-
-    .sjl-tag {
-      padding: 7px 11px;
-      border: 1px solid var(--sjl-border);
-      border-radius: 4px;
-      background: #211725;
-      color: var(--sjl-blue);
-      font-size: 0.78rem;
-      font-weight: 850;
-      letter-spacing: 0.04em;
-    }
-
-    .sjl-navigation {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 26px 0;
-      padding: 18px;
-      border: 1px dashed var(--sjl-purple);
-      border-radius: 8px;
-      background: #281d2e;
-    }
-
-    .sjl-navigation a {
-      padding: 7px 10px;
-      border: 1px solid var(--sjl-border);
-      border-radius: 4px;
-      background: var(--sjl-panel);
-      color: var(--sjl-text);
-      font-size: 0.82rem;
-      font-weight: 750;
+    .city-topline a {
       text-decoration: none;
-      transition:
-        background 0.15s ease,
-        color 0.15s ease;
     }
 
-    .sjl-navigation a:hover {
-      background: var(--sjl-lime);
-      color: #211725;
+    .city-topline .home-link {
+      color: var(--city-acid);
     }
 
-    .sjl-grid {
+    .city-topline .world-label {
+      color: var(--city-blue);
+    }
+
+    .city-masthead {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(25px, 6vw, 65px);
+      background: var(--city-paper);
+      color: var(--city-ink);
+      border: 3px solid var(--city-pink);
+      box-shadow: 8px 8px 0 var(--city-plum);
+    }
+
+    .city-masthead::before {
+      content: "THE CITY NEVER SHUTS UP";
+      position: absolute;
+      top: 17px;
+      right: 20px;
+      max-width: 45%;
+      color: rgba(57, 38, 62, 0.25);
+      font-size: clamp(0.6rem, 1.8vw, 0.85rem);
+      font-weight: 1000;
+      letter-spacing: 0.13em;
+      text-align: right;
+      transform: rotate(3deg);
+    }
+
+    .city-edition {
+      display: inline-block;
+      margin: 0 0 23px;
+      padding: 6px 10px;
+      background: var(--city-ink);
+      color: var(--city-acid);
+      font-size: 0.7rem;
+      font-weight: 1000;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .city-masthead h1 {
+      max-width: 950px;
+      margin: 0;
+      color: #bd386f;
+      font-size: clamp(3.1rem, 10vw, 7.6rem);
+      font-weight: 1000;
+      letter-spacing: -0.085em;
+      line-height: 0.84;
+      overflow-wrap: anywhere;
+    }
+
+    .city-masthead h1 span {
+      color: var(--city-ink);
+    }
+
+    .city-deck {
+      max-width: 760px;
+      margin: 28px 0 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.08rem, 2.5vw, 1.35rem);
+      line-height: 1.6;
+    }
+
+    .city-stamps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 27px;
+    }
+
+    .city-stamps span {
+      padding: 6px 9px;
+      border: 1px solid rgba(36, 27, 43, 0.4);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .city-manifesto {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      align-items: stretch;
+      grid-template-columns: minmax(0, 1fr) 180px;
+      gap: 20px;
+      align-items: center;
+      margin: 30px 0;
+      padding: 22px 0;
+      border-top: 1px solid var(--city-rule);
+      border-bottom: 1px solid var(--city-rule);
     }
 
-    .sjl-section {
+    .city-manifesto p {
+      margin: 0;
+      color: var(--city-muted);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+      line-height: 1.7;
+    }
+
+    .city-manifesto strong {
+      color: var(--city-pink);
+      font-weight: normal;
+      font-style: italic;
+    }
+
+    .city-sticker {
+      display: grid;
+      place-items: center;
+      aspect-ratio: 1;
+      padding: 14px;
+      background: var(--city-acid);
+      color: var(--city-ink);
+      border-radius: 50%;
+      font-size: 0.76rem;
+      font-weight: 1000;
+      letter-spacing: 0.07em;
+      line-height: 1.5;
+      text-align: center;
+      text-transform: uppercase;
+      transform: rotate(8deg);
+    }
+
+    .city-index {
+      margin-bottom: 38px;
+      padding: 20px;
+      background: var(--city-plum);
+      border: 1px solid var(--city-rule);
+    }
+
+    .city-index-heading {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 13px;
+      color: var(--city-blue);
+      font-size: 0.72rem;
+      font-weight: 1000;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .city-index-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .city-index-links a {
+      padding: 6px 9px;
+      background: var(--city-ink);
+      border: 1px solid var(--city-rule);
+      color: var(--city-paper);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: background 150ms ease, color 150ms ease;
+    }
+
+    .city-index-links a:hover {
+      background: var(--city-acid);
+      color: var(--city-ink);
+    }
+
+    .city-section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 13px;
+      margin: 42px 0 17px;
+      padding-bottom: 11px;
+      border-bottom: 2px solid var(--city-pink);
+    }
+
+    .city-section-head .issue {
+      color: var(--city-orange);
+      font-size: 0.76rem;
+      font-weight: 1000;
+      letter-spacing: 0.1em;
+    }
+
+    .city-section-head h2 {
+      margin: 0;
+      font-size: clamp(1.35rem, 3.5vw, 2rem);
+      font-weight: 1000;
+      letter-spacing: -0.04em;
+      line-height: 1.2;
+    }
+
+    .city-section-head .aside {
+      margin-left: auto;
+      color: var(--city-muted);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .city-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .city-entry {
       min-width: 0;
-      padding: 22px;
-      border: 1px solid var(--sjl-border);
-      border-radius: 8px;
-      background: var(--sjl-panel);
+      grid-column: span 3;
+      padding: 21px;
+      background: var(--city-plum);
+      border: 1px solid var(--city-rule);
       scroll-margin-top: 20px;
     }
 
-    .sjl-section:nth-child(4n + 1) {
-      border-top: 3px solid var(--sjl-pink);
+    .city-entry:nth-child(4n + 1) {
+      border-top: 4px solid var(--city-pink);
     }
 
-    .sjl-section:nth-child(4n + 2) {
-      border-top: 3px solid var(--sjl-purple);
+    .city-entry:nth-child(4n + 2) {
+      border-top: 4px solid var(--city-blue);
     }
 
-    .sjl-section:nth-child(4n + 3) {
-      border-top: 3px solid var(--sjl-lime);
+    .city-entry:nth-child(4n + 3) {
+      border-top: 4px solid var(--city-acid);
     }
 
-    .sjl-section:nth-child(4n) {
-      border-top: 3px solid var(--sjl-blue);
+    .city-entry:nth-child(4n) {
+      border-top: 4px solid var(--city-orange);
     }
 
-    .sjl-section h2 {
-      margin: 0 0 12px;
-      color: var(--sjl-pink);
-      font-size: 1.05rem;
-      font-weight: 950;
-      letter-spacing: 0.07em;
-      line-height: 1.4;
+    .city-entry .entry-number {
+      display: block;
+      margin-bottom: 11px;
+      color: var(--city-muted);
+      font-size: 0.67rem;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+    }
+
+    .city-entry h3 {
+      margin: 0 0 10px;
+      color: var(--city-pink);
+      font-size: 1.12rem;
+      font-weight: 1000;
+      letter-spacing: 0.035em;
+      line-height: 1.35;
       text-transform: uppercase;
     }
 
-    .sjl-section:nth-child(4n + 2) h2 {
-      color: var(--sjl-purple);
+    .city-entry:nth-child(4n + 2) h3 {
+      color: var(--city-blue);
     }
 
-    .sjl-section:nth-child(4n + 3) h2 {
-      color: var(--sjl-lime);
+    .city-entry:nth-child(4n + 3) h3 {
+      color: var(--city-acid);
     }
 
-    .sjl-section:nth-child(4n) h2 {
-      color: var(--sjl-blue);
+    .city-entry:nth-child(4n) h3 {
+      color: var(--city-orange);
     }
 
-    .sjl-section h2::before {
-      content: "✳ ";
-      font-size: 0.9em;
-    }
-
-    .sjl-section p {
+    .city-entry p {
       margin: 0;
-      color: var(--sjl-muted);
-      font-size: 0.96rem;
-      line-height: 1.85;
+      color: var(--city-muted);
+      font-size: 0.94rem;
+      line-height: 1.8;
       overflow-wrap: anywhere;
     }
 
-    .sjl-footer {
-      margin-top: 28px;
-      padding: 20px 0;
-      border-top: 1px solid var(--sjl-border);
-      color: var(--sjl-muted);
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
+    .city-entry.wide {
+      grid-column: span 6;
+      display: grid;
+      grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+      gap: 25px;
+      background: var(--city-paper);
+      border: 0;
+    }
+
+    .city-entry.wide h3 {
+      color: #a62d63;
+      font-size: 1.35rem;
+    }
+
+    .city-entry.wide p {
+      color: var(--city-ink);
+    }
+
+    .city-entry .scribble {
+      display: block;
+      margin-top: 15px;
+      color: var(--city-acid);
+      font-size: 0.75rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+
+    .city-entry.wide .scribble {
+      color: #a62d63;
+    }
+
+    .city-species-note {
+      display: grid;
+      grid-template-columns: 58px minmax(0, 1fr);
+      gap: 17px;
+      align-items: start;
+      margin-top: 18px;
+      padding: 19px;
+      background: rgba(140, 227, 232, 0.08);
+      border-left: 4px solid var(--city-blue);
+    }
+
+    .city-species-note .symbol {
+      color: var(--city-blue);
+      font-size: 2.2rem;
+      line-height: 1;
       text-align: center;
     }
 
-    @media (max-width: 680px) {
-      .sjl-page {
-        padding: 16px;
+    .city-species-note p {
+      margin: 0;
+      color: var(--city-muted);
+      font-size: 0.92rem;
+    }
+
+    .city-species-note strong {
+      color: var(--city-blue);
+    }
+
+    .city-bottom {
+      position: relative;
+      overflow: hidden;
+      margin-top: 46px;
+      padding: clamp(26px, 5vw, 48px);
+      background: var(--city-pink);
+      color: var(--city-ink);
+    }
+
+    .city-bottom::after {
+      content: "SJL";
+      position: absolute;
+      right: -8px;
+      bottom: -0.38em;
+      color: rgba(36, 27, 43, 0.1);
+      font-size: clamp(8rem, 25vw, 18rem);
+      font-weight: 1000;
+      letter-spacing: -0.1em;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .city-bottom .label {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 13px;
+      font-size: 0.7rem;
+      font-weight: 1000;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .city-bottom h2 {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(2.2rem, 7vw, 5rem);
+      font-weight: 1000;
+      letter-spacing: -0.07em;
+      line-height: 0.98;
+    }
+
+    .city-bottom p:last-child {
+      position: relative;
+      z-index: 1;
+      max-width: 730px;
+      margin: 22px 0 0;
+    }
+
+    .city-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 17px;
+      border-top: 1px solid var(--city-rule);
+      color: var(--city-muted);
+      font-size: 0.76rem;
+    }
+
+    .city-footer a {
+      color: var(--city-acid);
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .city-footer .decoration {
+      color: var(--city-pink);
+      letter-spacing: 0.2em;
+    }
+
+    @media (max-width: 700px) {
+      .city-page {
+        width: calc(100% - 22px);
+        padding-top: 14px;
       }
 
-      .sjl-grid {
+      .city-masthead {
+        padding: 32px 21px;
+      }
+
+      .city-masthead::before {
+        max-width: 35%;
+        font-size: 0.56rem;
+      }
+
+      .city-manifesto {
+        grid-template-columns: minmax(0, 1fr) 105px;
+        gap: 12px;
+      }
+
+      .city-sticker {
+        font-size: 0.61rem;
+      }
+
+      .city-grid {
         grid-template-columns: 1fr;
       }
 
-      .sjl-section {
-        padding: 18px;
+      .city-entry,
+      .city-entry.wide {
+        grid-column: auto;
       }
 
-      .sjl-hero::after {
-        font-size: 20px;
+      .city-entry.wide {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .city-section-head .aside {
+        display: none;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .city-manifesto {
+        grid-template-columns: 1fr;
+      }
+
+      .city-sticker {
+        width: 105px;
+      }
+
+      .city-entry {
+        padding: 18px;
       }
     }
 
@@ -261,228 +543,376 @@
 </head>
 
 <body>
-  <main class="sjl-page">
+  <main class="city-page">
 
-    <a class="sjl-back" href="../index.html">
-      ← CREATOR / HOME
-    </a>
+    <nav class="city-topline" aria-label="Page navigation">
+      <a class="home-link" href="../index.html">← Creator / Home</a>
+      <span class="world-label">Planet Creator · City guide</span>
+    </nav>
 
-    <header class="sjl-hero">
-      <p class="sjl-eyebrow">
-        ✦ CREATOR ARCHIVE / MAJOR CITY ✦
+    <header class="city-masthead">
+      <p class="city-edition">✳ A city-sized mess · Est. ~2,000 years ago</p>
+      <h1>Saint Jude’s <span>Landing</span></h1>
+
+      <p class="city-deck">
+        An enormous, sprawling modern alien city where humans, demi-humans,
+        monsters, and countless other species live together. Beautiful,
+        filthy, colorful, crowded, dangerous, affectionate, horny, violent,
+        mundane, and strange—all at the same time.
       </p>
 
-      <h1>Saint Jude’s Landing</h1>
-
-      <p class="sjl-description">
-        Saint Jude’s Landing is an enormous, sprawling modern alien city
-        where humans, demi-humans, monsters, and countless other species
-        live together. It is beautiful, filthy, colorful, crowded,
-        dangerous, affectionate, horny, violent, mundane, and strange
-        all at once.
-      </p>
-
-      <div class="sjl-tags">
-        <span class="sjl-tag">TYPE: MAJOR CITY</span>
-        <span class="sjl-tag">PLANET: CREATOR</span>
+      <div class="city-stamps">
+        <span>Major city</span>
+        <span>Planet: Creator</span>
+        <span>Not remotely normal</span>
       </div>
     </header>
 
-    <nav class="sjl-navigation" aria-label="Page sections">
-      <a href="#general">General</a>
-      <a href="#society">Society</a>
-      <a href="#attraction">Attraction</a>
-      <a href="#monsterfucking">Monsterfucking</a>
-      <a href="#relationships">Relationships</a>
-      <a href="#creatures">Creatures</a>
-      <a href="#people">People</a>
-      <a href="#adult-life">Adult Life</a>
-      <a href="#underworld">Underworld</a>
-      <a href="#darkness">Darkness</a>
-      <a href="#subcultures">Subcultures</a>
-      <a href="#city-life">City Life</a>
-      <a href="#nature">Nature</a>
-      <a href="#technology">Technology</a>
-      <a href="#atmosphere">Atmosphere</a>
-      <a href="#tone">Tone</a>
+    <section class="city-manifesto" aria-label="City overview">
+      <p>
+        Saint Jude’s Landing is not one thing. It is the late-night diner,
+        the factory shift, the monster in the stairwell, the couple arguing
+        outside a club, the impossible plant growing through a cracked wall,
+        and the neighbor who has seen all of it before.
+        <strong>Life goes on. Usually weirdly.</strong>
+      </p>
+      <div class="city-sticker" aria-label="Local motto">
+        Pretty<br>
+        nasty<br>
+        alive<br>
+        ✳
+      </div>
+    </section>
+
+    <nav class="city-index" aria-label="Page sections">
+      <p class="city-index-heading">
+        <span>Jump around</span>
+        <span>Pick your problem ↓</span>
+      </p>
+      <div class="city-index-links">
+        <a href="#general">The city</a>
+        <a href="#society">Society</a>
+        <a href="#attraction">Attraction</a>
+        <a href="#monsterfucking">Monsterfucking</a>
+        <a href="#relationships">Relationships</a>
+        <a href="#creatures">Creatures</a>
+        <a href="#people">People</a>
+        <a href="#adult-life">Adult life</a>
+        <a href="#underworld">Underworld</a>
+        <a href="#darkness">Darkness</a>
+        <a href="#subcultures">Subcultures</a>
+        <a href="#city-life">Daily life</a>
+        <a href="#nature">Nature</a>
+        <a href="#technology">Technology</a>
+        <a href="#atmosphere">Atmosphere</a>
+        <a href="#tone">Tone</a>
+      </div>
     </nav>
 
-    <div class="sjl-grid">
+    <section aria-labelledby="foundations-heading">
+      <div class="city-section-head">
+        <span class="issue">01 / THE BASICS</span>
+        <h2 id="foundations-heading">What kind of place is this?</h2>
+        <span class="aside">Start here</span>
+      </div>
 
-      <section class="sjl-section" id="general">
-        <h2>General</h2>
+      <div class="city-grid">
+
+        <article class="city-entry" id="general">
+          <span class="entry-number">01.01 · GENERAL</span>
+          <h3>The whole ridiculous city</h3>
+          <p>
+            Saint Jude’s Landing is an enormous, sprawling modern alien city
+            where humans, demi-humans, monsters, and countless other species
+            live together. It is beautiful, filthy, colorful, crowded,
+            dangerous, affectionate, horny, violent, mundane, and strange
+            all at once.
+          </p>
+        </article>
+
+        <article class="city-entry" id="society">
+          <span class="entry-number">01.02 · SOCIETY</span>
+          <h3>People are people</h3>
+          <p>
+            Humans, demi-humans, and monsters are ordinary members of
+            society. Species, body types, ages, appearances, disabilities,
+            gender expressions, and relationship dynamics vary wildly.
+            Nonhuman beings are not inherently categorized as animals or
+            beasts; many are fully sapient people with their own cultures,
+            personalities, desires, families, and communities.
+          </p>
+          <span class="scribble">Different body ≠ lesser person.</span>
+        </article>
+
+      </div>
+    </section>
+
+    <section aria-labelledby="desire-heading">
+      <div class="city-section-head">
+        <span class="issue">02 / CHEMISTRY</span>
+        <h2 id="desire-heading">Desire, dating & other complications</h2>
+        <span class="aside">Adults being adults</span>
+      </div>
+
+      <div class="city-grid">
+
+        <article class="city-entry" id="attraction">
+          <span class="entry-number">02.01 · ATTRACTION</span>
+          <h3>Everybody has a type</h3>
+          <p>
+            Attraction between humans, demi-humans, and monstrous species
+            is commonplace. Human/monster relationships, interspecies
+            dating, marriage, hookups, families, and long-term partnerships
+            are established parts of city life. Some species are considered
+            especially attractive or desirable by particular subcultures;
+            others are feared, fetishized, misunderstood, or considered
+            unconventional.
+          </p>
+        </article>
+
+        <article class="city-entry" id="monsterfucking">
+          <span class="entry-number">02.02 · MONSTERFUCKING</span>
+          <h3>Not everybody wants a human</h3>
+          <p>
+            Sexual and romantic attraction toward monstrous beings is a
+            normal part of the city’s adult culture. Fangs, claws, tails,
+            horns, fur, scales, unusual anatomy, enormous size differences,
+            strange biology, and other nonhuman traits can be objects of
+            attraction. Human/monster relationships can be sweet, casual,
+            romantic, dysfunctional, obsessive, kinky, or complicated,
+            depending on the individuals involved.
+          </p>
+          <span class="scribble">The dating pool is a literal ecosystem.</span>
+        </article>
+
+        <article class="city-entry" id="relationships">
+          <span class="entry-number">02.03 · RELATIONSHIPS</span>
+          <h3>There is no universal rulebook</h3>
+          <p>
+            The city contains conventional couples, unconventional couples,
+            open relationships, possessive relationships, toxic
+            relationships, dominant/submissive dynamics, age-gap
+            relationships between consenting adults, interspecies
+            relationships, and partnerships that outsiders may find bizarre.
+            Saint Jude’s Landing does not have one universal attitude
+            toward relationships.
+          </p>
+        </article>
+
+        <article class="city-entry" id="adult-life">
+          <span class="entry-number">02.04 · ADULT LIFE</span>
+          <h3>After dark—and before it</h3>
+          <p>
+            Dating, sex, nightlife, kink communities, fetish subcultures,
+            clubs, bars, brothels, pornography, prostitution, and
+            unconventional relationships are established parts of adult
+            city life. Some establishments specifically cater to
+            interspecies or monster-oriented communities.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <section aria-labelledby="people-heading">
+      <div class="city-section-head">
+        <span class="issue">03 / THE POPULATION</span>
+        <h2 id="people-heading">No standard-issue citizens</h2>
+        <span class="aside">Bodies come in all forms</span>
+      </div>
+
+      <div class="city-grid">
+
+        <article class="city-entry" id="creatures">
+          <span class="entry-number">03.01 · CREATURES</span>
+          <h3>Monster is a broad category</h3>
+          <p>
+            Monsters range from gentle and beautiful to grotesque,
+            dangerous, predatory, enormous, or deeply strange. Some can
+            pass as nearly human; others cannot. Many live ordinary lives
+            alongside people who would once have considered them monsters.
+          </p>
+        </article>
+
+        <article class="city-entry" id="people">
+          <span class="entry-number">03.02 · PEOPLE</span>
+          <h3>There is no default body</h3>
+          <p>
+            Pretty boys, femboys, short men, fat men, muscular women,
+            plus-size women, dad-bod men, older adults, scarred people,
+            disabled people, unconventional-looking people, and monstrous
+            or heavily nonhuman individuals are all ordinary parts of
+            the population.
+          </p>
+        </article>
+
+      </div>
+
+      <aside class="city-species-note">
+        <span class="symbol" aria-hidden="true">✳</span>
         <p>
-          Saint Jude’s Landing is an enormous, sprawling modern alien city
-          where humans, demi-humans, monsters, and countless other species
-          live together. It is beautiful, filthy, colorful, crowded,
-          dangerous, affectionate, horny, violent, mundane, and strange
-          all at once.
+          <strong>Species are not personality presets.</strong>
+          Being nonhuman does not automatically make someone gentle,
+          savage, innocent, evil, civilized, or dangerous. Individuals
+          and communities are more complicated than that.
         </p>
-      </section>
+      </aside>
+    </section>
 
-      <section class="sjl-section" id="society">
-        <h2>Society</h2>
-        <p>
-          Humans, demi-humans, and monsters are ordinary members of society.
-          Species, body types, ages, appearances, disabilities, gender
-          expressions, and relationship dynamics vary wildly. Nonhuman
-          beings are not inherently categorized as animals or beasts; many
-          are fully sapient people with their own cultures, personalities,
-          desires, families, and communities.
-        </p>
-      </section>
+    <section aria-labelledby="danger-heading">
+      <div class="city-section-head">
+        <span class="issue">04 / THE UGLY BITS</span>
+        <h2 id="danger-heading">Bad neighborhoods, worse people</h2>
+        <span class="aside">Not everything is cute</span>
+      </div>
 
-      <section class="sjl-section" id="attraction">
-        <h2>Attraction</h2>
-        <p>
-          Attraction between humans, demi-humans, and monstrous species
-          is commonplace. Human/monster relationships, interspecies dating,
-          marriage, hookups, families, and long-term partnerships are all
-          established parts of city life. Some species are considered
-          especially attractive or desirable by particular subcultures,
-          while others are feared, fetishized, misunderstood, or considered
-          unconventional.
-        </p>
-      </section>
+      <div class="city-grid">
 
-      <section class="sjl-section" id="monsterfucking">
-        <h2>Monsterfucking</h2>
-        <p>
-          Sexual and romantic attraction toward monstrous beings is a normal
-          part of the city’s adult culture. Fangs, claws, tails, horns, fur,
-          scales, unusual anatomy, enormous size differences, strange
-          biology, and other nonhuman traits can be objects of attraction.
-          Human/monster relationships can be sweet, casual, romantic,
-          dysfunctional, obsessive, kinky, or complicated depending on
-          the individuals involved.
-        </p>
-      </section>
+        <article class="city-entry" id="underworld">
+          <span class="entry-number">04.01 · UNDERWORLD</span>
+          <h3>Crime doesn't take weekends off</h3>
+          <p>
+            Crime, organized crime, theft, violence, trafficking, black
+            markets, corruption, gangs, illegal businesses, and dangerous
+            individuals exist throughout the city.
+          </p>
+        </article>
 
-      <section class="sjl-section" id="relationships">
-        <h2>Relationships</h2>
-        <p>
-          Saint Jude’s Landing contains conventional couples, unconventional
-          couples, open relationships, possessive relationships, toxic
-          relationships, dominant/submissive dynamics, age-gap relationships
-          between consenting adults, interspecies relationships, and
-          relationships that outsiders may find bizarre. The city does
-          not have one universal attitude toward relationships.
-        </p>
-      </section>
+        <article class="city-entry" id="darkness">
+          <span class="entry-number">04.02 · DARKNESS</span>
+          <h3>Monsters aren't the only danger</h3>
+          <p>
+            Horrific events, abuse, murder, disappearances, exploitation,
+            obsession, stalking, manipulation, domestic violence, predatory
+            individuals, and other extreme circumstances can exist alongside
+            ordinary life. Not every monster is dangerous, and not every
+            human is safe.
+          </p>
+        </article>
 
-      <section class="sjl-section" id="creatures">
-        <h2>Creatures</h2>
-        <p>
-          Monsters range from gentle and beautiful to grotesque, dangerous,
-          predatory, enormous, or deeply strange. Some can pass as nearly
-          human; others cannot. Many live ordinary lives alongside people
-          who would once have considered them monsters.
-        </p>
-      </section>
+      </div>
+    </section>
 
-      <section class="sjl-section" id="people">
-        <h2>People</h2>
-        <p>
-          Pretty boys, femboys, short men, fat men, muscular women,
-          plus-size women, dad-bod men, older adults, scarred people,
-          disabled people, unconventional-looking people, and monstrous
-          or heavily nonhuman individuals are all ordinary parts of
-          the population.
-        </p>
-      </section>
+    <section aria-labelledby="culture-heading">
+      <div class="city-section-head">
+        <span class="issue">05 / CULTURE</span>
+        <h2 id="culture-heading">Find your people. Find your problems.</h2>
+        <span class="aside">Scenes within scenes</span>
+      </div>
 
-      <section class="sjl-section" id="adult-life">
-        <h2>Adult Life</h2>
-        <p>
-          Dating, sex, nightlife, kink communities, fetish subcultures,
-          clubs, bars, brothels, pornography, prostitution, and
-          unconventional relationships are established parts of adult
-          city life. Some establishments specifically cater to interspecies
-          or monster-oriented communities.
-        </p>
-      </section>
+      <div class="city-grid">
 
-      <section class="sjl-section" id="underworld">
-        <h2>Underworld</h2>
-        <p>
-          Crime, organized crime, theft, violence, trafficking, black
-          markets, corruption, gangs, illegal businesses, and dangerous
-          individuals exist throughout the city.
-        </p>
-      </section>
+        <article class="city-entry wide" id="subcultures">
+          <div>
+            <span class="entry-number">05.01 · SUBCULTURES</span>
+            <h3>A niche for every niche</h3>
+            <span class="scribble">Someone here is into it. Probably.</span>
+          </div>
+          <p>
+            The city contains countless niche communities, underground
+            scenes, fandoms, fashion movements, fetish communities, music
+            scenes, creature communities, alternative lifestyles, and
+            strange local traditions.
+          </p>
+        </article>
 
-      <section class="sjl-section" id="darkness">
-        <h2>Darkness</h2>
-        <p>
-          Horrific events, abuse, murder, disappearances, exploitation,
-          obsession, stalking, manipulation, domestic violence, predatory
-          individuals, and other extreme circumstances can exist alongside
-          ordinary life. Not every monster is dangerous, and not every
-          human is safe.
-        </p>
-      </section>
+      </div>
+    </section>
 
-      <section class="sjl-section" id="subcultures">
-        <h2>Subcultures</h2>
-        <p>
-          The city contains countless niche communities, underground scenes,
-          fandoms, fashion movements, fetish communities, music scenes,
-          creature communities, alternative lifestyles, and strange
-          local traditions.
-        </p>
-      </section>
+    <section aria-labelledby="infrastructure-heading">
+      <div class="city-section-head">
+        <span class="issue">06 / DAILY EXISTENCE</span>
+        <h2 id="infrastructure-heading">Errands still need doing</h2>
+        <span class="aside">Even here</span>
+      </div>
 
-      <section class="sjl-section" id="city-life">
-        <h2>City Life</h2>
-        <p>
-          Restaurants, apartments, schools, hospitals, workplaces, shops,
-          markets, transit stations, bars, clubs, theaters, arcades, parks,
-          clinics, warehouses, factories, residential streets, and
-          entertainment districts fill the city. Ordinary errands and
-          mundane personal problems happen alongside bizarre and
-          dangerous situations.
-        </p>
-      </section>
+      <div class="city-grid">
 
-      <section class="sjl-section" id="nature">
-        <h2>Nature</h2>
-        <p>
-          Creator’s alien ecosystems grow directly into Saint Jude’s
-          Landing. Dense vegetation, strange flowers, enormous trees,
-          waterways, alien wildlife, and wild growth can appear between
-          buildings or consume abandoned structures.
-        </p>
-      </section>
+        <article class="city-entry wide" id="city-life">
+          <div>
+            <span class="entry-number">06.01 · CITY LIFE</span>
+            <h3>Ordinary life in an extraordinary place</h3>
+            <span class="scribble">Buy groceries. Miss the bus. See something unexplainable.</span>
+          </div>
+          <p>
+            Restaurants, apartments, schools, hospitals, workplaces, shops,
+            markets, transit stations, bars, clubs, theaters, arcades, parks,
+            clinics, warehouses, factories, residential streets, and
+            entertainment districts fill the city. Ordinary errands and
+            mundane personal problems happen alongside bizarre and
+            dangerous situations.
+          </p>
+        </article>
 
-      <section class="sjl-section" id="technology">
-        <h2>Technology</h2>
-        <p>
-          Modern technology is widespread and practical. Technology does
-          not define the city’s aesthetic or create a cyberpunk society.
-        </p>
-      </section>
+        <article class="city-entry" id="nature">
+          <span class="entry-number">06.02 · NATURE</span>
+          <h3>The wilderness gets in</h3>
+          <p>
+            Creator’s alien ecosystems grow directly into Saint Jude’s
+            Landing. Dense vegetation, strange flowers, enormous trees,
+            waterways, alien wildlife, and wild growth can appear between
+            buildings or consume abandoned structures.
+          </p>
+        </article>
 
-      <section class="sjl-section" id="atmosphere">
-        <h2>Atmosphere</h2>
-        <p>
-          Colorful, grimy, lush, crowded, sexually open, socially chaotic,
-          dangerous, funny, beautiful, and deeply lived-in.
-        </p>
-      </section>
+        <article class="city-entry" id="technology">
+          <span class="entry-number">06.03 · TECHNOLOGY</span>
+          <h3>Modern, not cyberpunk</h3>
+          <p>
+            Modern technology is widespread and practical. Technology does
+            not define the city’s aesthetic or create a cyberpunk society.
+          </p>
+        </article>
 
-      <section class="sjl-section" id="tone">
-        <h2>Tone</h2>
-        <p>
-          Adult, strange, irreverent, romantic, erotic, violent, messy,
-          occasionally horrific, frequently funny, and grounded in
-          everyday life.
-        </p>
-      </section>
+      </div>
+    </section>
 
-    </div>
+    <section aria-labelledby="feeling-heading">
+      <div class="city-section-head">
+        <span class="issue">07 / THE VIBE</span>
+        <h2 id="feeling-heading">What it feels like to live here</h2>
+      </div>
 
-    <footer class="sjl-footer">
-      ✦ SAINT JUDE’S LANDING · CREATOR ✦
+      <div class="city-grid">
+
+        <article class="city-entry" id="atmosphere">
+          <span class="entry-number">07.01 · ATMOSPHERE</span>
+          <h3>Beautiful mess</h3>
+          <p>
+            Colorful, grimy, lush, crowded, sexually open, socially chaotic,
+            dangerous, funny, beautiful, and deeply lived-in.
+          </p>
+        </article>
+
+        <article class="city-entry" id="tone">
+          <span class="entry-number">07.02 · TONE</span>
+          <h3>Let life be complicated</h3>
+          <p>
+            Adult, strange, irreverent, romantic, erotic, violent, messy,
+            occasionally horrific, frequently funny, and grounded in
+            everyday life.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="city-bottom">
+      <p class="label">Saint Jude’s Landing / In brief</p>
+      <h2>A city full of people living their lives. Weirdly.</h2>
+      <p>
+        Saint Jude’s Landing is a modern alien city where the mundane and
+        the extraordinary share the same streets. People work, fall in love,
+        get into trouble, build communities, make art, raise families,
+        chase terrible ideas, and carry on. The city can be funny, filthy,
+        tender, frightening, or beautiful—sometimes before lunch.
+      </p>
+    </section>
+
+    <footer class="city-footer">
+      <a href="../index.html">← Return to Creator</a>
+      <span class="decoration" aria-hidden="true">✦ ✳ ♡ ✳ ✦</span>
+      <span>Saint Jude’s Landing · Planet Creator</span>
     </footer>
 
   </main>
