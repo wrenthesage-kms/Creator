@@ -3,674 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#171419">
 <title>Brat (Bridgette) — Creator</title>
 <style>
-:root {
-  --bg: #171419;
-  --paper: #211b22;
-  --paper2: #2c222c;
-  --pink: #ff77b7;
-  --pink-light: #ffc4e0;
-  --white: #fff1f7;
-  --grey: #c9b8c5;
-  --red: #ed4d77;
-  --line: rgba(255,119,183,.28);
-  --black: #100d11;
-}
-* { box-sizing: border-box; }
+:root{--bg:#171419;--paper:#211b22;--paper2:#2c222c;--pink:#ff77b7;--pink-light:#ffc4e0;--white:#fff1f7;--grey:#c9b8c5;--red:#ed4d77;--line:rgba(255,119,183,.28);--black:#100d11}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:18px}
+body{margin:0;padding:22px 14px 45px;color:var(--white);background:radial-gradient(ellipse at 12% 5%,rgba(255,119,183,.12),transparent 27%),radial-gradient(ellipse at 90% 35%,rgba(237,77,119,.08),transparent 30%),repeating-linear-gradient(135deg,rgba(255,255,255,.012) 0 1px,transparent 1px 8px),var(--bg);font-family:"Trebuchet MS",Arial,sans-serif;line-height:1.7}
+a{color:var(--pink-light)}
+.page{width:min(100%,1020px);margin:auto}
 
-html { scroll-behavior: smooth; }
+/* MASTHEAD */
+.masthead{position:relative;padding:34px 32px 28px;overflow:hidden;border:1px solid var(--pink);background:linear-gradient(112deg,rgba(255,119,183,.13),transparent 50%),var(--paper);box-shadow:7px 7px 0 var(--pink)}
+.masthead:before{content:"BAD IDEA";position:absolute;right:-13px;bottom:-35px;color:rgba(255,119,183,.055);font-size:clamp(80px,16vw,170px);font-weight:1000;letter-spacing:-9px;line-height:1;transform:rotate(-8deg);pointer-events:none}
+.masthead:after{content:"♡ ✦ ♡";position:absolute;top:13px;right:17px;color:var(--pink);font-size:17px;letter-spacing:5px;pointer-events:none}
+.topline{position:relative;z-index:1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 18px;margin-bottom:24px;color:var(--pink-light);font-size:10px;font-weight:bold;letter-spacing:2px;text-transform:uppercase}
+.topline span:last-child{color:var(--grey);text-align:right}
+.hero-title{position:relative;z-index:1;margin:0;color:var(--pink);font-family:Impact,"Arial Narrow",sans-serif;font-size:clamp(68px,15vw,142px);font-weight:900;letter-spacing:-4px;line-height:.78;text-transform:uppercase;text-shadow:4px 4px 0 var(--black),6px 6px 0 var(--red)}
+.hero-subtitle{position:relative;z-index:1;margin:20px 0 0;color:var(--white);font-size:13px;font-weight:bold;letter-spacing:2px;text-transform:uppercase}
+.hero-subtitle b{color:var(--pink)}
+.hero-intro{position:relative;z-index:1;max-width:720px;margin:22px 0 0;color:#e8d9e4;font-size:15px}
+.stickers{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}
+.sticker{display:inline-block;padding:5px 10px;border:1px solid var(--pink);background:var(--black);color:var(--pink-light);font-size:10px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;transform:rotate(-1deg)}
+.sticker:nth-child(even){border-color:var(--red);color:#ff9dbf;transform:rotate(1deg)}
+.warning-strip{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:24px;padding:9px 12px;border-top:1px dashed var(--pink);border-bottom:1px dashed var(--pink);color:var(--pink-light);font-size:10px;font-weight:bold;letter-spacing:1.4px;text-transform:uppercase}
+.warning-strip span:last-child{color:var(--grey);text-align:right}
 
-body {
-  margin: 0;
-  padding: 22px 14px 45px;
-  color: var(--white);
-  background:
-    radial-gradient(ellipse at 12% 5%, rgba(255,119,183,.12), transparent 27%),
-    radial-gradient(ellipse at 90% 35%, rgba(237,77,119,.08), transparent 30%),
-    repeating-linear-gradient(135deg, rgba(255,255,255,.012) 0 1px, transparent 1px 8px),
-    var(--bg);
-  font-family: "Trebuchet MS", Arial, sans-serif;
-  line-height: 1.7;
-}
+/* NAVIGATION */
+.jump-links{display:flex;flex-wrap:wrap;gap:7px;margin:28px 0;padding:0;list-style:none}
+.jump-links a{display:inline-block;padding:7px 10px;border:1px solid #493343;background:#211a23;color:var(--grey);font-size:10px;font-weight:bold;letter-spacing:.7px;text-decoration:none;text-transform:uppercase;transition:background .15s ease,color .15s ease,border-color .15s ease}
+.jump-links a:hover,.jump-links a:focus-visible{border-color:var(--pink);background:var(--pink);color:var(--black)}
+.jump-links a:focus-visible{outline:2px solid var(--white);outline-offset:3px}
 
-a { color: var(--pink-light); }
+/* CONTENT */
+section{position:relative;margin-top:25px;padding:24px;border:1px solid #44303f;background:rgba(33,27,34,.96);scroll-margin-top:18px}
+.section-head{display:flex;align-items:center;gap:13px;margin:0 0 20px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.section-number{flex-shrink:0;color:var(--red);font-family:Impact,"Arial Narrow",sans-serif;font-size:31px;line-height:1}
+h2{margin:0;color:var(--pink-light);font-family:Impact,"Arial Narrow",sans-serif;font-size:25px;font-weight:400;letter-spacing:1.4px;line-height:1.1;text-transform:uppercase}
+.section-aside{margin-left:auto;color:#a993a4;font-size:9px;font-weight:bold;letter-spacing:1px;text-align:right;text-transform:uppercase}
+p{margin:0 0 13px}
+p:last-child{margin-bottom:0}
+strong{color:var(--pink-light)}
+h3{margin:0 0 9px;color:var(--pink);font-size:12px;font-weight:bold;letter-spacing:1.2px;text-transform:uppercase}
+p,li,dd{overflow-wrap:anywhere}
+.active{position:relative}
 
-.page {
-  width: min(100%, 1020px);
-  margin: auto;
-}
-
-/* THE GIRL, THE MYTH, THE PROBLEM */
-
-.masthead {
-  position: relative;
-  padding: 34px 32px 28px;
-  overflow: hidden;
-  border: 1px solid var(--pink);
-  background:
-    linear-gradient(112deg, rgba(255,119,183,.13), transparent 50%),
-    var(--paper);
-  box-shadow: 7px 7px 0 var(--pink);
-}
-
-.masthead::before {
-  content: "BAD IDEA";
-  position: absolute;
-  right: -13px;
-  bottom: -35px;
-  color: rgba(255,119,183,.055);
-  font-size: clamp(80px, 16vw, 170px);
-  font-weight: 1000;
-  letter-spacing: -9px;
-  line-height: 1;
-  transform: rotate(-8deg);
-  pointer-events: none;
-}
-
-.masthead::after {
-  content: "♡  ✦  ♡";
-  position: absolute;
-  top: 13px;
-  right: 17px;
-  color: var(--pink);
-  font-size: 17px;
-  letter-spacing: 5px;
-}
-
-.topline {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 8px 18px;
-  margin-bottom: 24px;
-  color: var(--pink-light);
-  font-size: 10px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.topline span:last-child {
-  color: var(--grey);
-  text-align: right;
-}
-
-.hero-title {
-  position: relative;
-  z-index: 1;
-  margin: 0;
-  color: var(--pink);
-  font-family: Impact, "Arial Narrow", sans-serif;
-  font-size: clamp(68px, 15vw, 142px);
-  font-weight: 900;
-  letter-spacing: -4px;
-  line-height: .78;
-  text-transform: uppercase;
-  text-shadow: 4px 4px 0 var(--black), 6px 6px 0 var(--red);
-}
-
-.hero-subtitle {
-  position: relative;
-  z-index: 1;
-  margin: 20px 0 0;
-  color: var(--white);
-  font-size: 13px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.hero-subtitle b {
-  color: var(--pink);
-}
-
-.hero-intro {
-  position: relative;
-  z-index: 1;
-  max-width: 720px;
-  margin: 22px 0 0;
-  color: #e8d9e4;
-  font-size: 15px;
-}
-
-.stickers {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin-top: 25px;
-}
-
-.sticker {
-  display: inline-block;
-  padding: 5px 10px;
-  border: 1px solid var(--pink);
-  background: var(--black);
-  color: var(--pink-light);
-  font-size: 10px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transform: rotate(-1deg);
-}
-
-.sticker:nth-child(even) {
-  border-color: var(--red);
-  color: #ff9dbf;
-  transform: rotate(1deg);
-}
-
-.warning-strip {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 24px;
-  padding: 9px 12px;
-  border-top: 1px dashed var(--pink);
-  border-bottom: 1px dashed var(--pink);
-  color: var(--pink-light);
-  font-size: 10px;
-  font-weight: bold;
-  letter-spacing: 1.4px;
-  text-transform: uppercase;
-}
-
-.warning-strip span:last-child {
-  color: var(--grey);
-  text-align: right;
-}
-
-/* PAGE NAVIGATION */
-
-.jump-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin: 28px 0;
-  padding: 0;
-  list-style: none;
-}
-
-.jump-links a {
-  display: inline-block;
-  padding: 7px 10px;
-  border: 1px solid #493343;
-  background: #211a23;
-  color: var(--grey);
-  font-size: 10px;
-  font-weight: bold;
-  letter-spacing: .7px;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: .15s ease;
-}
-
-.jump-links a:hover {
-  border-color: var(--pink);
-  background: var(--pink);
-  color: var(--black);
-}
-
-/* CONTENT SECTIONS */
-
-section {
-  position: relative;
-  margin-top: 25px;
-  padding: 24px;
-  border: 1px solid #44303f;
-  background: rgba(33,27,34,.96);
-}
-
-.section-head {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  margin: 0 0 20px;
-  padding-bottom: 13px;
-  border-bottom: 1px solid var(--line);
-}
-
-.section-number {
-  flex-shrink: 0;
-  color: var(--red);
-  font-family: Impact, "Arial Narrow", sans-serif;
-  font-size: 31px;
-  line-height: 1;
-}
-
-h2 {
-  margin: 0;
-  color: var(--pink-light);
-  font-family: Impact, "Arial Narrow", sans-serif;
-  font-size: 25px;
-  font-weight: 400;
-  letter-spacing: 1.4px;
-  line-height: 1.1;
-  text-transform: uppercase;
-}
-
-.section-aside {
-  margin-left: auto;
-  color: #a993a4;
-  font-size: 9px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-align: right;
-  text-transform: uppercase;
-}
-
-p { margin: 0 0 13px; }
-p:last-child { margin-bottom: 0; }
-
-strong { color: var(--pink-light); }
-
-h3 {
-  margin: 0 0 9px;
-  color: var(--pink);
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-}
-
-p, li, dd {
-  overflow-wrap: anywhere;
-}
-
-.profile-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 24px;
-}
-
-.profile-blurb {
-  padding: 19px;
-  border-left: 3px solid var(--pink);
-  background: #2b222c;
-  color: #e8dce6;
-  font-size: 14px;
-}
-
-.profile-blurb .scribble {
-  display: block;
-  margin-bottom: 12px;
-  color: var(--pink);
-  font-size: 11px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-dl {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 17px;
-  margin: 0;
-}
-
-dl div {
-  min-width: 0;
-  padding: 10px 0;
-  border-bottom: 1px dashed #594051;
-}
-
-dt {
-  margin-bottom: 3px;
-  color: var(--pink);
-  font-size: 9px;
-  font-weight: bold;
-  letter-spacing: 1.3px;
-  text-transform: uppercase;
-}
-
-dd {
-  margin: 0;
-  color: var(--white);
-  font-size: 12px;
-}
+/* PROFILE */
+.profile-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px}
+.profile-blurb{padding:19px;border-left:3px solid var(--pink);background:#2b222c;color:#e8dce6;font-size:14px}
+.profile-blurb .scribble{display:block;margin-bottom:12px;color:var(--pink);font-size:11px;font-weight:bold;letter-spacing:2px;text-transform:uppercase}
+dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 17px;margin:0}
+dl div{min-width:0;padding:10px 0;border-bottom:1px dashed #594051}
+dt{margin-bottom:3px;color:var(--pink);font-size:9px;font-weight:bold;letter-spacing:1.3px;text-transform:uppercase}
+dd{margin:0;color:var(--white);font-size:12px}
 
 /* APPEARANCE */
-
-.appearance-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 12px;
-}
-
-.detail {
-  padding: 17px;
-  border: 1px solid #493443;
-  background: #29212b;
-}
-
-.detail p {
-  color: #dfd1dc;
-  font-size: 13px;
-}
-
-.detail.wide {
-  grid-column: 1 / -1;
-}
-
-.detail-label {
-  display: inline-block;
-  margin-bottom: 11px;
-  padding: 3px 7px;
-  background: var(--pink);
-  color: var(--black);
-  font-size: 9px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
+.appearance-layout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.detail{padding:17px;border:1px solid #493443;background:#29212b}
+.detail p{color:#dfd1dc;font-size:13px}
+.detail.wide{grid-column:1/-1}
+.detail-label{display:inline-block;margin-bottom:11px;padding:3px 7px;background:var(--pink);color:var(--black);font-size:9px;font-weight:bold;letter-spacing:1px;text-transform:uppercase}
 
 /* PERSONALITY */
-
-.personality-intro {
-  margin-bottom: 18px;
-  color: #eadce7;
-  font-size: 15px;
-}
-
-.trait-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.trait {
-  position: relative;
-  padding: 17px 16px 15px;
-  border-top: 2px solid var(--pink);
-  background: #2a222b;
-}
-
-.trait::after {
-  content: "✦";
-  position: absolute;
-  top: 11px;
-  right: 12px;
-  color: rgba(255,119,183,.45);
-  font-size: 14px;
-}
-
-.trait p {
-  color: #dfd2dd;
-  font-size: 13px;
-}
+.personality-intro{margin-bottom:18px;color:#eadce7;font-size:15px}
+.trait-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.trait{position:relative;padding:17px 16px 15px;border-top:2px solid var(--pink);background:#2a222b}
+.trait:after{content:"✦";position:absolute;top:11px;right:12px;color:rgba(255,119,183,.45);font-size:14px}
+.trait p{color:#dfd2dd;font-size:13px}
 
 /* WORK */
+.work-banner{margin-bottom:18px;padding:18px;border:1px dashed var(--pink);background:rgba(255,119,183,.045)}
+.work-banner p{color:#e7d9e5;font-size:14px}
+.work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.work-item{padding:16px;background:#2a222b}
+.work-item h3:before{content:"↳ ";color:var(--red)}
+.work-item p{color:#ded0dc;font-size:13px}
 
-.work-banner {
-  margin-bottom: 18px;
-  padding: 18px;
-  border: 1px dashed var(--pink);
-  background: rgba(255,119,183,.045);
-}
+/* VOICE */
+.voice-block{position:relative;padding:22px 22px 22px 28px;border-left:4px solid var(--red);background:#2b222c}
+.voice-block:before{content:"“";position:absolute;top:-10px;right:13px;color:rgba(255,119,183,.2);font-family:Georgia,serif;font-size:90px;line-height:1}
+.voice-block p{position:relative;z-index:1;color:#e8dce6;font-size:14px}
 
-.work-banner p {
-  color: #e7d9e5;
-  font-size: 14px;
-}
+/* PHYSICALITY */
+.physical-copy{display:grid;grid-template-columns:5px minmax(0,1fr);gap:16px}
+.vertical-mark{background:repeating-linear-gradient(to bottom,var(--pink) 0 8px,transparent 8px 13px)}
+.physical-copy p{color:#e1d4df;font-size:14px}
 
-.work-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
+/* TWIN */
+.twin-header{display:flex;align-items:center;gap:14px;margin-bottom:17px;padding:14px;border:1px dashed var(--pink);background:#2a202b}
+.twin-symbol{display:grid;flex-shrink:0;width:48px;height:48px;place-items:center;border:1px solid var(--pink);border-radius:50%;color:var(--pink);font-size:22px}
+.twin-header p{color:#e5d7e3;font-size:13px}
+.twin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 
-.work-item {
-  padding: 16px;
-  background: #2a222b;
-}
-
-.work-item h3::before {
-  content: "↳ ";
-  color: var(--red);
-}
-
-.work-item p {
-  color: #ded0dc;
-  font-size: 13px;
-}
-
-/* QUOTE / VOICE */
-
-.voice-block {
-  position: relative;
-  padding: 22px 22px 22px 28px;
-  border-left: 4px solid var(--red);
-  background: #2b222c;
-}
-
-.voice-block::before {
-  content: "“";
-  position: absolute;
-  top: -10px;
-  right: 13px;
-  color: rgba(255,119,183,.2);
-  font-family: Georgia, serif;
-  font-size: 90px;
-  line-height: 1;
-}
-
-.voice-block p {
-  position: relative;
-  z-index: 1;
-  color: #e8dce6;
-  font-size: 14px;
-}
-
-/* PERSONAL SPACE */
-
-.physical-copy {
-  display: grid;
-  grid-template-columns: 5px minmax(0, 1fr);
-  gap: 16px;
-}
-
-.vertical-mark {
-  background: repeating-linear-gradient(
-    to bottom,
-    var(--pink) 0 8px,
-    transparent 8px 13px
-  );
-}
-
-.physical-copy p {
-  color: #e1d4df;
-  font-size: 14px;
-}
-
-/* BABY */
-
-.twin-header {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 17px;
-  padding: 14px;
-  border: 1px dashed var(--pink);
-  background: #2a202b;
-}
-
-.twin-symbol {
-  display: grid;
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  place-items: center;
-  border: 1px solid var(--pink);
-  border-radius: 50%;
-  color: var(--pink);
-  font-size: 22px;
-}
-
-.twin-header p {
-  color: #e5d7e3;
-  font-size: 13px;
-}
-
-.twin-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-/* SEXUALITY */
-
-.intimacy-note {
-  margin-top: 18px;
-  padding: 14px 16px;
-  border: 1px solid #573345;
-  background: #251d26;
-  color: #d9c6d4;
-  font-size: 12px;
-}
+/* INTIMACY */
+.intimacy-note{margin-top:18px;padding:14px 16px;border:1px solid #573345;background:#251d26;color:#d9c6d4;font-size:12px}
 
 /* LISTS */
+.list-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.list-panel{padding:18px;border:1px solid #493443;background:#29212b}
+.list-panel h3{padding-bottom:10px;border-bottom:1px solid var(--line)}
+ul{margin:0;padding-left:18px;color:#e0d2de;font-size:13px}
+li{margin:6px 0}
+li::marker{color:var(--pink)}
+.life-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 22px;padding:0;list-style:none}
+.life-list li{position:relative;margin:0;padding:9px 10px 9px 28px;border-bottom:1px dashed #493443;color:#e0d2de;font-size:13px}
+.life-list li:before{content:"♡";position:absolute;left:4px;color:var(--pink);font-weight:bold}
+.footer{margin-top:30px;padding:20px 10px 0;border-top:1px dashed #634457;color:#a994a4;font-size:10px;font-weight:bold;letter-spacing:2px;text-align:center;text-transform:uppercase}
+.footer .heart{display:block;margin-bottom:7px;color:var(--pink);font-size:19px;letter-spacing:7px}
 
-.list-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+@media(max-width:720px){
+body{padding:14px 10px 30px}
+.masthead{padding:30px 19px 22px;box-shadow:4px 4px 0 var(--pink)}
+.hero-title{font-size:clamp(62px,17vw,105px);letter-spacing:-2px}
+.topline{padding-right:38px}
+.profile-layout,.appearance-layout,.trait-list,.work-grid,.twin-grid,.list-grid,.life-list{grid-template-columns:1fr}
+.detail.wide{grid-column:auto}
+section{padding:19px 16px}
+.section-head{gap:10px}
+.section-aside{font-size:8px}
+.section-number{font-size:26px}
+h2{font-size:22px}
+dl{grid-template-columns:repeat(2,minmax(0,1fr))}
+.warning-strip{align-items:flex-start;flex-direction:column;gap:3px}
+.warning-strip span:last-child{text-align:left}
 }
-
-.list-panel {
-  padding: 18px;
-  border: 1px solid #493443;
-  background: #29212b;
+@media(max-width:380px){
+dl{grid-template-columns:1fr}
+.hero-title{font-size:60px}
+.topline{flex-direction:column;gap:4px}
+.topline span:last-child{text-align:left}
+.section-aside{display:none}
 }
-
-.list-panel h3 {
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--line);
-}
-
-ul {
-  margin: 0;
-  padding-left: 18px;
-  color: #e0d2de;
-  font-size: 13px;
-}
-
-li { margin: 6px 0; }
-li::marker { color: var(--pink); }
-
-.life-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px 22px;
-  padding: 0;
-  list-style: none;
-}
-
-.life-list li {
-  position: relative;
-  margin: 0;
-  padding: 9px 10px 9px 28px;
-  border-bottom: 1px dashed #493443;
-  color: #e0d2de;
-  font-size: 13px;
-}
-
-.life-list li::before {
-  content: "♡";
-  position: absolute;
-  left: 4px;
-  color: var(--pink);
-  font-weight: bold;
-}
-
-.footer {
-  margin-top: 30px;
-  padding: 20px 10px 0;
-  border-top: 1px dashed #634457;
-  color: #a994a4;
-  font-size: 10px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.footer .heart {
-  display: block;
-  margin-bottom: 7px;
-  color: var(--pink);
-  font-size: 19px;
-  letter-spacing: 7px;
-}
-
-@media (max-width: 720px) {
-  body { padding: 14px 10px 30px; }
-
-  .masthead {
-    padding: 30px 19px 22px;
-    box-shadow: 4px 4px 0 var(--pink);
-  }
-
-  .hero-title {
-    font-size: clamp(62px, 17vw, 105px);
-    letter-spacing: -2px;
-  }
-
-  .topline { padding-right: 38px; }
-  .profile-layout,
-  .appearance-layout,
-  .trait-list,
-  .work-grid,
-  .twin-grid,
-  .list-grid,
-  .life-list {
-    grid-template-columns: 1fr;
-  }
-
-  .detail.wide { grid-column: auto; }
-
-  section { padding: 19px 16px; }
-
-  .section-head { gap: 10px; }
-  .section-aside { font-size: 8px; }
-
-  .section-number { font-size: 26px; }
-  h2 { font-size: 22px; }
-
-  dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
-  .warning-strip {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .warning-strip span:last-child { text-align: left; }
-}
-
-@media (max-width: 380px) {
-  dl { grid-template-columns: 1fr; }
-
-  .hero-title { font-size: 60px; }
-
-  .topline {
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .topline span:last-child { text-align: left; }
-
-  .section-aside { display: none; }
+@media(prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+*,*:before,*:after{transition:none!important}
 }
 </style>
 </head>
 
 <body>
-<main class="page">
+<main class="page" id="main">
 
 <header class="masthead">
   <div class="topline">
@@ -680,11 +152,9 @@ li::marker { color: var(--pink); }
 
   <h1 class="hero-title">BRAT</h1>
 
-  <p class="hero-subtitle">
-    Bridgette <b>·</b> Rabbit demi-human <b>·</b> 24
-  </p>
+  <p class="hero-subtitle active">Bridgette <b>·</b> Rabbit demi-human <b>·</b> 24</p>
 
-  <p class="hero-intro">
+  <p class="hero-intro active">
     A black-and-white rabbit woman with trashy alternative clothes, a talent for making perfectly good things better, and absolutely no intention of minding her own business. Brat likes attention, loves a reaction, and has never met an interesting situation she could leave alone.
   </p>
 
@@ -720,19 +190,22 @@ li::marker { color: var(--pink); }
   <div class="section-head">
     <span class="section-number">01</span>
     <h2>The Basics</h2>
-    <span class="section-aside">Name tag goes here</span>
+    <span class="section-aside">Name, work, and other essentials</span>
   </div>
 
   <div class="profile-layout">
     <div class="profile-blurb">
       <span class="scribble">Oh, you wanted the details?</span>
-      <p>
+
+      <p class="active">
         <strong>Bridgette</strong> goes by Brat, and the nickname suits her just fine. She's a rabbit demi-human born and raised in Saint Jude’s Landing, working nights altering, repairing, and customizing clothing, bags, and stagewear.
       </p>
-      <p>
+
+      <p class="active">
         She's the sort of person who can turn a quiet evening into a whole situation simply because something caught her eye. She likes people, likes attention, and has a hard time leaving anything interesting alone.
       </p>
-      <p>
+
+      <p class="active">
         Her twin, Baby, is one of the closest people in her life. The two are deeply familiar with each other's nonsense and have no problem making it everybody else's problem, too.
       </p>
     </div>
@@ -763,10 +236,10 @@ li::marker { color: var(--pink); }
     <article class="detail">
       <span class="detail-label">01 / Face & Hair</span>
       <h3>Messy on Purpose</h3>
-      <p>
+      <p class="active">
         Brat has a predominantly human face and torso, with hazel eyes and messy black-and-white chin-length hair. Her fringe is chaotic, and two long, straight braids reach her hips.
       </p>
-      <p>
+      <p class="active">
         Her appearance has an intentionally disheveled quality that somehow still looks put-together. She favors a deliberately trashy alternative aesthetic without looking as though she spent hours trying to convince anyone she does not care.
       </p>
     </article>
@@ -774,10 +247,10 @@ li::marker { color: var(--pink); }
     <article class="detail">
       <span class="detail-label">02 / Rabbit Features</span>
       <h3>Not Quite Your Average Bunny</h3>
-      <p>
+      <p class="active">
         Brat is the more animalistic-looking of the twins. She has distinctive black-and-white harlequin rabbit ears, a small fluffy rabbit tail, short rabbit fur across her arms and portions of her legs, and rabbit feet.
       </p>
-      <p>
+      <p class="active">
         Her rabbit features contrast with her otherwise predominantly human appearance.
       </p>
     </article>
@@ -785,7 +258,7 @@ li::marker { color: var(--pink); }
     <article class="detail">
       <span class="detail-label">03 / Build</span>
       <h3>All Her Own Business</h3>
-      <p>
+      <p class="active">
         Brat has a curvy figure, a small waist, thick thighs, and large breasts. Her silhouette is distinctly feminine, with a comfortable physical confidence that matches the rest of her presentation.
       </p>
     </article>
@@ -793,10 +266,10 @@ li::marker { color: var(--pink); }
     <article class="detail">
       <span class="detail-label">04 / Clothing</span>
       <h3>Trashy, Alternative, Hers</h3>
-      <p>
+      <p class="active">
         Her wardrobe leans heavily into trashy black alternative clothing. She looks deliberately put-together in a way that seems effortless: lived-in pieces, personal modifications, and a strong sense of what she likes.
       </p>
-      <p>
+      <p class="active">
         Her clothes are part of her style, but they are also a natural extension of her work with alterations and customization.
       </p>
     </article>
@@ -807,14 +280,14 @@ li::marker { color: var(--pink); }
   <div class="section-head">
     <span class="section-number">03</span>
     <h2>Her Craft</h2>
-    <span class="section-aside">This was perfectly usable before</span>
+    <span class="section-aside">Repairs, alterations, customization</span>
   </div>
 
   <div class="work-banner">
-    <p>
+    <p class="active">
       Brat works nights doing alterations, repairs, and customization for clothing, bags, and stagewear. The work suits her perfectly: she gets to take things apart, change them, and make them more interesting than they were before.
     </p>
-    <p>
+    <p class="active">
       She has a habit of dismantling perfectly usable things simply because she thinks she can improve them. Sometimes she is right. The important part is that she is confident enough to start taking something apart before anyone has finished asking what she is doing.
     </p>
   </div>
@@ -822,14 +295,14 @@ li::marker { color: var(--pink); }
   <div class="work-grid">
     <article class="work-item">
       <h3>Alterations & Repairs</h3>
-      <p>
+      <p class="active">
         She works with clothing and bags that need fixing, adjusting, or changing. Repair is not just about returning something to its original condition; Brat is perfectly happy to make changes along the way.
       </p>
     </article>
 
     <article class="work-item">
       <h3>Customization</h3>
-      <p>
+      <p class="active">
         Stagewear and customized clothing give her room to experiment. She likes the process of taking an existing object and turning it into something with a different silhouette, personality, or purpose.
       </p>
     </article>
@@ -840,42 +313,42 @@ li::marker { color: var(--pink); }
   <div class="section-head">
     <span class="section-number">04</span>
     <h2>Personality Problems</h2>
-    <span class="section-aside">Not accepting constructive criticism</span>
+    <span class="section-aside">Shameless, nosy, and entirely herself</span>
   </div>
 
-  <p class="personality-intro">
+  <p class="personality-intro active">
     Brat is shameless, cocky, nosy, impulsive, funny, tactile, and aggressively comfortable with herself. She loves attention, especially when she can tell somebody is trying very hard not to give it to her.
   </p>
 
-  <p class="personality-intro">
+  <p class="personality-intro active">
     She teases people for sport, steals the comfortable furniture, borrows things without asking, and has a pathological inability to leave an interesting situation alone. If something is happening nearby, she wants to know about it. If someone tells her not to get involved, that may only make the situation more interesting.
   </p>
 
   <div class="trait-list">
     <article class="trait">
       <h3>Genuine Confidence</h3>
-      <p>
+      <p class="active">
         Brat is not secretly miserable or insecure beneath her confidence. She likes herself. She enjoys being noticed, knows how to get a reaction, and has no particular need to pretend otherwise.
       </p>
     </article>
 
     <article class="trait">
       <h3>Clever Enough to Cause Problems</h3>
-      <p>
+      <p class="active">
         She is clever enough to get herself into trouble and confident enough to assume she can get herself back out. Her impulsiveness does not mean she lacks intelligence; it means she is often willing to act before caution has had a chance to finish speaking.
       </p>
     </article>
 
     <article class="trait">
       <h3>Nosy by Nature</h3>
-      <p>
+      <p class="active">
         Brat likes knowing what is going on around her. She is curious about people, situations, and anything unusual enough to attract her attention. She rarely explains why she wants to know something when she can simply start investigating.
       </p>
     </article>
 
     <article class="trait">
       <h3>Affectionate Menace</h3>
-      <p>
+      <p class="active">
         Her affection comes through proximity, teasing, touching, stealing, and dragging people into whatever she is doing. She can be irritating on purpose and affectionate at the same time; to Brat, these are perfectly compatible activities.
       </p>
     </article>
@@ -886,20 +359,20 @@ li::marker { color: var(--pink); }
   <div class="section-head">
     <span class="section-number">05</span>
     <h2>Voice & Humor</h2>
-    <span class="section-aside">She knows exactly what she's doing</span>
+    <span class="section-aside">Casual, sarcastic, irreverent</span>
   </div>
 
-  <p>
+  <p class="active">
     Brat speaks casually and confidently, with profanity, sarcasm, blunt observations, and a fondness for saying things specifically because they will make someone react.
   </p>
 
-  <p>
+  <p class="active">
     She rarely explains herself when she can make someone figure it out. Her humor is teasing, irreverent, and often deliberately provocative. She enjoys finding the exact comment that will get under somebody's skin, especially when she likes them.
   </p>
 
   <div class="voice-block">
-    <p>
-      Brat is not constantly trying to prove that she is fearless or cool. She is comfortable enough with herself to be ridiculous, shameless, affectionate, annoying, or all four in the same conversation.
+    <p class="active">
+      Brat is comfortable being ridiculous, shameless, affectionate, annoying, or all four in the same conversation. She doesn't need to maintain an image of being fearless or cool to feel good about herself.
     </p>
   </div>
 </section>
@@ -908,19 +381,21 @@ li::marker { color: var(--pink); }
   <div class="section-head">
     <span class="section-number">06</span>
     <h2>Physicality & Affection</h2>
-    <span class="section-aside">Personal space is a suggestion</span>
+    <span class="section-aside">Tactile and comfortable with closeness</span>
   </div>
 
   <div class="physical-copy">
-    <div class="vertical-mark"></div>
+    <div class="vertical-mark" aria-hidden="true"></div>
     <div>
-      <p>
+      <p class="active">
         Brat is tactile and comfortable with physical closeness. She steals comfortable furniture, leans against people, touches things that catch her interest, borrows belongings, and drags people along when she decides they should come with her.
       </p>
-      <p>
+
+      <p class="active">
         She enjoys being close to people and does not always distinguish between an affectionate gesture and an opportunity to annoy someone she likes. Her confidence extends to her body and presence; she does not act embarrassed about taking up space or enjoying attention.
       </p>
-      <p>
+
+      <p class="active">
         Her boldness is part of her personality rather than a performance concealing insecurity. She likes getting reactions and is happy to be the cause of them.
       </p>
     </div>
@@ -931,26 +406,26 @@ li::marker { color: var(--pink); }
   <div class="section-head">
     <span class="section-number">07</span>
     <h2>Sexuality & Intimacy</h2>
-    <span class="section-aside">A competition she intends to win</span>
+    <span class="section-aside">Playful power struggles</span>
   </div>
 
-  <p>
+  <p class="active">
     Brat is a dominant tease who enjoys taking control of the pace and provoking a reaction. She is tactile, confident, vocal, and foul-mouthed, with a taste for power play and partners who are willing to meet her energy.
   </p>
 
-  <p>
+  <p class="active">
     She enjoys giving praise or insults to get a rise out of someone, and she likes being praised herself. Confidence and boldness catch her attention; someone willing to challenge her or take charge can turn the interaction into a contest of wills that she finds exciting.
   </p>
 
-  <p>
+  <p class="active">
     Brat enjoys playful struggles over control, including the possibility of being pinned down. The appeal is in the game of chicken: seeing who gives way first, who can keep their composure, and who ends up surprising the other.
   </p>
 
-  <p>
+  <p class="active">
     She is direct about what she enjoys and comfortable expressing desire. Her sexuality fits the rest of her personality: playful, tactile, confident, and interested in genuine reactions rather than carefully staged romance.
   </p>
 
-  <div class="intimacy-note">
+  <div class="intimacy-note active">
     <strong>The important part:</strong> Brat likes playful challenges, mutual enthusiasm, and partners who engage with her confidence. Intimacy is another place for her to be bold, affectionate, provocative, and genuinely responsive.
   </div>
 </section>
@@ -963,13 +438,13 @@ li::marker { color: var(--pink); }
   </div>
 
   <div class="twin-header">
-    <div class="twin-symbol">♡</div>
-    <p>
+    <div class="twin-symbol" aria-hidden="true">♡</div>
+    <p class="active">
       Brat and Baby are extremely close. They are almost always at least vaguely involved in each other's business, whether or not either of them admits it.
     </p>
   </div>
 
-  <p>
+  <p class="active">
     Their relationship is affectionate, irritating, conspiratorial, and deeply familiar. They steal from each other, finish each other's thoughts, argue over stupid shit, share clothes, and make plans without needing to speak. They can turn a completely ordinary afternoon into an incident with impressive efficiency.
   </p>
 
@@ -977,7 +452,7 @@ li::marker { color: var(--pink); }
     <article class="detail">
       <span class="detail-label">Mutual Respect</span>
       <h3>Protective, Not Patronizing</h3>
-      <p>
+      <p class="active">
         Brat is protective of Baby without infantilizing her. She knows Baby can take care of herself and respects that. Being close does not mean Brat assumes she must make decisions for her twin.
       </p>
     </article>
@@ -985,7 +460,7 @@ li::marker { color: var(--pink); }
     <article class="detail">
       <span class="detail-label">Shared Brain Cell</span>
       <h3>Shared Nonsense</h3>
-      <p>
+      <p class="active">
         Their closeness is visible in the little things: borrowed clothes, familiar arguments, shared plans, stolen belongings, and the ease with which one can irritate the other without threatening the relationship.
       </p>
     </article>
@@ -996,21 +471,21 @@ li::marker { color: var(--pink); }
   <div class="section-head">
     <span class="section-number">09</span>
     <h2>Everyday Life</h2>
-    <span class="section-aside">A perfectly normal amount of nonsense</span>
+    <span class="section-aside">Work, routines, and trouble</span>
   </div>
 
-  <p>
+  <p class="active">
     Brat has a life beyond her twin and her relationships. Her night work gives her routines and responsibilities, while her curiosity and sociability ensure she is rarely uninvolved in the world around her for long.
   </p>
 
   <ul class="life-list">
-    <li>Works nights altering, repairing, and customizing clothing, bags, and stagewear.</li>
-    <li>Takes perfectly usable things apart because she thinks she can improve them.</li>
-    <li>Steals comfortable furniture and borrows things without asking.</li>
-    <li>Gets involved in interesting situations whether or not she was invited.</li>
-    <li>Uses teasing and physical closeness to show affection.</li>
-    <li>Enjoys attention, particularly when someone is trying not to give her any.</li>
-    <li>Maintains an exceptionally close and chaotic relationship with Baby.</li>
+    <li class="active">Works nights altering, repairing, and customizing clothing, bags, and stagewear.</li>
+    <li class="active">Takes perfectly usable things apart because she thinks she can improve them.</li>
+    <li class="active">Steals comfortable furniture and borrows things without asking.</li>
+    <li class="active">Gets involved in interesting situations whether or not she was invited.</li>
+    <li class="active">Uses teasing and physical closeness to show affection.</li>
+    <li class="active">Enjoys attention, particularly when someone is trying not to give her any.</li>
+    <li class="active">Maintains an exceptionally close and chaotic relationship with Baby.</li>
   </ul>
 </section>
 
@@ -1018,35 +493,35 @@ li::marker { color: var(--pink); }
   <div class="section-head">
     <span class="section-number">10</span>
     <h2>Likes & Habits</h2>
-    <span class="section-aside">Complaints will be ignored</span>
+    <span class="section-aside">The things that make her Brat</span>
   </div>
 
   <div class="list-grid">
     <div class="list-panel">
       <h3>♡ Things She Likes</h3>
       <ul>
-        <li>Attention and reactions</li>
-        <li>Teasing people</li>
-        <li>Interesting situations</li>
-        <li>Comfortable furniture</li>
-        <li>Touch and physical closeness</li>
-        <li>Taking things apart and improving them</li>
-        <li>Clothing customization</li>
-        <li>Stagewear and unusual projects</li>
-        <li>Spending time with Baby</li>
+        <li class="active">Attention and reactions</li>
+        <li class="active">Teasing people</li>
+        <li class="active">Interesting situations</li>
+        <li class="active">Comfortable furniture</li>
+        <li class="active">Touch and physical closeness</li>
+        <li class="active">Taking things apart and improving them</li>
+        <li class="active">Clothing customization</li>
+        <li class="active">Stagewear and unusual projects</li>
+        <li class="active">Spending time with Baby</li>
       </ul>
     </div>
 
     <div class="list-panel">
       <h3>✕ Habits That Get Her Into Trouble</h3>
       <ul>
-        <li>Borrowing things without asking</li>
-        <li>Being nosy</li>
-        <li>Acting impulsively</li>
-        <li>Assuming she can get herself out of anything</li>
-        <li>Refusing to leave an interesting situation alone</li>
-        <li>Saying things specifically to provoke a reaction</li>
-        <li>Turning ordinary plans into incidents with Baby</li>
+        <li class="active">Borrowing things without asking</li>
+        <li class="active">Being nosy</li>
+        <li class="active">Acting impulsively</li>
+        <li class="active">Assuming she can get herself out of anything</li>
+        <li class="active">Refusing to leave an interesting situation alone</li>
+        <li class="active">Saying things specifically to provoke a reaction</li>
+        <li class="active">Turning ordinary plans into incidents with Baby</li>
       </ul>
     </div>
   </div>
