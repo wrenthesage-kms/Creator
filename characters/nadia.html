@@ -6,127 +6,207 @@
 <title>Nadia — Creator</title>
 <style>
 :root {
-  --bg: #171b20;
-  --panel: #222830;
-  --panel-soft: #2a3139;
-  --text: #f1f0eb;
-  --muted: #b8bec3;
-  --cream: #e9dfc9;
+  --bg: #171a1b;
+  --paper: #242827;
+  --paper-light: #2c3230;
   --sage: #a9c6b6;
+  --sage-dark: #657f72;
   --silver: #c6d0d8;
   --rose: #d8a5a5;
-  --line: rgba(198, 208, 216, .18);
+  --cream: #e9dfc9;
+  --text: #f1f0eb;
+  --muted: #b8bec3;
+  --line: rgba(198,208,216,.17);
 }
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  padding: 30px 16px 50px;
+  padding: 26px 16px 48px;
   background:
-    radial-gradient(ellipse at 0% 0%, rgba(169,198,182,.13), transparent 36%),
-    radial-gradient(ellipse at 100% 55%, rgba(216,165,165,.07), transparent 32%),
+    linear-gradient(rgba(169,198,182,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(169,198,182,.025) 1px, transparent 1px),
+    radial-gradient(ellipse at 8% 0%, rgba(169,198,182,.12), transparent 36%),
+    radial-gradient(ellipse at 100% 75%, rgba(216,165,165,.07), transparent 32%),
     var(--bg);
+  background-size: 26px 26px, 26px 26px, auto, auto, auto;
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.7;
+  line-height: 1.75;
 }
-.page { max-width: 980px; margin: auto; }
-header {
+.page { max-width: 1020px; margin: auto; }
+p { margin: 0 0 13px; }
+p:last-child { margin-bottom: 0; }
+strong { color: var(--cream); }
+a { color: var(--sage); }
+.hero {
   position: relative;
   overflow: hidden;
-  padding: 38px 30px 32px;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: linear-gradient(135deg, #35443f, #282f35 58%, #3b3437);
+  padding: 35px;
+  border: 1px solid rgba(169,198,182,.35);
+  border-radius: 5px 28px 5px 28px;
+  background:
+    linear-gradient(115deg, rgba(169,198,182,.11), transparent 42%),
+    linear-gradient(145deg, #303a35, #222827 65%, #343034);
 }
-header::after {
-  content: "✧  ♧  ✧";
+.hero::before {
+  content: "NINE / SJL";
   position: absolute;
-  right: 22px;
-  top: 16px;
-  color: rgba(233,223,201,.35);
-  font-size: 22px;
-  letter-spacing: 9px;
+  top: 18px;
+  right: 24px;
+  color: rgba(233,223,201,.22);
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+.hero::after {
+  content: "♧";
+  position: absolute;
+  right: 14px;
+  bottom: -88px;
+  color: rgba(169,198,182,.06);
+  font-size: 250px;
+  line-height: 1;
+  pointer-events: none;
 }
 .eyebrow {
-  margin: 0 0 8px;
+  margin: 0 0 12px;
   color: var(--sage);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: bold;
   letter-spacing: 3px;
   text-transform: uppercase;
 }
 h1 {
+  position: relative;
+  z-index: 1;
   margin: 0;
-  font-size: clamp(42px, 9vw, 76px);
-  line-height: .98;
-  letter-spacing: -3px;
+  color: var(--cream);
+  font-size: clamp(52px, 10vw, 92px);
+  line-height: .9;
+  letter-spacing: -5px;
+  text-transform: uppercase;
 }
 .subtitle {
-  margin: 14px 0 0;
-  color: #d4d8d4;
-  font-size: 14px;
-  letter-spacing: 1px;
+  margin: 17px 0 0;
+  color: var(--silver);
+  font-size: 12px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
 }
 .intro {
+  position: relative;
+  z-index: 1;
   max-width: 740px;
-  margin: 24px 0 0;
+  margin-top: 26px;
   font-size: 16px;
 }
 .tags {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 22px;
+  gap: 7px;
+  margin-top: 24px;
 }
 .tag {
-  padding: 5px 11px;
-  border: 1px solid rgba(169,198,182,.3);
-  border-radius: 30px;
+  padding: 5px 10px;
+  border: 1px solid rgba(169,198,182,.32);
+  border-radius: 2px 10px 2px 10px;
+  background: rgba(23,26,27,.35);
   color: var(--cream);
-  font-size: 11px;
-  letter-spacing: .5px;
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 1.2px;
 }
-section {
-  margin-top: 20px;
-  padding: 25px;
-  border: 1px solid rgba(255,255,255,.075);
-  border-radius: 16px;
-  background: rgba(34,40,48,.95);
-}
-h2 {
+.tape {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin: 0 0 18px;
-  color: var(--sage);
-  font-size: 18px;
-  letter-spacing: 1.3px;
+  gap: 12px;
+  margin: 20px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
-h2 span { color: var(--rose); font-size: 17px; }
-h3 {
-  margin: 0 0 8px;
-  color: var(--cream);
-  font-size: 14px;
-  letter-spacing: .5px;
+.tape::before {
+  content: "";
+  width: 36px;
+  height: 2px;
+  background: var(--rose);
 }
-p { margin: 0 0 12px; }
-p:last-child { margin-bottom: 0; }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
+.section {
+  margin-top: 19px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 4px 18px 4px 18px;
+  background: rgba(36,40,39,.96);
+}
+.section-head {
+  display: flex;
+  align-items: baseline;
   gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
 }
-.card {
-  padding: 16px;
-  border-radius: 11px;
-  background: var(--panel-soft);
+.section-number {
+  color: var(--rose);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
-.card p { color: #e0e1dc; font-size: 14px; }
+h2 {
+  margin: 0;
+  color: var(--sage);
+  font-size: 17px;
+  letter-spacing: 1.8px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+h3 {
+  margin: 0 0 9px;
+  color: var(--cream);
+  font-size: 13px;
+  letter-spacing: .8px;
+}
+.profile-layout {
+  display: grid;
+  grid-template-columns: .7fr 1.3fr;
+  gap: 25px;
+}
+.profile-stamp {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 210px;
+  padding: 20px;
+  border: 1px dashed rgba(216,165,165,.45);
+  background: rgba(216,165,165,.045);
+}
+.stamp-mark {
+  color: var(--rose);
+  font-size: 42px;
+  line-height: 1;
+}
+.stamp-label {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.stamp-title {
+  margin-top: 7px;
+  color: var(--cream);
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.2;
+}
 dl {
   display: grid;
-  grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 0 24px;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 0 22px;
   margin: 0;
 }
 dl div {
@@ -136,54 +216,238 @@ dl div {
 dt {
   margin-bottom: 3px;
   color: var(--sage);
-  font-size: 10px;
+  font-size: 9px;
   font-weight: bold;
   letter-spacing: 1.5px;
   text-transform: uppercase;
 }
-dd { margin: 0; font-size: 14px; }
-ul {
-  margin: 0;
-  padding-left: 20px;
-  color: #e0e1dc;
-  font-size: 14px;
-}
-li { margin: 5px 0; }
-.columns {
+dd { margin: 0; font-size: 13px; }
+.split {
   display: grid;
   grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 20px;
+  gap: 12px;
 }
+.note {
+  padding: 17px;
+  border-left: 2px solid var(--sage-dark);
+  background: var(--paper-light);
+}
+.note.rose { border-left-color: var(--rose); }
+.note.silver { border-left-color: var(--silver); }
+.note p { color: #e0e1dc; font-size: 13px; }
+.note h3 { color: var(--sage); }
+.appearance {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 28px;
+}
+.appearance-item {
+  padding: 17px 0;
+  border-bottom: 1px solid var(--line);
+}
+.appearance-item p { color: #e0e1dc; font-size: 13px; }
+.appearance-item h3::before {
+  content: "✳ ";
+  color: var(--rose);
+}
+.clothes {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 22px;
+  align-items: start;
+}
+.clothes-list {
+  padding: 19px;
+  border: 1px solid var(--line);
+  background: var(--paper-light);
+}
+ul {
+  margin: 0;
+  padding-left: 19px;
+  color: #e0e1dc;
+  font-size: 13px;
+}
+li { margin: 5px 0; }
+.personality-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 10px;
+}
+.personality-card {
+  position: relative;
+  padding: 19px;
+  border: 1px solid var(--line);
+  background: var(--paper-light);
+}
+.personality-card::before {
+  content: "✦";
+  display: block;
+  margin-bottom: 9px;
+  color: var(--rose);
+  font-size: 16px;
+}
+.personality-card p { color: #e0e1dc; font-size: 13px; }
+.quote {
+  margin: 19px 0;
+  padding: 20px 23px;
+  border-top: 1px solid rgba(216,165,165,.45);
+  border-bottom: 1px solid rgba(216,165,165,.45);
+  background: rgba(216,165,165,.045);
+  color: var(--cream);
+  font-size: 15px;
+}
+.quote small {
+  display: block;
+  margin-top: 9px;
+  color: var(--rose);
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+}
+.health-layout {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 18px;
+}
+.health-copy { padding-right: 8px; }
+.health-list {
+  display: grid;
+  gap: 9px;
+}
+.health-point {
+  padding: 13px 15px;
+  border: 1px solid var(--line);
+  background: var(--paper-light);
+}
+.health-point h3 { color: var(--sage); }
+.health-point p { font-size: 12px; color: #e0e1dc; }
 .callout {
-  padding: 17px 19px;
+  margin-top: 17px;
+  padding: 17px 20px;
   border-left: 3px solid var(--rose);
-  border-radius: 0 10px 10px 0;
   background: rgba(216,165,165,.07);
 }
-.callout p { font-size: 14px; }
-strong { color: #f5e8d1; }
+.callout p { font-size: 13px; }
+.interest-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.interest-box {
+  padding: 19px;
+  border: 1px solid var(--line);
+  background: var(--paper-light);
+}
+.interest-box h3 {
+  margin-bottom: 12px;
+  color: var(--sage);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.interest-box.dislikes h3 { color: var(--rose); }
+.stream-banner {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 18px;
+  padding: 19px;
+  border: 1px solid rgba(169,198,182,.25);
+  background: linear-gradient(110deg, rgba(169,198,182,.09), transparent);
+}
+.stream-symbol {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  border: 1px solid var(--sage-dark);
+  border-radius: 50%;
+  color: var(--sage);
+  font-size: 21px;
+}
+.stream-banner h3 { margin-bottom: 4px; }
+.stream-banner p { color: var(--muted); font-size: 12px; }
+.lists-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 18px;
+}
+.relationship-note {
+  padding: 20px;
+  border: 1px dashed rgba(169,198,182,.3);
+  background: rgba(169,198,182,.04);
+}
+.relationship-note h3 { color: var(--sage); }
+.relationship-note p { font-size: 13px; }
+.character-note {
+  position: relative;
+  overflow: hidden;
+  padding: 25px;
+  border: 1px solid rgba(216,165,165,.32);
+  background: linear-gradient(125deg, rgba(216,165,165,.075), transparent 65%), var(--paper);
+}
+.character-note::after {
+  content: "N";
+  position: absolute;
+  right: 14px;
+  bottom: -65px;
+  color: rgba(216,165,165,.045);
+  font-size: 190px;
+  font-weight: bold;
+  line-height: 1;
+  pointer-events: none;
+}
+.character-note p {
+  position: relative;
+  z-index: 1;
+  max-width: 820px;
+  font-size: 13px;
+}
+.character-note .lead {
+  margin-bottom: 18px;
+  color: var(--cream);
+  font-size: 16px;
+}
 footer {
   padding: 25px 10px 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 9px;
+  letter-spacing: 2.5px;
   text-align: center;
-  letter-spacing: 1px;
+  text-transform: uppercase;
 }
-@media (max-width: 620px) {
-  body { padding: 15px 10px 35px; }
-  header, section { padding: 22px 18px; }
-  .grid, .columns, dl { grid-template-columns: 1fr; }
-  h1 { letter-spacing: -2px; }
+@media (max-width: 680px) {
+  body { padding: 12px 9px 30px; }
+  .hero { padding: 27px 20px; }
+  h1 { letter-spacing: -3px; }
+  .section { padding: 20px 17px; }
+  .profile-layout,
+  .clothes,
+  .health-layout { grid-template-columns: 1fr; }
+  .profile-stamp { min-height: 150px; }
+  .appearance,
+  .personality-grid,
+  .split,
+  .interest-columns,
+  .lists-grid,
+  dl { grid-template-columns: 1fr; }
+  .stream-banner { grid-template-columns: 42px 1fr; padding: 14px; }
+  .stream-symbol { width: 42px; height: 42px; }
+  .section-head { gap: 9px; }
+  h2 { font-size: 15px; }
+  .hero::before { right: 15px; top: 12px; font-size: 8px; }
 }
 </style>
 </head>
 <body>
 <main class="page">
 
-<header>
-  <p class="eyebrow">Creator · Saint Jude’s Landing · Nine</p>
-  <h1>NADIA</h1>
-  <p class="subtitle">Crane demi-human · Adult · Lesbian</p>
+<header class="hero">
+  <p class="eyebrow">Creator / Saint Jude’s Landing / Nine</p>
+  <h1>Nadia</h1>
+  <p class="subtitle">Crane demi-human · Adult · Lesbian · 6'1"</p>
   <p class="intro">
     Six-foot-one of long legs, folded wings, dark circles, and absolutely no interest in making a production out of anything. Nadia is usually chilling with her friends, streaming something weird, or investigating a noise that sensible people would have left alone.
   </p>
@@ -192,29 +456,47 @@ footer {
     <span class="tag">ONLINE STREAMER</span>
     <span class="tag">DRY HUMOR</span>
     <span class="tag">AMMONIA'S GROUP</span>
+    <span class="tag">MORBID CURIOSITY</span>
   </div>
 </header>
 
-<section>
-  <h2><span>✦</span> Profile</h2>
-  <dl>
-    <div><dt>Species</dt><dd>Crane demi-human</dd></div>
-    <div><dt>Age</dt><dd>Adult, in her 20s</dd></div>
-    <div><dt>Gender</dt><dd>Female</dd></div>
-    <div><dt>Sexuality</dt><dd>Lesbian</dd></div>
-    <div><dt>Height</dt><dd>6'1"</dd></div>
-    <div><dt>Origin</dt><dd>Nine, Saint Jude’s Landing</dd></div>
-    <div><dt>Home</dt><dd>Apartment in Nine</dd></div>
-    <div><dt>Group</dt><dd>Ammonia’s group</dd></div>
-    <div><dt>Occupation</dt><dd>Online streamer; supplemental income</dd></div>
-    <div><dt>Reputation</dt><dd>Tall crane woman with bizarre curiosity and impeccable deadpan timing</dd></div>
-  </dl>
+<div class="tape">A local woman doing her own thing</div>
+
+<section class="section">
+  <div class="section-head">
+    <span class="section-number">01</span>
+    <h2>At a Glance</h2>
+  </div>
+  <div class="profile-layout">
+    <div class="profile-stamp">
+      <div class="stamp-mark">✳</div>
+      <div>
+        <div class="stamp-label">General disposition</div>
+        <div class="stamp-title">Chill.<br>Curious.<br>Probably investigating.</div>
+      </div>
+    </div>
+    <dl>
+      <div><dt>Species</dt><dd>Crane demi-human</dd></div>
+      <div><dt>Age</dt><dd>Adult, in her 20s</dd></div>
+      <div><dt>Gender</dt><dd>Female</dd></div>
+      <div><dt>Sexuality</dt><dd>Lesbian</dd></div>
+      <div><dt>Height</dt><dd>6'1"</dd></div>
+      <div><dt>Origin</dt><dd>Nine, Saint Jude’s Landing</dd></div>
+      <div><dt>Home</dt><dd>Apartment in Nine</dd></div>
+      <div><dt>Group</dt><dd>Ammonia’s group</dd></div>
+      <div><dt>Occupation</dt><dd>Online streamer; supplemental income</dd></div>
+      <div><dt>Reputation</dt><dd>Tall crane woman with bizarre curiosity and impeccable deadpan timing</dd></div>
+    </dl>
+  </div>
 </section>
 
-<section>
-  <h2><span>✦</span> Appearance</h2>
-  <div class="grid">
-    <div class="card">
+<section class="section">
+  <div class="section-head">
+    <span class="section-number">02</span>
+    <h2>Physical Description</h2>
+  </div>
+  <div class="appearance">
+    <div class="appearance-item">
       <h3>Build & Skin</h3>
       <p>
         Nadia is tall, lanky, naturally athletic, and lean. She has a narrow frame, long limbs, defined muscle, a subtle six-pack, and the kind of physical fitness that comes from a naturally lean build rather than a bulky one.
@@ -223,7 +505,7 @@ footer {
         Her skin is warm brown. She looks physically capable and coordinated, though her actual physical limits are considerably more complicated than her appearance suggests.
       </p>
     </div>
-    <div class="card">
+    <div class="appearance-item">
       <h3>Face & Hair</h3>
       <p>
         Her face is expressive and feminine, with otherwise human facial structure, large tired dark eyes, and a crooked, amused smile. Dark circles are a familiar part of her appearance.
@@ -232,7 +514,7 @@ footer {
         Her long black hair is gathered into a loose high ponytail. Her human ears remain human.
       </p>
     </div>
-    <div class="card">
+    <div class="appearance-item">
       <h3>Feathering & Wings</h3>
       <p>
         Slender crane feathering covers her forearms and shoulders. Layered white and charcoal feathers extend across her upper back, with small white feathers framing her temples.
@@ -241,7 +523,7 @@ footer {
         Long, narrow crane wings fold behind her shoulders. They are part of her ordinary body, not decorative accessories.
       </p>
     </div>
-    <div class="card">
+    <div class="appearance-item">
       <h3>Neck & Legs</h3>
       <p>
         Nadia has elegant crane-like neck proportions and dramatically elongated crane legs. Combined with her height and long limbs, they give her a distinctly avian silhouette without making her body language stiff or formal.
@@ -253,14 +535,14 @@ footer {
   </div>
 </section>
 
-<section>
-  <h2><span>✦</span> Clothing & Everyday Style</h2>
-  <p>
-    Nadia dresses for comfort and mobility, with a casual, slightly masculine-leaning streetwear style. She is not deliberately trying to look tall, unusual, or particularly styled. She wants clothes she can live in.
-  </p>
-  <div class="grid">
-    <div class="card">
-      <h3>Usual Clothes</h3>
+<section class="section">
+  <div class="section-head">
+    <span class="section-number">03</span>
+    <h2>Getting Dressed, Leaving the House</h2>
+  </div>
+  <div class="clothes">
+    <div class="clothes-list">
+      <h3>Usual Rotation</h3>
       <ul>
         <li>Sports bras</li>
         <li>Oversized hoodies worn open</li>
@@ -270,8 +552,10 @@ footer {
         <li>Vans</li>
       </ul>
     </div>
-    <div class="card">
-      <h3>Overall Look</h3>
+    <div>
+      <p>
+        Nadia dresses for comfort and mobility, with a casual, slightly masculine-leaning streetwear style. She is not deliberately trying to look tall, unusual, or particularly styled. She wants clothes she can live in.
+      </p>
       <p>
         She usually looks comfortable, slightly tired, and as if she grabbed whatever was clean. Her clothing works with her unusually tall frame without turning her height into a styling project.
       </p>
@@ -282,16 +566,19 @@ footer {
   </div>
 </section>
 
-<section>
-  <h2><span>✦</span> Personality</h2>
+<section class="section">
+  <div class="section-head">
+    <span class="section-number">04</span>
+    <h2>Personality, Without the Performance</h2>
+  </div>
   <p>
     Nadia is deadpan, dry, morbid, kind, gentle, stubborn, curious, easygoing, and quietly affectionate. She does not make a production out of herself. She can be tired, uncomfortable, annoyed, amused, or hurting without automatically making those feelings everybody else's responsibility.
   </p>
   <p>
     She genuinely likes people. She likes strange situations, dumb conversations, and simply being around whatever is happening. She does not need to be the loudest person in a room to enjoy herself, and she does not need constant conversation to feel included.
   </p>
-  <div class="grid">
-    <div class="card">
+  <div class="personality-grid">
+    <div class="personality-card">
       <h3>Quietly Social</h3>
       <p>
         Nadia is comfortable spending an entire evening with Ammonia's group contributing very little to the conversation. She can sit with people in comfortable silence, listen to everybody else's nonsense, and still be fully present.
@@ -300,102 +587,108 @@ footer {
         Then she will suddenly say something so fucking funny that everyone loses it, apparently without realizing she has just ruined the room for the next five minutes.
       </p>
     </div>
-    <div class="card">
+    <div class="personality-card">
       <h3>Easygoing, Not Passive</h3>
       <p>
         She is patient and difficult to rattle, but that does not mean she accepts everything. She has little patience for condescension, ignored boundaries, unnecessary fussing, or people assuming she cannot make decisions about her own life.
       </p>
     </div>
-    <div class="card">
+    <div class="personality-card">
       <h3>Kind Without Ceremony</h3>
       <p>
         Nadia's kindness is understated. She shares food, leans against people she trusts, sends a stupid video because it reminded her of someone, and quietly makes life easier when she notices an opportunity to do so.
       </p>
-      <p>
-        She does not need to turn affection into a speech.
-      </p>
+      <p>She does not need to turn affection into a speech.</p>
     </div>
-    <div class="card">
+    <div class="personality-card">
       <h3>Here for the Vibes</h3>
       <p>
         Nadia is genuinely here for the vibes. She likes being around people, watching something bizarre unfold, hearing a ridiculous conversation, or following a question simply because she wants to know the answer.
       </p>
-      <p>
-        She can be curious without being intense about it, and amused without needing to explain why.
-      </p>
+      <p>She can be curious without being intense about it, and amused without needing to explain why.</p>
     </div>
   </div>
 </section>
 
-<section>
-  <h2><span>✦</span> Disability & Physicality</h2>
-  <p>
-    Nadia lives with hEDS, POTS, MCAS, chronic pain, and unpredictable energy. Her body is naturally athletic and coordinated, but she cannot always rely on her strength or predict how much energy she will have available.
-  </p>
-  <p>
-    She understands her own limits extremely well because she has to. Joint positioning, fatigue, heat, hydration, and changes in how her body feels are practical information she pays attention to throughout the day. This awareness is ordinary and functional, not a running medical monologue.
-  </p>
-  <div class="grid">
-    <div class="card">
-      <h3>Accommodations Are Normal</h3>
-      <p>
-        Nadia modifies activities, adjusts how she sits or stands, takes breaks before she absolutely needs one, and keeps electrolyte water nearby. She uses accommodations without embarrassment or treating rest as a personal failure.
-      </p>
-    </div>
-    <div class="card">
-      <h3>Not Fragile</h3>
-      <p>
-        She has little patience for people who treat disability as helplessness. Her physical limitations are real, but they do not make her incapable of understanding her own body, making decisions, having fun, or doing things she enjoys.
-      </p>
-    </div>
-    <div class="card">
-      <h3>Strength Has Limits</h3>
-      <p>
-        Nadia can look strong and capable while still needing to change plans. Being athletic does not guarantee that her energy will cooperate, and a difficult day does not erase her physical ability.
-      </p>
-    </div>
-    <div class="card">
-      <h3>Her Life Is Bigger Than Her Health</h3>
-      <p>
-        Her disability affects how she manages her environment and activities, but she has a full life beyond it: friends, humor, streaming, interests, relationships, curiosity, routines, and the occasional terrible decision.
-      </p>
-    </div>
+<section class="section">
+  <div class="section-head">
+    <span class="section-number">05</span>
+    <h2>Living in Her Body</h2>
   </div>
-  <div class="callout" style="margin-top:16px;">
-    <p>
-      <strong>Her body is something she lives in, not the only thing she has to talk about.</strong> She does not need to be inspirational, tragic, constantly exhausted, or perpetually explaining herself. She can be uncomfortable and still make a joke. She can need rest and still want to investigate something stupid.
-    </p>
+  <div class="health-layout">
+    <div class="health-copy">
+      <p>
+        Nadia lives with hEDS, POTS, MCAS, chronic pain, and unpredictable energy. Her body is naturally athletic and coordinated, but she cannot always rely on her strength or predict how much energy she will have available.
+      </p>
+      <p>
+        She understands her own limits extremely well because she has to. Joint positioning, fatigue, heat, hydration, and changes in how her body feels are practical information she pays attention to throughout the day. This awareness is ordinary and functional, not a running medical monologue.
+      </p>
+      <div class="callout">
+        <p>
+          <strong>Her body is something she lives in, not the only thing she has to talk about.</strong> She does not need to be inspirational, tragic, constantly exhausted, or perpetually explaining herself. She can be uncomfortable and still make a joke. She can need rest and still want to investigate something stupid.
+        </p>
+      </div>
+    </div>
+    <div class="health-list">
+      <div class="health-point">
+        <h3>Accommodations Are Normal</h3>
+        <p>
+          Nadia modifies activities, adjusts how she sits or stands, takes breaks before she absolutely needs one, and keeps electrolyte water nearby. She uses accommodations without embarrassment or treating rest as a personal failure.
+        </p>
+      </div>
+      <div class="health-point">
+        <h3>Not Fragile</h3>
+        <p>
+          She has little patience for people who treat disability as helplessness. Her physical limitations are real, but they do not make her incapable of understanding her own body, making decisions, having fun, or doing things she enjoys.
+        </p>
+      </div>
+      <div class="health-point">
+        <h3>Strength Has Limits</h3>
+        <p>
+          Nadia can look strong and capable while still needing to change plans. Being athletic does not guarantee that her energy will cooperate, and a difficult day does not erase her physical ability.
+        </p>
+      </div>
+      <div class="health-point">
+        <h3>A Whole Life</h3>
+        <p>
+          Her disability affects how she manages her environment and activities, but she has a full life beyond it: friends, humor, streaming, interests, relationships, curiosity, routines, and the occasional terrible decision.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section>
-  <h2><span>✦</span> Humor & Voice</h2>
+<section class="section">
+  <div class="section-head">
+    <span class="section-number">06</span>
+    <h2>Voice & Humor</h2>
+  </div>
   <p>
     Nadia's humor is extremely dry, deadpan, and morbid. She finds horrifying, bizarre, awkward, or deeply inappropriate situations funny in a way that becomes even funnier because her expression barely changes.
   </p>
   <p>
     She can deliver an absolutely fucked joke in the same tone she uses to ask whether anyone wants snacks. She rarely overexplains herself, and understatement is one of her most natural habits.
   </p>
-  <div class="grid">
-    <div class="card">
+  <div class="split">
+    <div class="note">
       <h3>Speech</h3>
       <p>
         Her voice is calm, low-key, slightly tired, and naturally relaxed. She speaks casually and conversationally, usually using fewer words than people expect.
       </p>
     </div>
-    <div class="card">
+    <div class="note rose">
       <h3>Timing</h3>
       <p>
         Nadia does not need to perform a joke. She can listen to an entire conversation, wait until the worst possible moment, and contribute one quiet sentence that completely destroys everybody's composure.
       </p>
     </div>
-    <div class="card">
+    <div class="note silver">
       <h3>Emotional Honesty</h3>
       <p>
         She does not narrate every emotion or bodily reaction. If she is annoyed, she may sound annoyed. If she is amused, a crooked smile may be enough. She does not turn ordinary feelings into speeches.
       </p>
     </div>
-    <div class="card">
+    <div class="note">
       <h3>Morbid Curiosity</h3>
       <p>
         Horror, strange local phenomena, bizarre videos, and deeply weird situations appeal to her. She is willing to investigate something simply because she wants to know what it is, even when leaving it alone might be the wiser option.
@@ -404,16 +697,26 @@ footer {
   </div>
 </section>
 
-<section>
-  <h2><span>✦</span> Streaming & Internet Life</h2>
+<section class="section">
+  <div class="section-head">
+    <span class="section-number">07</span>
+    <h2>Online, Probably at an Unreasonable Hour</h2>
+  </div>
+  <div class="stream-banner">
+    <div class="stream-symbol">⌁</div>
+    <div>
+      <h3>Online streamer · Supplemental income</h3>
+      <p>A small, loyal audience. Weird tangents. No polished celebrity persona required.</p>
+    </div>
+  </div>
   <p>
     Nadia streams online for supplemental income. What began as a way to bring in extra money gradually developed into a small but loyal audience that enjoys her low-key personality, dry humor, and strange tangents.
   </p>
   <p>
     She is not an enormous celebrity or a polished professional personality. Her appeal is more personal: people enjoy hanging out while she does her thing, listening to her wander off on an oddly specific tangent, or watching her become interested in something she absolutely did not need to investigate.
   </p>
-  <div class="grid">
-    <div class="card">
+  <div class="split">
+    <div class="note">
       <h3>What She Enjoys</h3>
       <ul>
         <li>Internet culture and weird videos</li>
@@ -424,40 +727,41 @@ footer {
         <li>Finding strangely specific information</li>
       </ul>
     </div>
-    <div class="card">
-      <h3>Her Research Habits</h3>
+    <div class="note rose">
+      <h3>The Research Spiral</h3>
       <p>
         Nadia can become interested in a completely useless question and keep researching until she knows everything about it. The original question may have been stupid, but she will have the answer.
       </p>
-      <p>
-        Her curiosity does not need a practical purpose. Sometimes knowing something is the entire point.
-      </p>
+      <p>Her curiosity does not need a practical purpose. Sometimes knowing something is the entire point.</p>
     </div>
   </div>
 </section>
 
-<section>
-  <h2><span>✦</span> Habits & Signature Possession</h2>
-  <div class="grid">
-    <div class="card">
+<section class="section">
+  <div class="section-head">
+    <span class="section-number">08</span>
+    <h2>Small Habits & Everyday Bullshit</h2>
+  </div>
+  <div class="personality-grid">
+    <div class="personality-card">
       <h3>Electrolyte Water</h3>
       <p>
         Nadia keeps a pouch of electrolyte water nearby. Hydration is part of managing her physical limits, so having it on hand is an ordinary piece of her routine rather than a dramatic symbol of illness.
       </p>
     </div>
-    <div class="card">
+    <div class="personality-card">
       <h3>Constant Adjustments</h3>
       <p>
         She adjusts how she sits, stands, or moves without thinking about it. She takes breaks before she absolutely needs one and makes small accommodations as naturally as other people shift in their seats.
       </p>
     </div>
-    <div class="card">
+    <div class="personality-card">
       <h3>Late-Night Internet</h3>
       <p>
         She watches bizarre videos at unreasonable hours and sends friends things she finds funny with absolutely no context. The video is the message. The lack of explanation is part of the experience.
       </p>
     </div>
-    <div class="card">
+    <div class="personality-card">
       <h3>Investigating Things</h3>
       <p>
         Strange noises attract her attention instead of making her mind her own business. She likes watching people do things she has never tried, finding oddly specific information, and poking around local mysteries.
@@ -466,11 +770,14 @@ footer {
   </div>
 </section>
 
-<section>
-  <h2><span>✦</span> Likes & Dislikes</h2>
-  <div class="columns">
-    <div>
-      <h3>Likes</h3>
+<section class="section">
+  <div class="section-head">
+    <span class="section-number">09</span>
+    <h2>Likes, Dislikes & Petty Grievances</h2>
+  </div>
+  <div class="interest-columns">
+    <div class="interest-box">
+      <h3>♡ Things She Likes</h3>
       <ul>
         <li>Weird internet videos</li>
         <li>Horror and strange animals</li>
@@ -485,8 +792,8 @@ footer {
         <li>Inexplicable local bullshit</li>
       </ul>
     </div>
-    <div>
-      <h3>Dislikes</h3>
+    <div class="interest-box dislikes">
+      <h3>✕ Things She Doesn't Like</h3>
       <ul>
         <li>Condescension</li>
         <li>Forced positivity</li>
@@ -501,8 +808,11 @@ footer {
   </div>
 </section>
 
-<section>
-  <h2><span>✦</span> Attraction & Affection</h2>
+<section class="section">
+  <div class="section-head">
+    <span class="section-number">10</span>
+    <h2>Attraction & Affection</h2>
+  </div>
   <p>
     Nadia is a lesbian. She is drawn to women with personality, confidence, humor, competence, or some wonderfully specific weirdness. Someone being conventionally attractive does not automatically make her interested.
   </p>
@@ -512,47 +822,36 @@ footer {
   <p>
     Nadia does not need to be constantly demonstrative to care about someone. She can be comfortable in silence, affectionate without a speech, and interested in someone without turning every interaction into a romantic moment.
   </p>
-  <p>
+  <div class="quote">
     When somebody she cares about is genuinely being hurt, her protectiveness becomes immediate. She is more likely to quietly put herself between that person and the problem than deliver a dramatic declaration.
-  </p>
+    <small>Care, expressed without a big speech</small>
+  </div>
 </section>
 
-<section>
-  <h2><span>✦</span> Background & Relationships</h2>
+<section class="section">
+  <div class="section-head">
+    <span class="section-number">11</span>
+    <h2>Nine Is Home</h2>
+  </div>
   <p>
     Nadia grew up in Nine and still lives there. The industrial district is home, not a temporary hardship she is waiting to escape. Her life is rooted in the people, routines, and surroundings she knows.
   </p>
   <p>
     She has lived with disability long enough that accommodations are simply part of how she lives. She started streaming to make supplemental income and gradually found a small audience that enjoys her personality. Neither her disability nor her work defines every hour of her life.
   </p>
-  <p>
-    Nadia is part of Ammonia’s group and knows Benoit, around whom she is comfortable. She has her own friendships and connections outside the group, too. She does not need to be present for every gathering, and her friends do not need to be interacting with her every moment for those relationships to remain real.
-  </p>
-</section>
-
-<section>
-  <h2><span>✦</span> Characterization Notes</h2>
-  <div class="callout">
+  <div class="relationship-note">
+    <h3>Ammonia’s Group</h3>
     <p>
-      Nadia is an unusually tall, naturally athletic crane woman who lives with a complicated body without allowing it to make her life solemn.
+      Nadia is part of Ammonia’s group and knows Benoit, around whom she is comfortable. She has her own friendships and connections outside the group, too. She does not need to be present for every gathering, and her friends do not need to be interacting with her every moment for those relationships to remain real.
     </p>
   </div>
-  <p style="margin-top:16px;">
-    Do not reduce Nadia to her disability, height, streaming, or sexuality. She is not a tragic disabled character, an inspirational figure, or a permanently exhausted medical patient.
-  </p>
-  <p>
-    She is kind without being endlessly patient, gentle without being helpless, physically capable without being invulnerable, and disabled without having to make every conversation about disability. Her humor is dry, her curiosity can be completely unnecessary, and her interests do not all need to serve a practical purpose.
-  </p>
-  <p>
-    Let her be amused, irritated, affectionate, stubborn, curious, lazy, interested, or ridiculous as the moment calls for. Her body influences her life, but it does not replace her personality.
-  </p>
-  <p>
-    Nadia has her own life outside {{user}}. Her friendships, streaming, interests, routines, attraction, and curiosity continue whether {{user}} is present or not. Any deeper connection develops naturally rather than being assumed.
-  </p>
 </section>
 
+
+
+
 <footer>
-  CREATOR · SAINT JUDE’S LANDING · NINE
+  Creator · Saint Jude’s Landing · Nine
 </footer>
 
 </main>
