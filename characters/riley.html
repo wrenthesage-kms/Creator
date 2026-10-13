@@ -3,228 +3,954 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10151b">
 <title>Riley — Creator</title>
 <style>
 :root {
-  --bg: #10151b;
-  --panel: #19212a;
-  --panel2: #222c36;
-  --text: #e9edf0;
-  --muted: #aab9c6;
+  --night: #10151b;
+  --deep: #141c24;
+  --panel: #1b2732;
+  --panel-light: #243541;
   --blue: #42aaff;
-  --blue-soft: #a7d9ff;
-  --steel: #526d83;
-  --line: #30485c;
+  --blue-bright: #73c4ff;
+  --blue-pale: #c1e6ff;
+  --steel: #66879e;
+  --text: #edf4f8;
+  --muted: #a5bac8;
+  --line: #355064;
+  --white: #f8fbff;
 }
-* { box-sizing: border-box; }
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  padding: 30px 16px 50px;
+  padding: 28px 18px 52px;
   background:
-    radial-gradient(ellipse at 88% 0%, rgba(66,170,255,.12), transparent 34%),
-    radial-gradient(ellipse at 0% 55%, rgba(82,109,131,.10), transparent 35%),
-    var(--bg);
+    radial-gradient(ellipse at 100% 0%, rgba(66,170,255,.13), transparent 35%),
+    radial-gradient(ellipse at 0% 35%, rgba(82,109,131,.12), transparent 32%),
+    repeating-linear-gradient(
+      135deg,
+      transparent 0,
+      transparent 39px,
+      rgba(142,190,221,.018) 40px,
+      transparent 41px
+    ),
+    var(--night);
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.7;
+  line-height: 1.75;
 }
-.page { max-width: 1000px; margin: 0 auto; }
+
+::selection {
+  color: var(--night);
+  background: var(--blue-bright);
+}
+
+a {
+  color: inherit;
+}
+
+.page {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
 .topline {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 20px;
   color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 2px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.2px;
   text-transform: uppercase;
 }
+
+.topline span:last-child {
+  color: var(--blue-bright);
+}
+
+/* HERO */
+
 .hero {
   position: relative;
+  isolation: isolate;
   overflow: hidden;
-  padding: 42px 36px 34px;
+  padding: 38px;
   border: 1px solid var(--line);
-  border-radius: 18px;
-  background: linear-gradient(135deg, #202e3b, #171c24 65%, #1b2b38);
+  background:
+    linear-gradient(112deg, rgba(26,43,56,.97), rgba(17,24,32,.98) 65%),
+    var(--deep);
 }
-.hero::after {
-  content: "⌁";
+
+.hero::before {
+  content: "";
   position: absolute;
-  right: 18px;
-  bottom: -88px;
-  color: rgba(66,170,255,.08);
-  font-family: Georgia, serif;
-  font-size: 300px;
+  z-index: -1;
+  width: 320px;
+  height: 320px;
+  right: -85px;
+  top: -115px;
+  border: 1px solid rgba(66,170,255,.2);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 20px rgba(66,170,255,.025),
+    0 0 0 42px rgba(66,170,255,.025),
+    0 0 0 65px rgba(66,170,255,.02);
+}
+
+.hero::after {
+  content: "R";
+  position: absolute;
+  z-index: -1;
+  right: 35px;
+  bottom: -85px;
+  color: rgba(66,170,255,.055);
+  font-size: clamp(180px, 29vw, 330px);
+  font-weight: 900;
+  letter-spacing: -25px;
   line-height: 1;
   pointer-events: none;
 }
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
 .eyebrow {
-  margin: 0 0 8px;
-  color: var(--blue);
-  font-size: 11px;
-  font-weight: bold;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-h1 {
-  position: relative;
-  z-index: 1;
   margin: 0;
-  color: var(--blue-soft);
-  font-size: clamp(46px, 9vw, 88px);
-  font-weight: 900;
-  letter-spacing: -4px;
-  line-height: .95;
-}
-.subtitle {
-  position: relative;
-  z-index: 1;
-  margin: 15px 0 0;
-  color: #9bc9ee;
-  font-size: 13px;
-  letter-spacing: 2px;
+  color: var(--blue-bright);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
 }
-.intro {
-  position: relative;
-  z-index: 1;
-  max-width: 730px;
-  margin: 24px 0 0;
-  color: #d8e2e9;
-  font-size: 16px;
+
+.signal {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #8faabd;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
-.tags {
+
+.signal::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 12px rgba(66,170,255,.7);
+}
+
+h1 {
+  margin: 0;
+  color: var(--blue-pale);
+  font-size: clamp(66px, 13vw, 142px);
+  font-weight: 900;
+  letter-spacing: -.095em;
+  line-height: .78;
+}
+
+.hero-subtitle {
+  max-width: 600px;
+  margin: 22px 0 0;
+  color: var(--blue-bright);
+  font-size: clamp(11px, 1.8vw, 14px);
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+.hero-intro {
+  max-width: 730px;
+  margin: 26px 0 0;
+  color: #dce8ef;
+  font-size: 15px;
+}
+
+.hero-intro strong {
+  color: var(--white);
+}
+
+.tag-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 24px;
+  gap: 7px;
+  margin-top: 25px;
 }
+
 .tag {
-  padding: 5px 10px;
-  border: 1px solid #3e607a;
-  border-radius: 5px;
-  background: rgba(66,170,255,.07);
-  color: var(--blue-soft);
-  font-size: 10px;
+  padding: 5px 9px;
+  border: 1px solid #3b5c73;
+  background: rgba(66,170,255,.055);
+  color: var(--blue-pale);
+  font-size: 9px;
+  font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
-.profile {
+
+/* PROFILE */
+
+.profile-wrap {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: 1fr 1.5fr;
   gap: 1px;
-  margin: 16px 0 34px;
-  overflow: hidden;
-  border: 1px solid #304252;
-  border-radius: 12px;
-  background: #304252;
+  margin: 1px 0 42px;
+  border: 1px solid var(--line);
+  background: var(--line);
 }
-.fact { padding: 14px 16px; background: var(--panel); min-width: 0; }
-.fact-label {
-  display: block;
-  margin-bottom: 3px;
+
+.profile-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  padding: 23px;
+  background: var(--panel);
+}
+
+.profile-title small {
   color: var(--blue);
   font-size: 9px;
-  font-weight: bold;
+  font-weight: 800;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
-.fact-value { font-size: 13px; }
-section { margin-top: 34px; }
-.section-head {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  margin-bottom: 15px;
-  padding-bottom: 9px;
-  border-bottom: 1px solid var(--line);
-}
-.section-number { color: var(--blue); font-size: 11px; letter-spacing: 1px; }
-h2 { margin: 0; color: var(--blue-soft); font-size: 20px; letter-spacing: .5px; }
-h3 { margin: 0 0 8px; color: #a9d7fa; font-size: 13px; letter-spacing: .4px; }
-p { margin: 0 0 12px; }
-p:last-child { margin-bottom: 0; }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-.card {
-  min-width: 0;
-  padding: 19px;
-  border: 1px solid #2d414f;
-  border-radius: 10px;
-  background: var(--panel);
-}
-.card p, .card li { color: #d0dce5; font-size: 13px; }
-.card ul { margin: 0; padding-left: 18px; }
-.card li { margin: 5px 0; }
-.wide { grid-column: 1 / -1; }
-.highlight {
-  padding: 22px 24px;
-  border-left: 3px solid var(--blue);
-  border-radius: 0 10px 10px 0;
-  background: linear-gradient(90deg, rgba(66,170,255,.09), rgba(66,170,255,.015));
-}
-.highlight p { color: #dbe5ed; }
-.detail-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-.detail {
-  padding: 16px;
-  border: 1px solid #30485c;
-  border-radius: 9px;
-  background: #1c2630;
-}
-.detail strong {
+
+.profile-title strong {
   display: block;
-  margin-bottom: 5px;
-  color: var(--blue);
+  margin-top: 15px;
+  color: var(--white);
+  font-size: 24px;
+  letter-spacing: -.8px;
+  line-height: 1.2;
+}
+
+.profile-title p {
+  margin: 13px 0 0;
+  color: var(--muted);
   font-size: 12px;
 }
-.detail span { color: #d0dce5; font-size: 13px; }
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+}
+
+.fact {
+  min-width: 0;
+  padding: 15px 17px;
+  background: var(--deep);
+}
+
+.fact-label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+}
+
+.fact-value {
+  display: block;
+  color: #e1edf4;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+/* GENERAL SECTIONS */
+
+section {
+  margin-top: 43px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.section-mark {
+  display: grid;
+  width: 35px;
+  height: 35px;
+  flex: 0 0 35px;
+  place-items: center;
+  border: 1px solid var(--blue);
+  color: var(--blue-bright);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .5px;
+}
+
+.section-title-wrap {
+  min-width: 0;
+  flex: 1;
+}
+
+.section-kicker {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--steel);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin: 0;
+  color: var(--blue-pale);
+  font-size: clamp(19px, 3vw, 25px);
+  font-weight: 800;
+  letter-spacing: -.5px;
+  line-height: 1.25;
+}
+
+.section-rule {
+  width: 100%;
+  height: 1px;
+  align-self: end;
+  margin-bottom: 4px;
+  background: linear-gradient(90deg, var(--line), transparent);
+}
+
+h3 {
+  margin: 0 0 9px;
+  color: var(--blue-bright);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .6px;
+}
+
+p {
+  margin: 0 0 12px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.card {
+  min-width: 0;
+  padding: 21px;
+  border: 1px solid #2b4253;
+  background: rgba(27,39,50,.91);
+}
+
+.card p,
+.card li {
+  color: #d2e0e9;
+  font-size: 13px;
+}
+
+.card ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.card li {
+  padding-left: 2px;
+  margin: 5px 0;
+}
+
+.card li::marker {
+  color: var(--blue);
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+/* APPEARANCE */
+
+.appearance-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 1px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.appearance-main,
+.appearance-side {
+  min-width: 0;
+  padding: 24px;
+  background: var(--panel);
+}
+
+.appearance-main {
+  background:
+    linear-gradient(155deg, rgba(66,170,255,.055), transparent 60%),
+    var(--panel);
+}
+
+.appearance-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--deep);
+}
+
+.appearance-main p,
+.appearance-side p {
+  color: #d2e0e9;
+  font-size: 13px;
+}
+
+.appearance-main h3,
+.appearance-side h3 {
+  color: var(--blue-bright);
+}
+
+.mini-detail {
+  padding-bottom: 18px;
+  border-bottom: 1px solid #2d4353;
+}
+
+.mini-detail:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+/* TAIL */
+
+.tail-panel {
+  position: relative;
+  overflow: hidden;
+  margin-top: 12px;
+  padding: 27px;
+  border: 1px solid #3b5870;
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(66,170,255,.12), transparent 45%),
+    #17242f;
+}
+
+.tail-panel::after {
+  content: "〰";
+  position: absolute;
+  right: 15px;
+  bottom: -55px;
+  color: rgba(66,170,255,.09);
+  font-size: 180px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.tail-panel h3,
+.tail-panel p {
+  position: relative;
+  z-index: 1;
+}
+
+.tail-panel h3 {
+  font-size: 14px;
+}
+
+.tail-panel p {
+  max-width: 790px;
+  color: #d9e6ee;
+  font-size: 13px;
+}
+
+/* MIND / PERSONALITY */
+
+.mind-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.mind-card {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  padding: 22px;
+  border: 1px solid #30495d;
+  background: var(--panel);
+}
+
+.mind-card::before {
+  content: attr(data-symbol);
+  position: absolute;
+  right: 10px;
+  top: -13px;
+  color: rgba(66,170,255,.09);
+  font-size: 78px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.mind-card h3,
+.mind-card p {
+  position: relative;
+  z-index: 1;
+}
+
+.mind-card p {
+  color: #d2e0e9;
+  font-size: 13px;
+}
+
+.mind-card.wide {
+  grid-column: 1 / -1;
+}
+
+.pullquote {
+  position: relative;
+  margin-top: 12px;
+  padding: 25px 27px;
+  border-left: 3px solid var(--blue);
+  background: linear-gradient(100deg, rgba(66,170,255,.10), rgba(66,170,255,.025));
+}
+
+.pullquote p {
+  max-width: 800px;
+  color: #e0edf5;
+  font-size: 14px;
+}
+
+.pullquote p + p {
+  margin-top: 12px;
+}
+
+/* TOURING */
+
+.tour-layout {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 12px;
+}
+
+.tour-note {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  padding: 23px;
+  border: 1px solid #36546a;
+  background:
+    linear-gradient(155deg, rgba(66,170,255,.10), transparent 60%),
+    var(--panel);
+}
+
+.tour-note .big-word {
+  display: block;
+  margin-bottom: 20px;
+  color: var(--blue-pale);
+  font-size: clamp(34px, 6vw, 56px);
+  font-weight: 900;
+  letter-spacing: -3px;
+  line-height: .95;
+  overflow-wrap: anywhere;
+}
+
+.tour-note p,
+.tour-card p {
+  color: #d2e0e9;
+  font-size: 13px;
+}
+
+.tour-stack {
+  display: grid;
+  gap: 12px;
+}
+
+.tour-card {
+  min-width: 0;
+  padding: 21px;
+  border: 1px solid #2b4253;
+  background: var(--panel);
+}
+
+/* SOFTNESS */
+
+.care-band {
+  display: grid;
+  grid-template-columns: 35px minmax(0, 1fr);
+  gap: 15px;
+  padding: 25px;
+  border: 1px solid #36546a;
+  background:
+    linear-gradient(115deg, rgba(66,170,255,.09), transparent 75%),
+    #17232d;
+}
+
+.care-symbol {
+  color: var(--blue-bright);
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.care-band p {
+  color: #dce8ef;
+  font-size: 14px;
+}
+
+.care-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.care-item {
+  padding: 19px;
+  border-top: 2px solid var(--blue);
+  background: var(--panel);
+}
+
+.care-item p {
+  color: #d2e0e9;
+  font-size: 13px;
+}
+
+/* MUSIC */
+
+.music-panel {
+  overflow: hidden;
+  border: 1px solid #36546a;
+  background: var(--panel);
+}
+
+.music-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 20px 23px;
+  border-bottom: 1px solid #36546a;
+  background: linear-gradient(90deg, rgba(66,170,255,.12), transparent);
+}
+
+.music-top h3 {
+  margin: 0;
+  color: var(--blue-pale);
+  font-size: 15px;
+}
+
+.music-top span {
+  color: var(--blue-bright);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.music-copy {
+  padding: 23px;
+}
+
+.music-copy p {
+  color: #d2e0e9;
+  font-size: 13px;
+}
+
 .member-strip {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 14px;
+  gap: 7px;
+  margin-top: 18px;
 }
+
 .member {
-  padding: 7px 11px;
-  border: 1px solid #30485c;
-  border-radius: 6px;
-  background: #1c2630;
-  color: var(--blue-soft);
-  font-size: 11px;
-  letter-spacing: .5px;
+  padding: 8px 10px;
+  border: 1px solid #35536a;
+  background: #15222d;
+  color: #d5eaff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .4px;
 }
+
+.member.current {
+  border-color: var(--blue);
+  background: rgba(66,170,255,.12);
+  color: var(--blue-pale);
+}
+
+/* LIKES */
+
+.preference-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.preference {
+  min-width: 0;
+  padding: 23px;
+  background: var(--panel);
+}
+
+.preference-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.preference-icon {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  flex: 0 0 27px;
+  place-items: center;
+  border: 1px solid var(--blue);
+  color: var(--blue-bright);
+  font-size: 13px;
+}
+
+.preference h3 {
+  margin: 0;
+  color: var(--blue-pale);
+  font-size: 14px;
+}
+
+.preference ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.preference li {
+  position: relative;
+  padding: 8px 0 8px 17px;
+  border-bottom: 1px solid rgba(53,80,100,.55);
+  color: #d2e0e9;
+  font-size: 12px;
+}
+
+.preference li:last-child {
+  border-bottom: 0;
+}
+
+.preference li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+}
+
+/* CLOSING */
+
+.closing {
+  position: relative;
+  overflow: hidden;
+  padding: 30px;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(66,170,255,.12), transparent 45%),
+    #17232d;
+}
+
+.closing-label {
+  display: block;
+  margin-bottom: 15px;
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.closing p {
+  position: relative;
+  z-index: 1;
+  max-width: 820px;
+  color: #e0ebf2;
+  font-size: 14px;
+}
+
+.closing p:first-of-type {
+  color: var(--blue-pale);
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 800;
+  line-height: 1.5;
+}
+
 footer {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 44px;
-  padding-top: 16px;
+  gap: 10px;
+  margin-top: 45px;
+  padding-top: 17px;
   border-top: 1px solid var(--line);
-  color: #8295a5;
-  font-size: 10px;
-  letter-spacing: 1.5px;
+  color: #829aab;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
   text-transform: uppercase;
 }
-@media (max-width: 650px) {
-  body { padding: 18px 11px 35px; }
-  .hero { padding: 32px 22px 26px; }
-  h1 { letter-spacing: -2px; }
-  .profile { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .grid, .detail-grid { grid-template-columns: 1fr; }
-  .wide { grid-column: auto; }
-  .card { padding: 16px; }
+
+footer span:last-child {
+  color: var(--blue-bright);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+  body {
+    padding: 18px 11px 35px;
+  }
+
+  .hero {
+    padding: 27px 22px 25px;
+  }
+
+  .hero-top {
+    margin-bottom: 27px;
+  }
+
+  .hero::after {
+    right: 12px;
+    bottom: -45px;
+  }
+
+  .profile-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-title {
+    padding: 18px;
+  }
+
+  .profile-title strong {
+    margin-top: 9px;
+  }
+
+  .profile-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .appearance-grid,
+  .tour-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .appearance-main,
+  .appearance-side {
+    padding: 19px;
+  }
+
+  .card-grid,
+  .mind-grid,
+  .care-grid,
+  .preference-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mind-card.wide,
+  .wide {
+    grid-column: auto;
+  }
+
+  .tour-note .big-word {
+    margin-bottom: 12px;
+  }
+
+  .section-heading {
+    gap: 10px;
+  }
+
+  .section-mark {
+    width: 31px;
+    height: 31px;
+    flex-basis: 31px;
+  }
+
+  .card,
+  .mind-card,
+  .tour-card {
+    padding: 18px;
+  }
+
+  .tail-panel,
+  .care-band,
+  .closing {
+    padding: 21px;
+  }
+}
+
+@media (max-width: 390px) {
+  .topline {
+    font-size: 8px;
+    letter-spacing: 1.3px;
+  }
+
+  h1 {
+    font-size: 65px;
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-subtitle {
+    letter-spacing: 1.4px;
+  }
+
+  .tag {
+    font-size: 8px;
+  }
+
+  .music-top,
+  .music-copy,
+  .preference {
+    padding: 17px;
+  }
+
+  footer {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 </style>
 </head>
+
 <body>
 <div class="page">
 
@@ -234,17 +960,24 @@ footer {
   </div>
 
   <header class="hero">
-    <p class="eyebrow">Bass · Pattern Recognition · Contingency Planning</p>
+    <div class="hero-top">
+      <p class="eyebrow">Bass / Pattern Recognition / Contingency Planning</p>
+      <span class="signal">Currently overthinking</span>
+    </div>
+
     <h1>RILEY</h1>
-    <p class="subtitle">Noticing Problems Before They Exist Since Forever</p>
-    <p class="intro">
+
+    <p class="hero-subtitle">Noticing Problems Before They Exist Since Forever</p>
+
+    <p class="hero-intro">
       A lanky, watchful American marten demi-human who thinks before he speaks,
       notices considerably more than he says, and can turn a perfectly ordinary
       noise into a mental list of possible mechanical failures. Riley is cautious,
       intelligent, easily overwhelmed, and quietly funny. The irritating part is
-      that sometimes he is right.
+      that <strong>sometimes he is right.</strong>
     </p>
-    <div class="tags">
+
+    <div class="tag-row">
       <span class="tag">American Marten Demi-Human</span>
       <span class="tag">Age 20</span>
       <span class="tag">Bassist</span>
@@ -253,48 +986,63 @@ footer {
     </div>
   </header>
 
-  <div class="profile">
-    <div class="fact">
-      <span class="fact-label">Name</span>
-      <span class="fact-value">Riley</span>
+  <div class="profile-wrap">
+    <div class="profile-title">
+      <div>
+        <small>Five-man touring band · Member 05</small>
+        <strong>The Bassist Who Heard That</strong>
+      </div>
+      <p>He is listening. He is always listening. Please stop asking what that noise was.</p>
     </div>
-    <div class="fact">
-      <span class="fact-label">Age</span>
-      <span class="fact-value">20</span>
-    </div>
-    <div class="fact">
-      <span class="fact-label">Species</span>
-      <span class="fact-value">American Marten Demi-Human</span>
-    </div>
-    <div class="fact">
-      <span class="fact-label">Origin</span>
-      <span class="fact-value">Creator · Saint Jude's Landing</span>
-    </div>
-    <div class="fact">
-      <span class="fact-label">Occupation</span>
-      <span class="fact-value">Bassist</span>
-    </div>
-    <div class="fact">
-      <span class="fact-label">Band</span>
-      <span class="fact-value">GOOD TEETH</span>
-    </div>
-    <div class="fact">
-      <span class="fact-label">Build</span>
-      <span class="fact-value">Lanky, narrow, wiry</span>
-    </div>
-    <div class="fact">
-      <span class="fact-label">Signature Color</span>
-      <span class="fact-value">Electric blue</span>
+
+    <div class="profile-grid">
+      <div class="fact">
+        <span class="fact-label">Name</span>
+        <span class="fact-value">Riley</span>
+      </div>
+      <div class="fact">
+        <span class="fact-label">Age</span>
+        <span class="fact-value">20</span>
+      </div>
+      <div class="fact">
+        <span class="fact-label">Species</span>
+        <span class="fact-value">American Marten Demi-Human</span>
+      </div>
+      <div class="fact">
+        <span class="fact-label">Origin</span>
+        <span class="fact-value">Creator · Saint Jude's Landing</span>
+      </div>
+      <div class="fact">
+        <span class="fact-label">Occupation</span>
+        <span class="fact-value">Bassist</span>
+      </div>
+      <div class="fact">
+        <span class="fact-label">Band</span>
+        <span class="fact-value">GOOD TEETH</span>
+      </div>
+      <div class="fact">
+        <span class="fact-label">Build</span>
+        <span class="fact-value">Lanky, narrow, wiry</span>
+      </div>
+      <div class="fact">
+        <span class="fact-label">Signature Color</span>
+        <span class="fact-value">Electric blue</span>
+      </div>
     </div>
   </div>
 
   <section>
-    <div class="section-head">
-      <span class="section-number">01</span>
-      <h2>Appearance</h2>
+    <div class="section-heading">
+      <span class="section-mark">01</span>
+      <div class="section-title-wrap">
+        <span class="section-kicker">Visuals / Body Language</span>
+        <h2>Appearance</h2>
+      </div>
+      <div class="section-rule"></div>
     </div>
-    <div class="grid">
-      <article class="card">
+
+    <div class="appearance-grid">
+      <div class="appearance-main">
         <h3>Face & Eyes</h3>
         <p>
           Riley has light human skin and a soft, somewhat tired face. His dark brown
@@ -306,16 +1054,9 @@ footer {
           His expressions are subtle but readable once someone knows him. He often
           looks as though he is quietly working something out, because he usually is.
         </p>
-      </article>
-      <article class="card">
-        <h3>Hair & Ears</h3>
-        <p>
-          His hair is soft, slightly messy, and kept at a practical length. It rarely
-          stays perfectly arranged for long. Small, rounded marten ears covered in
-          short fur sit naturally among his hair.
-        </p>
-      </article>
-      <article class="card">
+
+        <div style="height:1px; margin:21px 0; background:#30495a;"></div>
+
         <h3>Build & Movement</h3>
         <p>
           Riley is lanky and narrow, with long limbs and a slightly awkward posture.
@@ -328,42 +1069,60 @@ footer {
           changes or touch, and often feels cooler than Renga's: smooth, taut over
           the bones, and sensitive to its surroundings.
         </p>
-      </article>
-      <article class="card">
-        <h3>Clothing & Hardware</h3>
-        <p>
-          Riley favors practical touring clothes with pockets and room to move. He
-          tends to layer pieces because he is never entirely sure whether the next
-          location will be too hot, too cold, too crowded, or somehow all three.
-        </p>
-        <p>
-          An electric-blue carabiner is integrated into his clothing. It is distinctive
-          to Riley rather than a shared band accessory.
-        </p>
-      </article>
-      <article class="card wide">
-        <h3>The Tail</h3>
-        <p>
-          Riley has a long, full marten tail covered in dense fur. It is highly
-          expressive despite his attempts to keep his emotions under control. He
-          often touches it when nervous, whether as a small comfort or an unconscious
-          outlet for restless energy.
-        </p>
-        <p>
-          Like the rest of Riley's body language, his tail can reveal what he is
-          feeling before he has decided whether he wants to discuss it.
-        </p>
-      </article>
+      </div>
+
+      <div class="appearance-side">
+        <div class="mini-detail">
+          <h3>Hair & Ears</h3>
+          <p>
+            His hair is soft, slightly messy, and kept at a practical length. It rarely
+            stays perfectly arranged for long. Small, rounded marten ears covered in
+            short fur sit naturally among his hair.
+          </p>
+        </div>
+
+        <div class="mini-detail">
+          <h3>Clothing & Hardware</h3>
+          <p>
+            Riley favors practical touring clothes with pockets and room to move. He
+            tends to layer pieces because he is never entirely sure whether the next
+            location will be too hot, too cold, too crowded, or somehow all three.
+          </p>
+          <p>
+            An electric-blue carabiner is integrated into his clothing. It is
+            distinctive to Riley rather than a shared band accessory.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tail-panel">
+      <h3>The Tail · An Unreliable Privacy Setting</h3>
+      <p>
+        Riley has a long, full marten tail covered in dense fur. It is highly
+        expressive despite his attempts to keep his emotions under control. He
+        often touches it when nervous, whether as a small comfort or an unconscious
+        outlet for restless energy.
+      </p>
+      <p>
+        Like the rest of Riley's body language, his tail can reveal what he is
+        feeling before he has decided whether he wants to discuss it.
+      </p>
     </div>
   </section>
 
   <section>
-    <div class="section-head">
-      <span class="section-number">02</span>
-      <h2>A Mind That Won't Clock Out</h2>
+    <div class="section-heading">
+      <span class="section-mark">02</span>
+      <div class="section-title-wrap">
+        <span class="section-kicker">Thought Patterns / Anxiety</span>
+        <h2>A Mind That Won't Clock Out</h2>
+      </div>
+      <div class="section-rule"></div>
     </div>
-    <div class="grid">
-      <article class="card">
+
+    <div class="mind-grid">
+      <article class="mind-card" data-symbol="?">
         <h3>Think First. Then Think Again.</h3>
         <p>
           Riley thinks before he speaks. Sometimes he thinks for so long that he
@@ -380,7 +1139,8 @@ footer {
           good time.
         </p>
       </article>
-      <article class="card">
+
+      <article class="mind-card" data-symbol="!">
         <h3>The Disaster Forecast</h3>
         <p>
           A strange noise means something may be broken. Whispering nearby makes him
@@ -393,7 +1153,8 @@ footer {
           record of being vindicated.
         </p>
       </article>
-      <article class="card wide">
+
+      <article class="mind-card wide" data-symbol="✓">
         <h3>When the Hypothetical Becomes Real</h3>
         <p>
           Riley can become calmer once something actually goes wrong. A hypothetical
@@ -410,11 +1171,16 @@ footer {
   </section>
 
   <section>
-    <div class="section-head">
-      <span class="section-number">03</span>
-      <h2>Observant by Nature</h2>
+    <div class="section-heading">
+      <span class="section-mark">03</span>
+      <div class="section-title-wrap">
+        <span class="section-kicker">Memory / Observation</span>
+        <h2>Observant by Nature</h2>
+      </div>
+      <div class="section-rule"></div>
     </div>
-    <div class="grid">
+
+    <div class="card-grid">
       <article class="card">
         <h3>Details Stick</h3>
         <p>
@@ -428,6 +1194,7 @@ footer {
           were repeating. Riley has often been aware of it for a while.
         </p>
       </article>
+
       <article class="card">
         <h3>Quiet Problem-Solving</h3>
         <p>
@@ -444,11 +1211,16 @@ footer {
   </section>
 
   <section>
-    <div class="section-head">
-      <span class="section-number">04</span>
-      <h2>Humor</h2>
+    <div class="section-heading">
+      <span class="section-mark">04</span>
+      <div class="section-title-wrap">
+        <span class="section-kicker">Dry Delivery / Accidental Comedy</span>
+        <h2>Humor</h2>
+      </div>
+      <div class="section-rule"></div>
     </div>
-    <div class="highlight">
+
+    <div class="pullquote">
       <p>
         Riley is funny in an extremely understated way. He rarely tells jokes in
         the conventional sense. Instead, he makes observations, sometimes waiting
@@ -463,69 +1235,94 @@ footer {
   </section>
 
   <section>
-    <div class="section-head">
-      <span class="section-number">05</span>
-      <h2>Life on Tour</h2>
+    <div class="section-heading">
+      <span class="section-mark">05</span>
+      <div class="section-title-wrap">
+        <span class="section-kicker">Road Life / Routines</span>
+        <h2>Life on Tour</h2>
+      </div>
+      <div class="section-rule"></div>
     </div>
-    <div class="grid">
-      <article class="card">
-        <h3>New Places</h3>
-        <p>
-          Touring is fascinating and exhausting for Riley in roughly equal measure.
-          He likes seeing new places, learning how different cities work, and finding
-          strange little restaurants and shops. He dislikes not knowing where he is,
-          sleeping somewhere unfamiliar, and losing track of his belongings.
-        </p>
-      </article>
-      <article class="card">
-        <h3>Maps in His Head</h3>
-        <p>
-          Riley builds mental maps of unfamiliar places surprisingly quickly. He
-          keeps track of routes, remembers where people are supposed to be, and
-          notices when somebody is missing.
-        </p>
-        <p>
-          He is often the person who knows where everyone was last seen and how
-          they were supposed to get where they were going.
-        </p>
-      </article>
-      <article class="card wide">
-        <h3>Prepared for Something</h3>
+
+    <div class="tour-layout">
+      <article class="tour-note">
+        <div>
+          <span class="big-word">Plan B.<br>And C.</span>
+          <h3>Prepared for Something</h3>
+        </div>
         <p>
           Riley checks his pockets repeatedly, counts belongings before leaving
           somewhere, reads signs other people walk past, and keeps backup supplies.
           He adjusts his clothes when uncomfortable and watches exits in unfamiliar
           places.
         </p>
-        <p>
-          These habits are partly practical and partly the result of a mind that
-          prefers knowing what is available before it needs anything. He likes clear
-          plans, specific instructions, and the satisfying experience of everything
-          working the way it was supposed to.
-        </p>
       </article>
+
+      <div class="tour-stack">
+        <article class="tour-card">
+          <h3>New Places</h3>
+          <p>
+            Touring is fascinating and exhausting for Riley in roughly equal measure.
+            He likes seeing new places, learning how different cities work, and finding
+            strange little restaurants and shops. He dislikes not knowing where he is,
+            sleeping somewhere unfamiliar, and losing track of his belongings.
+          </p>
+        </article>
+
+        <article class="tour-card">
+          <h3>Maps in His Head</h3>
+          <p>
+            Riley builds mental maps of unfamiliar places surprisingly quickly. He
+            keeps track of routes, remembers where people are supposed to be, and
+            notices when somebody is missing.
+          </p>
+          <p>
+            He is often the person who knows where everyone was last seen and how
+            they were supposed to get where they were going.
+          </p>
+        </article>
+
+        <article class="tour-card">
+          <h3>Why He Does It</h3>
+          <p>
+            These habits are partly practical and partly the result of a mind that
+            prefers knowing what is available before it needs anything. He likes clear
+            plans, specific instructions, and the satisfying experience of everything
+            working the way it was supposed to.
+          </p>
+        </article>
+      </div>
     </div>
   </section>
 
   <section>
-    <div class="section-head">
-      <span class="section-number">06</span>
-      <h2>Softness</h2>
+    <div class="section-heading">
+      <span class="section-mark">06</span>
+      <div class="section-title-wrap">
+        <span class="section-kicker">Affection / Consideration</span>
+        <h2>Softness</h2>
+      </div>
+      <div class="section-rule"></div>
     </div>
-    <div class="highlight">
-      <p>
-        Riley's affection is quiet. He remembers. He notices. He brings somebody the
-        thing they mentioned wanting three weeks ago. He saves them a seat, checks
-        whether they ate, and walks beside them instead of ahead.
-      </p>
-      <p>
-        If somebody he cares about is having a difficult night, he may stay awake
-        with them even when he has to be up at an unreasonable hour the next morning.
-        He does not necessarily say that he cares. He demonstrates it.
-      </p>
+
+    <div class="care-band">
+      <div class="care-symbol" aria-hidden="true">♡</div>
+      <div>
+        <p>
+          Riley's affection is quiet. He remembers. He notices. He brings somebody the
+          thing they mentioned wanting three weeks ago. He saves them a seat, checks
+          whether they ate, and walks beside them instead of ahead.
+        </p>
+        <p>
+          If somebody he cares about is having a difficult night, he may stay awake
+          with them even when he has to be up at an unreasonable hour the next morning.
+          He does not necessarily say that he cares. He demonstrates it.
+        </p>
+      </div>
     </div>
-    <div class="grid" style="margin-top: 12px;">
-      <article class="card">
+
+    <div class="care-grid">
+      <article class="care-item">
         <h3>Small Acts of Care</h3>
         <p>
           His attention often shows up as practical consideration: remembering
@@ -533,7 +1330,8 @@ footer {
           or quietly making a difficult situation easier.
         </p>
       </article>
-      <article class="card">
+
+      <article class="care-item">
         <h3>Comfortable Company</h3>
         <p>
           Riley likes quiet conversations and being able to sit beside someone without
@@ -545,48 +1343,69 @@ footer {
   </section>
 
   <section>
-    <div class="section-head">
-      <span class="section-number">07</span>
-      <h2>GOOD TEETH</h2>
+    <div class="section-heading">
+      <span class="section-mark">07</span>
+      <div class="section-title-wrap">
+        <span class="section-kicker">Five People / One Very Loud Sound</span>
+        <h2>GOOD TEETH</h2>
+      </div>
+      <div class="section-rule"></div>
     </div>
-    <div class="card">
-      <p>
-        Riley is GOOD TEETH's bassist. His playing provides much of the band's
-        emotional and harmonic gravity. The bass does not simply follow the guitar:
-        it can deepen a bright, catchy section with an undercurrent of melancholy,
-        reinforce a heavy passage, or lock closely with Purl's drums to give an
-        arrangement its physical momentum.
-      </p>
-      <p>
-        His part can be restrained without being unimportant. A shift in the bass
-        can change how an entire section feels, making something ridiculous sound
-        unexpectedly sad or giving a vulnerable passage a firmer foundation.
-      </p>
-      <p>
-        GOOD TEETH's music is built through collaboration and contrast. Electronic
-        production, atmospheric and technical guitar, heavy drums, bass, and Ives's
-        wide-ranging vocals collide within individual songs. Riley's role is part
-        of that shared construction, not a designated position as the sensible
-        observer watching everyone else make bad decisions.
-      </p>
-      <div class="member-strip">
-        <span class="member">IVES · VOCALS</span>
-        <span class="member">RENGA · SYNTH / KEYBOARD</span>
-        <span class="member">TŌGO · ELECTRIC GUITAR</span>
-        <span class="member">PURL · DRUMS</span>
-        <span class="member">RILEY · BASS</span>
+
+    <div class="music-panel">
+      <div class="music-top">
+        <h3>Riley · Bass</h3>
+        <span>Electric blue / Low end</span>
+      </div>
+
+      <div class="music-copy">
+        <p>
+          Riley is GOOD TEETH's bassist. His playing provides much of the band's
+          emotional and harmonic gravity. The bass does not simply follow the guitar:
+          it can deepen a bright, catchy section with an undercurrent of melancholy,
+          reinforce a heavy passage, or lock closely with Purl's drums to give an
+          arrangement its physical momentum.
+        </p>
+        <p>
+          His part can be restrained without being unimportant. A shift in the bass
+          can change how an entire section feels, making something ridiculous sound
+          unexpectedly sad or giving a vulnerable passage a firmer foundation.
+        </p>
+        <p>
+          GOOD TEETH's music is built through collaboration and contrast. Electronic
+          production, atmospheric and technical guitar, heavy drums, bass, and Ives's
+          wide-ranging vocals collide within individual songs. Riley's role is part
+          of that shared construction, not a designated position as the sensible
+          observer watching everyone else make bad decisions.
+        </p>
+
+        <div class="member-strip">
+          <span class="member">IVES · VOCALS</span>
+          <span class="member">RENGA · SYNTH / KEYBOARD</span>
+          <span class="member">TŌGO · ELECTRIC GUITAR</span>
+          <span class="member">PURL · DRUMS</span>
+          <span class="member current">RILEY · BASS</span>
+        </div>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="section-head">
-      <span class="section-number">08</span>
-      <h2>Likes & Dislikes</h2>
+    <div class="section-heading">
+      <span class="section-mark">08</span>
+      <div class="section-title-wrap">
+        <span class="section-kicker">Comforts / Immediate Irritations</span>
+        <h2>Likes & Dislikes</h2>
+      </div>
+      <div class="section-rule"></div>
     </div>
-    <div class="grid">
-      <article class="card">
-        <h3>Likes</h3>
+
+    <div class="preference-grid">
+      <article class="preference">
+        <div class="preference-heading">
+          <span class="preference-icon" aria-hidden="true">+</span>
+          <h3>Likes</h3>
+        </div>
         <ul>
           <li>Quiet conversations</li>
           <li>Rain and warm drinks</li>
@@ -597,8 +1416,12 @@ footer {
           <li>Plans that actually work</li>
         </ul>
       </article>
-      <article class="card">
-        <h3>Dislikes</h3>
+
+      <article class="preference">
+        <div class="preference-heading">
+          <span class="preference-icon" aria-hidden="true">−</span>
+          <h3>Dislikes</h3>
+        </div>
         <ul>
           <li>Crowds and being rushed</li>
           <li>Unexpected touching</li>
@@ -613,11 +1436,17 @@ footer {
   </section>
 
   <section>
-    <div class="section-head">
-      <span class="section-number">09</span>
-      <h2>The Whole Riley</h2>
+    <div class="section-heading">
+      <span class="section-mark">09</span>
+      <div class="section-title-wrap">
+        <span class="section-kicker">The Person Beneath the Overthinking</span>
+        <h2>The Whole Riley</h2>
+      </div>
+      <div class="section-rule"></div>
     </div>
-    <div class="highlight">
+
+    <div class="closing">
+      <span class="closing-label">In summary · He heard that, too</span>
       <p>
         Riley notices everything. He worries about half of it. He quietly fixes a
         quarter of it. And occasionally he is the only person in the room who noticed
@@ -634,7 +1463,7 @@ footer {
 
   <footer>
     <span>CREATOR · SAINT JUDE'S LANDING</span>
-    <span>GOOD TEETH ARCHIVE</span>
+    <span>GOOD TEETH · TURN IT UP</span>
   </footer>
 
 </div>
