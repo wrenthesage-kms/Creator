@@ -3,622 +3,1211 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Locations | Creator</title>
+  <meta name="theme-color" content="#17121b">
+  <title>Places to Go, Places to Get Lost | Creator</title>
   <link rel="stylesheet" href="../style.css">
+
   <style>
     :root {
-      --loc-bg: #111316;
-      --loc-panel: #1a1d21;
-      --loc-panel-alt: #202329;
-      --loc-border: #383c43;
-      --loc-text: #e8e3dc;
-      --loc-muted: #aaa9a4;
-      --loc-green: #a8c68a;
-      --loc-teal: #83c7bd;
-      --loc-blue: #9bb9e3;
-      --loc-purple: #c3a4d8;
-      --loc-pink: #e2a5bd;
-      --loc-gold: #e1c18b;
-      --loc-orange: #dfa37f;
+      --map-bg: #17121b;
+      --map-ink: #f7eee7;
+      --map-muted: #c1b2c2;
+      --map-pink: #ff86b7;
+      --map-lime: #d7f17c;
+      --map-blue: #8adce8;
+      --map-purple: #c6a4ff;
+      --map-orange: #ffad79;
+      --map-yellow: #ffe28b;
+      --map-line: rgba(247, 238, 231, 0.22);
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+      scrollbar-color: var(--map-pink) var(--map-bg);
+    }
+
     body {
-      background: var(--loc-bg);
-      color: var(--loc-text);
-    }
-
-    .locations-page {
-      width: min(1160px, calc(100% - 36px));
-      margin: 0 auto;
-      padding: 36px 0 76px;
-      font-family: inherit;
-      line-height: 1.7;
-    }
-
-    .locations-hero {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(30px, 6vw, 68px);
-      border: 1px solid var(--loc-border);
-      border-radius: 20px;
+      margin: 0;
       background:
-        radial-gradient(ellipse at 12% 8%, rgba(131, 199, 189, 0.15), transparent 38%),
-        radial-gradient(ellipse at 88% 92%, rgba(195, 164, 216, 0.13), transparent 35%),
-        linear-gradient(135deg, #202b2a, #24232c 55%, #2b2529);
-      margin-bottom: 28px;
+        radial-gradient(ellipse at 4% 7%, rgba(255, 134, 183, 0.09), transparent 29rem),
+        radial-gradient(ellipse at 95% 31%, rgba(138, 220, 232, 0.08), transparent 28rem),
+        var(--map-bg);
+      color: var(--map-ink);
     }
 
-    .locations-hero::after {
+    a {
+      color: inherit;
+    }
+
+    .world-index {
+      width: min(1240px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 26px 0 80px;
+      font-family: inherit;
+      line-height: 1.65;
+    }
+
+    /* THE BIG INTRO */
+
+    .map-masthead {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(190px, 0.36fr);
+      gap: 28px;
+      align-items: end;
+      min-height: 390px;
+      padding: clamp(26px, 6vw, 70px);
+      overflow: hidden;
+      border: 1px solid var(--map-line);
+      background:
+        linear-gradient(116deg, rgba(23, 18, 27, 0.97) 0%, rgba(42, 27, 47, 0.92) 56%, rgba(58, 34, 52, 0.91) 100%);
+      isolation: isolate;
+    }
+
+    .map-masthead::before {
       content: "✳";
       position: absolute;
-      right: 5%;
-      top: -48px;
-      color: rgba(225, 193, 139, 0.12);
-      font-size: clamp(150px, 27vw, 320px);
+      z-index: -1;
+      top: -105px;
+      right: -12px;
+      color: rgba(255, 134, 183, 0.13);
+      font-size: clamp(280px, 45vw, 570px);
+      line-height: 1;
+      transform: rotate(-17deg);
+    }
+
+    .map-masthead::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 8px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--map-pink) 0 52px,
+        transparent 52px 62px,
+        var(--map-lime) 62px 89px,
+        transparent 89px 99px,
+        var(--map-blue) 99px 139px,
+        transparent 139px 149px
+      );
+    }
+
+    .masthead-copy {
+      min-width: 0;
+    }
+
+    .masthead-sticker {
+      display: inline-block;
+      margin-bottom: 24px;
+      padding: 5px 11px;
+      background: var(--map-lime);
+      color: #211a22;
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      transform: rotate(-2deg);
+    }
+
+    .map-masthead h1 {
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(3.3rem, 9vw, 8rem);
+      font-weight: 1000;
+      letter-spacing: -0.095em;
+      line-height: 0.79;
+      text-transform: uppercase;
+      overflow-wrap: anywhere;
+    }
+
+    .map-masthead h1 span {
+      display: block;
+      margin-top: 16px;
+      color: var(--map-pink);
+    }
+
+    .masthead-description {
+      max-width: 630px;
+      margin: 28px 0 0;
+      color: #e2d3e0;
+      font-size: clamp(0.98rem, 2vw, 1.13rem);
+    }
+
+    .masthead-side {
+      align-self: center;
+      justify-self: end;
+      width: min(100%, 220px);
+      padding: 17px;
+      border: 1px dashed rgba(255, 226, 139, 0.55);
+      background: rgba(23, 18, 27, 0.57);
+      transform: rotate(3deg);
+    }
+
+    .masthead-side .scribble {
+      display: block;
+      margin-bottom: 11px;
+      color: var(--map-yellow);
+      font-size: 2.1rem;
+      line-height: 1;
+    }
+
+    .masthead-side p {
+      margin: 0;
+      color: #e4d9e2;
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+
+    .masthead-side strong {
+      color: var(--map-yellow);
+    }
+
+    .masthead-side .side-foot {
+      display: block;
+      margin-top: 13px;
+      color: var(--map-pink);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* INTRODUCTION STRIP */
+
+    .world-intro {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--map-line);
+    }
+
+    .intro-doodle {
+      display: grid;
+      width: 92px;
+      aspect-ratio: 1;
+      place-items: center;
+      border: 1px solid var(--map-line);
+      border-radius: 50% 42% 48% 38%;
+      background: rgba(215, 241, 124, 0.07);
+      color: var(--map-lime);
+      font-size: 2.8rem;
+      transform: rotate(-9deg);
+    }
+
+    .world-intro p {
+      max-width: 900px;
+      margin: 0;
+      color: var(--map-muted);
+      font-size: 1rem;
+    }
+
+    .world-intro strong {
+      color: var(--map-ink);
+    }
+
+    .world-intro .intro-emphasis {
+      color: var(--map-pink);
+    }
+
+    /* SECTION LABELS */
+
+    .map-section {
+      margin-top: 64px;
+      scroll-margin-top: 24px;
+    }
+
+    .section-heading {
+      display: flex;
+      gap: 17px;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .section-index {
+      display: grid;
+      width: 52px;
+      height: 52px;
+      flex: 0 0 52px;
+      place-items: center;
+      border: 1px solid var(--map-line);
+      color: var(--map-pink);
+      font-size: 1.35rem;
+      font-weight: 950;
+      transform: rotate(-4deg);
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(1.65rem, 4vw, 2.6rem);
+      font-weight: 950;
+      letter-spacing: -0.055em;
+      line-height: 1.1;
+    }
+
+    .section-heading p {
+      margin: 5px 0 0;
+      color: var(--map-muted);
+      font-size: 0.91rem;
+    }
+
+    .section-heading .tiny-label {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--map-lime);
+      font-size: 0.66rem;
+      font-weight: 900;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    /* THE CITY: A BIG, LOPSIDED POSTER */
+
+    .city-feature {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+      border: 1px solid var(--map-line);
+      background: #211927;
+    }
+
+    .city-feature-main {
+      position: relative;
+      display: flex;
+      min-height: 335px;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: clamp(25px, 5vw, 49px);
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 80% 16%, rgba(255, 134, 183, 0.22), transparent 38%),
+        linear-gradient(150deg, #32203b, #211927 75%);
+      isolation: isolate;
+    }
+
+    .city-feature-main::before {
+      content: "SJ";
+      position: absolute;
+      z-index: -1;
+      top: -49px;
+      right: -14px;
+      color: rgba(198, 164, 255, 0.1);
+      font-size: clamp(140px, 25vw, 310px);
+      font-weight: 1000;
+      letter-spacing: -0.12em;
+      line-height: 1;
+    }
+
+    .city-stamp {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 5px 10px;
+      background: var(--map-pink);
+      color: #271621;
+      font-size: 0.67rem;
+      font-weight: 950;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transform: rotate(-2deg);
+    }
+
+    .city-feature-main h3 {
+      max-width: 570px;
+      margin: 0;
+      font-size: clamp(2.5rem, 6vw, 5.3rem);
+      font-weight: 1000;
+      letter-spacing: -0.085em;
+      line-height: 0.93;
+    }
+
+    .city-feature-main p {
+      max-width: 520px;
+      margin: 19px 0 0;
+      color: #ddcfe0;
+      font-size: 0.96rem;
+    }
+
+    .city-feature-main .city-link {
+      display: inline-flex;
+      gap: 15px;
+      align-items: center;
+      margin-top: 25px;
+      padding: 10px 15px;
+      border: 1px solid var(--map-pink);
+      color: var(--map-pink);
+      font-size: 0.82rem;
+      font-weight: 900;
+      text-decoration: none;
+      transition: background 160ms ease, color 160ms ease;
+    }
+
+    .city-feature-main .city-link:hover,
+    .city-feature-main .city-link:focus-visible {
+      background: var(--map-pink);
+      color: #211621;
+      outline: none;
+    }
+
+    .city-feature-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 25px;
+      border-left: 1px dashed var(--map-line);
+    }
+
+    .city-side-heading {
+      margin: 0 0 16px;
+      color: var(--map-yellow);
+      font-size: 0.7rem;
+      font-weight: 950;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .district-list {
+      display: grid;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .district-list li {
+      border-top: 1px solid var(--map-line);
+    }
+
+    .district-list a,
+    .district-list .district-unlinked {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr) 20px;
+      gap: 10px;
+      align-items: center;
+      padding: 13px 0;
+      text-decoration: none;
+    }
+
+    .district-number {
+      color: var(--map-muted);
+      font-size: 0.72rem;
+      font-weight: 900;
+    }
+
+    .district-name {
+      display: block;
+      font-size: 1rem;
+      font-weight: 900;
+    }
+
+    .district-description {
+      display: block;
+      margin-top: 2px;
+      color: var(--map-muted);
+      font-size: 0.77rem;
+      line-height: 1.45;
+    }
+
+    .district-arrow {
+      color: var(--map-pink);
+      font-size: 1.1rem;
+      transition: transform 160ms ease;
+    }
+
+    .district-list a:hover .district-arrow,
+    .district-list a:focus-visible .district-arrow {
+      transform: translateX(4px);
+    }
+
+    .district-list a:focus-visible {
+      outline: 1px solid var(--map-pink);
+      outline-offset: 4px;
+    }
+
+    .district-hollows .district-name { color: var(--map-purple); }
+    .district-nine .district-name { color: var(--map-orange); }
+    .district-velvet .district-name { color: var(--map-pink); }
+    .district-mothball .district-name { color: var(--map-yellow); }
+
+    .district-list .district-unlinked {
+      opacity: 0.82;
+    }
+
+    .district-unlinked .district-arrow {
+      color: var(--map-muted);
+    }
+
+    .city-side-note {
+      margin: 20px 0 0;
+      padding-top: 16px;
+      border-top: 1px dashed var(--map-line);
+      color: var(--map-muted);
+      font-size: 0.79rem;
+    }
+
+    .city-side-note strong {
+      color: var(--map-lime);
+    }
+
+    /* PLACES THAT HAVE THEIR OWN IDENTITIES */
+
+    .community-layout {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .community-card {
+      --community-color: var(--map-blue);
+      position: relative;
+      display: flex;
+      min-width: 0;
+      min-height: 265px;
+      grid-column: span 3;
+      flex-direction: column;
+      padding: 24px;
+      overflow: hidden;
+      border: 1px solid var(--map-line);
+      background: rgba(255, 255, 255, 0.025);
+      text-decoration: none;
+      isolation: isolate;
+      transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
+    }
+
+    .community-card::after {
+      content: attr(data-mark);
+      position: absolute;
+      z-index: -1;
+      right: 5px;
+      bottom: -43px;
+      color: color-mix(in srgb, var(--community-color) 11%, transparent);
+      font-size: 175px;
+      font-weight: 1000;
       line-height: 1;
       pointer-events: none;
     }
 
-    .locations-kicker {
-      margin: 0 0 12px;
-      color: var(--loc-teal);
-      font-size: 0.77rem;
-      font-weight: 800;
-      letter-spacing: 0.19em;
-      text-transform: uppercase;
-    }
-
-    .locations-hero h1 {
-      position: relative;
-      z-index: 1;
-      margin: 0;
-      color: #f4eee4;
-      font-size: clamp(2.5rem, 7vw, 5.2rem);
-      font-weight: 900;
-      letter-spacing: -0.055em;
-      line-height: 1.03;
-    }
-
-    .locations-hero .hero-subtitle {
-      position: relative;
-      z-index: 1;
-      max-width: 670px;
-      margin: 20px 0 0;
-      color: #d0d0c9;
-      font-size: clamp(1rem, 2.2vw, 1.18rem);
-    }
-
-    .locations-ornament {
-      margin-top: 24px;
-      color: var(--loc-gold);
-      letter-spacing: 0.42em;
-      font-size: 0.95rem;
-    }
-
-    .locations-intro {
-      max-width: 850px;
-      margin: 0 auto 44px;
-      padding: 0 12px;
-      color: var(--loc-muted);
-      text-align: center;
-      font-size: 1rem;
-    }
-
-    .locations-intro strong {
-      color: var(--loc-text);
-    }
-
-    .locations-section {
-      margin-top: 48px;
-    }
-
-    .locations-section-heading {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 20px;
-    }
-
-    .locations-section-heading .heading-symbol {
-      display: grid;
-      width: 44px;
-      height: 44px;
-      flex: 0 0 44px;
-      place-items: center;
-      border: 1px solid var(--loc-border);
-      border-radius: 13px;
-      background: var(--loc-panel);
-      font-size: 1.35rem;
-    }
-
-    .locations-section-heading h2 {
-      margin: 0;
-      color: var(--loc-text);
-      font-size: clamp(1.35rem, 3vw, 1.85rem);
-      line-height: 1.2;
-    }
-
-    .locations-section-heading p {
-      margin: 4px 0 0;
-      color: var(--loc-muted);
-      font-size: 0.9rem;
-    }
-
-    .locations-grid {
-      display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .location-card {
-      --card-accent: var(--loc-green);
-      position: relative;
-      display: flex;
-      min-width: 0;
-      flex-direction: column;
-      grid-column: span 4;
-      overflow: hidden;
-      padding: 23px;
-      border: 1px solid var(--loc-border);
-      border-radius: 16px;
-      background: var(--loc-panel);
-      color: var(--loc-text);
-      text-decoration: none;
-      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
-    }
-
-    .location-card:hover,
-    .location-card:focus-visible {
+    .community-card:hover,
+    .community-card:focus-visible {
+      border-color: var(--community-color);
+      background: color-mix(in srgb, var(--community-color) 6%, transparent);
       transform: translateY(-3px);
-      border-color: var(--card-accent);
-      background: var(--loc-panel-alt);
       outline: none;
     }
 
-    .location-card:focus-visible {
-      box-shadow: 0 0 0 3px rgba(232, 227, 220, 0.12);
+    .community-card:focus-visible {
+      box-shadow: 0 0 0 2px var(--community-color);
     }
 
-    .location-card.featured {
-      grid-column: span 6;
-      padding: 29px;
+    .community-card.pugad { --community-color: var(--map-lime); }
+    .community-card.vaudreaux { --community-color: var(--map-blue); }
+    .community-card.cultural { --community-color: var(--map-purple); }
+    .community-card.aquatic { --community-color: var(--map-orange); }
+
+    .community-card.pugad {
+      background:
+        linear-gradient(135deg, rgba(215, 241, 124, 0.075), transparent 68%),
+        rgba(255, 255, 255, 0.02);
     }
 
-    .location-card.wide {
-      grid-column: span 6;
+    .community-card.vaudreaux {
+      background:
+        linear-gradient(135deg, rgba(138, 220, 232, 0.075), transparent 68%),
+        rgba(255, 255, 255, 0.02);
     }
 
-    .location-card.teal { --card-accent: var(--loc-teal); }
-    .location-card.green { --card-accent: var(--loc-green); }
-    .location-card.blue { --card-accent: var(--loc-blue); }
-    .location-card.purple { --card-accent: var(--loc-purple); }
-    .location-card.pink { --card-accent: var(--loc-pink); }
-    .location-card.gold { --card-accent: var(--loc-gold); }
-    .location-card.orange { --card-accent: var(--loc-orange); }
+    .community-card.cultural {
+      background:
+        linear-gradient(135deg, rgba(198, 164, 255, 0.075), transparent 68%),
+        rgba(255, 255, 255, 0.02);
+    }
 
-    .location-card-top {
+    .community-card.aquatic {
+      background:
+        linear-gradient(135deg, rgba(255, 173, 121, 0.075), transparent 68%),
+        rgba(255, 255, 255, 0.02);
+    }
+
+    .community-card-top {
       display: flex;
-      align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 17px;
+      align-items: flex-start;
+      margin-bottom: 27px;
     }
 
-    .location-card-icon {
-      display: grid;
-      width: 43px;
-      height: 43px;
-      flex: 0 0 43px;
-      place-items: center;
-      border: 1px solid color-mix(in srgb, var(--card-accent) 35%, transparent);
-      border-radius: 12px;
-      background: color-mix(in srgb, var(--card-accent) 10%, transparent);
-      color: var(--card-accent);
-      font-size: 1.3rem;
+    .community-symbol {
+      color: var(--community-color);
+      font-size: 2rem;
+      line-height: 1;
     }
 
-    .location-card-type {
-      color: var(--card-accent);
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
+    .community-tag {
+      max-width: 175px;
+      color: var(--community-color);
+      font-size: 0.65rem;
+      font-weight: 950;
+      letter-spacing: 0.09em;
       text-align: right;
       text-transform: uppercase;
     }
 
-    .location-card h3 {
-      margin: 0 0 9px;
-      color: #f0e9df;
-      font-size: 1.25rem;
-      font-weight: 850;
-      line-height: 1.25;
-      overflow-wrap: anywhere;
-    }
-
-    .location-card.featured h3 {
-      font-size: clamp(1.4rem, 3vw, 1.9rem);
-    }
-
-    .location-card p {
-      flex: 1;
+    .community-card h3 {
       margin: 0;
-      color: var(--loc-muted);
-      font-size: 0.92rem;
-      line-height: 1.7;
+      font-size: clamp(1.55rem, 3.5vw, 2.2rem);
+      font-weight: 950;
+      letter-spacing: -0.06em;
+      line-height: 1.1;
     }
 
-    .location-card-footer {
+    .community-card p {
+      max-width: 460px;
+      margin: 12px 0 23px;
+      color: var(--map-muted);
+      font-size: 0.88rem;
+    }
+
+    .community-card .community-link {
       display: flex;
+      gap: 10px;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      margin-top: 23px;
-      padding-top: 14px;
-      border-top: 1px solid var(--loc-border);
-      color: var(--card-accent);
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid var(--map-line);
+      color: var(--community-color);
       font-size: 0.78rem;
-      font-weight: 750;
+      font-weight: 900;
     }
 
-    .location-card-footer .arrow {
-      font-size: 1.15rem;
-      transition: transform 160ms ease;
+    .community-link span:last-child {
+      font-size: 1.2rem;
     }
 
-    .location-card:hover .arrow,
-    .location-card:focus-visible .arrow {
-      transform: translateX(4px);
+    /* LANDMARKS AND EVERYDAY PLACES */
+
+    .local-places {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 17px;
     }
 
-    .location-note {
-      margin-top: 36px;
-      padding: 23px 25px;
-      border: 1px solid #494239;
-      border-radius: 15px;
-      background: linear-gradient(125deg, rgba(225, 193, 139, 0.08), rgba(131, 199, 189, 0.04));
+    .place-board {
+      --place-color: var(--map-yellow);
+      position: relative;
+      display: flex;
+      min-height: 290px;
+      flex-direction: column;
+      padding: clamp(22px, 4vw, 34px);
+      overflow: hidden;
+      border: 1px solid var(--map-line);
+      background: #24202b;
+      text-decoration: none;
+      isolation: isolate;
+      transition: border-color 160ms ease;
     }
 
-    .location-note h2 {
-      margin: 0 0 8px;
-      color: var(--loc-gold);
-      font-size: 1.1rem;
+    .place-board::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: linear-gradient(145deg, color-mix(in srgb, var(--place-color) 8%, transparent), transparent 65%);
     }
 
-    .location-note p {
+    .place-board:hover,
+    .place-board:focus-visible {
+      border-color: var(--place-color);
+      outline: none;
+    }
+
+    .place-board:focus-visible {
+      box-shadow: inset 0 0 0 2px var(--place-color);
+    }
+
+    .place-board.landmarks { --place-color: var(--map-yellow); }
+    .place-board.businesses { --place-color: var(--map-pink); }
+
+    .place-board .place-kicker {
+      margin: 0 0 17px;
+      color: var(--place-color);
+      font-size: 0.68rem;
+      font-weight: 950;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .place-board h3 {
+      max-width: 430px;
       margin: 0;
-      color: var(--loc-muted);
-      font-size: 0.93rem;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 1000;
+      letter-spacing: -0.075em;
+      line-height: 1;
     }
 
-    .locations-endmark {
-      margin-top: 48px;
-      color: #747a79;
+    .place-board p {
+      max-width: 470px;
+      margin: 17px 0 25px;
+      color: var(--map-muted);
+      font-size: 0.9rem;
+    }
+
+    .place-board .place-doodle {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      color: color-mix(in srgb, var(--place-color) 19%, transparent);
+      font-size: 5rem;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .place-board .place-link {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 13px;
+      border-top: 1px dashed var(--map-line);
+      color: var(--place-color);
+      font-size: 0.8rem;
+      font-weight: 900;
+    }
+
+    /* MAP MARGINALIA */
+
+    .map-marginalia {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(190px, 0.36fr);
+      gap: 28px;
+      align-items: center;
+      margin-top: 68px;
+      padding: clamp(25px, 5vw, 45px);
+      border: 1px dashed rgba(215, 241, 124, 0.42);
+      background:
+        radial-gradient(ellipse at 95% 5%, rgba(215, 241, 124, 0.09), transparent 50%),
+        rgba(255, 255, 255, 0.018);
+    }
+
+    .map-marginalia h2 {
+      margin: 0 0 12px;
+      color: var(--map-lime);
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      font-weight: 950;
+      letter-spacing: -0.055em;
+    }
+
+    .map-marginalia p {
+      max-width: 760px;
+      margin: 0;
+      color: var(--map-muted);
+      font-size: 0.91rem;
+    }
+
+    .map-marginalia strong {
+      color: var(--map-ink);
+    }
+
+    .marginalia-sticker {
+      justify-self: end;
+      max-width: 220px;
+      padding: 17px;
+      border: 2px solid var(--map-lime);
+      color: var(--map-lime);
+      font-size: 0.77rem;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      line-height: 1.5;
       text-align: center;
-      font-size: 0.85rem;
-      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      transform: rotate(5deg);
     }
 
-    @media (max-width: 850px) {
-      .location-card {
-        grid-column: span 6;
+    .map-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      margin-top: 35px;
+      padding-top: 18px;
+      border-top: 1px solid var(--map-line);
+      color: var(--map-muted);
+      font-size: 0.74rem;
+    }
+
+    .map-footer .footer-sparkles {
+      color: var(--map-pink);
+      letter-spacing: 0.35em;
+      font-size: 1rem;
+    }
+
+    /* SMALL SCREENS */
+
+    @media (max-width: 800px) {
+      .map-masthead {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 25px;
+        min-height: auto;
       }
 
-      .location-card.featured,
-      .location-card.wide {
-        grid-column: span 6;
+      .masthead-side {
+        justify-self: start;
+        width: min(100%, 290px);
+      }
+
+      .city-feature {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .city-feature-side {
+        border-top: 1px dashed var(--map-line);
+        border-left: 0;
+      }
+
+      .local-places {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .map-marginalia {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .marginalia-sticker {
+        justify-self: start;
       }
     }
 
     @media (max-width: 560px) {
-      .locations-page {
-        width: min(100% - 22px, 1160px);
-        padding-top: 14px;
+      .world-index {
+        width: calc(100% - 24px);
+        padding-top: 12px;
       }
 
-      .locations-hero {
-        padding: 29px 23px;
-        border-radius: 15px;
+      .map-masthead {
+        padding: 30px 23px 36px;
       }
 
-      .location-card,
-      .location-card.featured,
-      .location-card.wide {
-        grid-column: span 12;
+      .map-masthead h1 {
+        font-size: clamp(3.15rem, 17vw, 5.5rem);
       }
 
-      .location-card {
+      .masthead-side {
+        padding: 14px;
+      }
+
+      .world-intro {
+        grid-template-columns: 55px minmax(0, 1fr);
+        gap: 15px;
+        padding: 23px 0;
+      }
+
+      .intro-doodle {
+        width: 51px;
+        font-size: 1.8rem;
+      }
+
+      .map-section {
+        margin-top: 45px;
+      }
+
+      .section-heading {
+        gap: 12px;
+      }
+
+      .section-index {
+        width: 43px;
+        height: 43px;
+        flex-basis: 43px;
+      }
+
+      .city-feature-main {
+        min-height: 315px;
+        padding: 25px 21px;
+      }
+
+      .city-feature-main h3 {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+      }
+
+      .city-feature-side {
         padding: 20px;
       }
 
-      .locations-section {
-        margin-top: 38px;
+      .community-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
       }
 
-      .locations-intro {
-        text-align: left;
+      .community-card {
+        grid-column: span 1;
+        min-height: 245px;
+        padding: 21px;
+      }
+
+      .community-card-top {
+        margin-bottom: 22px;
+      }
+
+      .place-board {
+        min-height: 265px;
+      }
+
+      .map-marginalia {
+        margin-top: 48px;
+        padding: 24px 20px;
+      }
+
+      .map-footer {
+        align-items: flex-start;
+        flex-direction: column;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .location-card,
-      .location-card-footer .arrow {
-        transition: none;
+      html {
+        scroll-behavior: auto;
       }
 
-      .location-card:hover,
-      .location-card:focus-visible {
-        transform: none;
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
       }
     }
   </style>
 </head>
-<body>
-  <main class="locations-page">
 
-    <header class="locations-hero">
-      <p class="locations-kicker">A field guide to the familiar and the impossible</p>
-      <h1>LOCATIONS</h1>
-      <p class="hero-subtitle">
-        A world of sprawling cities, old communities, strange wilderness,
-        crowded neighborhoods, and places that have been here long enough
-        to collect a few stories of their own.
-      </p>
-      <div class="locations-ornament" aria-hidden="true">✳ ✦ ❋ ✦ ✳</div>
+<body>
+  <main class="world-index">
+
+    <header class="map-masthead">
+      <div class="masthead-copy">
+        <span class="masthead-sticker">✳ welcome to Creator ✳</span>
+
+        <h1>
+          Places to go,
+          <span>places to get lost.</span>
+        </h1>
+
+        <p class="masthead-description">
+          Cities with bad habits. Communities with their own rules.
+          Wetlands that go on forever. Businesses that somehow become
+          part of your life. The world is big, weird, and very much alive.
+        </p>
+      </div>
+
+      <aside class="masthead-side" aria-label="A little reminder">
+        <span class="scribble" aria-hidden="true">✷</span>
+        <p>
+          <strong>LOCAL KNOWLEDGE REQUIRED.</strong><br>
+          Some places are dangerous. Some are lovely. Some are both,
+          and the locals are tired of explaining the difference.
+        </p>
+        <span class="side-foot">mind your business (optional)</span>
+      </aside>
     </header>
 
-    <div class="locations-intro">
+    <div class="world-intro">
+      <div class="intro-doodle" aria-hidden="true">⌖</div>
       <p>
-        <strong>Creator is enormous, colorful, and unmistakably alive.</strong>
-        Its geography bears little resemblance to Earth's. Communities have
-        grown around its waterways, mountains, wetlands, coastlines, and
-        extraordinary ecosystems. Modern cities and remote settlements alike
-        are home to humans, demi-humans, monsters, and countless other beings.
-        Every place has its own character, its own people, and its own way of life.
+        <strong>Creator isn't Earth with a different coat of paint.</strong>
+        Its geography, ecosystems, and communities have their own histories.
+        Humans live alongside demi-humans, monsters, and all kinds of other
+        beings. Some places are enormous urban sprawls; others are independent
+        communities surrounded by alien wilderness. <span class="intro-emphasis">There isn't one
+        universal way to live here.</span> Where you are matters. Who lives
+        there matters. And the place itself has a personality, too.
       </p>
     </div>
 
-    <section class="locations-section" aria-labelledby="city-heading">
-      <div class="locations-section-heading">
-        <span class="heading-symbol" aria-hidden="true">⌂</span>
+    <!-- SAINT JUDE'S LANDING -->
+
+    <section class="map-section" id="saint-judes-landing" aria-labelledby="city-heading">
+      <div class="section-heading">
+        <span class="section-index" aria-hidden="true">01</span>
         <div>
+          <span class="tiny-label">The urban sprawl</span>
           <h2 id="city-heading">Saint Jude’s Landing</h2>
-          <p>A sprawling city with plenty of life between its districts.</p>
+          <p>About two thousand years of history. Still a complete fucking mess.</p>
         </div>
       </div>
 
-      <div class="locations-grid">
-        <a class="location-card featured teal" href="saint-judes-landing.html">
-          <div class="location-card-top">
-            <span class="location-card-icon" aria-hidden="true">✳</span>
-            <span class="location-card-type">Major City</span>
-          </div>
-          <h3>Saint Jude’s Landing</h3>
+      <div class="city-feature">
+        <div class="city-feature-main">
+          <span class="city-stamp">Major city · many, many problems</span>
+
+          <h3>Saint Jude’s<br>Landing.</h3>
+
           <p>
             Beautiful, filthy, crowded, dangerous, affectionate, horny,
-            violent, mundane, and strange. A vast modern city where
-            different species, cultures, relationships, and ways of living
-            overlap in the everyday mess of urban life.
+            violent, mundane, and strange. A vast modern city where species,
+            cultures, relationships, work, nightlife, and ordinary everyday
+            nonsense all collide. People live here. People work here.
+            People fall in love here. People make some truly terrible decisions here.
           </p>
-          <div class="location-card-footer">
-            <span>Explore the city</span>
-            <span class="arrow" aria-hidden="true">→</span>
-          </div>
-        </a>
 
-        <a class="location-card purple" href="hollows.html">
-          <div class="location-card-top">
-            <span class="location-card-icon" aria-hidden="true">❋</span>
-            <span class="location-card-type">City District</span>
-          </div>
-          <h3>Hollows</h3>
-          <p>
-            Old buildings, narrow streets, dense alien vegetation, perpetual
-            dampness, and secluded communities. Beautiful and intimate,
-            sometimes eerie, and not always as quiet as it looks.
-          </p>
-          <div class="location-card-footer">
-            <span>Explore Hollows</span>
-            <span class="arrow" aria-hidden="true">→</span>
-          </div>
-        </a>
+          <a class="city-link" href="saint-judes-landing.html">
+            <span>GET INTO THE CITY</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
 
-        <a class="location-card orange" href="nine.html">
-          <div class="location-card-top">
-            <span class="location-card-icon" aria-hidden="true">⚙</span>
-            <span class="location-card-type">City District</span>
-          </div>
-          <h3>Nine</h3>
-          <p>
-            The industrial mass of Saint Jude’s Landing. Factories,
-            foundries, warehouses, machinery, worker housing, and enormous
-            Behemoth remains share space with the people who keep everything running.
-          </p>
-          <div class="location-card-footer">
-            <span>Explore Nine</span>
-            <span class="arrow" aria-hidden="true">→</span>
-          </div>
-        </a>
+        <div class="city-feature-side">
+          <div>
+            <p class="city-side-heading">Pick your neighborhood</p>
 
-        <a class="location-card pink" href="velvet.html">
-          <div class="location-card-top">
-            <span class="location-card-icon" aria-hidden="true">♡</span>
-            <span class="location-card-type">City District</span>
-          </div>
-          <h3>Velvet</h3>
-          <p>
-            Nightlife, luxury, entertainment, adult culture, and indulgence.
-            From crowded dance floors and intimate venues to exclusive clubs
-            and the less glamorous business happening behind closed doors.
-          </p>
-          <div class="location-card-footer">
-            <span>Explore Velvet</span>
-            <span class="arrow" aria-hidden="true">→</span>
-          </div>
-        </a>
+            <ul class="district-list">
+              <li class="district-hollows">
+                <a href="hollows.html">
+                  <span class="district-number">01</span>
+                  <span>
+                    <span class="district-name">The Hollows</span>
+                    <span class="district-description">Old streets. Alien greenery. Things in the fog.</span>
+                  </span>
+                  <span class="district-arrow" aria-hidden="true">↗</span>
+                </a>
+              </li>
 
-        <div class="location-card gold">
-          <div class="location-card-top">
-            <span class="location-card-icon" aria-hidden="true">✦</span>
-            <span class="location-card-type">City District</span>
+              <li class="district-nine">
+                <a href="nine.html">
+                  <span class="district-number">02</span>
+                  <span>
+                    <span class="district-name">Nine</span>
+                    <span class="district-description">Factories, foundries, machinery, worker housing.</span>
+                  </span>
+                  <span class="district-arrow" aria-hidden="true">↗</span>
+                </a>
+              </li>
+
+              <li class="district-velvet">
+                <a href="velvet.html">
+                  <span class="district-number">03</span>
+                  <span>
+                    <span class="district-name">Velvet</span>
+                    <span class="district-description">Nightlife, indulgence, and what happens after dark.</span>
+                  </span>
+                  <span class="district-arrow" aria-hidden="true">↗</span>
+                </a>
+              </li>
+
+              <li class="district-mothball">
+                <div class="district-unlinked">
+                  <span class="district-number">04</span>
+                  <span>
+                    <span class="district-name">Mothball</span>
+                    <span class="district-description">A named district, with more local details to come.</span>
+                  </span>
+                  <span class="district-arrow" aria-hidden="true">✳</span>
+                </div>
+              </li>
+            </ul>
           </div>
-          <h3>Mothball</h3>
-          <p>
-            One of Saint Jude’s Landing’s named districts. More about
-            Mothball will be added as its local details are established.
+
+          <p class="city-side-note">
+            <strong>Remember:</strong> Saint Jude’s Landing is a city,
+            not the whole world. There's a lot beyond its borders.
           </p>
-          <div class="location-card-footer">
-            <span>District listing</span>
-            <span aria-hidden="true">✦</span>
-          </div>
         </div>
       </div>
     </section>
 
-    <section class="locations-section" aria-labelledby="communities-heading">
-      <div class="locations-section-heading">
-        <span class="heading-symbol" aria-hidden="true">⌘</span>
+    <!-- COMMUNITIES -->
+
+    <section class="map-section" id="communities" aria-labelledby="communities-heading">
+      <div class="section-heading">
+        <span class="section-index" aria-hidden="true">02</span>
         <div>
-          <h2 id="communities-heading">Communities of Creator</h2>
-          <p>Places with their own roots, routines, and local identities.</p>
+          <span class="tiny-label">Different roots, different rhythms</span>
+          <h2 id="communities-heading">Outside the city limits</h2>
+          <p>Independent communities, cultural identities, and places that do things their own way.</p>
         </div>
       </div>
 
-      <div class="locations-grid">
-        <a class="location-card featured green" href="pugad.html">
-          <div class="location-card-top">
-            <span class="location-card-icon" aria-hidden="true">❀</span>
-            <span class="location-card-type">Independent Rural Community</span>
+      <div class="community-layout">
+
+        <a class="community-card pugad" data-mark="❀" href="pugad.html">
+          <div class="community-card-top">
+            <span class="community-symbol" aria-hidden="true">❀</span>
+            <span class="community-tag">Rural community</span>
           </div>
+
           <h3>Pugad</h3>
+
           <p>
             An established rural community surrounded by alien wilderness.
-            Homes, local businesses, farms, schools, and family networks
-            sustain a strong community identity, with close cultural and
-            social connections to Saint Jude’s Landing.
+            Homes, farms, schools, local businesses, and family networks
+            form the backbone of everyday life. Pugad has its own strong
+            identity, alongside close cultural and social connections
+            with Saint Jude’s Landing.
           </p>
-          <div class="location-card-footer">
-            <span>Explore Pugad</span>
-            <span class="arrow" aria-hidden="true">→</span>
-          </div>
+
+          <span class="community-link">
+            <span>Get to know Pugad</span>
+            <span aria-hidden="true">↗</span>
+          </span>
         </a>
 
-        <a class="location-card teal" href="vaudreaux.html">
-          <div class="location-card-top">
-            <span class="location-card-icon" aria-hidden="true">≈</span>
-            <span class="location-card-type">Region &amp; Cultural Community</span>
+        <a class="community-card vaudreaux" data-mark="≋" href="vaudreaux.html">
+          <div class="community-card-top">
+            <span class="community-symbol" aria-hidden="true">≈</span>
+            <span class="community-tag">Southern region</span>
           </div>
+
           <h3>Vaudreaux</h3>
+
           <p>
-            A warm, humid southern region of branching waterways, flooded
-            forests, wetlands, and sprawling bayou-like environments.
+            Warm, humid country threaded with branching waterways,
+            flooded forests, wetlands, and sprawling bayou-like landscapes.
             Cajun and Creole cultural influences shape local food, music,
-            language, gatherings, and everyday life.
+            language, gatherings, and the rhythms of everyday life.
           </p>
-          <div class="location-card-footer">
+
+          <span class="community-link">
             <span>Explore Vaudreaux</span>
-            <span class="arrow" aria-hidden="true">→</span>
-          </div>
+            <span aria-hidden="true">↗</span>
+          </span>
         </a>
 
-        <a class="location-card purple" href="cultural-communities.html">
-          <div class="location-card-top">
-            <span class="location-card-icon" aria-hidden="true">⌘</span>
-            <span class="location-card-type">Community Directory</span>
+        <a class="community-card cultural" data-mark="⌘" href="cultural-communities.html">
+          <div class="community-card-top">
+            <span class="community-symbol" aria-hidden="true">⌘</span>
+            <span class="community-tag">Culture &amp; community</span>
           </div>
+
           <h3>Cultural Communities</h3>
+
           <p>
-            Discover Kurobane, Muwon, Xolapa, Pugad, and Kaiwana:
-            communities with distinct cultural influences, local traditions,
-            everyday institutions, and languages.
+            Meet Kurobane, Muwon, Xolapa, Pugad, and Kaiwana. Each has
+            its own cultural influences, traditions, languages, institutions,
+            and everyday ways of doing things. Not interchangeable.
+            Not one big cultural blob.
           </p>
-          <div class="location-card-footer">
-            <span>Browse communities</span>
-            <span class="arrow" aria-hidden="true">→</span>
-          </div>
+
+          <span class="community-link">
+            <span>Meet the communities</span>
+            <span aria-hidden="true">↗</span>
+          </span>
         </a>
 
-        <a class="location-card blue" href="aquatic-regions.html">
-          <div class="location-card-top">
-            <span class="location-card-icon" aria-hidden="true">≋</span>
-            <span class="location-card-type">Aquatic Regions</span>
+        <a class="community-card aquatic" data-mark="≋" href="aquatic-regions.html">
+          <div class="community-card-top">
+            <span class="community-symbol" aria-hidden="true">≋</span>
+            <span class="community-tag">Water, everywhere</span>
           </div>
+
           <h3>Orumai &amp; Kaluwa</h3>
+
           <p>
             Vast aquatic regions shaped by interconnected waters, enormous
             rivers, wetlands, islands, freshwater basins, and marine
-            ecosystems. Home to established communities with varied local identities.
+            ecosystems. Established communities live throughout these
+            environments, each with their own local identities.
           </p>
-          <div class="location-card-footer">
-            <span>Explore aquatic regions</span>
-            <span class="arrow" aria-hidden="true">→</span>
-          </div>
+
+          <span class="community-link">
+            <span>Follow the waterways</span>
+            <span aria-hidden="true">↗</span>
+          </span>
         </a>
+
       </div>
     </section>
 
-    <section class="locations-section" aria-labelledby="places-heading">
-      <div class="locations-section-heading">
-        <span class="heading-symbol" aria-hidden="true">✧</span>
+    <!-- PLACES AND BUSINESSES -->
+
+    <section class="map-section" id="local-places" aria-labelledby="places-heading">
+      <div class="section-heading">
+        <span class="section-index" aria-hidden="true">03</span>
         <div>
-          <h2 id="places-heading">Landmarks &amp; Local Places</h2>
-          <p>Not every place needs to be a city to leave an impression.</p>
+          <span class="tiny-label">The little things are the big things</span>
+          <h2 id="places-heading">Landmarks, hangouts &amp; local haunts</h2>
+          <p>Places people go for a reason. Or because they have absolutely nowhere else to be.</p>
         </div>
       </div>
 
-      <div class="locations-grid">
-        <a class="location-card wide gold" href="other-local-places.html">
-          <div class="location-card-top">
-            <span class="location-card-icon" aria-hidden="true">✦</span>
-            <span class="location-card-type">Landmarks &amp; Communities</span>
-          </div>
-          <h3>Other Local Places</h3>
+      <div class="local-places">
+
+        <a class="place-board landmarks" href="other-local-places.html">
+          <span class="place-doodle" aria-hidden="true">✦</span>
+          <p class="place-kicker">Odd landmarks &amp; out-of-the-way places</p>
+
+          <h3>Some places stick with you.</h3>
+
           <p>
             From Saint Jude’s Landing landmarks THAT FUCKING THING,
             THE GRANDMOTHER, and BLUE STATIC to the hot springs of Caldera,
             the mountains of Karsai, and the wetlands of Lowmarsh.
+            Big destinations, strange local landmarks, and places with
+            their own particular reputation.
           </p>
-          <div class="location-card-footer">
-            <span>Browse local places</span>
-            <span class="arrow" aria-hidden="true">→</span>
-          </div>
+
+          <span class="place-link">
+            <span>Browse the places</span>
+            <span aria-hidden="true">↗</span>
+          </span>
         </a>
 
-        <a class="location-card wide pink" href="local-businesses.html">
-          <div class="location-card-top">
-            <span class="location-card-icon" aria-hidden="true">⌂</span>
-            <span class="location-card-type">Businesses &amp; Everyday Life</span>
-          </div>
-          <h3>Local Businesses</h3>
+        <a class="place-board businesses" href="local-businesses.html">
+          <span class="place-doodle" aria-hidden="true">♡</span>
+          <p class="place-kicker">Open signs, locked doors, questionable decisions</p>
+
+          <h3>Somewhere to spend your money.</h3>
+
           <p>
             Bookstores, dive bars, repair shops, music venues, thrift stores,
-            beauty supplies, restaurants, and neighborhood convenience stores.
-            The places people work, eat, shop, meet, and return to.
+            beauty supply shops, restaurants, and neighborhood convenience
+            stores. The places where people work, eat, shop, meet up,
+            waste an afternoon, and become regulars.
           </p>
-          <div class="location-card-footer">
-            <span>Browse businesses</span>
-            <span class="arrow" aria-hidden="true">→</span>
-          </div>
+
+          <span class="place-link">
+            <span>Browse local businesses</span>
+            <span aria-hidden="true">↗</span>
+          </span>
         </a>
+
       </div>
     </section>
 
-    <aside class="location-note">
-      <h2>✧ A note on the map</h2>
-      <p>
-        Creator is a world, not a collection of neighborhoods arranged around
-        one city. Saint Jude’s Landing is a major urban center, but independent
-        communities and distant regions have their own histories, cultures,
-        environments, and ways of life. A connection to the city does not make
-        a community part of it, and a place's character comes from the people
-        who live there as much as from its geography.
-      </p>
+    <!-- A NOTE ABOUT THE WORLD -->
+
+    <aside class="map-marginalia">
+      <div>
+        <h2>✳ A world is more than its biggest city.</h2>
+
+        <p>
+          Saint Jude’s Landing might be a major urban center, but it doesn't
+          own the rest of Creator. Independent communities and distant regions
+          have their own histories, cultures, environments, and ways of life.
+          <strong>A community's connection to the city doesn't make it part of the city.</strong>
+          Geography matters, but so do the people who live somewhere, the
+          things they build, the things they remember, and the things they
+          absolutely refuse to put up with.
+        </p>
+      </div>
+
+      <div class="marginalia-sticker">
+        The world is huge.<br>
+        Go look around.<br>
+        ✷ Bring snacks. ✷
+      </div>
     </aside>
 
-    <div class="locations-endmark" aria-hidden="true">✳ &nbsp; ✦ &nbsp; ❋ &nbsp; ✦ &nbsp; ✳</div>
+    <footer class="map-footer">
+      <span>CREATOR · THE WORLD IS WEIRD. ACT ACCORDINGLY.</span>
+      <span class="footer-sparkles" aria-hidden="true">✳ ✦ ❋ ✦ ✳</span>
+    </footer>
 
   </main>
 </body>
