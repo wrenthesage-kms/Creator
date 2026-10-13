@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111116">
 <title>Renga — Creator</title>
 <style>
 :root {
@@ -12,240 +13,529 @@
   --text: #eee8e5;
   --muted: #b7aeb5;
   --pink: #ed4fa4;
+  --pink-light: #ffadd7;
   --orange: #cf815e;
   --cream: #e7d8bf;
   --line: #49333f;
 }
 * { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   padding: 30px 16px 50px;
   background:
-    radial-gradient(ellipse at 12% 0%, rgba(237,79,164,.10), transparent 35%),
-    radial-gradient(ellipse at 95% 28%, rgba(207,129,94,.08), transparent 30%),
+    radial-gradient(ellipse at 8% 0%, rgba(237,79,164,.13), transparent 32%),
+    radial-gradient(ellipse at 100% 30%, rgba(207,129,94,.09), transparent 29%),
+    radial-gradient(ellipse at 45% 100%, rgba(120,66,115,.07), transparent 35%),
     var(--bg);
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.7;
 }
-a { color: var(--pink); text-decoration: none; }
-a:hover { text-decoration: underline; }
-.page { max-width: 1000px; margin: 0 auto; }
+
+::selection {
+  background: var(--pink);
+  color: #111116;
+}
+
+.page {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
 .topline {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px 18px;
   flex-wrap: wrap;
   margin-bottom: 20px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+
+.topline span:last-child { color: var(--pink); }
+
 .hero {
   position: relative;
+  isolation: isolate;
   overflow: hidden;
-  padding: 42px 36px 34px;
-  background: linear-gradient(135deg, #29212b, #19181f 65%, #30201f);
+  padding: 43px 37px 33px;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 26px 5px 26px 5px;
+  background:
+    linear-gradient(120deg, transparent 0 68%, rgba(237,79,164,.045) 68% 69%, transparent 69%),
+    linear-gradient(135deg, #29212b 0%, #19181f 65%, #30201f 100%);
 }
-.hero::after {
+
+.hero::before {
   content: "〰";
   position: absolute;
-  right: 20px;
-  bottom: -74px;
-  color: rgba(237,79,164,.08);
+  z-index: -1;
+  top: -120px;
+  right: -20px;
+  color: rgba(237,79,164,.07);
   font-family: Georgia, serif;
-  font-size: 260px;
+  font-size: clamp(260px, 48vw, 430px);
   line-height: 1;
+  transform: rotate(-15deg);
   pointer-events: none;
 }
+
+.hero::after {
+  content: "♡  ♡  ♡";
+  position: absolute;
+  right: 23px;
+  bottom: 16px;
+  color: rgba(255,173,215,.23);
+  font-size: 13px;
+  letter-spacing: 5px;
+  pointer-events: none;
+}
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 21px;
+}
+
 .eyebrow {
-  margin: 0 0 8px;
+  margin: 0;
   color: var(--pink);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: bold;
-  letter-spacing: 3px;
+  letter-spacing: 2.7px;
   text-transform: uppercase;
 }
+
+.sticker {
+  display: inline-block;
+  padding: 5px 10px;
+  transform: rotate(2deg);
+  border: 1px solid var(--pink);
+  background: var(--pink);
+  color: #21101a;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
 h1 {
   position: relative;
   z-index: 1;
   margin: 0;
   color: var(--cream);
-  font-size: clamp(46px, 9vw, 88px);
+  font-size: clamp(65px, 12vw, 120px);
   font-weight: 900;
-  letter-spacing: -4px;
-  line-height: .95;
+  letter-spacing: -.085em;
+  line-height: .85;
 }
+
 .subtitle {
   position: relative;
   z-index: 1;
-  margin: 15px 0 0;
-  color: #e9a5c8;
-  font-size: 13px;
-  letter-spacing: 2px;
+  margin: 19px 0 0;
+  color: var(--pink-light);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
 }
+
 .intro {
   position: relative;
   z-index: 1;
-  max-width: 720px;
-  margin: 24px 0 0;
+  max-width: 740px;
+  margin: 25px 0 0;
   color: #e1d7dd;
-  font-size: 16px;
+  font-size: 15px;
+  line-height: 1.95;
 }
+
+.intro strong { color: var(--pink-light); }
+
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 7px;
   margin-top: 24px;
 }
+
 .tag {
-  padding: 5px 10px;
+  padding: 5px 9px;
   border: 1px solid #624151;
-  border-radius: 5px;
+  border-radius: 3px;
   background: rgba(237,79,164,.07);
   color: #f0bdd7;
-  font-size: 10px;
+  font-size: 9px;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+
+.ticker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 15px;
+  margin-top: 13px;
+  padding: 10px 13px;
+  border: 1px dashed #624151;
+  color: #b7aeb5;
+  font-size: 9px;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+.ticker strong { color: var(--pink-light); }
+
 .profile {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1px;
-  margin: 16px 0 34px;
+  margin: 16px 0 36px;
   overflow: hidden;
   border: 1px solid #39303b;
-  border-radius: 12px;
+  border-radius: 8px 16px 8px 16px;
   background: #39303b;
 }
+
 .fact {
   min-width: 0;
-  padding: 14px 16px;
+  padding: 15px 16px;
   background: var(--panel);
 }
+
 .fact-label {
   display: block;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
   color: var(--pink);
   font-size: 9px;
   font-weight: bold;
-  letter-spacing: 2px;
+  letter-spacing: 1.7px;
   text-transform: uppercase;
 }
-.fact-value { font-size: 13px; }
-section { margin-top: 34px; }
+
+.fact-value {
+  color: var(--text);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+section { margin-top: 39px; }
+
 .section-head {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 12px;
-  margin-bottom: 15px;
-  padding-bottom: 9px;
+  margin-bottom: 16px;
+  padding-bottom: 11px;
   border-bottom: 1px solid var(--line);
 }
+
 .section-number {
+  display: inline-flex;
+  flex: 0 0 31px;
+  width: 31px;
+  height: 31px;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-5deg);
+  border: 1px solid var(--pink);
+  border-radius: 50%;
   color: var(--pink);
-  font-size: 11px;
-  letter-spacing: 1px;
+  font-size: 10px;
+  font-weight: bold;
 }
+
 h2 {
   margin: 0;
   color: var(--cream);
-  font-size: 20px;
-  letter-spacing: .5px;
+  font-size: clamp(18px, 3vw, 23px);
+  letter-spacing: .3px;
+  line-height: 1.3;
 }
+
 h3 {
-  margin: 0 0 8px;
-  color: #e9a5c8;
-  font-size: 13px;
-  letter-spacing: .4px;
+  margin: 0 0 9px;
+  color: var(--pink-light);
+  font-size: 12px;
+  letter-spacing: .8px;
+  text-transform: uppercase;
 }
+
 p { margin: 0 0 12px; }
 p:last-child { margin-bottom: 0; }
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
+
 .card {
   min-width: 0;
-  padding: 19px;
+  padding: 20px;
   border: 1px solid #38303b;
-  border-radius: 10px;
+  border-radius: 5px 15px 5px 15px;
   background: var(--panel);
 }
-.card p, .card li { color: #d3cbd0; font-size: 13px; }
+
+.card p,
+.card li {
+  color: #d3cbd0;
+  font-size: 13px;
+  line-height: 1.85;
+}
+
 .card ul {
   margin: 0;
   padding-left: 18px;
 }
-.card li { margin: 5px 0; }
+
+.card li { margin: 6px 0; }
+.card li::marker { color: var(--pink); }
+
 .wide { grid-column: 1 / -1; }
+
 .highlight {
-  padding: 22px 24px;
-  border-left: 3px solid var(--pink);
-  border-radius: 0 10px 10px 0;
-  background: linear-gradient(90deg, rgba(237,79,164,.09), rgba(237,79,164,.015));
+  padding: 23px 25px;
+  border: 1px solid #49333f;
+  border-left: 4px solid var(--pink);
+  border-radius: 4px 15px 4px 15px;
+  background:
+    linear-gradient(110deg, rgba(237,79,164,.09), transparent 85%),
+    var(--panel);
 }
-.highlight p { color: #e3d8df; }
+
+.highlight p {
+  color: #e3d8df;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.highlight strong { color: var(--pink-light); }
+
+.note {
+  margin-top: 12px;
+  padding: 14px 16px;
+  border: 1px dashed #624151;
+  border-radius: 4px 12px 4px 12px;
+  color: #cfc1ca;
+  font-size: 12px;
+  line-height: 1.85;
+}
+
+.note strong { color: var(--pink-light); }
+
+.tail-intro {
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 .tail-box {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
 }
+
 .tail-state {
-  padding: 16px;
+  position: relative;
+  min-width: 0;
+  padding: 16px 17px;
   border: 1px solid #48313f;
-  border-radius: 9px;
+  border-radius: 4px 13px 4px 13px;
   background: #211a23;
 }
+
+.tail-state::before {
+  content: "↝";
+  position: absolute;
+  top: 12px;
+  right: 13px;
+  color: rgba(237,79,164,.65);
+  font-size: 17px;
+}
+
 .tail-state strong {
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   color: var(--pink);
-  font-size: 12px;
-}
-.tail-state span { color: #d3cbd0; font-size: 13px; }
-.member-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 14px;
-}
-.member {
-  padding: 7px 11px;
-  border: 1px solid #49333f;
-  border-radius: 6px;
-  color: var(--cream);
-  background: #211b23;
   font-size: 11px;
-  letter-spacing: .5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
+
+.tail-state span {
+  display: block;
+  padding-right: 5px;
+  color: #d3cbd0;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.tail-state.wide { grid-column: 1 / -1; }
+
+.quote-card {
+  position: relative;
+  overflow: hidden;
+  padding: 25px 27px;
+  border: 1px solid #624151;
+  border-radius: 6px 20px 6px 20px;
+  background: linear-gradient(130deg, #30212d, #1b1a21 75%);
+}
+
+.quote-card::after {
+  content: "♡";
+  position: absolute;
+  top: -47px;
+  right: 12px;
+  color: rgba(237,79,164,.08);
+  font-family: Georgia, serif;
+  font-size: 180px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.quote-card p {
+  position: relative;
+  z-index: 1;
+  max-width: 790px;
+  color: #e8dce4;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.quote-card p + p { margin-top: 12px; }
+
+.member-area {
+  padding: 23px;
+  border: 1px solid #38303b;
+  border-radius: 5px 18px 5px 18px;
+  background: var(--panel);
+}
+
+.member-area > p {
+  color: #d3cbd0;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.member-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 19px;
+}
+
+.member {
+  min-width: 0;
+  padding: 12px 8px;
+  border: 1px solid #49333f;
+  border-radius: 4px;
+  background: #211b23;
+  text-align: center;
+}
+
+.member strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--cream);
+  font-size: 10px;
+  letter-spacing: .8px;
+}
+
+.member span {
+  display: block;
+  color: #b7aeb5;
+  font-size: 9px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.dual-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.list-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 13px;
+}
+
+.list-symbol {
+  display: inline-flex;
+  flex: 0 0 25px;
+  width: 25px;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #624151;
+  border-radius: 50%;
+  color: var(--pink);
+  font-size: 11px;
+}
+
+.list-title h3 { margin: 0; }
+
 footer {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 44px;
-  padding-top: 16px;
+  margin-top: 48px;
+  padding-top: 17px;
   border-top: 1px solid var(--line);
   color: #897e89;
-  font-size: 10px;
+  font-size: 9px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
 }
-@media (max-width: 650px) {
-  body { padding: 18px 11px 35px; }
-  .hero { padding: 32px 22px 26px; }
-  h1 { letter-spacing: -2px; }
+
+footer span:last-child { color: var(--pink); }
+
+@media (max-width: 720px) {
   .profile { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .grid, .tail-box { grid-template-columns: 1fr; }
-  .wide { grid-column: auto; }
-  .card { padding: 16px; }
+  .member-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 520px) {
+  body { padding: 18px 11px 35px; }
+  .hero { padding: 31px 21px 28px; }
+  .hero::before { top: -35px; right: -48px; }
+  h1 { letter-spacing: -.07em; }
+  .intro { font-size: 14px; }
+  .ticker { align-items: flex-start; flex-direction: column; }
+  .grid,
+  .dual-list,
+  .tail-box { grid-template-columns: 1fr; }
+  .wide,
+  .tail-state.wide { grid-column: auto; }
+  .card { padding: 17px; }
+  .highlight,
+  .quote-card,
+  .member-area { padding: 19px; }
+  .member-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  section { margin-top: 32px; }
+}
+
+@media (max-width: 350px) {
+  .profile { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fact { padding: 12px; }
+  .fact-value { font-size: 11px; }
+  .member-strip { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
@@ -254,19 +544,25 @@ footer {
 
   <div class="topline">
     <span>CREATOR / SAINT JUDE'S LANDING</span>
-    <span>GOOD TEETH · MEMBER PROFILE</span>
+    <span>GOOD TEETH · BAND MEMBER</span>
   </div>
 
   <header class="hero">
-    <p class="eyebrow">Synth · Keyboard · Electronic Architecture</p>
+    <div class="hero-top">
+      <p class="eyebrow">Synth · Keyboard · Electronic Architecture</p>
+      <span class="sticker">Small Man / Big Feelings</span>
+    </div>
+
     <h1>RENGA</h1>
-    <p class="subtitle">Small Man. Large Tail. Excellent Brain.</p>
+    <p class="subtitle">Small man. Large tail. Excellent brain.</p>
+
     <p class="intro">
-      A lanky, sleepy-looking ringtail demi-human with a gentle nature, a sharp little brain,
-      and absolutely no idea how much his tail gives away. Renga is quiet without being shy,
-      clever without showing off, and far more observant than his permanently tired expression
-      suggests. He isn't trying to be cute. Unfortunately for him, he is.
+      A lanky, sleepy-looking ringtail demi-human with a gentle nature, a sharp little
+      brain, and absolutely no idea how much his tail gives away. Renga is quiet without
+      being shy, clever without showing off, and far more observant than his permanently
+      tired expression suggests. He isn't trying to be cute. Unfortunately for him, he is.
     </p>
+
     <div class="tags">
       <span class="tag">Japanese Ringtail Demi-Human</span>
       <span class="tag">Age 24</span>
@@ -275,6 +571,11 @@ footer {
       <span class="tag">GOOD TEETH</span>
     </div>
   </header>
+
+  <div class="ticker">
+    <span>Current activity: probably sitting somewhere comfortable</span>
+    <strong>Tail activity: not under control</strong>
+  </div>
 
   <div class="profile">
     <div class="fact">
@@ -316,6 +617,7 @@ footer {
       <span class="section-number">01</span>
       <h2>Appearance</h2>
     </div>
+
     <div class="grid">
       <article class="card">
         <h3>Face & Expression</h3>
@@ -329,6 +631,7 @@ footer {
           His ears are completely human. He has no animal ears.
         </p>
       </article>
+
       <article class="card">
         <h3>Hair</h3>
         <p>
@@ -338,6 +641,7 @@ footer {
           and deciding that was probably enough.
         </p>
       </article>
+
       <article class="card">
         <h3>Build & Movement</h3>
         <p>
@@ -352,6 +656,7 @@ footer {
           base of his spine.
         </p>
       </article>
+
       <article class="card">
         <h3>Everyday Clothes</h3>
         <p>
@@ -365,8 +670,9 @@ footer {
           interruption in an otherwise faded outfit.
         </p>
       </article>
+
       <article class="card wide">
-        <h3>The Tail</h3>
+        <h3>The Ringtail</h3>
         <p>
           Renga's most conspicuous nonhuman feature is his enormous fluffy ringtail, marked
           with distinct natural rings. It is large and expressive in proportion to his body,
@@ -386,33 +692,48 @@ footer {
   <section>
     <div class="section-head">
       <span class="section-number">02</span>
-      <h2>A Tail of Its Own</h2>
+      <h2>The Tail Has Its Own Agenda</h2>
     </div>
-    <div class="highlight">
-      <p>
-        Renga can keep his face almost perfectly still while his tail carries on having an
-        entire emotional experience. He does not always notice what it is doing until
-        someone points it out. Then he gets embarrassed and attempts to make it stop.
-        This is not a particularly reliable solution.
-      </p>
-    </div>
-    <div class="tail-box" style="margin-top: 12px;">
+
+    <p class="tail-intro">
+      Renga can keep his face almost perfectly still while his tail carries on having an
+      entire emotional experience. He does not always notice what it is doing until
+      someone points it out. Then he gets embarrassed and attempts to make it stop.
+      This is not a particularly reliable solution.
+    </p>
+
+    <div class="tail-box">
       <div class="tail-state">
         <strong>Comfortable</strong>
-        <span>His tail curls loosely around his legs or settles wherever he has made himself comfortable.</span>
+        <span>
+          His tail curls loosely around his legs or settles wherever he has made himself
+          comfortable.
+        </span>
       </div>
+
       <div class="tail-state">
         <strong>Nervous</strong>
-        <span>It becomes restless, shifting and moving even while he stays outwardly composed.</span>
+        <span>
+          It becomes restless, shifting and moving even while he stays outwardly composed.
+        </span>
       </div>
+
       <div class="tail-state">
         <strong>Embarrassed</strong>
-        <span>It may coil tightly around him, making his attempt to look unaffected rather unconvincing.</span>
+        <span>
+          It may coil tightly around him, making his attempt to look unaffected rather
+          unconvincing.
+        </span>
       </div>
+
       <div class="tail-state">
         <strong>Sleepy</strong>
-        <span>It drapes across whoever happens to be closest, as if this is a perfectly ordinary arrangement.</span>
+        <span>
+          It drapes across whoever happens to be closest, as if this is a perfectly ordinary
+          arrangement.
+        </span>
       </div>
+
       <div class="tail-state wide">
         <strong>Genuinely Upset</strong>
         <span>
@@ -422,14 +743,12 @@ footer {
         </span>
       </div>
     </div>
-    <div class="card" style="margin-top: 12px;">
-      <h3>Boundaries</h3>
-      <p>
-        Renga dislikes people grabbing his tail without permission. He is comfortable with
-        familiar physical affection, including having his tail absentmindedly touched by
-        someone he trusts, but familiarity is not blanket permission for strangers to handle
-        him or his belongings.
-      </p>
+
+    <div class="note">
+      <strong>Hands off unless invited.</strong> Renga dislikes people grabbing his tail
+      without permission. He is comfortable with familiar physical affection, including
+      having his tail absentmindedly touched by someone he trusts, but familiarity is not
+      blanket permission for strangers to handle him or his belongings.
     </div>
   </section>
 
@@ -438,6 +757,7 @@ footer {
       <span class="section-number">03</span>
       <h2>Personality</h2>
     </div>
+
     <div class="grid">
       <article class="card">
         <h3>Quiet, Not Shy</h3>
@@ -451,6 +771,7 @@ footer {
           delicacy, helplessness, or an inability to stand his ground.
         </p>
       </article>
+
       <article class="card">
         <h3>Deadpan Humor</h3>
         <p>
@@ -459,6 +780,7 @@ footer {
           a drink. The expression rarely warns anyone that a joke is coming.
         </p>
       </article>
+
       <article class="card">
         <h3>Gentle & Stubborn</h3>
         <p>
@@ -471,6 +793,7 @@ footer {
           Quiet does not mean compliant.
         </p>
       </article>
+
       <article class="card">
         <h3>More Transparent Than He Thinks</h3>
         <p>
@@ -488,6 +811,7 @@ footer {
       <span class="section-number">04</span>
       <h2>A Sharp Little Brain</h2>
     </div>
+
     <div class="grid">
       <article class="card">
         <h3>Pattern Recognition</h3>
@@ -501,6 +825,7 @@ footer {
           and he rarely feels the urge to prove that he knows something.
         </p>
       </article>
+
       <article class="card">
         <h3>Quiet Problem-Solving</h3>
         <p>
@@ -519,33 +844,52 @@ footer {
   <section>
     <div class="section-head">
       <span class="section-number">05</span>
-      <h2>GOOD TEETH</h2>
+      <h2>GOOD TEETH: Electronic Architecture</h2>
     </div>
-    <div class="card">
+
+    <div class="member-area">
       <p>
         Renga is GOOD TEETH's synth and keyboard player. His work contributes electronic
         architecture, unusual textures, strange melodies, loops, effects, atmospheric
         layers, bright hooks, distorted electronics, and rhythms that can make a song feel
         playful, futuristic, melancholy, abrasive, or wonderfully bizarre.
       </p>
+
       <p>
         Electronic elements are not decoration added on top of the band's sound. They are
         part of how GOOD TEETH builds its music, colliding with technical guitar, bass,
         drums, vocals, and sudden changes in intensity. Renga's contribution can be bright
         and catchy one moment, then strange and atmospheric the next.
       </p>
+
       <p>
         The band is not organized around a designated cute member, mascot, or baby. Renga is
         a twenty-four-year-old musician with his own opinions, habits, irritations, desires,
         friendships, and private jokes. His small frame and baby face are simply part of
         what he looks like.
       </p>
+
       <div class="member-strip">
-        <span class="member">IVES · VOCALS</span>
-        <span class="member">RENGA · SYNTH / KEYBOARD</span>
-        <span class="member">TŌGO · ELECTRIC GUITAR</span>
-        <span class="member">PURL · DRUMS</span>
-        <span class="member">RILEY · BASS</span>
+        <div class="member">
+          <strong>IVES</strong>
+          <span>Vocals</span>
+        </div>
+        <div class="member">
+          <strong>RENGA</strong>
+          <span>Synth / Keyboard</span>
+        </div>
+        <div class="member">
+          <strong>TŌGO</strong>
+          <span>Electric Guitar</span>
+        </div>
+        <div class="member">
+          <strong>PURL</strong>
+          <span>Drums</span>
+        </div>
+        <div class="member">
+          <strong>RILEY</strong>
+          <span>Bass</span>
+        </div>
       </div>
     </div>
   </section>
@@ -555,6 +899,7 @@ footer {
       <span class="section-number">06</span>
       <h2>Life on Tour</h2>
     </div>
+
     <div class="grid">
       <article class="card">
         <h3>Sleep Comes Easily</h3>
@@ -564,6 +909,7 @@ footer {
           Quiet mornings and long naps are among his favorite things.
         </p>
       </article>
+
       <article class="card">
         <h3>He Notices Things</h3>
         <p>
@@ -572,6 +918,7 @@ footer {
           Unfamiliar places tend to become familiar to him surprisingly quickly.
         </p>
       </article>
+
       <article class="card wide">
         <h3>The Missing Object Problem</h3>
         <p>
@@ -592,8 +939,10 @@ footer {
       <span class="section-number">07</span>
       <h2>Habits & Little Things</h2>
     </div>
+
     <div class="grid">
       <article class="card">
+        <h3>Comfort Settings</h3>
         <ul>
           <li>Sleeps curled up whenever he gets the chance.</li>
           <li>Wraps his tail around his legs when sitting.</li>
@@ -602,7 +951,9 @@ footer {
           <li>Likes quiet places where he can watch without joining in.</li>
         </ul>
       </article>
+
       <article class="card">
+        <h3>Minor Emotional Leaks</h3>
         <ul>
           <li>Gets noticeably animated when discussing something he genuinely likes.</li>
           <li>Eats slowly when relaxed and extremely quickly when starving.</li>
@@ -619,9 +970,13 @@ footer {
       <span class="section-number">08</span>
       <h2>Likes & Dislikes</h2>
     </div>
-    <div class="grid">
+
+    <div class="dual-list">
       <article class="card">
-        <h3>Likes</h3>
+        <div class="list-title">
+          <span class="list-symbol">♡</span>
+          <h3>Likes</h3>
+        </div>
         <ul>
           <li>Quiet mornings and long naps</li>
           <li>Warm food and warm surfaces</li>
@@ -633,8 +988,12 @@ footer {
           <li>His tail being absentmindedly touched by someone he trusts</li>
         </ul>
       </article>
+
       <article class="card">
-        <h3>Dislikes</h3>
+        <div class="list-title">
+          <span class="list-symbol">×</span>
+          <h3>Dislikes</h3>
+        </div>
         <ul>
           <li>Being rushed</li>
           <li>Being shouted at</li>
@@ -653,6 +1012,7 @@ footer {
       <span class="section-number">09</span>
       <h2>The Whole Renga</h2>
     </div>
+
     <div class="highlight">
       <p>
         Renga is a sleepy little bastard with a good heart. He is clever without being
@@ -672,7 +1032,7 @@ footer {
 
   <footer>
     <span>CREATOR · SAINT JUDE'S LANDING</span>
-    <span>GOOD TEETH ARCHIVE</span>
+    <span>GOOD TEETH · SYNTHS & SOFT SPOTS</span>
   </footer>
 
 </div>
