@@ -3,451 +3,804 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#211a29">
+
   <title>Other Local Places | Creator</title>
+
   <link rel="stylesheet" href="../style.css">
+
   <style>
     :root {
-      --place-bg: #111414;
-      --place-panel: #1b201f;
-      --place-border: #424b43;
-      --place-text: #eeeade;
-      --place-muted: #b9baad;
-      --place-gold: #e8c58a;
-      --place-green: #a9c99b;
-      --place-blue: #9ecbd5;
-      --place-pink: #d7a5b5;
-      --place-violet: #b9a7dc;
+      --places-night: #211a29;
+      --places-ink: #15111c;
+      --places-plum: #39283e;
+      --places-lilac: #d8b9ff;
+      --places-pink: #ff91bd;
+      --places-orange: #ffac77;
+      --places-lime: #d7f58a;
+      --places-blue: #94e5ed;
+      --places-paper: #f3e8d5;
+      --places-paper-ink: #29232b;
+      --places-muted: #d0c0d2;
+      --places-rule: #68536e;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
     }
 
     body {
+      margin: 0;
       background:
-        radial-gradient(ellipse at 10% 8%, rgba(169, 201, 155, 0.09), transparent 32rem),
-        radial-gradient(ellipse at 95% 40%, rgba(185, 167, 220, 0.07), transparent 30rem),
-        var(--place-bg);
-      color: var(--place-text);
+        radial-gradient(ellipse at 90% 0%, #57354f 0, transparent 31rem),
+        radial-gradient(ellipse at 0% 55%, #303c37 0, transparent 35rem),
+        var(--places-night);
+      color: var(--places-paper);
+      font-family: "Trebuchet MS", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    a {
+      color: inherit;
     }
 
     .places-page {
-      width: min(1160px, calc(100% - 2rem));
+      width: min(1120px, 100%);
       margin: 0 auto;
-      padding: 3rem 0 5rem;
+      padding: 24px clamp(14px, 3.5vw, 38px) 40px;
     }
 
-    .places-hero {
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 2.5rem;
-      padding: clamp(2rem, 6vw, 4.5rem);
-      border: 1px solid var(--place-border);
-      border-radius: 1.4rem;
-      background:
-        linear-gradient(130deg, rgba(169, 201, 155, 0.1), transparent 48%),
-        linear-gradient(315deg, rgba(185, 167, 220, 0.09), transparent 55%),
-        #191e1c;
+    /* Top navigation */
+
+    .places-topbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 30px;
     }
 
-    .places-hero::after {
-      content: "⌘";
-      position: absolute;
-      top: 50%;
-      right: clamp(1rem, 5vw, 4rem);
-      transform: translateY(-50%) rotate(-12deg);
-      color: rgba(232, 197, 138, 0.11);
-      font-size: clamp(7rem, 20vw, 15rem);
-      line-height: 1;
-      pointer-events: none;
-    }
-
-    .places-eyebrow {
-      position: relative;
-      z-index: 1;
-      margin: 0 0 0.8rem;
-      color: var(--place-green);
+    .places-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--places-lime);
       font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.2em;
+      font-weight: 900;
+      letter-spacing: 0.07em;
+      text-decoration: none;
       text-transform: uppercase;
     }
 
-    .places-hero h1 {
-      position: relative;
-      z-index: 1;
-      max-width: 760px;
-      margin: 0;
-      font-size: clamp(2.5rem, 7vw, 5rem);
-      line-height: 0.98;
-      letter-spacing: -0.045em;
+    .places-back:hover {
+      color: var(--places-pink);
     }
 
-    .places-hero > p:last-child {
+    .places-topbar-note {
+      color: var(--places-muted);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    /* Handbill-style masthead */
+
+    .places-masthead {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(22px, 5vw, 54px);
+      background: var(--places-paper);
+      color: var(--places-paper-ink);
+      box-shadow: 7px 7px 0 #100d15;
+    }
+
+    .places-masthead::before {
+      position: absolute;
+      top: -72px;
+      right: -42px;
+      width: 250px;
+      height: 250px;
+      border: 24px solid #ff91bd35;
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+
+    .places-masthead::after {
+      position: absolute;
+      right: 8%;
+      bottom: -100px;
+      width: 170px;
+      height: 170px;
+      border: 2px dashed #29232b45;
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+
+    .places-masthead-top {
       position: relative;
       z-index: 1;
-      max-width: 690px;
-      margin: 1.4rem 0 0;
-      color: var(--place-muted);
-      font-size: 1.05rem;
-      line-height: 1.85;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--places-paper-ink);
+      color: #655265;
+      font-size: 0.68rem;
+      font-weight: 950;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
+
+    .places-masthead h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 24px 0 0;
+      font-size: clamp(3.3rem, 10.5vw, 8rem);
+      font-weight: 1000;
+      line-height: 0.79;
+      letter-spacing: -0.09em;
+      text-transform: uppercase;
+    }
+
+    .places-masthead h1 span {
+      display: block;
+      margin-top: 15px;
+      color: #b64e79;
+    }
+
+    .places-masthead-bottom {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(120px, 0.5fr);
+      gap: 26px;
+      align-items: end;
+      margin-top: 35px;
+    }
+
+    .places-masthead-bottom p {
+      max-width: 650px;
+      margin: 0;
+      color: #554955;
+      font-size: 0.98rem;
+      line-height: 1.9;
+    }
+
+    .places-stamp {
+      justify-self: end;
+      padding: 13px 11px;
+      border: 2px solid #b64e79;
+      color: #b64e79;
+      font-size: 0.72rem;
+      font-weight: 1000;
+      letter-spacing: 0.08em;
+      line-height: 1.55;
+      text-align: center;
+      text-transform: uppercase;
+      transform: rotate(5deg);
+    }
+
+    /* Illustrated section dividers */
 
     .places-section {
-      margin-top: 2.6rem;
+      margin-top: 62px;
+      scroll-margin-top: 20px;
     }
 
     .places-section-heading {
-      display: flex;
+      display: grid;
+      grid-template-columns: 65px minmax(0, 1fr);
+      gap: 17px;
       align-items: center;
-      gap: 0.9rem;
-      margin: 0 0 1.4rem;
+      margin-bottom: 23px;
     }
 
-    .places-section-heading::before {
-      content: "✦";
-      color: var(--place-gold);
-      font-size: 1.5rem;
+    .places-section-symbol {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      border: 1px solid var(--places-rule);
+      border-radius: 50%;
+      color: var(--places-orange);
+      font-size: 1.65rem;
     }
 
     .places-section-heading h2 {
       margin: 0;
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      letter-spacing: -0.025em;
+      color: var(--places-paper);
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-weight: 950;
+      letter-spacing: -0.055em;
+      line-height: 1.05;
     }
 
     .places-section-heading p {
-      margin: 0.35rem 0 0;
-      color: var(--place-muted);
-      font-size: 0.9rem;
-      line-height: 1.6;
+      margin: 8px 0 0;
+      color: var(--places-muted);
+      font-size: 0.91rem;
+      line-height: 1.7;
     }
 
-    .places-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.15rem;
-    }
-
-    .place-card {
-      --accent: var(--place-gold);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-      padding: 1.6rem;
-      border: 1px solid var(--place-border);
-      border-radius: 1rem;
-      background:
-        linear-gradient(145deg, rgba(255, 255, 255, 0.025), transparent 65%),
-        var(--place-panel);
-      transition: border-color 180ms ease, transform 180ms ease;
-    }
-
-    .place-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
-    }
-
-    .place-card::before {
-      content: "";
-      position: absolute;
-      top: 1.2rem;
-      bottom: 1.2rem;
-      left: 0;
-      width: 3px;
-      border-radius: 0 3px 3px 0;
-      background: var(--accent);
-      opacity: 0.85;
-    }
-
-    .place-card:nth-child(5n + 1) { --accent: var(--place-gold); }
-    .place-card:nth-child(5n + 2) { --accent: var(--place-green); }
-    .place-card:nth-child(5n + 3) { --accent: var(--place-blue); }
-    .place-card:nth-child(5n + 4) { --accent: var(--place-pink); }
-    .place-card:nth-child(5n + 5) { --accent: var(--place-violet); }
-
-    .place-card-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .place-card h3 {
-      margin: 0;
-      color: var(--accent);
-      font-size: clamp(1.35rem, 3vw, 1.8rem);
-      line-height: 1.15;
-      overflow-wrap: anywhere;
-    }
-
-    .place-symbol {
-      flex: 0 0 auto;
-      color: var(--accent);
-      font-size: 1.45rem;
-      opacity: 0.9;
-    }
-
-    .place-type {
-      display: inline-block;
-      align-self: flex-start;
-      margin: 0 0 1rem;
-      padding: 0.35rem 0.65rem;
-      border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
-      border-radius: 99px;
-      color: var(--place-text);
-      font-size: 0.74rem;
-      letter-spacing: 0.04em;
-    }
-
-    .place-location {
-      margin: 0 0 1rem;
-      color: var(--place-muted);
-      font-size: 0.84rem;
-      line-height: 1.6;
-    }
-
-    .place-location strong {
-      color: var(--place-text);
-    }
-
-    .place-description {
-      margin: 0;
-      color: var(--place-muted);
-      font-size: 0.95rem;
-      line-height: 1.8;
-    }
-
-    .place-detail {
-      margin-top: 1.2rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .place-detail h4 {
-      margin: 0 0 0.45rem;
-      color: var(--accent);
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
+    .places-section-number {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--places-lime);
+      font-size: 0.66rem;
+      font-weight: 950;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
     }
 
-    .place-detail p {
+    /* City landmarks: editorial list, not a card grid */
+
+    .places-city-list {
+      border-top: 1px solid var(--places-rule);
+    }
+
+    .places-landmark {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 25px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--places-rule);
+    }
+
+    .places-landmark-title {
+      min-width: 0;
+    }
+
+    .places-landmark h3 {
       margin: 0;
-      color: var(--place-muted);
-      font-size: 0.9rem;
-      line-height: 1.8;
+      color: var(--places-pink);
+      font-size: clamp(1.65rem, 4vw, 2.65rem);
+      font-weight: 1000;
+      line-height: 0.99;
+      letter-spacing: -0.065em;
+      overflow-wrap: anywhere;
     }
 
-    .place-card.landmark {
-      min-height: 100%;
+    .places-landmark:nth-child(2) h3 {
+      color: var(--places-lime);
     }
 
-    .places-note {
-      margin-top: 2.5rem;
-      padding: 1.6rem;
-      border: 1px dashed var(--place-border);
-      border-radius: 1rem;
-      text-align: center;
+    .places-landmark:nth-child(3) h3 {
+      color: var(--places-blue);
     }
 
-    .places-note .ornament {
-      display: block;
-      margin-bottom: 0.7rem;
-      color: var(--place-gold);
-      font-size: 1.3rem;
-      letter-spacing: 0.4em;
+    .places-landmark-type {
+      display: inline-block;
+      margin-top: 13px;
+      padding: 6px 9px;
+      border: 1px solid var(--places-rule);
+      color: var(--places-muted);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    .places-note p {
-      max-width: 720px;
-      margin: 0 auto;
-      color: var(--place-muted);
-      font-size: 0.93rem;
+    .places-landmark-copy {
+      align-self: center;
+      min-width: 0;
+    }
+
+    .places-location {
+      margin: 0 0 11px;
+      color: var(--places-muted);
+      font-size: 0.78rem;
+      line-height: 1.6;
+    }
+
+    .places-location strong {
+      color: var(--places-orange);
+    }
+
+    .places-description {
+      margin: 0;
+      color: var(--places-paper);
+      font-size: 0.96rem;
       line-height: 1.85;
     }
 
-    @media (max-width: 700px) {
+    .places-reputation {
+      margin-top: 17px;
+      padding: 13px 15px;
+      border-left: 3px solid var(--places-pink);
+      background: #ffffff08;
+    }
+
+    .places-landmark:nth-child(2) .places-reputation {
+      border-left-color: var(--places-lime);
+    }
+
+    .places-landmark:nth-child(3) .places-reputation {
+      border-left-color: var(--places-blue);
+    }
+
+    .places-reputation h4 {
+      margin: 0 0 6px;
+      color: var(--places-orange);
+      font-size: 0.66rem;
+      font-weight: 950;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .places-reputation p {
+      margin: 0;
+      color: var(--places-muted);
+      font-size: 0.88rem;
+      line-height: 1.8;
+    }
+
+    /* Across Creator: travel-brochure field notes */
+
+    .places-world {
+      position: relative;
+      padding: clamp(20px, 4vw, 38px);
+      background: #d8b9ff;
+      color: #28202e;
+    }
+
+    .places-world::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 7px;
+      background: repeating-linear-gradient(
+        135deg,
+        #28202e 0 8px,
+        #d8b9ff 8px 16px
+      );
+      content: "";
+    }
+
+    .places-world .places-section-heading {
+      grid-template-columns: 58px minmax(0, 1fr);
+      margin-bottom: 12px;
+    }
+
+    .places-world .places-section-symbol {
+      border-color: #826a99;
+      color: #493558;
+    }
+
+    .places-world .places-section-number {
+      color: #69467d;
+    }
+
+    .places-world .places-section-heading h2 {
+      color: #28202e;
+    }
+
+    .places-world .places-section-heading p {
+      color: #5c4b66;
+    }
+
+    .places-world-intro {
+      max-width: 710px;
+      margin: 0 0 27px 75px;
+      color: #5c4b66;
+      font-size: 0.94rem;
+      line-height: 1.85;
+    }
+
+    .places-community-list {
+      border-top: 2px solid #826a99;
+    }
+
+    .places-community {
+      display: grid;
+      grid-template-columns: minmax(0, 0.65fr) minmax(0, 1.35fr);
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid #a28bb3;
+    }
+
+    .places-community h3 {
+      margin: 0;
+      color: #493558;
+      font-size: clamp(1.7rem, 4vw, 2.8rem);
+      font-weight: 1000;
+      line-height: 0.95;
+      letter-spacing: -0.065em;
+    }
+
+    .places-community-type {
+      display: inline-block;
+      margin-top: 12px;
+      color: #69467d;
+      font-size: 0.68rem;
+      font-weight: 950;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .places-community-copy {
+      min-width: 0;
+    }
+
+    .places-community-copy p {
+      margin: 0;
+      color: #514456;
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    .places-community-copy p + p {
+      margin-top: 12px;
+    }
+
+    .places-community-copy strong {
+      color: #28202e;
+    }
+
+    /* Closing note */
+
+    .places-closing {
+      display: grid;
+      grid-template-columns: 85px minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+      margin-top: 58px;
+      padding: 25px 0;
+      border-top: 1px solid var(--places-rule);
+      border-bottom: 1px solid var(--places-rule);
+    }
+
+    .places-closing-symbol {
+      color: var(--places-orange);
+      font-size: 3.6rem;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .places-closing h2 {
+      margin: 0 0 13px;
+      color: var(--places-lime);
+      font-size: clamp(1.5rem, 4vw, 2.3rem);
+      font-weight: 950;
+      letter-spacing: -0.045em;
+    }
+
+    .places-closing p {
+      max-width: 760px;
+      margin: 0;
+      color: var(--places-muted);
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    .places-footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 25px;
+      color: var(--places-muted);
+      font-size: 0.69rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      line-height: 1.7;
+      text-transform: uppercase;
+    }
+
+    .places-footer span:last-child {
+      color: var(--places-pink);
+    }
+
+    @media (max-width: 650px) {
       .places-page {
-        width: min(100% - 1rem, 600px);
-        padding-top: 1rem;
+        padding-top: 16px;
       }
 
-      .places-grid {
+      .places-masthead-bottom {
         grid-template-columns: 1fr;
+        gap: 20px;
       }
 
-      .places-hero {
-        border-radius: 1rem;
+      .places-stamp {
+        justify-self: start;
       }
 
-      .place-card {
-        padding: 1.35rem;
+      .places-section {
+        margin-top: 45px;
+      }
+
+      .places-landmark {
+        grid-template-columns: 1fr;
+        gap: 17px;
+      }
+
+      .places-landmark-copy {
+        padding-left: 12px;
+      }
+
+      .places-world-intro {
+        margin-left: 0;
+      }
+
+      .places-community {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .places-community-copy {
+        padding-left: 10px;
+      }
+
+      .places-closing {
+        grid-template-columns: 55px minmax(0, 1fr);
+        gap: 13px;
+      }
+
+      .places-closing-symbol {
+        font-size: 2.6rem;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .places-masthead h1 {
+        font-size: 3.2rem;
+      }
+
+      .places-section-heading {
+        grid-template-columns: 45px minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .places-section-symbol {
+        width: 42px;
+        height: 42px;
+        font-size: 1.3rem;
+      }
+
+      .places-world {
+        padding: 19px;
+      }
+
+      .places-world .places-section-heading {
+        grid-template-columns: 42px minmax(0, 1fr);
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .place-card {
-        transition: none;
+      html {
+        scroll-behavior: auto;
       }
 
-      .place-card:hover {
-        transform: none;
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
 </head>
+
 <body>
   <main class="places-page">
 
-    <header class="places-hero">
-      <p class="places-eyebrow">Creator · Places &amp; Communities</p>
-      <h1>Other<br>Local Places</h1>
-      <p>
-        Not every place worth knowing is a shop, a district, or a major city.
-        Some places become important because people keep returning to them;
-        others are simply too strange, beautiful, or deeply woven into local
-        life to be ignored. From beloved urban landmarks to established
-        communities across Creator, these places each have a life of their own.
-      </p>
+    <div class="places-topbar">
+      <a class="places-back" href="saint-judes-landing.html">
+        <span aria-hidden="true">←</span>
+        Saint Jude’s Landing
+      </a>
+
+      <span class="places-topbar-note">Creator / Places &amp; Communities</span>
+    </div>
+
+    <header class="places-masthead">
+      <div class="places-masthead-top">
+        <span>The local weirdness department</span>
+        <span>Issue № 01 · Places</span>
+      </div>
+
+      <h1>Other local<span>places.</span></h1>
+
+      <div class="places-masthead-bottom">
+        <p>
+          Not every place worth knowing is a shop, a district, or a major
+          city. Some places become important because people keep returning
+          to them; others are simply too strange, beautiful, or deeply woven
+          into local life to be ignored. From beloved urban landmarks to
+          established communities across Creator, these places each have
+          a life of their own.
+        </p>
+
+        <div class="places-stamp" aria-label="Locally significant">
+          Weird<br>
+          Wonderful<br>
+          Local
+        </div>
+      </div>
     </header>
 
     <section class="places-section" aria-labelledby="sjl-places-heading">
       <div class="places-section-heading">
+        <span class="places-section-symbol" aria-hidden="true">⌖</span>
+
         <div>
+          <span class="places-section-number">01 / In the city</span>
           <h2 id="sjl-places-heading">Saint Jude’s Landing</h2>
           <p>Landmarks and attractions woven into the life of the city.</p>
         </div>
       </div>
 
-      <div class="places-grid">
+      <div class="places-city-list">
 
-        <article class="place-card landmark">
-          <div class="place-card-top">
+        <article class="places-landmark">
+          <div class="places-landmark-title">
             <h3>THAT FUCKING THING</h3>
-            <span class="place-symbol" aria-hidden="true">⁂</span>
+            <span class="places-landmark-type">Local landmark</span>
           </div>
-          <span class="place-type">Local Landmark</span>
-          <p class="place-location"><strong>Location:</strong> Saint Jude’s Landing</p>
-          <p class="place-description">
-            A strange, enormous structure of uncertain original purpose that
-            has become a beloved neighborhood landmark.
-          </p>
-          <div class="place-detail">
-            <h4>Reputation</h4>
-            <p>
-              Nobody agrees what it was originally built for. Nobody calls it
-              by its official name anymore.
+
+          <div class="places-landmark-copy">
+            <p class="places-location">
+              <strong>LOCATION /</strong> Saint Jude’s Landing
             </p>
+
+            <p class="places-description">
+              A strange, enormous structure of uncertain original purpose
+              that has become a beloved neighborhood landmark.
+            </p>
+
+            <div class="places-reputation">
+              <h4>Local reputation</h4>
+              <p>
+                Nobody agrees what it was originally built for. Nobody
+                calls it by its official name anymore.
+              </p>
+            </div>
           </div>
         </article>
 
-        <article class="place-card landmark">
-          <div class="place-card-top">
+        <article class="places-landmark">
+          <div class="places-landmark-title">
             <h3>THE GRANDMOTHER</h3>
-            <span class="place-symbol" aria-hidden="true">♧</span>
+            <span class="places-landmark-type">Ancient tree</span>
           </div>
-          <span class="place-type">Ancient Tree</span>
-          <p class="place-location"><strong>Location:</strong> Saint Jude’s Landing</p>
-          <p class="place-description">
-            An enormous ancient tree surrounded by buildings and generations
-            of urban development.
-          </p>
-          <div class="place-detail">
-            <h4>Local Legacy</h4>
-            <p>
-              Locals have attached countless stories, traditions, photographs,
-              dates, arguments, and personal memories to it.
+
+          <div class="places-landmark-copy">
+            <p class="places-location">
+              <strong>LOCATION /</strong> Saint Jude’s Landing
             </p>
+
+            <p class="places-description">
+              An enormous ancient tree surrounded by buildings and
+              generations of urban development.
+            </p>
+
+            <div class="places-reputation">
+              <h4>Local legacy</h4>
+              <p>
+                Locals have attached countless stories, traditions,
+                photographs, dates, arguments, and personal memories to it.
+              </p>
+            </div>
           </div>
         </article>
 
-        <article class="place-card landmark">
-          <div class="place-card-top">
+        <article class="places-landmark">
+          <div class="places-landmark-title">
             <h3>BLUE STATIC</h3>
-            <span class="place-symbol" aria-hidden="true">≈</span>
+            <span class="places-landmark-type">Public aquarium</span>
           </div>
-          <span class="place-type">Public Aquarium</span>
-          <p class="place-location"><strong>Location:</strong> Saint Jude’s Landing</p>
-          <p class="place-description">
-            A large public aquarium displaying aquatic species and ecosystems
-            from across Creator.
-          </p>
-          <div class="place-detail">
-            <h4>Attraction</h4>
-            <p>
-              Popular with families, tourists, school groups, aquatic communities,
-              and people who simply like looking at enormous strange animals.
+
+          <div class="places-landmark-copy">
+            <p class="places-location">
+              <strong>LOCATION /</strong> Saint Jude’s Landing
             </p>
+
+            <p class="places-description">
+              A large public aquarium displaying aquatic species and
+              ecosystems from across Creator.
+            </p>
+
+            <div class="places-reputation">
+              <h4>Why people visit</h4>
+              <p>
+                Popular with families, tourists, school groups, aquatic
+                communities, and people who simply like looking at enormous
+                strange animals.
+              </p>
+            </div>
           </div>
         </article>
 
       </div>
     </section>
 
-    <section class="places-section" aria-labelledby="creator-places-heading">
+    <section class="places-section places-world" aria-labelledby="creator-places-heading">
       <div class="places-section-heading">
+        <span class="places-section-symbol" aria-hidden="true">✳</span>
+
         <div>
+          <span class="places-section-number">02 / Outside the city</span>
           <h2 id="creator-places-heading">Across Creator</h2>
           <p>Established communities shaped by their surrounding environments.</p>
         </div>
       </div>
 
-      <div class="places-grid">
+      <p class="places-world-intro">
+        Communities grow around the places where people can make a life.
+        Terrain, weather, wildlife, and local resources all influence how
+        a settlement develops, without defining every person who lives there.
+      </p>
 
-        <article class="place-card">
-          <div class="place-card-top">
+      <div class="places-community-list">
+
+        <article class="places-community">
+          <div>
             <h3>CALDERA</h3>
-            <span class="place-symbol" aria-hidden="true">♨</span>
+            <span class="places-community-type">Hot-spring community</span>
           </div>
-          <span class="place-type">Hot-Spring Community</span>
-          <p class="place-location"><strong>Location:</strong> Creator</p>
-          <p class="place-description">
-            An established settlement built around naturally occurring hot
-            springs surrounded by dense alien vegetation.
-          </p>
-          <div class="place-detail">
-            <h4>Local Culture</h4>
+
+          <div class="places-community-copy">
             <p>
-              Bathing, hospitality, food, tourism, and local businesses developed
-              around the springs without making the entire community a resort town.
+              An established settlement built around naturally occurring
+              hot springs surrounded by dense alien vegetation.
+            </p>
+
+            <p>
+              <strong>Local culture:</strong> Bathing, hospitality, food,
+              tourism, and local businesses developed around the springs
+              without making the entire community a resort town.
             </p>
           </div>
         </article>
 
-        <article class="place-card">
-          <div class="place-card-top">
+        <article class="places-community">
+          <div>
             <h3>KARSAI</h3>
-            <span class="place-symbol" aria-hidden="true">⌁</span>
+            <span class="places-community-type">Mountain community</span>
           </div>
-          <span class="place-type">Mountain Community</span>
-          <p class="place-location"><strong>Location:</strong> Creator</p>
-          <p class="place-description">
-            An established settlement built into a massive mountain system.
-          </p>
-          <div class="place-detail">
-            <h4>Built for the Terrain</h4>
+
+          <div class="places-community-copy">
             <p>
-              Homes, businesses, roads, stairs, bridges, and transportation
-              infrastructure are adapted to the steep terrain.
+              An established settlement built into a massive mountain system.
+            </p>
+
+            <p>
+              <strong>Built for the terrain:</strong> Homes, businesses,
+              roads, stairs, bridges, and transportation infrastructure
+              are adapted to the steep terrain.
             </p>
           </div>
         </article>
 
-        <article class="place-card">
-          <div class="place-card-top">
+        <article class="places-community">
+          <div>
             <h3>LOWMARSH</h3>
-            <span class="place-symbol" aria-hidden="true">❋</span>
+            <span class="places-community-type">Wetland community</span>
           </div>
-          <span class="place-type">Wetland Community</span>
-          <p class="place-location"><strong>Location:</strong> Creator</p>
-          <p class="place-description">
-            An old settlement surrounded by wetlands, dense vegetation, shallow
-            waterways, raised roads, bridges, and unusual wildlife.
-          </p>
-          <div class="place-detail">
-            <h4>Reputation</h4>
+
+          <div class="places-community-copy">
             <p>
-              Locals are accustomed to conditions that would make outsiders
-              deeply uncomfortable.
+              An old settlement surrounded by wetlands, dense vegetation,
+              shallow waterways, raised roads, bridges, and unusual wildlife.
+            </p>
+
+            <p>
+              <strong>Local reputation:</strong> Locals are accustomed
+              to conditions that would make outsiders deeply uncomfortable.
             </p>
           </div>
         </article>
@@ -455,14 +808,24 @@
       </div>
     </section>
 
-    <footer class="places-note">
-      <span class="ornament" aria-hidden="true">✳ ✦ ✳</span>
-      <p>
-        A place does not need to be famous, comfortable, or easily explained
-        to matter. Across Creator, communities build their lives around the
-        landscapes they inhabit, while cities develop their own landmarks,
-        traditions, and local mysteries.
-      </p>
+    <section class="places-closing">
+      <div class="places-closing-symbol" aria-hidden="true">⁂</div>
+
+      <div>
+        <h2>Every place has its people.</h2>
+
+        <p>
+          A place does not need to be famous, comfortable, or easily explained
+          to matter. Across Creator, communities build their lives around
+          the landscapes they inhabit, while cities develop their own
+          landmarks, traditions, and local mysteries.
+        </p>
+      </div>
+    </section>
+
+    <footer class="places-footer">
+      <span>✳ Creator · Places &amp; Communities</span>
+      <span>Go somewhere. Get attached. Develop local lore.</span>
     </footer>
 
   </main>
