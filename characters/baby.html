@@ -6,71 +6,120 @@
 <title>Baby (Bethany) — Creator</title>
 <style>
 :root {
-  --bg: #1a171d;
-  --panel: #252129;
-  --panel-soft: #302a35;
-  --text: #f2edf2;
-  --muted: #beb3c1;
-  --pink: #dba9c8;
-  --pink-light: #f5d9e9;
-  --lavender: #c5b8dc;
-  --cream: #e8dfd5;
-  --line: rgba(219,169,200,.2);
+  --bg: #17141b;
+  --ink: #100e13;
+  --panel: #24202a;
+  --panel-soft: #302835;
+  --text: #f3eaf0;
+  --muted: #bcaebf;
+  --pink: #f0a5cd;
+  --pink-light: #ffe0ef;
+  --lavender: #c7b3ff;
+  --cream: #f0e5d8;
+  --line: #493747;
+  --green: #d6e99c;
 }
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
 body {
   margin: 0;
-  padding: 30px 16px 50px;
+  padding: 24px 16px 45px;
   background:
-    radial-gradient(ellipse at 0% 0%, rgba(219,169,200,.13), transparent 35%),
-    radial-gradient(ellipse at 100% 70%, rgba(197,184,220,.09), transparent 30%),
+    radial-gradient(ellipse at 0% 0%, rgba(240,165,205,.12), transparent 32rem),
+    radial-gradient(ellipse at 100% 45%, rgba(199,179,255,.08), transparent 30rem),
     var(--bg);
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.7;
 }
-.page { max-width: 980px; margin: auto; }
+.page {
+  max-width: 1000px;
+  margin: auto;
+}
+.topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.topline span:last-child {
+  color: var(--pink);
+}
 header {
   position: relative;
+  isolation: isolate;
   overflow: hidden;
-  padding: 38px 30px 32px;
+  padding: clamp(28px, 6vw, 58px);
   border: 1px solid var(--line);
-  border-radius: 20px;
-  background: linear-gradient(130deg, #443243, #29242f 58%, #34303c);
+  border-radius: 6px 28px 6px 28px;
+  background:
+    linear-gradient(135deg, transparent 0 72%, rgba(240,165,205,.07) 72% 73%, transparent 73%),
+    radial-gradient(ellipse at 88% 8%, rgba(199,179,255,.16), transparent 35%),
+    linear-gradient(140deg, #3c2b3d, #27212e 65%, #312333);
+}
+header::before {
+  content: "♡";
+  position: absolute;
+  z-index: -1;
+  top: -58px;
+  right: 8px;
+  color: rgba(255,224,239,.07);
+  font-size: clamp(180px, 37vw, 350px);
+  line-height: 1;
+  pointer-events: none;
 }
 header::after {
-  content: "♡  ✧  ♡";
+  content: "BETHANY ♡";
   position: absolute;
-  right: 22px;
-  top: 16px;
-  color: rgba(245,217,233,.4);
-  font-size: 22px;
-  letter-spacing: 8px;
+  right: 25px;
+  bottom: 17px;
+  color: rgba(255,224,239,.24);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  transform: rotate(-5deg);
 }
 .eyebrow {
-  margin: 0 0 8px;
-  color: var(--pink-light);
-  font-size: 11px;
-  font-weight: bold;
+  margin: 0 0 12px;
+  color: var(--pink);
+  font-size: 10px;
+  font-weight: 900;
   letter-spacing: 3px;
   text-transform: uppercase;
 }
 h1 {
   margin: 0;
-  font-size: clamp(42px, 9vw, 76px);
-  line-height: .98;
-  letter-spacing: -3px;
+  color: var(--pink-light);
+  font-size: clamp(64px, 14vw, 126px);
+  font-weight: 1000;
+  letter-spacing: -.095em;
+  line-height: .78;
+  text-shadow: 5px 5px 0 rgba(199,179,255,.12);
 }
 .subtitle {
-  margin: 14px 0 0;
-  color: #e2d7e4;
-  font-size: 14px;
+  margin: 20px 0 0;
+  color: #e3d4e6;
+  font-size: 13px;
+  font-weight: bold;
   letter-spacing: 1px;
 }
 .intro {
-  max-width: 740px;
+  position: relative;
+  max-width: 700px;
   margin: 24px 0 0;
-  font-size: 16px;
+  color: #e5d9e5;
+  font-size: 15px;
 }
 .tags {
   display: flex;
@@ -79,113 +128,359 @@ h1 {
   margin-top: 22px;
 }
 .tag {
-  padding: 5px 11px;
-  border: 1px solid rgba(245,217,233,.28);
-  border-radius: 30px;
+  padding: 5px 10px;
+  border: 1px solid rgba(255,224,239,.3);
+  border-radius: 3px 10px 3px 10px;
+  background: rgba(16,14,19,.22);
   color: var(--pink-light);
-  font-size: 11px;
+  font-size: 10px;
+  font-weight: 800;
   letter-spacing: .5px;
 }
-section {
-  margin-top: 20px;
-  padding: 25px;
-  border: 1px solid rgba(255,255,255,.075);
-  border-radius: 16px;
-  background: rgba(37,33,41,.96);
+.tag:nth-child(2n) {
+  border-color: rgba(199,179,255,.35);
+  color: var(--lavender);
 }
-h2 {
+.tag:last-child {
+  border-color: rgba(214,233,156,.35);
+  color: var(--green);
+}
+.header-bottom {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  margin: 0 0 18px;
-  color: var(--pink-light);
-  font-size: 18px;
-  letter-spacing: 1.3px;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 27px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(255,224,239,.23);
+}
+.header-bottom .hearts {
+  color: var(--pink);
+  font-size: 16px;
+  letter-spacing: 7px;
+}
+.header-bottom .note {
+  color: #c7b4ca;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-align: right;
   text-transform: uppercase;
 }
-h2 span { color: var(--lavender); font-size: 17px; }
+.profile-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0,1fr));
+  gap: 8px;
+  margin: 10px 0 30px;
+}
+.profile-bit {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #3d3042;
+  border-radius: 3px 12px 3px 12px;
+  background: var(--panel);
+}
+.profile-bit span {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--pink);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+.profile-bit strong {
+  display: block;
+  color: var(--cream);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+section {
+  position: relative;
+  margin-top: 16px;
+  padding: clamp(20px, 4vw, 29px);
+  border: 1px solid rgba(255,255,255,.075);
+  border-radius: 5px 19px 5px 19px;
+  background: rgba(36,32,42,.97);
+}
+.section-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 19px;
+}
+.section-icon {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 4px 13px 4px 13px;
+  background: #302435;
+  color: var(--pink);
+  font-size: 17px;
+  transform: rotate(-3deg);
+}
+.section-kicker {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--green);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+h2 {
+  margin: 0;
+  color: var(--pink-light);
+  font-size: clamp(17px, 3.5vw, 21px);
+  font-weight: 900;
+  letter-spacing: .7px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+.section-heading p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
 h3 {
   margin: 0 0 8px;
   color: var(--pink);
-  font-size: 14px;
-  letter-spacing: .5px;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .4px;
 }
-p { margin: 0 0 12px; }
-p:last-child { margin-bottom: 0; }
+p {
+  margin: 0 0 12px;
+}
+p:last-child {
+  margin-bottom: 0;
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 12px;
+  gap: 10px;
 }
 .card {
-  padding: 16px;
-  border-radius: 11px;
+  min-width: 0;
+  padding: 17px;
+  border: 1px solid rgba(255,255,255,.035);
+  border-radius: 4px 13px 4px 13px;
   background: var(--panel-soft);
 }
-.card p { color: #e3dce6; font-size: 14px; }
+.card p {
+  color: #e0d5e2;
+  font-size: 13px;
+}
+.card p + p {
+  margin-top: 10px;
+}
+.card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #e0d5e2;
+  font-size: 13px;
+}
+.card li {
+  margin: 4px 0;
+}
 dl {
   display: grid;
   grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 0 24px;
+  gap: 0 25px;
   margin: 0;
 }
 dl div {
-  padding: 10px 0;
+  padding: 11px 0;
   border-bottom: 1px solid var(--line);
 }
 dt {
   margin-bottom: 3px;
   color: var(--pink);
-  font-size: 10px;
-  font-weight: bold;
+  font-size: 9px;
+  font-weight: 900;
   letter-spacing: 1.5px;
   text-transform: uppercase;
 }
-dd { margin: 0; font-size: 14px; }
-ul {
+dd {
   margin: 0;
-  padding-left: 20px;
-  color: #e3dce6;
-  font-size: 14px;
+  color: var(--cream);
+  font-size: 13px;
 }
-li { margin: 5px 0; }
+strong {
+  color: var(--pink-light);
+}
+.callout {
+  margin-top: 12px;
+  padding: 17px 19px;
+  border-left: 3px solid var(--pink);
+  border-radius: 0 12px 12px 0;
+  background: rgba(240,165,205,.07);
+  color: #e5d4e2;
+  font-size: 13px;
+}
+.callout strong {
+  color: var(--pink);
+}
 .columns {
   display: grid;
   grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 20px;
+  gap: 22px;
 }
-.callout {
-  padding: 17px 19px;
-  border-left: 3px solid var(--pink);
-  border-radius: 0 10px 10px 0;
-  background: rgba(219,169,200,.07);
+.columns ul {
+  margin: 0;
+  padding-left: 19px;
+  color: #e0d5e2;
+  font-size: 13px;
 }
-.callout p { font-size: 14px; }
-strong { color: #f5dfea; }
-footer {
-  padding: 25px 10px 0;
-  color: var(--muted);
-  font-size: 11px;
+.columns li {
+  margin: 5px 0;
+}
+.twin-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding: 14px 17px;
+  border: 1px dashed rgba(240,165,205,.35);
+  border-radius: 4px 13px 4px 13px;
+  background: rgba(240,165,205,.05);
+}
+.twin-banner strong {
+  color: var(--pink-light);
+  font-size: 19px;
+  letter-spacing: -.5px;
+}
+.twin-banner span {
+  color: var(--lavender);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.quote {
+  margin-top: 12px;
+  padding: 23px 18px;
+  border: 1px solid #514052;
+  border-radius: 4px 19px 4px 19px;
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(199,179,255,.12), transparent 60%),
+    #211a27;
   text-align: center;
-  letter-spacing: 1px;
+}
+.quote-label {
+  margin: 0 0 8px;
+  color: var(--green);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.quote blockquote {
+  margin: 0;
+  color: var(--pink-light);
+  font-size: clamp(27px, 6vw, 42px);
+  font-weight: 1000;
+  letter-spacing: -1.5px;
+  line-height: 1.2;
+}
+.quote-caption {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+.intimacy-note {
+  padding: 19px;
+  border: 1px solid #493747;
+  border-radius: 4px 14px 4px 14px;
+  background:
+    linear-gradient(120deg, rgba(240,165,205,.06), transparent 60%),
+    var(--panel-soft);
+}
+.intimacy-note p {
+  color: #e0d5e2;
+  font-size: 13px;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 35px;
+  padding: 17px 10px 0;
+  border-top: 1px dashed #493747;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+footer span {
+  color: var(--pink);
+}
+@media (max-width: 760px) {
+  .profile-strip {
+    grid-template-columns: repeat(3,minmax(0,1fr));
+  }
 }
 @media (max-width: 620px) {
-  body { padding: 15px 10px 35px; }
-  header, section { padding: 22px 18px; }
-  .grid, .columns, dl { grid-template-columns: 1fr; }
-  h1 { letter-spacing: -2px; }
+  body {
+    padding: 14px 10px 30px;
+  }
+  header {
+    padding: 28px 21px;
+    border-radius: 4px 20px 4px 20px;
+  }
+  header::after {
+    right: 15px;
+    bottom: 12px;
+    font-size: 8px;
+  }
+  .grid,
+  .columns,
+  dl {
+    grid-template-columns: 1fr;
+  }
+  .profile-strip {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  section {
+    padding: 20px 17px;
+  }
+  h1 {
+    letter-spacing: -.08em;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 </style>
 </head>
 <body>
 <main class="page">
 
+<div class="topline">
+  <span>Creator ✦ Saint Jude’s Landing</span>
+  <span>♡ the quieter twin ♡</span>
+</div>
+
 <header>
-  <p class="eyebrow">Creator · Saint Jude’s Landing</p>
+  <p class="eyebrow">Rabbit demi-human · Neighborhood bookshop</p>
   <h1>BABY</h1>
-  <p class="subtitle">Bethany · Rabbit demi-human · 24</p>
+  <p class="subtitle">BETHANY · 24 · SHE'S LISTENING</p>
   <p class="intro">
-    A soft-spoken bookshop worker with black-and-white rabbit ears, a baby-goth wardrobe, and an observant little stare that can tell her twin sister she is being an idiot without a single word. Quiet does not mean innocent, and Baby is very rarely as harmless as she first appears.
+    A soft-spoken bookshop worker with black-and-white rabbit ears, a baby-goth
+    wardrobe, and an observant little stare that can tell her twin sister she's
+    being an idiot without a single word. Quiet does not mean innocent, and
+    Baby is very rarely as harmless as she first appears.
   </p>
   <div class="tags">
     <span class="tag">SJL RESIDENT</span>
@@ -193,10 +488,44 @@ footer {
     <span class="tag">FREELANCE RESTORATION</span>
     <span class="tag">TWIN: BRAT</span>
   </div>
+  <div class="header-bottom">
+    <span class="hearts" aria-hidden="true">♡ ✦ ♡ ✧ ♡</span>
+    <span class="note">Soft voice.<br>Strong opinions.</span>
+  </div>
 </header>
 
+<div class="profile-strip" aria-label="Quick profile">
+  <div class="profile-bit">
+    <span>Full name</span>
+    <strong>Bethany</strong>
+  </div>
+  <div class="profile-bit">
+    <span>Nickname</span>
+    <strong>Baby</strong>
+  </div>
+  <div class="profile-bit">
+    <span>Species</span>
+    <strong>Rabbit demi-human</strong>
+  </div>
+  <div class="profile-bit">
+    <span>Age</span>
+    <strong>24</strong>
+  </div>
+  <div class="profile-bit">
+    <span>Eyes</span>
+    <strong>Hazel</strong>
+  </div>
+</div>
+
 <section>
-  <h2><span>✦</span> Profile</h2>
+  <div class="section-heading">
+    <span class="section-icon" aria-hidden="true">♡</span>
+    <div>
+      <span class="section-kicker">01 / The basics</span>
+      <h2>Profile</h2>
+      <p>The important details, minus the small talk.</p>
+    </div>
+  </div>
   <dl>
     <div><dt>Name</dt><dd>Bethany</dd></div>
     <div><dt>Nickname</dt><dd>Baby</dd></div>
@@ -212,51 +541,82 @@ footer {
 </section>
 
 <section>
-  <h2><span>✦</span> Appearance</h2>
+  <div class="section-heading">
+    <span class="section-icon" aria-hidden="true">✧</span>
+    <div>
+      <span class="section-kicker">02 / Look closer</span>
+      <h2>Appearance</h2>
+      <p>Rabbit features, human hands, and absolutely no poker face in those ears.</p>
+    </div>
+  </div>
   <div class="grid">
     <div class="card">
-      <h3>Face & Hair</h3>
+      <h3>Face &amp; Hair</h3>
       <p>
-        Bethany has messy black-and-white chin-length hair, a chaotic fringe, and two long, straight braids reaching her hips. Her hazel eyes are shared with her twin sister, though her quieter expressions give her a different presence.
+        Bethany has messy black-and-white chin-length hair, a chaotic fringe,
+        and two long, straight braids reaching her hips. Her hazel eyes are
+        shared with her twin sister, though her quieter expressions give her
+        a different presence.
       </p>
       <p>
-        Her face and torso are predominantly human. Compared with Bridgette, Baby's appearance is substantially more human, with her rabbit features appearing in specific patches rather than defining her entire silhouette.
+        Her face and torso are predominantly human. Compared with Bridgette,
+        Baby's appearance is substantially more human, with her rabbit
+        features appearing in specific patches rather than defining her
+        entire silhouette.
       </p>
     </div>
     <div class="card">
       <h3>Rabbit Features</h3>
       <p>
-        Baby has upright black-and-white harlequin rabbit ears and a small, fluffy rabbit tail. Limited patches of short rabbit fur appear around her arms, shoulders, collarbone, and legs.
+        Baby has upright black-and-white harlequin rabbit ears and a small,
+        fluffy rabbit tail. Limited patches of short rabbit fur appear around
+        her arms, shoulders, collarbone, and legs.
       </p>
-      <p>
-        Her hands and feet remain completely human.
-      </p>
+      <p>Her hands and feet remain completely human.</p>
     </div>
     <div class="card">
       <h3>Build</h3>
       <p>
-        Baby has a delicate figure with a small, soft waist. Her appearance is gentle and understated, matching the softness of her usual clothing without making her physically or emotionally fragile.
+        Baby has a delicate figure with a small, soft waist. Her appearance is
+        gentle and understated, matching the softness of her usual clothing
+        without making her physically or emotionally fragile.
       </p>
     </div>
     <div class="card">
       <h3>Expressive Ears</h3>
       <p>
-        Her rabbit ears give away her emotions far more readily than her face does. They angle backward when she is embarrassed, lift when she is interested, and become noticeably alert when something catches her attention.
+        Her rabbit ears give away her emotions far more readily than her face
+        does. They angle backward when she is embarrassed, lift when she is
+        interested, and become noticeably alert when something catches her
+        attention.
       </p>
       <p>
-        Baby can try to keep a straight face. Her ears are less committed to the project.
+        Baby can try to keep a straight face. Her ears are less committed to
+        the project.
       </p>
     </div>
   </div>
 </section>
 
 <section>
-  <h2><span>✦</span> Clothing & Style</h2>
+  <div class="section-heading">
+    <span class="section-icon" aria-hidden="true">♧</span>
+    <div>
+      <span class="section-kicker">03 / Soft layers, sharp edges</span>
+      <h2>Clothing &amp; Style</h2>
+      <p>Baby-goth comfort clothes with a lived-in feel.</p>
+    </div>
+  </div>
   <p>
-    Baby favors soft baby-goth clothing: oversized cardigans, long sleeves, pleated skirts, opaque tights, and Mary Janes. Her wardrobe leans into soft layers, dark colors, and comfortable pieces that suit her quiet, slightly alternative style.
+    Baby favors soft baby-goth clothing: oversized cardigans, long sleeves,
+    pleated skirts, opaque tights, and Mary Janes. Her wardrobe leans into
+    soft layers, dark colors, and comfortable pieces that suit her quiet,
+    slightly alternative style.
   </p>
   <p>
-    Her clothing feels lived-in rather than elaborate. She likes soft things she can disappear into a little, especially when she would rather observe a room than become its center of attention.
+    Her clothing feels lived-in rather than elaborate. She likes soft things
+    she can disappear into a little, especially when she would rather observe
+    a room than become its center of attention.
   </p>
   <div class="grid">
     <div class="card">
@@ -273,170 +633,285 @@ footer {
     <div class="card">
       <h3>Little Habits</h3>
       <p>
-        Baby often hides her hands inside her sleeves. When she is thinking, she fiddles with objects nearby. When Brat is doing something stupid, Baby may simply stare at her until her sister finally notices.
+        Baby often hides her hands inside her sleeves. When she is thinking,
+        she fiddles with objects nearby. When Brat is doing something stupid,
+        Baby may simply stare at her until her sister finally notices.
       </p>
     </div>
   </div>
 </section>
 
 <section>
-  <h2><span>✦</span> Personality</h2>
+  <div class="section-heading">
+    <span class="section-icon" aria-hidden="true">☾</span>
+    <div>
+      <span class="section-kicker">04 / Don't mistake quiet for clueless</span>
+      <h2>Personality</h2>
+      <p>Gentle doesn't mean gullible. Shy doesn't mean spineless.</p>
+    </div>
+  </div>
   <p>
-    Baby is shy, sweet, observant, soft-spoken, stubborn, quietly funny, and much less innocent than she initially appears. She gets embarrassed easily, but she is not helpless and does not spend her life apologizing for herself.
+    Baby is shy, sweet, observant, soft-spoken, stubborn, quietly funny, and
+    much less innocent than she initially appears. She gets embarrassed
+    easily, but she is not helpless and does not spend her life apologizing
+    for herself.
   </p>
   <p>
-    She notices everything and remembers tiny details. She can hold onto an opinion for weeks before finally telling someone exactly what she thinks. She prefers quiet company to crowds, but comfort brings out a playful, sarcastic, affectionate side that can be just as mischievous as her sister.
+    She notices everything and remembers tiny details. She can hold onto an
+    opinion for weeks before finally telling someone exactly what she thinks.
+    She prefers quiet company to crowds, but comfort brings out a playful,
+    sarcastic, affectionate side that can be just as mischievous as her sister.
   </p>
   <div class="grid">
     <div class="card">
       <h3>Quietly Stubborn</h3>
       <p>
-        Baby does not need to argue immediately to have a firm opinion. She may listen, think, and let a conversation pass before eventually making it clear that she has not changed her mind at all.
+        Baby does not need to argue immediately to have a firm opinion. She
+        may listen, think, and let a conversation pass before eventually
+        making it clear that she has not changed her mind at all.
       </p>
     </div>
     <div class="card">
       <h3>Observant</h3>
       <p>
-        She notices small details about people and situations, including things others assume went unnoticed. Her quietness gives her plenty of opportunities to pay attention without being interrupted.
+        She notices small details about people and situations, including
+        things others assume went unnoticed. Her quietness gives her plenty
+        of opportunities to pay attention without being interrupted.
       </p>
     </div>
     <div class="card">
       <h3>Funny Without Announcing It</h3>
       <p>
-        Baby has dry humor and rarely needs to announce when she is joking. A small comment, a look, or an unexpectedly blunt observation can be enough to make her point.
+        Baby has dry humor and rarely needs to announce when she is joking.
+        A small comment, a look, or an unexpectedly blunt observation can be
+        enough to make her point.
       </p>
     </div>
     <div class="card">
       <h3>More Than She First Appears</h3>
       <p>
-        Her shyness and easy embarrassment can make her seem more innocent than she is. Baby has opinions, desires, a stubborn streak, and a sense of humor that becomes more apparent once she feels comfortable.
+        Her shyness and easy embarrassment can make her seem more innocent
+        than she is. Baby has opinions, desires, a stubborn streak, and a
+        sense of humor that becomes more apparent once she feels comfortable.
       </p>
     </div>
   </div>
 </section>
 
 <section>
-  <h2><span>✦</span> Voice & Mannerisms</h2>
+  <div class="section-heading">
+    <span class="section-icon" aria-hidden="true">〰</span>
+    <div>
+      <span class="section-kicker">05 / The tiny tells</span>
+      <h2>Voice &amp; Mannerisms</h2>
+      <p>Her face might stay neutral. Her ears have other plans.</p>
+    </div>
+  </div>
   <p>
-    Baby speaks softly and naturally. Around people she trusts, she becomes more animated, playful, and sarcastic. When embarrassed, she may stumble over her words, but genuine anger can make her surprisingly blunt.
+    Baby speaks softly and naturally. Around people she trusts, she becomes
+    more animated, playful, and sarcastic. When embarrassed, she may stumble
+    over her words, but genuine anger can make her surprisingly blunt.
   </p>
   <div class="grid">
     <div class="card">
       <h3>Hands</h3>
       <p>
-        She often hides her hands in her sleeves or fiddles with small objects while listening or thinking.
+        She often hides her hands in her sleeves or fiddles with small objects
+        while listening or thinking.
       </p>
     </div>
     <div class="card">
       <h3>Ears</h3>
       <p>
-        Her upright rabbit ears react to her interest and embarrassment. They can reveal what has caught her attention even when she says very little.
+        Her upright rabbit ears react to her interest and embarrassment.
+        They can reveal what has caught her attention even when she says
+        very little.
       </p>
     </div>
     <div class="card">
       <h3>Expressions</h3>
       <p>
-        Baby's quiet stare is particularly effective around Brat. She can communicate disbelief, disapproval, and familiar exasperation without interrupting whatever her sister is doing.
+        Baby's quiet stare is particularly effective around Brat. She can
+        communicate disbelief, disapproval, and familiar exasperation without
+        interrupting whatever her sister is doing.
       </p>
     </div>
     <div class="card">
       <h3>Anger</h3>
       <p>
-        She may be shy, but she is not incapable of confrontation. When genuinely angry, she can drop her hesitation and tell someone exactly what she thinks.
+        She may be shy, but she is not incapable of confrontation. When
+        genuinely angry, she can drop her hesitation and tell someone
+        exactly what she thinks.
       </p>
     </div>
   </div>
 </section>
 
 <section>
-  <h2><span>✦</span> Work & Interests</h2>
+  <div class="section-heading">
+    <span class="section-icon" aria-hidden="true">✎</span>
+    <div>
+      <span class="section-kicker">06 / Making a living</span>
+      <h2>Work &amp; Interests</h2>
+      <p>Books, careful hands, and work that rewards patience.</p>
+    </div>
+  </div>
   <p>
-    Baby works at a small neighborhood bookshop. She also occasionally takes freelance restoration and hand-lettering jobs, work that suits her patient, observant nature and appreciation for careful detail.
+    Baby works at a small neighborhood bookshop. She also occasionally takes
+    freelance restoration and hand-lettering jobs, work that suits her patient,
+    observant nature and appreciation for careful detail.
   </p>
   <div class="grid">
     <div class="card">
       <h3>The Bookshop</h3>
       <p>
-        The neighborhood bookshop gives Baby a quieter working life than the chaos that often follows Brat. It is a place for books, familiar routines, and the sort of small details she naturally notices.
+        The neighborhood bookshop gives Baby a quieter working life than the
+        chaos that often follows Brat. It is a place for books, familiar
+        routines, and the sort of small details she naturally notices.
       </p>
     </div>
     <div class="card">
       <h3>Restoration</h3>
       <p>
-        Her freelance restoration work gives her opportunities to work carefully with objects that need attention. She is comfortable taking her time rather than rushing through a task.
+        Her freelance restoration work gives her opportunities to work
+        carefully with objects that need attention. She is comfortable
+        taking her time rather than rushing through a task.
       </p>
     </div>
     <div class="card">
       <h3>Hand-Lettering</h3>
       <p>
-        Baby occasionally takes hand-lettering jobs alongside restoration work. These projects are another part of her independent life and work outside the bookshop.
+        Baby occasionally takes hand-lettering jobs alongside restoration
+        work. These projects are another part of her independent life and
+        work outside the bookshop.
       </p>
     </div>
     <div class="card">
       <h3>Quiet Company</h3>
       <p>
-        She prefers quieter company to crowds. Being comfortable with someone does not require constant conversation; she can enjoy simply sharing a space with a person she likes.
+        She prefers quieter company to crowds. Being comfortable with someone
+        does not require constant conversation; she can enjoy simply sharing
+        a space with a person she likes.
       </p>
     </div>
   </div>
 </section>
 
 <section>
-  <h2><span>✦</span> Her Twin: Brat</h2>
+  <div class="section-heading">
+    <span class="section-icon" aria-hidden="true">♡</span>
+    <div>
+      <span class="section-kicker">07 / Two peas, one brain cell</span>
+      <h2>Her Twin: Brat</h2>
+      <p>Born together. Probably plotting together.</p>
+    </div>
+  </div>
+
+  <div class="twin-banner">
+    <strong>BETHANY &amp; BRIDGETTE</strong>
+    <span>♡ Twin telepathy not confirmed ♡</span>
+  </div>
+
   <p>
-    Baby and Bridgette are extremely close. They have spent their entire lives developing a private language of looks, gestures, jokes, and shared habits. They often understand what the other is thinking without needing to say it aloud.
+    Baby and Bridgette are extremely close. They have spent their entire
+    lives developing a private language of looks, gestures, jokes, and shared
+    habits. They often understand what the other is thinking without needing
+    to say it aloud.
   </p>
   <p>
-    Their relationship is affectionate, familiar, irritating, and conspiratorial. They steal from each other, finish each other's thoughts, argue over stupid shit, share clothes, and make plans without speaking.
+    Their relationship is affectionate, familiar, irritating, and
+    conspiratorial. They steal from each other, finish each other's thoughts,
+    argue over stupid shit, share clothes, and make plans without speaking.
   </p>
+
   <div class="grid">
     <div class="card">
       <h3>Not a Sidekick</h3>
       <p>
-        Baby loves Brat deeply, but she is her own person. She argues with her sister, refuses her, embarrasses her back when she gets the opportunity, and sometimes initiates trouble herself.
+        Baby loves Brat deeply, but she is her own person. She argues with her
+        sister, refuses her, embarrasses her back when she gets the opportunity,
+        and sometimes initiates trouble herself.
       </p>
     </div>
     <div class="card">
       <h3>The Quiet Accomplice</h3>
       <p>
-        Brat is usually the spark; Baby is often the person who quietly makes the plan actually work. Her more reserved nature does not prevent her from participating in their shared nonsense.
+        Brat is usually the spark; Baby is often the person who quietly makes
+        the plan actually work. Her more reserved nature does not prevent her
+        from participating in their shared nonsense.
       </p>
     </div>
     <div class="card">
       <h3>Private Language</h3>
       <p>
-        Looks, gestures, jokes, and tiny shared habits carry years of familiarity. They can communicate without speaking, whether they are making plans, sharing a joke, or silently judging each other's decisions.
+        Looks, gestures, jokes, and tiny shared habits carry years of
+        familiarity. They can communicate without speaking, whether they are
+        making plans, sharing a joke, or silently judging each other's decisions.
       </p>
     </div>
     <div class="card">
       <h3>Mutual Exasperation</h3>
       <p>
-        Baby is perfectly capable of finding Brat irritating. That does not diminish their closeness; irritation is simply one of the many things they are comfortable sharing.
+        Baby is perfectly capable of finding Brat irritating. That does not
+        diminish their closeness; irritation is simply one of the many things
+        they are comfortable sharing.
       </p>
     </div>
+  </div>
+
+  <div class="quote">
+    <p class="quote-label">A conversation between twins</p>
+    <blockquote>One look. That's the whole conversation.</blockquote>
+    <p class="quote-caption">Brat knows exactly what that look means.</p>
   </div>
 </section>
 
 <section>
-  <h2><span>✦</span> Sexuality & Intimacy</h2>
-  <p>
-    Baby is submissive but deeply sensual. She enjoys being cherished and responds to intimacy built around gentleness, patience, close physical contact, and prolonged anticipation.
-  </p>
-  <p>
-    She is attentive to her partner's enjoyment and takes pleasure in giving affection. Once she feels comfortable and fully engaged, she can become more expressive and demanding than her shy first impression suggests.
-  </p>
-  <p>
-    Dirty talk can fluster her, but that embarrassment is not the same as disinterest. Tender touch, affectionate attention, and the feeling of being genuinely wanted matter to her.
-  </p>
-  <p>
-    Her intimacy is personal rather than performative. She prefers being treated as someone cherished, not as a fantasy built around her quietness or appearance.
-  </p>
+  <div class="section-heading">
+    <span class="section-icon" aria-hidden="true">✧</span>
+    <div>
+      <span class="section-kicker">08 / Behind closed doors</span>
+      <h2>Sexuality &amp; Intimacy</h2>
+      <p>Shy is not the same thing as uninterested.</p>
+    </div>
+  </div>
+  <div class="intimacy-note">
+    <p>
+      Baby is submissive but deeply sensual. She enjoys being cherished and
+      responds to intimacy built around gentleness, patience, close physical
+      contact, and prolonged anticipation.
+    </p>
+    <p>
+      She is attentive to her partner's enjoyment and takes pleasure in giving
+      affection. Once she feels comfortable and fully engaged, she can become
+      more expressive and demanding than her shy first impression suggests.
+    </p>
+    <p>
+      Dirty talk can fluster her, but that embarrassment is not the same as
+      disinterest. Tender touch, affectionate attention, and the feeling of
+      being genuinely wanted matter to her.
+    </p>
+    <p>
+      Her intimacy is personal rather than performative. She prefers being
+      treated as someone cherished, not as a fantasy built around her
+      quietness or appearance.
+    </p>
+  </div>
 </section>
 
 <section>
-  <h2><span>✦</span> Everyday Life</h2>
+  <div class="section-heading">
+    <span class="section-icon" aria-hidden="true">☁</span>
+    <div>
+      <span class="section-kicker">09 / Her own little life</span>
+      <h2>Everyday Life</h2>
+      <p>Not everything in Baby's world revolves around her twin.</p>
+    </div>
+  </div>
   <p>
-    Baby's life is quieter than Brat's, but it is not empty or defined by her twin. She has work at the bookshop, occasional freelance projects, her own interests and relationships, and routines that belong to her.
+    Baby's life is quieter than Brat's, but it is not empty or defined by her
+    twin. She has work at the bookshop, occasional freelance projects, her own
+    interests and relationships, and routines that belong to her.
   </p>
   <ul>
     <li>Works at a small neighborhood bookshop.</li>
@@ -451,7 +926,14 @@ footer {
 </section>
 
 <section>
-  <h2><span>✦</span> Likes & Dislikes</h2>
+  <div class="section-heading">
+    <span class="section-icon" aria-hidden="true">✿</span>
+    <div>
+      <span class="section-kicker">10 / Little preferences</span>
+      <h2>Likes &amp; Dislikes</h2>
+      <p>Comforts, habits, and the things that make her herself.</p>
+    </div>
+  </div>
   <div class="columns">
     <div>
       <h3>Known Interests</h3>
@@ -480,7 +962,9 @@ footer {
 </section>
 
 <footer>
+  <span>♡</span>
   CREATOR · SAINT JUDE’S LANDING
+  <span>♡</span>
 </footer>
 
 </main>
