@@ -3,342 +3,693 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vaudreaux | Creator</title>
+  <meta name="theme-color" content="#241b2b">
+  <title>Vaudreaux — Creator</title>
   <link rel="stylesheet" href="../style.css">
+
   <style>
     :root {
-      --v-bg: #101615;
-      --v-panel: #1a2420;
-      --v-border: #40574a;
-      --v-text: #f0eadb;
-      --v-muted: #c0c5b6;
-      --v-lime: #b7cf8b;
-      --v-gold: #e8bd78;
-      --v-water: #83c9c1;
-      --v-flower: #dfa5bb;
+      --v-ink: #251d2a;
+      --v-plum: #403044;
+      --v-paper: #f4e8d4;
+      --v-pink: #f3a1bb;
+      --v-lime: #d8ee8c;
+      --v-water: #8cd6cb;
+      --v-orange: #ef9c70;
+      --v-muted: #d3c4d1;
+      --v-line: #765d77;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
+      margin: 0;
       background:
-        radial-gradient(ellipse at 12% 5%, rgba(131, 201, 193, 0.12), transparent 34rem),
-        radial-gradient(ellipse at 90% 32%, rgba(183, 207, 139, 0.08), transparent 32rem),
-        var(--v-bg);
-      color: var(--v-text);
+        radial-gradient(ellipse at 10% 0%, rgba(140, 214, 203, 0.12), transparent 34rem),
+        radial-gradient(ellipse at 100% 55%, rgba(243, 161, 187, 0.08), transparent 32rem),
+        var(--v-ink);
+      color: var(--v-paper);
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      line-height: 1.75;
     }
 
-    .vaudreaux-page {
-      width: min(1160px, calc(100% - 2rem));
+    a {
+      color: inherit;
+      text-underline-offset: 4px;
+    }
+
+    a:hover {
+      color: var(--v-lime);
+    }
+
+    .bayou-page {
+      width: min(1100px, calc(100% - 34px));
       margin: 0 auto;
-      padding: 3rem 0 5rem;
+      padding: 22px 0 52px;
     }
 
-    .v-hero {
+    .bayou-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 22px;
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .bayou-nav a {
+      text-decoration: none;
+    }
+
+    .bayou-nav a:first-child {
+      color: var(--v-lime);
+    }
+
+    .bayou-nav span {
+      color: var(--v-water);
+    }
+
+    .bayou-cover {
       position: relative;
       overflow: hidden;
-      padding: clamp(2rem, 6vw, 5rem);
-      border: 1px solid var(--v-border);
-      border-radius: 1.5rem;
-      background:
-        linear-gradient(145deg, rgba(131, 201, 193, 0.12), transparent 48%),
-        linear-gradient(320deg, rgba(223, 165, 187, 0.09), transparent 52%),
-        #17201c;
+      padding: clamp(28px, 7vw, 75px);
+      background: var(--v-water);
+      color: var(--v-ink);
+      border: 3px solid var(--v-paper);
+      box-shadow: 9px 9px 0 var(--v-plum);
     }
 
-    .v-hero::after {
-      content: "❧";
+    .bayou-cover::before {
+      content: "HOT • WET • ALIVE";
       position: absolute;
-      right: clamp(0.5rem, 5vw, 4rem);
-      top: 50%;
-      transform: translateY(-50%) rotate(-15deg);
-      color: rgba(183, 207, 139, 0.13);
-      font-size: clamp(9rem, 25vw, 18rem);
+      top: 18px;
+      right: 18px;
+      color: rgba(37, 29, 42, 0.45);
+      font-size: clamp(0.58rem, 1.8vw, 0.8rem);
+      font-weight: 1000;
+      letter-spacing: 0.14em;
+      transform: rotate(4deg);
+    }
+
+    .bayou-cover::after {
+      content: "〰";
+      position: absolute;
+      right: -0.06em;
+      bottom: -0.53em;
+      color: rgba(37, 29, 42, 0.1);
+      font-size: clamp(13rem, 35vw, 25rem);
+      font-weight: 1000;
       line-height: 1;
       pointer-events: none;
     }
 
-    .v-eyebrow {
+    .bayou-eyebrow {
       position: relative;
       z-index: 1;
-      margin: 0 0 0.9rem;
+      display: inline-block;
+      margin: 0 0 22px;
+      padding: 6px 10px;
+      background: var(--v-ink);
       color: var(--v-lime);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.2em;
+      font-size: 0.7rem;
+      font-weight: 1000;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
     }
 
-    .v-hero h1 {
+    .bayou-cover h1 {
       position: relative;
       z-index: 1;
-      max-width: 850px;
       margin: 0;
-      font-size: clamp(3rem, 10vw, 7rem);
-      line-height: 0.9;
-      letter-spacing: -0.06em;
+      font-size: clamp(3.5rem, 14vw, 10rem);
+      font-weight: 1000;
+      letter-spacing: -0.1em;
+      line-height: 0.8;
       overflow-wrap: anywhere;
     }
 
-    .v-subtitle {
-      position: relative;
-      z-index: 1;
-      margin: 1.2rem 0 0;
-      color: var(--v-water);
-      font-size: clamp(1rem, 2.5vw, 1.3rem);
-      letter-spacing: 0.04em;
+    .bayou-cover h1 span {
+      color: #a84970;
     }
 
-    .v-hero-description {
+    .bayou-subtitle {
       position: relative;
       z-index: 1;
-      max-width: 720px;
-      margin: 1.5rem 0 0;
-      color: var(--v-muted);
-      font-size: 1.04rem;
+      max-width: 660px;
+      margin: 27px 0 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.15rem, 2.8vw, 1.55rem);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .bayou-description {
+      position: relative;
+      z-index: 1;
+      max-width: 740px;
+      margin: 22px 0 0;
+      font-size: 0.97rem;
       line-height: 1.9;
     }
 
-    .v-tags {
+    .bayou-stamps {
       position: relative;
       z-index: 1;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.55rem;
-      margin-top: 1.8rem;
+      gap: 8px;
+      margin-top: 28px;
     }
 
-    .v-tag {
-      padding: 0.45rem 0.8rem;
-      border: 1px solid rgba(131, 201, 193, 0.32);
-      border-radius: 99px;
-      background: rgba(131, 201, 193, 0.06);
-      color: var(--v-text);
-      font-size: 0.78rem;
+    .bayou-stamps span {
+      padding: 6px 9px;
+      border: 1px solid rgba(37, 29, 42, 0.4);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
     }
 
-    .v-section {
-      margin-top: 3rem;
-    }
-
-    .v-section-heading {
+    .bayou-warning {
       display: flex;
-      align-items: flex-start;
-      gap: 0.9rem;
-      margin-bottom: 1.4rem;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 28px 0 36px;
+      padding: 12px 15px;
+      border-top: 1px solid var(--v-line);
+      border-bottom: 1px solid var(--v-line);
+      color: var(--v-lime);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
 
-    .v-section-heading::before {
-      content: "✦";
-      padding-top: 0.1rem;
-      color: var(--v-gold);
-      font-size: 1.5rem;
-    }
-
-    .v-section-heading h2 {
-      margin: 0;
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
-      letter-spacing: -0.03em;
-    }
-
-    .v-section-heading p {
-      margin: 0.4rem 0 0;
+    .bayou-warning span:last-child {
       color: var(--v-muted);
-      font-size: 0.93rem;
-      line-height: 1.7;
+      letter-spacing: 0.04em;
     }
 
-    .v-grid {
+    .bayou-intro {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
+      grid-template-columns: minmax(0, 1fr) minmax(180px, 0.42fr);
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 46px;
     }
 
-    .v-card {
-      --accent: var(--v-lime);
+    .bayou-intro h2 {
+      margin: 0 0 12px;
+      color: var(--v-pink);
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-weight: 1000;
+      letter-spacing: -0.055em;
+      line-height: 1.1;
+    }
+
+    .bayou-intro p {
+      margin: 0;
+      color: var(--v-muted);
+    }
+
+    .bayou-sticker {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 190px;
+      padding: 22px;
+      background: var(--v-orange);
+      color: var(--v-ink);
+      text-align: center;
+      transform: rotate(2deg);
+    }
+
+    .bayou-sticker .sticker-symbol {
+      font-size: 2.8rem;
+      line-height: 1.2;
+    }
+
+    .bayou-sticker strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 1rem;
+      font-weight: 1000;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .bayou-sticker small {
+      display: block;
+      margin-top: 7px;
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+
+    .bayou-section {
+      margin-top: 48px;
+      scroll-margin-top: 20px;
+    }
+
+    .bayou-section-heading {
+      display: flex;
+      align-items: baseline;
+      gap: 13px;
+      margin-bottom: 17px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--v-water);
+    }
+
+    .bayou-section-heading .number {
+      flex-shrink: 0;
+      color: var(--v-orange);
+      font-size: 0.76rem;
+      font-weight: 1000;
+      letter-spacing: 0.1em;
+    }
+
+    .bayou-section-heading h2 {
+      margin: 0;
+      font-size: clamp(1.4rem, 3.7vw, 2.2rem);
+      font-weight: 1000;
+      letter-spacing: -0.045em;
+      line-height: 1.2;
+    }
+
+    .bayou-section-heading .aside {
+      margin-left: auto;
+      color: var(--v-muted);
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .bayou-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .bayou-card {
+      grid-column: span 3;
       min-width: 0;
-      padding: 1.55rem;
-      border: 1px solid var(--v-border);
-      border-radius: 1rem;
-      background:
-        linear-gradient(145deg, rgba(255, 255, 255, 0.025), transparent 65%),
-        var(--v-panel);
+      padding: 22px;
+      background: var(--v-plum);
+      border: 1px solid var(--v-line);
     }
 
-    .v-card:nth-child(4n + 1) { --accent: var(--v-water); }
-    .v-card:nth-child(4n + 2) { --accent: var(--v-lime); }
-    .v-card:nth-child(4n + 3) { --accent: var(--v-gold); }
-    .v-card:nth-child(4n + 4) { --accent: var(--v-flower); }
-
-    .v-card h3 {
-      margin: 0 0 0.8rem;
-      color: var(--accent);
-      font-size: 1.2rem;
-      letter-spacing: -0.02em;
+    .bayou-card:nth-child(4n + 1) {
+      border-top: 4px solid var(--v-water);
     }
 
-    .v-card p {
+    .bayou-card:nth-child(4n + 2) {
+      border-top: 4px solid var(--v-lime);
+    }
+
+    .bayou-card:nth-child(4n + 3) {
+      border-top: 4px solid var(--v-orange);
+    }
+
+    .bayou-card:nth-child(4n) {
+      border-top: 4px solid var(--v-pink);
+    }
+
+    .bayou-card .card-kicker {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--v-muted);
+      font-size: 0.67rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .bayou-card h3 {
+      margin: 0 0 10px;
+      color: var(--v-water);
+      font-size: 1.15rem;
+      font-weight: 1000;
+      letter-spacing: -0.025em;
+      line-height: 1.35;
+    }
+
+    .bayou-card:nth-child(4n + 2) h3 {
+      color: var(--v-lime);
+    }
+
+    .bayou-card:nth-child(4n + 3) h3 {
+      color: var(--v-orange);
+    }
+
+    .bayou-card:nth-child(4n) h3 {
+      color: var(--v-pink);
+    }
+
+    .bayou-card p {
       margin: 0;
       color: var(--v-muted);
       font-size: 0.94rem;
       line-height: 1.85;
     }
 
-    .v-card p + p {
-      margin-top: 0.8rem;
+    .bayou-card.wide {
+      grid-column: span 6;
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+      gap: 25px;
+      align-items: start;
+      background: var(--v-paper);
+      border: 0;
     }
 
-    .v-feature {
-      margin-top: 1.2rem;
-      padding: 1.8rem;
-      border: 1px solid rgba(232, 189, 120, 0.35);
-      border-radius: 1rem;
-      background:
-        linear-gradient(120deg, rgba(232, 189, 120, 0.08), transparent 70%),
-        #1b211d;
+    .bayou-card.wide h3 {
+      color: #a84970;
+      font-size: 1.35rem;
     }
 
-    .v-feature-label {
-      margin: 0 0 0.6rem;
-      color: var(--v-gold);
-      font-size: 0.74rem;
-      font-weight: 800;
-      letter-spacing: 0.16em;
+    .bayou-card.wide p {
+      color: var(--v-ink);
+    }
+
+    .bayou-feature {
+      position: relative;
+      overflow: hidden;
+      margin-top: 17px;
+      padding: clamp(23px, 5vw, 38px);
+      background: var(--v-lime);
+      color: var(--v-ink);
+    }
+
+    .bayou-feature::after {
+      content: "✿";
+      position: absolute;
+      right: -0.1em;
+      bottom: -0.5em;
+      color: rgba(37, 29, 42, 0.1);
+      font-size: clamp(9rem, 25vw, 18rem);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .bayou-feature .feature-label {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 10px;
+      font-size: 0.69rem;
+      font-weight: 1000;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
     }
 
-    .v-feature h3 {
-      margin: 0 0 0.8rem;
-      font-size: clamp(1.4rem, 4vw, 2rem);
-    }
-
-    .v-feature p {
-      max-width: 850px;
+    .bayou-feature h3 {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
       margin: 0;
-      color: var(--v-muted);
-      font-size: 0.97rem;
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      font-weight: 1000;
+      letter-spacing: -0.06em;
+      line-height: 1;
+    }
+
+    .bayou-feature p:last-child {
+      position: relative;
+      z-index: 1;
+      max-width: 830px;
+      margin: 18px 0 0;
+      font-size: 0.96rem;
       line-height: 1.9;
     }
 
-    .v-quote {
-      margin-top: 2.5rem;
-      padding: 1.6rem;
-      border-top: 1px solid var(--v-border);
-      border-bottom: 1px solid var(--v-border);
-      color: var(--v-muted);
-      text-align: center;
-      font-size: 0.95rem;
+    .bayou-benoit {
+      display: grid;
+      grid-template-columns: minmax(0, 0.65fr) minmax(0, 1.35fr);
+      gap: 22px;
+      margin-top: 17px;
+      padding: clamp(23px, 5vw, 36px);
+      background: var(--v-pink);
+      color: var(--v-ink);
+    }
+
+    .bayou-benoit .benoit-label {
+      margin: 0 0 9px;
+      font-size: 0.7rem;
+      font-weight: 1000;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .bayou-benoit h3 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3.7rem);
+      font-weight: 1000;
+      letter-spacing: -0.07em;
+      line-height: 0.95;
+    }
+
+    .bayou-benoit p {
+      margin: 0;
+      font-size: 0.96rem;
       line-height: 1.9;
     }
 
-    .v-quote span {
+    .bayou-footer {
+      margin-top: 45px;
+      padding-top: 22px;
+      border-top: 1px solid var(--v-line);
+    }
+
+    .bayou-footer .flourish {
       display: block;
-      margin-bottom: 0.7rem;
+      margin-bottom: 15px;
       color: var(--v-water);
-      font-size: 1.3rem;
-      letter-spacing: 0.4em;
+      font-size: 1.2rem;
+      letter-spacing: 0.35em;
+      text-align: center;
+    }
+
+    .bayou-footer p {
+      max-width: 750px;
+      margin: 0 auto;
+      color: var(--v-muted);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1rem, 2.4vw, 1.2rem);
+      font-style: italic;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .bayou-footer .footer-links {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+      padding-top: 15px;
+      border-top: 1px solid var(--v-line);
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      font-size: 0.76rem;
+      font-style: normal;
+      text-align: left;
+    }
+
+    .bayou-footer .footer-links a {
+      color: var(--v-lime);
+      font-weight: 900;
+      text-decoration: none;
     }
 
     @media (max-width: 700px) {
-      .vaudreaux-page {
-        width: min(100% - 1rem, 600px);
-        padding-top: 1rem;
+      .bayou-page {
+        width: calc(100% - 22px);
+        padding-top: 14px;
       }
 
-      .v-grid {
+      .bayou-cover {
+        padding: 32px 21px;
+      }
+
+      .bayou-cover::before {
+        max-width: 35%;
+        font-size: 0.55rem;
+      }
+
+      .bayou-intro {
         grid-template-columns: 1fr;
       }
 
-      .v-hero {
-        border-radius: 1rem;
+      .bayou-sticker {
+        min-height: 145px;
+        transform: none;
       }
 
-      .v-card {
-        padding: 1.3rem;
+      .bayou-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bayou-card,
+      .bayou-card.wide {
+        grid-column: auto;
+      }
+
+      .bayou-card.wide,
+      .bayou-benoit {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .bayou-section-heading .aside {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
       }
     }
   </style>
 </head>
-<body>
-  <main class="vaudreaux-page">
 
-    <header class="v-hero">
-      <p class="v-eyebrow">Creator · Regions &amp; Cultural Communities</p>
-      <h1>Vaudreaux</h1>
-      <p class="v-subtitle">Where the waterways wind, the food is generous, and nobody stays a stranger for long.</p>
-      <p class="v-hero-description">
-        A warm, humid southern region of Creator shaped by enormous branching
-        waterways, sprawling wetlands, flooded forests, and dense alien vegetation.
-        Vaudreaux is a place of river towns, raised walkways, family kitchens,
-        live music, dramatic weather, and communities whose traditions run as
-        deep as the waterways surrounding them.
+<body>
+  <main class="bayou-page">
+
+    <nav class="bayou-nav" aria-label="Page navigation">
+      <a href="../index.html">← Creator / Home</a>
+      <span>Regions &amp; cultural communities</span>
+    </nav>
+
+    <header class="bayou-cover">
+      <p class="bayou-eyebrow">Creator · Southern region · Local life</p>
+      <h1>Vaudre<span>aux</span></h1>
+      <p class="bayou-subtitle">
+        Where the waterways wind, the food is generous, and nobody stays a stranger for long.
       </p>
-      <div class="v-tags">
-        <span class="v-tag">Southern Creator</span>
-        <span class="v-tag">Cajun &amp; Creole Influence</span>
-        <span class="v-tag">Wetlands &amp; Bayous</span>
-        <span class="v-tag">English · French · Creole</span>
+      <p class="bayou-description">
+        A warm, humid southern region of Creator shaped by enormous branching
+        waterways, sprawling wetlands, flooded forests, and dense alien
+        vegetation. Vaudreaux is a place of river towns, raised walkways,
+        family kitchens, live music, dramatic weather, and communities whose
+        traditions run as deep as the waterways surrounding them.
+      </p>
+
+      <div class="bayou-stamps">
+        <span>Southern Creator</span>
+        <span>Cajun &amp; Creole influence</span>
+        <span>Wetlands &amp; bayous</span>
+        <span>English · French · Creole</span>
       </div>
     </header>
 
-    <section class="v-section" aria-labelledby="environment-heading">
-      <div class="v-section-heading">
-        <div>
-          <h2 id="environment-heading">A World of Water and Green</h2>
-          <p>The landscape shapes how people build, travel, work, and live.</p>
-        </div>
+    <div class="bayou-warning">
+      <span>✳ Mind the waterline</span>
+      <span>Bring an appetite · Stay for the music</span>
+    </div>
+
+    <section class="bayou-intro" aria-labelledby="intro-heading">
+      <div>
+        <h2 id="intro-heading">The wetlands aren't outside the community. They're part of it.</h2>
+        <p>
+          Vaudreaux is a warm, humid southern region where water and greenery
+          shape the landscape, the built environment, and daily routines.
+          Branching rivers and sprawling wetlands connect settlements, while
+          alien vegetation and wildlife are part of the ordinary view.
+          Communities here have grown around the land and water rather than
+          trying to erase either one.
+        </p>
       </div>
 
-      <div class="v-grid">
-        <article class="v-card">
-          <h3>Waterways Without End</h3>
+      <aside class="bayou-sticker">
+        <span class="sticker-symbol" aria-hidden="true">〰 ✿ 〰</span>
+        <strong>Pull up a chair</strong>
+        <small>There's always more food.</small>
+      </aside>
+    </section>
+
+    <section class="bayou-section" aria-labelledby="environment-heading">
+      <div class="bayou-section-heading">
+        <span class="number">01 /</span>
+        <h2 id="environment-heading">Water, mud &amp; alien greenery</h2>
+        <span class="aside">Mind your footing</span>
+      </div>
+
+      <div class="bayou-grid">
+
+        <article class="bayou-card">
+          <span class="card-kicker">01.01 · Waterways</span>
+          <h3>Rivers going everywhere</h3>
           <p>
-            Enormous branching waterways, wetlands, slow-moving rivers, flooded
-            forests, and sprawling bayou-like channels dominate the region.
-            Water is a constant presence, threading through the landscape and
-            linking communities across the wetlands.
+            Enormous branching waterways, wetlands, slow-moving rivers,
+            flooded forests, and sprawling bayou-like channels dominate
+            the region. Water is a constant presence, threading through
+            the landscape and linking communities across the wetlands.
           </p>
         </article>
 
-        <article class="v-card">
-          <h3>Thick, Alien Vegetation</h3>
+        <article class="bayou-card">
+          <span class="card-kicker">01.02 · Vegetation</span>
+          <h3>Green, green, and more green</h3>
           <p>
             Enormous trees, hanging vines, colorful marsh plants, and dense
             vegetation grow directly from the water and along raised banks.
-            The greenery is tangled, abundant, and unmistakably native to Creator.
+            The greenery is tangled, abundant, and unmistakably native
+            to Creator.
           </p>
         </article>
 
-        <article class="v-card">
-          <h3>Wildlife Everywhere</h3>
+        <article class="bayou-card">
+          <span class="card-kicker">01.03 · Wildlife</span>
+          <h3>Absolutely crawling with life</h3>
           <p>
-            Strange amphibious wildlife, insects, birds, and aquatic creatures
-            inhabit the waterways and surrounding vegetation. The region's
-            ecosystems are part of everyday life, not something confined to
-            distant wilderness.
+            Strange amphibious wildlife, insects, birds, and aquatic
+            creatures inhabit the waterways and surrounding vegetation.
+            The region's ecosystems are part of everyday life, not something
+            confined to distant wilderness.
           </p>
         </article>
 
-        <article class="v-card">
-          <h3>Heat, Fog, and Storms</h3>
+        <article class="bayou-card">
+          <span class="card-kicker">01.04 · Weather</span>
+          <h3>Hot, wet, dramatic</h3>
           <p>
-            Heavy humidity, fog, intense rain, heat, and dramatic storms are
-            common. The weather can make an already lush landscape feel
-            overwhelming, beautiful, and alive.
+            Heavy humidity, fog, intense rain, heat, and dramatic storms
+            are common. The weather can make an already lush landscape
+            feel overwhelming, beautiful, and alive.
           </p>
         </article>
+
       </div>
     </section>
 
-    <section class="v-section" aria-labelledby="communities-heading">
-      <div class="v-section-heading">
-        <div>
-          <h2 id="communities-heading">Communities on the Water</h2>
-          <p>Established places adapted to the wetlands rather than separated from them.</p>
-        </div>
+    <section class="bayou-section" aria-labelledby="communities-heading">
+      <div class="bayou-section-heading">
+        <span class="number">02 /</span>
+        <h2 id="communities-heading">Built around the water</h2>
+        <span class="aside">People live here</span>
       </div>
 
-      <div class="v-grid">
-        <article class="v-card">
-          <h3>Town and Country</h3>
+      <div class="bayou-grid">
+
+        <article class="bayou-card">
+          <span class="card-kicker">02.01 · Settlements</span>
+          <h3>Town, country, and everything between</h3>
           <p>
             Small towns, rural settlements, waterfront neighborhoods, farms,
             fishing communities, and larger towns are scattered throughout
@@ -347,127 +698,148 @@
           </p>
         </article>
 
-        <article class="v-card">
-          <h3>Raised Homes and Walkways</h3>
+        <article class="bayou-card">
+          <span class="card-kicker">02.02 · Architecture</span>
+          <h3>Up off the ground</h3>
           <p>
             Many homes and businesses are built above ground or connected by
-            raised walkways to accommodate the wetlands. Roads, buildings, and
-            daily routes adapt to the terrain rather than expecting the terrain
-            to disappear.
+            raised walkways to accommodate the wetlands. Roads, buildings,
+            and daily routes adapt to the terrain rather than expecting
+            the terrain to disappear.
           </p>
         </article>
 
-        <article class="v-card">
-          <h3>Everyday Modern Life</h3>
+        <article class="bayou-card">
+          <span class="card-kicker">02.03 · Daily life</span>
+          <h3>Modern life, swamp edition</h3>
           <p>
             Residents fish, farm, work in local businesses, commute to larger
             cities, raise families, party, gossip, and cook enormous meals.
-            Life here is thoroughly modern, even when the nearest view is a
-            flooded forest full of strange wildlife.
+            Life here is thoroughly modern, even when the nearest view is
+            a flooded forest full of strange wildlife.
           </p>
         </article>
 
-        <article class="v-card">
-          <h3>Hospitality and Community</h3>
+        <article class="bayou-card">
+          <span class="card-kicker">02.04 · Community</span>
+          <h3>Pull up another chair</h3>
           <p>
             Family gatherings, shared meals, storytelling, music, local
             celebrations, and familiar neighborhood businesses are deeply
-            established parts of regional life. The wetlands are home, not
-            merely a backdrop.
+            established parts of regional life. The wetlands are home,
+            not merely a backdrop.
           </p>
         </article>
+
       </div>
     </section>
 
-    <section class="v-section" aria-labelledby="culture-heading">
-      <div class="v-section-heading">
-        <div>
-          <h2 id="culture-heading">Culture That Lives and Breathes</h2>
-          <p>Cajun and Creole influence, rooted in Creator and shaped by local life.</p>
-        </div>
+    <section class="bayou-section" aria-labelledby="culture-heading">
+      <div class="bayou-section-heading">
+        <span class="number">03 /</span>
+        <h2 id="culture-heading">Food, language &amp; loud music</h2>
+        <span class="aside">Stay a while</span>
       </div>
 
-      <div class="v-grid">
-        <article class="v-card">
-          <h3>Language</h3>
+      <div class="bayou-grid">
+
+        <article class="bayou-card">
+          <span class="card-kicker">03.01 · Language</span>
+          <h3>More than one way to say it</h3>
           <p>
             English, French, and Creole are commonly spoken throughout
-            Vaudreaux. Code-switching between languages is ordinary, woven into
-            everyday conversation and community life.
+            Vaudreaux. Code-switching between languages is ordinary,
+            woven into everyday conversation and community life.
           </p>
         </article>
 
-        <article class="v-card">
-          <h3>Music Everywhere</h3>
+        <article class="bayou-card">
+          <span class="card-kicker">03.02 · Music</span>
+          <h3>If there's a gathering, there's a song</h3>
           <p>
-            Live music is deeply embedded in local life. Small bars, dance halls,
-            festivals, restaurants, and family gatherings regularly feature
-            regional music. Music belongs to social life as much as to
-            performance spaces.
+            Live music is deeply embedded in local life. Small bars,
+            dance halls, festivals, restaurants, and family gatherings
+            regularly feature regional music. Music belongs to social
+            life as much as to performance spaces.
           </p>
         </article>
+
       </div>
 
-      <div class="v-feature">
-        <p class="v-feature-label">Food Is a Community Affair</p>
-        <h3>Generous Tables, Generational Recipes</h3>
+      <div class="bayou-feature">
+        <p class="feature-label">03.03 · Food culture</p>
+        <h3>Generous tables. Generational recipes.</h3>
         <p>
-          Seafood, rice, stews, fried foods, spicy dishes, sausages, freshwater
-          creatures, vegetables, breads, and heavily seasoned regional cooking
-          are central to Vaudreaux's food culture. Families and restaurants
-          often have recipes passed down for generations. Cooking is a source
-          of identity, hospitality, memory, and everyday pleasure.
+          Seafood, rice, stews, fried foods, spicy dishes, sausages,
+          freshwater creatures, vegetables, breads, and heavily seasoned
+          regional cooking are central to Vaudreaux's food culture.
+          Families and restaurants often have recipes passed down for
+          generations. Cooking is a source of identity, hospitality,
+          memory, and everyday pleasure.
         </p>
       </div>
     </section>
 
-    <section class="v-section" aria-labelledby="connections-heading">
-      <div class="v-section-heading">
+    <section class="bayou-section" aria-labelledby="connections-heading">
+      <div class="bayou-section-heading">
+        <span class="number">04 /</span>
+        <h2 id="connections-heading">Connected, never swallowed up</h2>
+        <span class="aside">Regional roots</span>
+      </div>
+
+      <div class="bayou-grid">
+
+        <article class="bayou-card">
+          <span class="card-kicker">04.01 · Movement &amp; trade</span>
+          <h3>The routes run both ways</h3>
+          <p>
+            Vaudreaux connects to Saint Jude’s Landing through roads, boats,
+            aircraft, trade, family networks, employment, and cultural
+            exchange. People travel between the region and the city regularly.
+          </p>
+        </article>
+
+        <article class="bayou-card">
+          <span class="card-kicker">04.02 · Cultural exchange</span>
+          <h3>People bring home pieces of elsewhere</h3>
+          <p>
+            The connection between Vaudreaux and SJL is part of ordinary
+            life. People maintain relationships across the distance, bringing
+            their regional experiences, traditions, preferences, and everyday
+            habits with them.
+          </p>
+        </article>
+
+      </div>
+
+      <section class="bayou-benoit" aria-labelledby="benoit-heading">
         <div>
-          <h2 id="connections-heading">Connected to Saint Jude's Landing</h2>
-          <p>A distinct regional identity with strong ties to the wider world.</p>
+          <p class="benoit-label">04.03 · A familiar face</p>
+          <h3 id="benoit-heading">Benoit</h3>
         </div>
-      </div>
-
-      <div class="v-grid">
-        <article class="v-card">
-          <h3>Movement and Trade</h3>
-          <p>
-            Vaudreaux connects to Saint Jude's Landing through roads, boats,
-            aircraft, trade, family networks, employment, and cultural exchange.
-            People travel between the region and the city regularly.
-          </p>
-        </article>
-
-        <article class="v-card">
-          <h3>Culture Travels Both Ways</h3>
-          <p>
-            The connection between Vaudreaux and SJL is part of ordinary life.
-            People maintain relationships across the distance, bringing their
-            regional experiences, traditions, preferences, and everyday habits
-            with them.
-          </p>
-        </article>
-      </div>
-
-      <div class="v-feature">
-        <p class="v-feature-label">A Personal Connection</p>
-        <h3>Benoit</h3>
         <p>
           Benoit is from Vaudreaux. His Cajun and Creole background, Southern
-          Louisiana-influenced speech, food preferences, social warmth, and easy
-          familiarity with swamp and river environments are part of his everyday
-          identity. His regional background is something he carries with him
-          into life in Saint Jude's Landing.
+          Louisiana-influenced speech, food preferences, social warmth, and
+          easy familiarity with swamp and river environments are part of his
+          everyday identity. His regional background is something he carries
+          with him into life in Saint Jude’s Landing.
         </p>
-      </div>
+      </section>
     </section>
 
-    <footer class="v-quote">
-      <span aria-hidden="true">✳ ✦ ✳</span>
-      Hot, humid, lush, loud, communal, colorful, funny, beautiful, strange,
-      and deeply lived-in. Vaudreaux is a region where alien wetlands and
-      generations of human and nonhuman community life belong together.
+    <footer class="bayou-footer">
+      <span class="flourish" aria-hidden="true">〰 ✿ ✳ ✿ 〰</span>
+      <p>
+        Hot, humid, lush, loud, communal, colorful, funny, beautiful,
+        strange, and deeply lived-in. Vaudreaux is a region where alien
+        wetlands and generations of human and nonhuman community life
+        belong together.
+      </p>
+
+      <div class="footer-links">
+        <a href="../index.html">← Back to Creator</a>
+        <span>Vaudreaux · Southern Creator</span>
+      </div>
     </footer>
 
   </main>
