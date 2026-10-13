@@ -7,196 +7,276 @@
   <link rel="stylesheet" href="../style.css">
   <style>
     :root {
-      --am-bg: #111116;
-      --am-panel: #1b1a22;
-      --am-panel-light: #23212c;
-      --am-border: #403749;
-      --am-text: #eae4ed;
-      --am-muted: #aaa2b2;
-      --am-violet: #b58bff;
-      --am-pink: #ef9ce5;
-      --am-lime: #c5d98b;
-      --am-dark: #17131e;
+      --am-ink: #17131b;
+      --am-black: #100e13;
+      --am-panel: #211b26;
+      --am-paper: #f0e8da;
+      --am-muted: #b8aabb;
+      --am-purple: #bca0ff;
+      --am-pink: #ff91c8;
+      --am-lime: #d8f28a;
+      --am-line: #49374f;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: var(--am-bg);
-      color: var(--am-text);
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 12% 6%, rgba(188, 160, 255, 0.09), transparent 28rem),
+        radial-gradient(ellipse at 90% 50%, rgba(255, 145, 200, 0.055), transparent 30rem),
+        var(--am-black);
+      color: var(--am-paper);
     }
 
     .ammonia-page {
-      width: min(1080px, calc(100% - 32px));
+      width: min(1060px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 34px 0 70px;
+      padding: 24px 0 64px;
       font-family: inherit;
       line-height: 1.7;
     }
 
+    .am-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 13px;
+      color: var(--am-muted);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .am-topline span:last-child {
+      color: var(--am-lime);
+    }
+
     .am-hero {
       position: relative;
+      isolation: isolate;
       overflow: hidden;
-      padding: clamp(28px, 6vw, 60px);
-      border: 1px solid var(--am-border);
-      border-radius: 20px;
+      padding: clamp(27px, 6vw, 64px);
+      border: 1px solid var(--am-line);
+      border-radius: 5px 30px 5px 30px;
       background:
-        radial-gradient(ellipse at 90% 5%, rgba(181, 139, 255, 0.19), transparent 38%),
-        radial-gradient(ellipse at 5% 100%, rgba(239, 156, 229, 0.10), transparent 42%),
-        linear-gradient(140deg, #26202f, #19171f 66%, #201a28);
+        linear-gradient(115deg, transparent 0 68%, rgba(188, 160, 255, 0.07) 68% 69%, transparent 69%),
+        radial-gradient(ellipse at 88% 15%, rgba(188, 160, 255, 0.22), transparent 35%),
+        linear-gradient(145deg, #302437, #1c1721 65%, #24182a);
+    }
+
+    .am-hero::before {
+      content: "AM!";
+      position: absolute;
+      z-index: -1;
+      top: 3%;
+      right: -1%;
+      color: rgba(255, 145, 200, 0.055);
+      font-size: clamp(9rem, 27vw, 21rem);
+      font-weight: 1000;
+      letter-spacing: -0.12em;
+      line-height: 1;
+      transform: rotate(-8deg);
+      pointer-events: none;
     }
 
     .am-hero::after {
-      content: "☽";
+      content: "✦";
       position: absolute;
-      top: -66px;
-      right: 2%;
-      color: rgba(181, 139, 255, 0.09);
-      font-size: clamp(190px, 36vw, 400px);
-      line-height: 1;
+      right: 9%;
+      bottom: 12%;
+      color: rgba(216, 242, 138, 0.6);
+      font-size: clamp(2rem, 5vw, 4rem);
+      transform: rotate(17deg);
       pointer-events: none;
     }
 
     .am-eyebrow {
-      position: relative;
-      z-index: 1;
       margin: 0 0 12px;
       color: var(--am-pink);
-      font-size: 0.76rem;
-      font-weight: 800;
+      font-size: 0.75rem;
+      font-weight: 900;
       letter-spacing: 0.2em;
       text-transform: uppercase;
     }
 
     .am-hero h1 {
-      position: relative;
-      z-index: 1;
+      max-width: 100%;
       margin: 0;
-      color: #f3eafa;
-      font-size: clamp(3rem, 10vw, 6.5rem);
-      font-weight: 950;
-      letter-spacing: -0.075em;
-      line-height: 0.95;
+      color: var(--am-paper);
+      font-size: clamp(3.4rem, 13vw, 8.8rem);
+      font-weight: 1000;
+      letter-spacing: -0.09em;
+      line-height: 0.82;
       overflow-wrap: anywhere;
+      text-shadow: 5px 5px 0 rgba(188, 160, 255, 0.12);
     }
 
     .am-subtitle {
-      position: relative;
-      z-index: 1;
-      margin: 18px 0 0;
-      color: #c8bcd3;
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      max-width: 480px;
+      margin: 25px 0 0;
+      color: #d4c4d8;
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
     }
 
     .am-tags {
-      position: relative;
-      z-index: 1;
       display: flex;
       flex-wrap: wrap;
-      gap: 9px;
+      gap: 8px;
       margin-top: 24px;
+      max-width: 600px;
     }
 
     .am-tag {
-      padding: 6px 11px;
-      border: 1px solid rgba(181, 139, 255, 0.3);
-      border-radius: 999px;
-      background: rgba(181, 139, 255, 0.08);
-      color: #dfcbff;
-      font-size: 0.77rem;
-      font-weight: 750;
+      padding: 5px 10px;
+      border: 1px solid rgba(188, 160, 255, 0.4);
+      border-radius: 3px 10px 3px 10px;
+      background: rgba(16, 14, 19, 0.42);
+      color: #e1d1ff;
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .am-tag:nth-child(3n + 2) {
+      border-color: rgba(255, 145, 200, 0.4);
+      color: var(--am-pink);
+    }
+
+    .am-tag:nth-child(3n) {
+      border-color: rgba(216, 242, 138, 0.35);
+      color: var(--am-lime);
+    }
+
+    .am-hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 31px;
+      padding-top: 15px;
+      border-top: 1px dashed rgba(240, 232, 218, 0.23);
     }
 
     .am-sparkles {
-      margin-top: 24px;
-      color: var(--am-violet);
-      letter-spacing: 0.45em;
-      font-size: 0.9rem;
+      color: var(--am-purple);
+      font-size: 1rem;
+      letter-spacing: 0.3em;
+    }
+
+    .am-hero-note {
+      color: #b7a5bc;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-align: right;
+      text-transform: uppercase;
     }
 
     .am-overview {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin: 18px 0 36px;
+      gap: 9px;
+      margin: 12px 0 44px;
     }
 
     .am-fact {
       min-width: 0;
-      padding: 17px 19px;
-      border: 1px solid var(--am-border);
-      border-radius: 13px;
+      padding: 14px 16px;
+      border: 1px solid #352b3b;
+      border-radius: 3px 12px 3px 12px;
       background: var(--am-panel);
     }
 
     .am-fact-label {
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 3px;
       color: var(--am-muted);
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
+      font-size: 0.66rem;
+      font-weight: 900;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
     }
 
     .am-fact-value {
-      color: var(--am-text);
-      font-size: 0.97rem;
-      font-weight: 750;
+      color: var(--am-paper);
+      font-size: 0.94rem;
+      font-weight: 800;
       overflow-wrap: anywhere;
     }
 
     .am-section {
-      margin-top: 42px;
+      margin-top: 48px;
+      scroll-margin-top: 20px;
     }
 
     .am-section-heading {
       display: flex;
-      align-items: center;
-      gap: 13px;
-      margin-bottom: 19px;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 17px;
     }
 
     .am-section-icon {
       display: grid;
-      width: 43px;
-      height: 43px;
-      flex: 0 0 43px;
+      width: 47px;
+      height: 47px;
+      flex: 0 0 47px;
       place-items: center;
-      border: 1px solid var(--am-border);
-      border-radius: 13px;
-      background: var(--am-panel);
-      color: var(--am-violet);
-      font-size: 1.25rem;
+      border: 1px solid var(--am-line);
+      border-radius: 5px 15px 5px 15px;
+      background: #251b2b;
+      color: var(--am-pink);
+      font-size: 1.35rem;
+      transform: rotate(-3deg);
     }
 
     .am-section-heading h2 {
       margin: 0;
-      color: #f0e7f7;
-      font-size: clamp(1.3rem, 3vw, 1.8rem);
-      font-weight: 850;
+      color: var(--am-paper);
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 950;
+      letter-spacing: -0.045em;
       line-height: 1.2;
     }
 
     .am-section-heading p {
-      margin: 4px 0 0;
+      margin: 5px 0 0;
       color: var(--am-muted);
-      font-size: 0.88rem;
+      font-size: 0.87rem;
+    }
+
+    .am-section-kicker {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--am-lime);
+      font-size: 0.65rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
     }
 
     .am-card {
-      min-width: 0;
-      padding: 24px;
-      border: 1px solid var(--am-border);
-      border-radius: 16px;
-      background: var(--am-panel);
+      padding: clamp(19px, 4vw, 29px);
+      border: 1px solid #3c3042;
+      border-radius: 4px 19px 4px 19px;
+      background:
+        linear-gradient(135deg, rgba(188, 160, 255, 0.035), transparent 50%),
+        var(--am-panel);
     }
 
     .am-card p {
-      margin: 0 0 14px;
-      color: #c5bdcc;
+      margin: 0 0 15px;
+      color: #d0c4d2;
     }
 
     .am-card p:last-child {
@@ -204,32 +284,42 @@
     }
 
     .am-card strong {
-      color: #f0e4ff;
+      color: var(--am-pink);
     }
 
     .am-appearance-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 13px;
+      gap: 10px;
     }
 
     .am-detail {
+      min-width: 0;
       padding: 19px;
-      border: 1px solid #37303f;
-      border-radius: 13px;
+      border: 1px solid #3b3041;
+      border-radius: 4px 14px 4px 14px;
       background: var(--am-panel);
     }
 
     .am-detail h3 {
-      margin: 0 0 8px;
-      color: var(--am-violet);
-      font-size: 0.95rem;
-      font-weight: 850;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 9px;
+      color: var(--am-purple);
+      font-size: 0.96rem;
+      font-weight: 900;
+    }
+
+    .am-detail h3::before {
+      content: "✦";
+      color: var(--am-pink);
+      font-size: 0.7rem;
     }
 
     .am-detail p {
       margin: 0;
-      color: #c5bdcc;
+      color: #cbbfce;
       font-size: 0.91rem;
     }
 
@@ -238,12 +328,13 @@
     }
 
     .am-clothing-note {
-      margin-top: 13px;
-      padding: 16px 19px;
-      border-left: 3px solid var(--am-pink);
-      border-radius: 0 10px 10px 0;
-      background: rgba(239, 156, 229, 0.06);
-      color: #d8c8d8;
+      position: relative;
+      margin-top: 11px;
+      padding: 18px 20px 18px 23px;
+      border-left: 4px solid var(--am-pink);
+      border-radius: 0 12px 12px 0;
+      background: rgba(255, 145, 200, 0.075);
+      color: #e0cbd9;
       font-size: 0.92rem;
     }
 
@@ -254,23 +345,37 @@
     .am-traits {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 13px;
+      gap: 12px;
     }
 
     .am-trait-box {
-      padding: 22px;
-      border: 1px solid var(--am-border);
-      border-radius: 15px;
+      min-width: 0;
+      padding: 21px;
+      border: 1px solid #3c3042;
+      border-radius: 4px 18px 4px 18px;
       background: var(--am-panel);
+    }
+
+    .am-trait-box.likes {
+      background:
+        linear-gradient(140deg, rgba(216, 242, 138, 0.06), transparent 60%),
+        var(--am-panel);
+    }
+
+    .am-trait-box.dislikes {
+      background:
+        linear-gradient(140deg, rgba(255, 145, 200, 0.06), transparent 60%),
+        var(--am-panel);
     }
 
     .am-trait-box h3 {
       display: flex;
       align-items: center;
       gap: 9px;
-      margin: 0 0 13px;
-      color: #f0e7f7;
+      margin: 0 0 14px;
+      color: var(--am-paper);
       font-size: 1rem;
+      font-weight: 900;
     }
 
     .am-trait-box.likes h3 span {
@@ -284,128 +389,188 @@
     .am-trait-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 7px;
       margin: 0;
       padding: 0;
       list-style: none;
     }
 
     .am-trait-list li {
-      padding: 6px 10px;
-      border: 1px solid #393340;
-      border-radius: 8px;
-      background: var(--am-dark);
-      color: #d0c7d7;
-      font-size: 0.83rem;
+      padding: 5px 9px;
+      border: 1px solid #423647;
+      border-radius: 3px 8px 3px 8px;
+      background: var(--am-black);
+      color: #d6c9d9;
+      font-size: 0.81rem;
+      overflow-wrap: anywhere;
+    }
+
+    .am-trait-box.likes .am-trait-list li:nth-child(3n + 1) {
+      border-color: #465039;
     }
 
     .am-quote {
-      margin-top: 16px;
-      padding: 25px;
-      border: 1px solid #4b3c58;
-      border-radius: 15px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 12px;
+      padding: 29px 20px;
+      border: 1px solid #57415d;
+      border-radius: 4px 22px 4px 22px;
       background:
-        radial-gradient(ellipse at 100% 0%, rgba(181, 139, 255, 0.1), transparent 60%),
-        #19161f;
+        radial-gradient(ellipse at 10% 100%, rgba(255, 145, 200, 0.12), transparent 50%),
+        radial-gradient(ellipse at 100% 0%, rgba(188, 160, 255, 0.16), transparent 55%),
+        #1c1621;
       text-align: center;
     }
 
     .am-quote-label {
       margin: 0 0 8px;
-      color: var(--am-muted);
-      font-size: 0.7rem;
-      font-weight: 800;
+      color: var(--am-lime);
+      font-size: 0.67rem;
+      font-weight: 900;
       letter-spacing: 0.16em;
       text-transform: uppercase;
     }
 
     .am-quote blockquote {
       margin: 0;
-      color: #f0dfff;
-      font-size: clamp(1.45rem, 4vw, 2.1rem);
-      font-weight: 850;
-      letter-spacing: -0.025em;
+      color: var(--am-paper);
+      font-size: clamp(2.4rem, 8vw, 4.5rem);
+      font-weight: 1000;
+      letter-spacing: -0.07em;
+      line-height: 1.1;
     }
 
     .am-quote-caption {
-      margin: 9px 0 0;
+      margin: 8px 0 0;
       color: var(--am-muted);
       font-size: 0.85rem;
     }
 
     .am-instinct-panel {
       overflow: hidden;
-      border: 1px solid #453851;
-      border-radius: 16px;
+      border: 1px solid #49374f;
+      border-radius: 4px 20px 4px 20px;
       background: var(--am-panel);
     }
 
     .am-instinct-header {
-      padding: 20px 24px;
-      border-bottom: 1px solid #453851;
-      background: linear-gradient(100deg, rgba(181, 139, 255, 0.11), rgba(239, 156, 229, 0.05));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 19px 23px;
+      border-bottom: 1px solid #49374f;
+      background:
+        linear-gradient(100deg, rgba(188, 160, 255, 0.13), rgba(255, 145, 200, 0.055));
     }
 
     .am-instinct-header h3 {
       margin: 0;
-      color: #ead8ff;
-      font-size: 1.08rem;
+      color: #eadcff;
+      font-size: 1.05rem;
+      font-weight: 900;
     }
 
     .am-instinct-header p {
-      margin: 5px 0 0;
+      margin: 4px 0 0;
       color: var(--am-muted);
-      font-size: 0.88rem;
+      font-size: 0.85rem;
+    }
+
+    .am-instinct-stamp {
+      padding: 4px 8px;
+      border: 1px solid rgba(216, 242, 138, 0.4);
+      border-radius: 3px;
+      color: var(--am-lime);
+      font-size: 0.64rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
 
     .am-instinct-body {
-      padding: 24px;
+      padding: clamp(19px, 4vw, 27px);
     }
 
     .am-instinct-body p {
       margin: 0 0 15px;
-      color: #c5bdcc;
+      color: #d0c4d2;
     }
 
-    .am-instinct-body p:last-child {
+    .am-instinct-body p:last-of-type {
       margin-bottom: 0;
+    }
+
+    .am-instinct-body strong {
+      color: var(--am-pink);
     }
 
     .am-instinct-list {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 20px;
+      gap: 9px;
+      margin-top: 22px;
     }
 
     .am-instinct-item {
-      padding: 13px;
-      border: 1px solid #393340;
-      border-radius: 10px;
-      background: var(--am-dark);
-      color: #dfd3ec;
-      font-size: 0.86rem;
+      padding: 15px 10px;
+      border: 1px solid #403444;
+      border-radius: 4px 12px 4px 12px;
+      background: var(--am-black);
+      color: #dfd2e4;
+      font-size: 0.83rem;
+      font-weight: 750;
       text-align: center;
     }
 
     .am-instinct-item span {
       display: block;
       margin-bottom: 5px;
-      color: var(--am-violet);
-      font-size: 1.2rem;
+      color: var(--am-purple);
+      font-size: 1.35rem;
+    }
+
+    .am-instinct-item:nth-child(3n + 2) span {
+      color: var(--am-pink);
+    }
+
+    .am-instinct-item:nth-child(3n) span {
+      color: var(--am-lime);
+    }
+
+    .am-bottom-note {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 45px;
+      padding: 18px 10px;
+      border-top: 1px dashed #443448;
+      border-bottom: 1px dashed #443448;
+      color: var(--am-muted);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .am-bottom-note span {
+      color: var(--am-pink);
     }
 
     .am-footer {
-      margin-top: 48px;
-      padding-top: 20px;
-      border-top: 1px solid var(--am-border);
-      color: #82778b;
+      padding-top: 19px;
+      color: #85758c;
+      font-size: 0.72rem;
+      letter-spacing: 0.13em;
       text-align: center;
-      font-size: 0.76rem;
-      letter-spacing: 0.1em;
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 680px) {
       .am-overview {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -427,38 +592,58 @@
     @media (max-width: 420px) {
       .ammonia-page {
         width: calc(100% - 20px);
-        padding-top: 12px;
+        padding-top: 13px;
+      }
+
+      .am-topline {
+        font-size: 0.63rem;
       }
 
       .am-hero {
-        padding: 27px 21px;
-        border-radius: 15px;
+        padding: 28px 20px;
+        border-radius: 4px 20px 4px 20px;
+      }
+
+      .am-hero h1 {
+        font-size: clamp(3.1rem, 15vw, 4.5rem);
       }
 
       .am-overview {
-        gap: 8px;
+        gap: 7px;
       }
 
       .am-fact {
-        padding: 13px;
+        padding: 12px;
       }
 
-      .am-card,
-      .am-trait-box,
-      .am-instinct-body {
-        padding: 18px;
+      .am-section-heading {
+        gap: 10px;
+      }
+
+      .am-section-icon {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+      }
+
+      .am-detail,
+      .am-trait-box {
+        padding: 17px;
       }
 
       .am-instinct-list {
-        grid-template-columns: 1fr 1fr;
+        gap: 7px;
+      }
+
+      .am-instinct-item {
+        padding: 12px 7px;
+        font-size: 0.78rem;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
+      html {
+        scroll-behavior: auto;
       }
     }
   </style>
@@ -466,10 +651,18 @@
 <body>
   <main class="ammonia-page">
 
+    <div class="am-topline">
+      <span>CREATOR ✦ SAINT JUDE’S LANDING</span>
+      <span>KEEP YOUR HANDS TO YOURSELF.</span>
+    </div>
+
     <header class="am-hero">
-      <p class="am-eyebrow">Creator / Saint Jude’s Landing</p>
+      <p class="am-eyebrow">Bat demi-human · Group leader</p>
       <h1>AMMONIA</h1>
-      <p class="am-subtitle">Bat demi-human · Leader of Ammonia’s group</p>
+      <p class="am-subtitle">
+        She heard you coming. She smelled you coming. She probably watched you
+        do something stupid before you even noticed she was there.
+      </p>
 
       <div class="am-tags">
         <span class="am-tag">Graffiti</span>
@@ -479,7 +672,10 @@
         <span class="am-tag">Physical Instinct</span>
       </div>
 
-      <div class="am-sparkles" aria-hidden="true">☽ ✦ ⛧ ✦ ☾</div>
+      <div class="am-hero-bottom">
+        <div class="am-sparkles" aria-hidden="true">☽ ✦ ⛧ ✦ ☾</div>
+        <div class="am-hero-note">Not your pet.<br>Not your problem to solve.</div>
+      </div>
     </header>
 
     <section class="am-overview" aria-label="Character information">
@@ -513,6 +709,7 @@
       <div class="am-section-heading">
         <span class="am-section-icon" aria-hidden="true">✧</span>
         <div>
+          <span class="am-section-kicker">01 / The silhouette</span>
           <h2 id="appearance-heading">Appearance</h2>
           <p>Dark colors, sharp features, and a silhouette entirely her own.</p>
         </div>
@@ -587,6 +784,7 @@
       <div class="am-section-heading">
         <span class="am-section-icon" aria-hidden="true">☾</span>
         <div>
+          <span class="am-section-kicker">02 / Under the surface</span>
           <h2 id="personality-heading">Personality</h2>
           <p>Quiet when she has nothing to say. Entirely capable of making herself a problem.</p>
         </div>
@@ -627,6 +825,7 @@
       <div class="am-section-heading">
         <span class="am-section-icon" aria-hidden="true">✦</span>
         <div>
+          <span class="am-section-kicker">03 / Curiosity cabinet</span>
           <h2 id="likes-heading">Likes &amp; Dislikes</h2>
           <p>Things worth investigating, things worth keeping, and things best left alone.</p>
         </div>
@@ -671,6 +870,7 @@
       <div class="am-section-heading">
         <span class="am-section-icon" aria-hidden="true">☻</span>
         <div>
+          <span class="am-section-kicker">04 / Culinary crimes</span>
           <h2 id="food-heading">The Things She Doesn't Find Weird</h2>
           <p>Other people have questions. Ammonia generally does not.</p>
         </div>
@@ -705,6 +905,7 @@
       <div class="am-section-heading">
         <span class="am-section-icon" aria-hidden="true">⌁</span>
         <div>
+          <span class="am-section-kicker">05 / Read the room. Literally.</span>
           <h2 id="instinct-heading">Intelligence &amp; Instinct</h2>
           <p>She reads a place through her entire body.</p>
         </div>
@@ -712,8 +913,11 @@
 
       <div class="am-instinct-panel">
         <div class="am-instinct-header">
-          <h3>Physical awareness</h3>
-          <p>Movement, surfaces, sound, smell, and spatial memory.</p>
+          <div>
+            <h3>Physical awareness</h3>
+            <p>Movement, surfaces, sound, smell, and spatial memory.</p>
+          </div>
+          <span class="am-instinct-stamp">All senses online</span>
         </div>
 
         <div class="am-instinct-body">
@@ -763,6 +967,13 @@
         </div>
       </div>
     </section>
+
+    <div class="am-bottom-note">
+      <span>✦</span>
+      She was minding her own business.
+      <span>✦</span>
+      You should try it.
+    </div>
 
     <footer class="am-footer">
       CREATOR &nbsp; ✦ &nbsp; SAINT JUDE’S LANDING
