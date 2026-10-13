@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#211a22">
+  <meta name="theme-color" content="#191b17">
 
   <title>Nine | Saint Jude’s Landing — Creator</title>
 
@@ -11,34 +11,75 @@
 
   <style>
     :root {
-      --nine-bg: #211a22;
-      --nine-panel: #302630;
-      --nine-panel-dark: #271e29;
-      --nine-rust: #ff956e;
-      --nine-acid: #d8ff82;
-      --nine-pink: #ff83b8;
-      --nine-blue: #91e8ff;
-      --nine-text: #fff0e8;
-      --nine-muted: #d1bdc8;
-      --nine-border: #68505f;
+      --nine-void: #191b17;
+      --nine-black: #10120f;
+      --nine-iron: #292d25;
+      --nine-metal: #3b4035;
+      --nine-paper: #e8e3ce;
+      --nine-paper-dark: #d4ceb5;
+      --nine-ink: #24271e;
+      --nine-rust: #e36d48;
+      --nine-yellow: #e8f66b;
+      --nine-pink: #ff8cba;
+      --nine-blue: #8cdeed;
+      --nine-white: #f5f0df;
+      --nine-muted: #b8bba7;
+      --nine-rule: #555a49;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
     }
 
     body {
-      background: var(--nine-bg);
-      color: var(--nine-text);
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 10% 8%, #33392a 0, transparent 35rem),
+        var(--nine-void);
+      color: var(--nine-white);
+      font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
     }
 
-    .nine-page {
-      width: min(1100px, 100%);
+    a {
+      color: inherit;
+    }
+
+    .nine-site {
+      width: min(1160px, 100%);
       margin: 0 auto;
-      padding: 24px;
+      padding: 22px clamp(14px, 3vw, 32px) 36px;
+    }
+
+    /* Navigation */
+
+    .nine-topline {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 28px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--nine-rule);
+      color: var(--nine-muted);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
     }
 
     .nine-back {
-      display: inline-block;
-      margin-bottom: 24px;
-      color: var(--nine-acid);
-      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--nine-yellow);
       text-decoration: none;
     }
 
@@ -46,398 +87,1035 @@
       color: var(--nine-pink);
     }
 
-    .nine-hero {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(28px, 6vw, 68px);
-      border: 2px solid var(--nine-rust);
-      border-radius: 5px 24px 5px 24px;
-      background:
-        radial-gradient(
-          ellipse at 90% 10%,
-          #594039 0,
-          transparent 36%
-        ),
-        radial-gradient(
-          ellipse at 5% 100%,
-          #38442a 0,
-          transparent 35%
-        ),
-        var(--nine-panel);
-      box-shadow: 7px 7px 0 #110d14;
+    .nine-back span {
+      font-size: 1.2rem;
     }
 
-    .nine-eyebrow {
-      margin: 0 0 18px;
-      color: var(--nine-acid);
-      font-size: 0.8rem;
-      font-weight: 900;
-      letter-spacing: 0.17em;
+    .nine-topline-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nine-live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--nine-rust);
+      box-shadow: 0 0 0 3px #e36d4822;
+    }
+
+    /* Hero: industrial warning sign */
+
+    .nine-hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: clamp(24px, 5vw, 58px);
+      border: 1px solid #5a5d4b;
+      background:
+        linear-gradient(115deg, transparent 0 64%, #ffffff05 64% 65%, transparent 65%),
+        var(--nine-iron);
+    }
+
+    .nine-hero::before {
+      position: absolute;
+      z-index: -1;
+      top: -100px;
+      right: -75px;
+      width: 360px;
+      height: 360px;
+      border: 35px solid #e8f66b0a;
+      border-radius: 50%;
+      content: "";
+    }
+
+    .nine-hero::after {
+      position: absolute;
+      z-index: -1;
+      right: 5%;
+      bottom: -80px;
+      width: 260px;
+      height: 160px;
+      border-top: 2px dashed #e36d4855;
+      border-radius: 50%;
+      transform: rotate(-24deg);
+      content: "";
+    }
+
+    .nine-warning {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 100%;
+      margin-bottom: 24px;
+      padding: 8px 12px;
+      background: var(--nine-yellow);
+      color: var(--nine-ink);
+      font-size: 0.69rem;
+      font-weight: 950;
+      letter-spacing: 0.12em;
+      line-height: 1.4;
       text-transform: uppercase;
+    }
+
+    .nine-warning-mark {
+      font-size: 1.05rem;
+    }
+
+    .nine-heading-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: 14px;
     }
 
     .nine-hero h1 {
       margin: 0;
       color: var(--nine-rust);
-      font-size: clamp(4rem, 13vw, 9rem);
+      font-size: clamp(5.5rem, 19vw, 13rem);
+      font-weight: 1000;
+      line-height: 0.72;
+      letter-spacing: -0.105em;
+      text-shadow: 5px 5px 0 #11130f;
+    }
+
+    .nine-number {
+      align-self: flex-start;
+      margin-top: 6px;
+      color: var(--nine-yellow);
+      font-size: clamp(1rem, 3vw, 1.5rem);
       font-weight: 950;
-      line-height: 0.85;
-      letter-spacing: -0.08em;
-      text-shadow: 4px 4px 0 #59352f;
+      letter-spacing: 0.1em;
     }
 
-    .nine-subtitle {
-      max-width: 650px;
-      margin: 26px 0 0;
-      color: var(--nine-text);
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      line-height: 1.8;
+    .nine-hero-description {
+      max-width: 690px;
+      margin: 32px 0 0;
+      color: var(--nine-white);
+      font-size: clamp(1rem, 2.3vw, 1.2rem);
+      line-height: 1.85;
     }
 
-    .nine-tags {
+    .nine-hero-description strong {
+      color: var(--nine-yellow);
+    }
+
+    .nine-stat-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 38px;
+      border-top: 1px solid var(--nine-rule);
+      border-bottom: 1px solid var(--nine-rule);
+    }
+
+    .nine-stat {
+      min-width: 0;
+      padding: 16px 18px 16px 0;
+    }
+
+    .nine-stat + .nine-stat {
+      padding-left: 18px;
+      border-left: 1px solid var(--nine-rule);
+    }
+
+    .nine-stat-label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--nine-muted);
+      font-size: 0.65rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .nine-stat-value {
+      display: block;
+      color: var(--nine-yellow);
+      font-size: clamp(0.78rem, 2vw, 1rem);
+      font-weight: 950;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
+    }
+
+    /* Section navigation */
+
+    .nine-route {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      margin: 30px 0 42px;
+      border-top: 1px solid var(--nine-rule);
+      border-bottom: 1px solid var(--nine-rule);
+    }
+
+    .nine-route-title {
+      display: flex;
+      align-items: flex-start;
+      padding: 17px 12px 17px 0;
+      color: var(--nine-rust);
+      font-size: 0.68rem;
+      font-weight: 950;
+      letter-spacing: 0.1em;
+      line-height: 1.7;
+      text-transform: uppercase;
+    }
+
+    .nine-route-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 24px;
+      align-content: center;
+      gap: 7px;
+      padding: 12px 0 12px 15px;
+      border-left: 1px solid var(--nine-rule);
     }
 
-    .nine-tag {
-      padding: 7px 11px;
-      border: 1px solid var(--nine-border);
-      border-radius: 4px;
-      background: var(--nine-panel-dark);
-      color: var(--nine-acid);
-      font-size: 0.78rem;
-      font-weight: 850;
-      letter-spacing: 0.04em;
-    }
-
-    .nine-index {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 28px 0;
-      padding: 18px;
-      border: 1px dashed var(--nine-rust);
-      border-radius: 8px;
-      background: var(--nine-panel-dark);
-    }
-
-    .nine-index a {
-      padding: 7px 10px;
-      border: 1px solid var(--nine-border);
-      border-radius: 4px;
-      background: var(--nine-panel);
-      color: var(--nine-text);
-      font-size: 0.82rem;
-      font-weight: 750;
+    .nine-route-links a {
+      padding: 7px 9px;
+      border: 1px solid #555a49;
+      color: var(--nine-white);
+      font-size: 0.76rem;
+      font-weight: 800;
       text-decoration: none;
       transition: background 0.15s ease, color 0.15s ease;
     }
 
-    .nine-index a:hover {
-      background: var(--nine-acid);
-      color: var(--nine-bg);
+    .nine-route-links a:hover,
+    .nine-route-links a:focus-visible {
+      background: var(--nine-yellow);
+      border-color: var(--nine-yellow);
+      color: var(--nine-ink);
     }
 
-    .nine-intro {
-      margin: 0 0 24px;
-      padding: 24px;
-      border-left: 4px solid var(--nine-acid);
-      background: var(--nine-panel-dark);
+    /* Intro */
+
+    .nine-thesis {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.5fr);
+      gap: clamp(20px, 5vw, 62px);
+      align-items: start;
+      margin-bottom: 60px;
     }
 
-    .nine-intro h2 {
-      margin: 0 0 12px;
-      color: var(--nine-acid);
-      font-size: 1.1rem;
-      letter-spacing: 0.06em;
+    .nine-thesis-label {
+      margin: 0;
+      color: var(--nine-rust);
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.16em;
+      line-height: 1.7;
       text-transform: uppercase;
     }
 
-    .nine-intro p {
-      margin: 0;
-      color: var(--nine-muted);
-      line-height: 1.85;
+    .nine-thesis h2 {
+      margin: 12px 0 0;
+      color: var(--nine-yellow);
+      font-size: clamp(1.9rem, 5vw, 3.7rem);
+      font-weight: 950;
+      line-height: 0.98;
+      letter-spacing: -0.055em;
     }
 
-    .nine-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      align-items: stretch;
+    .nine-thesis-copy {
+      padding-top: 4px;
+    }
+
+    .nine-thesis-copy p {
+      margin: 0;
+      color: var(--nine-muted);
+      font-size: 1.03rem;
+      line-height: 1.95;
+    }
+
+    .nine-thesis-copy p + p {
+      margin-top: 16px;
+    }
+
+    .nine-thesis-copy strong {
+      color: var(--nine-white);
+    }
+
+    /* Main content */
+
+    .nine-content-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 3px solid var(--nine-rust);
+    }
+
+    .nine-content-heading h2 {
+      margin: 0;
+      color: var(--nine-white);
+      font-size: clamp(1.3rem, 3.5vw, 2rem);
+      font-weight: 950;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .nine-content-heading span {
+      color: var(--nine-muted);
+      font-size: 0.69rem;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
     }
 
     .nine-section {
-      min-width: 0;
-      padding: 22px;
-      border: 1px solid var(--nine-border);
-      border-top: 3px solid var(--nine-rust);
-      border-radius: 7px;
-      background: var(--nine-panel);
-      scroll-margin-top: 20px;
+      scroll-margin-top: 22px;
     }
 
-    .nine-section:nth-child(4n + 2) {
-      border-top-color: var(--nine-acid);
-    }
-
-    .nine-section:nth-child(4n + 3) {
-      border-top-color: var(--nine-pink);
-    }
-
-    .nine-section:nth-child(4n) {
-      border-top-color: var(--nine-blue);
-    }
-
-    .nine-section h2 {
-      margin: 0 0 12px;
-      color: var(--nine-rust);
-      font-size: 1.05rem;
+    .nine-section h3 {
+      margin: 0;
+      font-size: 1.15rem;
       font-weight: 950;
-      letter-spacing: 0.06em;
-      line-height: 1.4;
+      line-height: 1.3;
       text-transform: uppercase;
-    }
-
-    .nine-section:nth-child(4n + 2) h2 {
-      color: var(--nine-acid);
-    }
-
-    .nine-section:nth-child(4n + 3) h2 {
-      color: var(--nine-pink);
-    }
-
-    .nine-section:nth-child(4n) h2 {
-      color: var(--nine-blue);
-    }
-
-    .nine-section h2::before {
-      content: "✳ ";
     }
 
     .nine-section p {
       margin: 0;
       color: var(--nine-muted);
-      font-size: 0.96rem;
-      line-height: 1.85;
+      font-size: 0.97rem;
+      line-height: 1.9;
       overflow-wrap: anywhere;
     }
 
     .nine-section strong {
-      color: var(--nine-text);
+      color: var(--nine-white);
     }
 
+    /* Industrial foundations: large editorial rows */
+
+    .nine-foundations {
+      border-top: 1px solid var(--nine-rule);
+    }
+
+    .nine-foundation {
+      display: grid;
+      grid-template-columns: 75px minmax(0, 0.75fr) minmax(0, 1.25fr);
+      gap: 20px;
+      align-items: start;
+      padding: 25px 0;
+      border-bottom: 1px solid var(--nine-rule);
+    }
+
+    .nine-row-number {
+      padding-top: 2px;
+      color: var(--nine-rust);
+      font-size: 1.8rem;
+      font-weight: 1000;
+      line-height: 1;
+      letter-spacing: -0.07em;
+    }
+
+    .nine-foundation h3 {
+      color: var(--nine-yellow);
+    }
+
+    .nine-foundation p {
+      max-width: 650px;
+    }
+
+    .nine-foundation:nth-child(2) .nine-row-number,
+    .nine-foundation:nth-child(2) h3 {
+      color: var(--nine-blue);
+    }
+
+    .nine-foundation:nth-child(3) .nine-row-number,
+    .nine-foundation:nth-child(3) h3 {
+      color: var(--nine-pink);
+    }
+
+    .nine-foundation:nth-child(4) .nine-row-number,
+    .nine-foundation:nth-child(4) h3 {
+      color: var(--nine-rust);
+    }
+
+    /* The biological landscape */
+
+    .nine-biology {
+      margin-top: 62px;
+      padding: clamp(20px, 4vw, 38px);
+      background: var(--nine-paper);
+      color: var(--nine-ink);
+    }
+
+    .nine-biology .nine-content-heading {
+      border-color: var(--nine-ink);
+    }
+
+    .nine-biology .nine-content-heading h2 {
+      color: var(--nine-ink);
+    }
+
+    .nine-biology .nine-content-heading span {
+      color: #626352;
+    }
+
+    .nine-biology-intro {
+      max-width: 700px;
+      margin-bottom: 28px !important;
+      color: #555849 !important;
+    }
+
+    .nine-biology-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 34px;
+    }
+
+    .nine-biology-item {
+      padding: 20px 0;
+      border-top: 1px solid #a8a893;
+    }
+
+    .nine-biology-item h3 {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
+      color: var(--nine-ink);
+    }
+
+    .nine-biology-item h3::before {
+      flex: 0 0 auto;
+      color: var(--nine-rust);
+      font-size: 0.85rem;
+      content: "✳";
+    }
+
+    .nine-biology-item p {
+      color: #555849;
+    }
+
+    .nine-biology-item strong {
+      color: var(--nine-ink);
+    }
+
+    .nine-biology-item:last-child {
+      grid-column: 1 / -1;
+    }
+
+    /* Attraction and work culture */
+
+    .nine-people {
+      margin-top: 62px;
+    }
+
+    .nine-people-lead {
+      max-width: 760px;
+      margin-bottom: 28px !important;
+    }
+
+    .nine-desire {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      margin-top: 12px;
+      border-top: 1px solid var(--nine-rule);
+      border-bottom: 1px solid var(--nine-rule);
+    }
+
+    .nine-desire-title {
+      padding: 28px 26px 28px 0;
+      border-right: 1px solid var(--nine-rule);
+    }
+
+    .nine-desire-title small {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--nine-pink);
+      font-size: 0.7rem;
+      font-weight: 950;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .nine-desire-title h3 {
+      color: var(--nine-pink);
+      font-size: clamp(1.5rem, 3.8vw, 2.5rem);
+      letter-spacing: -0.05em;
+      line-height: 1;
+    }
+
+    .nine-desire-copy {
+      display: flex;
+      align-items: center;
+      padding: 28px 0 28px 26px;
+    }
+
+    .nine-desire-copy p {
+      color: var(--nine-muted);
+    }
+
+    .nine-desire-industrial .nine-desire-title small,
+    .nine-desire-industrial .nine-desire-title h3 {
+      color: var(--nine-yellow);
+    }
+
+    .nine-desire-industrial .nine-desire-title {
+      border-right-color: var(--nine-rule);
+    }
+
+    /* Everyday life: contrasting paper strip */
+
+    .nine-neighborhood {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      margin-top: 62px;
+      background: var(--nine-yellow);
+      color: var(--nine-ink);
+    }
+
+    .nine-neighborhood-main {
+      padding: clamp(22px, 4vw, 38px);
+    }
+
+    .nine-neighborhood-main .nine-kicker {
+      margin: 0 0 15px;
+      color: #555c31;
+      font-size: 0.69rem;
+      font-weight: 950;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .nine-neighborhood-main h2 {
+      max-width: 470px;
+      margin: 0 0 20px;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 1000;
+      line-height: 0.95;
+      letter-spacing: -0.065em;
+    }
+
+    .nine-neighborhood-main p {
+      max-width: 620px;
+      margin: 0;
+      color: #454a32;
+      font-size: 0.98rem;
+      line-height: 1.9;
+    }
+
+    .nine-neighborhood-aside {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      padding: clamp(22px, 4vw, 38px);
+      border-left: 1px solid #8a914d;
+      background: #d8e85d;
+    }
+
+    .nine-neighborhood-aside h3 {
+      margin: 0 0 10px;
+      color: var(--nine-ink);
+      font-size: 0.8rem;
+      font-weight: 950;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .nine-neighborhood-aside p {
+      margin: 0;
+      color: #454a32;
+      font-size: 0.91rem;
+      line-height: 1.8;
+    }
+
+    .nine-neighborhood-aside .nine-aside-stamp {
+      align-self: flex-start;
+      padding: 9px 11px;
+      border: 2px solid var(--nine-ink);
+      color: var(--nine-ink);
+      font-size: 0.7rem;
+      font-weight: 1000;
+      letter-spacing: 0.1em;
+      text-align: center;
+      text-transform: uppercase;
+      transform: rotate(-3deg);
+    }
+
+    /* Benoit feature */
+
     .nine-benoit {
-      border-color: var(--nine-acid);
-      background: #303426;
+      display: grid;
+      grid-template-columns: 105px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+      margin-top: 62px;
+      padding: 28px 0;
+      border-top: 1px solid var(--nine-rule);
+      border-bottom: 1px solid var(--nine-rule);
+      scroll-margin-top: 22px;
+    }
+
+    .nine-benoit-symbol {
+      display: grid;
+      place-items: center;
+      width: 88px;
+      height: 88px;
+      border: 2px solid var(--nine-blue);
+      color: var(--nine-blue);
+      font-size: 2.6rem;
+      font-weight: 950;
+      transform: rotate(-4deg);
+    }
+
+    .nine-benoit-label {
+      margin: 0 0 9px !important;
+      color: var(--nine-blue) !important;
+      font-size: 0.69rem !important;
+      font-weight: 950;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
     }
 
     .nine-benoit h2 {
-      color: var(--nine-acid) !important;
+      margin: 0 0 13px;
+      color: var(--nine-blue);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 1000;
+      line-height: 0.95;
+      letter-spacing: -0.06em;
     }
+
+    .nine-benoit p:last-child {
+      max-width: 650px;
+    }
+
+    /* Footer */
 
     .nine-footer {
-      margin-top: 30px;
-      padding: 20px 0;
-      border-top: 1px solid var(--nine-border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 38px;
+      padding-top: 15px;
+      border-top: 3px solid var(--nine-rust);
       color: var(--nine-muted);
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.11em;
+      line-height: 1.7;
+      text-transform: uppercase;
     }
 
-    @media (max-width: 680px) {
-      .nine-page {
-        padding: 16px;
-      }
+    .nine-footer span:last-child {
+      color: var(--nine-yellow);
+    }
 
-      .nine-grid {
+    @media (max-width: 720px) {
+      .nine-route {
         grid-template-columns: 1fr;
       }
 
-      .nine-section {
-        padding: 18px;
+      .nine-route-title {
+        padding: 13px 0 8px;
+      }
+
+      .nine-route-links {
+        padding: 0 0 15px;
+        border-left: 0;
+      }
+
+      .nine-thesis {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 42px;
+      }
+
+      .nine-foundation {
+        grid-template-columns: 48px minmax(0, 1fr);
+        gap: 12px 16px;
+      }
+
+      .nine-foundation p {
+        grid-column: 2;
+      }
+
+      .nine-row-number {
+        grid-row: span 2;
+        font-size: 1.5rem;
+      }
+
+      .nine-biology-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nine-biology-item:last-child {
+        grid-column: auto;
+      }
+
+      .nine-desire {
+        grid-template-columns: 1fr;
+      }
+
+      .nine-desire-title {
+        padding: 22px 0 17px;
+        border-right: 0;
+      }
+
+      .nine-desire-copy {
+        padding: 0 0 23px;
+      }
+
+      .nine-neighborhood {
+        grid-template-columns: 1fr;
+      }
+
+      .nine-neighborhood-aside {
+        border-top: 1px solid #8a914d;
+        border-left: 0;
+      }
+
+      .nine-benoit {
+        grid-template-columns: 65px minmax(0, 1fr);
+        gap: 18px;
+      }
+
+      .nine-benoit-symbol {
+        width: 58px;
+        height: 58px;
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .nine-site {
+        padding-right: 13px;
+        padding-left: 13px;
+      }
+
+      .nine-stat {
+        padding-right: 8px;
+      }
+
+      .nine-stat + .nine-stat {
+        padding-left: 9px;
+      }
+
+      .nine-stat-label {
+        font-size: 0.58rem;
+      }
+
+      .nine-stat-value {
+        font-size: 0.72rem;
+      }
+
+      .nine-hero h1 {
+        font-size: 5.3rem;
+      }
+
+      .nine-warning {
+        font-size: 0.61rem;
+      }
+
+      .nine-biology {
+        padding: 19px;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
       *,
       *::before,
       *::after {
-        transition: none !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
 </head>
 
 <body>
-  <main class="nine-page">
+  <main class="nine-site">
 
-    <a class="nine-back" href="saint-judes-landing.html">
-      ← SAINT JUDE’S LANDING
-    </a>
+    <div class="nine-topline">
+      <a class="nine-back" href="saint-judes-landing.html">
+        <span aria-hidden="true">←</span>
+        Saint Jude’s Landing
+      </a>
+
+      <span class="nine-topline-label">
+        <span class="nine-live-dot" aria-hidden="true"></span>
+        Creator / District Nine
+      </span>
+    </div>
 
     <header class="nine-hero">
-      <p class="nine-eyebrow">
-        ✳ SAINT JUDE’S LANDING / DISTRICT ARCHIVE ✳
-      </p>
+      <div class="nine-warning">
+        <span class="nine-warning-mark" aria-hidden="true">⚠</span>
+        Heavy industry · Unusually large life · Normal working hours
+      </div>
 
-      <h1>Nine</h1>
+      <div class="nine-heading-line">
+        <h1>NINE</h1>
+        <span class="nine-number">SJL / 09</span>
+      </div>
 
-      <p class="nine-subtitle">
+      <p class="nine-hero-description">
         The industrial mass of Saint Jude’s Landing. Enormous machinery,
         biological remains, alien ecosystems, monstrous inhabitants,
         and working-class life collide across a sprawling industrial
-        district.
+        district. <strong>Something is always running, growing, breaking,
+        or making a noise nobody gets paid enough to investigate.</strong>
       </p>
 
-      <div class="nine-tags">
-        <span class="nine-tag">TYPE: INDUSTRIAL DISTRICT</span>
-        <span class="nine-tag">CITY: SAINT JUDE’S LANDING</span>
-        <span class="nine-tag">PLANET: CREATOR</span>
+      <div class="nine-stat-strip">
+        <div class="nine-stat">
+          <span class="nine-stat-label">District type</span>
+          <span class="nine-stat-value">Heavy industrial</span>
+        </div>
+
+        <div class="nine-stat">
+          <span class="nine-stat-label">Location</span>
+          <span class="nine-stat-value">Saint Jude’s Landing</span>
+        </div>
+
+        <div class="nine-stat">
+          <span class="nine-stat-label">Planet</span>
+          <span class="nine-stat-value">Creator</span>
+        </div>
       </div>
     </header>
 
-    <nav class="nine-index" aria-label="Nine page sections">
-      <a href="#general">General</a>
-      <a href="#industry">Industry</a>
-      <a href="#behemoths">Behemoths</a>
-      <a href="#monsters">Monsters</a>
-      <a href="#monsterfucking">Monsterfucking</a>
-      <a href="#industrial-romance">Industrial Romance</a>
-      <a href="#body-horror">Body Horror</a>
-      <a href="#workers">Workers</a>
-      <a href="#environment">Environment</a>
-      <a href="#daily-life">Daily Life</a>
-      <a href="#danger">Danger</a>
-      <a href="#culture">Culture</a>
-      <a href="#benoit">Benoit</a>
+    <nav class="nine-route" aria-label="Jump to a section">
+      <div class="nine-route-title">Find your way<br>around Nine ↓</div>
+
+      <div class="nine-route-links">
+        <a href="#general">The district</a>
+        <a href="#industry">Industry</a>
+        <a href="#behemoths">Behemoths</a>
+        <a href="#monsters">Monster life</a>
+        <a href="#monsterfucking">Monsterfucking</a>
+        <a href="#industrial-romance">Industrial romance</a>
+        <a href="#body-horror">Body horror</a>
+        <a href="#workers">Workers</a>
+        <a href="#environment">Environment</a>
+        <a href="#daily-life">Daily life</a>
+        <a href="#danger">Hazards</a>
+        <a href="#culture">Culture</a>
+        <a href="#atmosphere">Atmosphere</a>
+        <a href="#benoit">Benoit</a>
+      </div>
     </nav>
 
-    <section class="nine-intro">
-      <h2>A district built to accommodate enormous life</h2>
-      <p>
-        Nine is where Creator’s alien biology, monstrous inhabitants,
-        and Saint Jude’s Landing’s heavy industry collide most directly.
-        Its immense scale and industrial infrastructure make it a
-        particularly comfortable place for many large demi-human species
-        and monsters to live and work.
-      </p>
+    <section class="nine-thesis" id="general">
+      <div>
+        <p class="nine-thesis-label">01 / Getting oriented</p>
+        <h2>A district built to accommodate enormous life.</h2>
+      </div>
+
+      <div class="nine-thesis-copy">
+        <p>
+          Nine is where Creator’s alien biology, monstrous inhabitants,
+          and Saint Jude’s Landing’s heavy industry collide most directly.
+          Its immense scale and industrial infrastructure make it a
+          particularly comfortable place for many large demi-human species
+          and monsters to live and work.
+        </p>
+        <p>
+          The machinery is enormous. The buildings are enormous. Some
+          of the things being moved, processed, dismantled, or left to
+          rot are enormous, too. The people living here still have
+          rent to pay and shifts to finish.
+        </p>
+      </div>
     </section>
 
-    <div class="nine-grid">
+    <section aria-labelledby="foundations-heading">
+      <div class="nine-content-heading">
+        <h2 id="foundations-heading">How Nine works</h2>
+        <span>Materials in / labor out</span>
+      </div>
 
-      <section class="nine-section" id="general">
-        <h2>General</h2>
-        <p>
-          Nine is the industrial mass of Saint Jude’s Landing: enormous
-          factories, processing plants, warehouses, foundries, chemical
-          facilities, transport systems, scrapyards, machinery yards,
-          and worker housing packed into a sprawling working district.
-        </p>
-      </section>
+      <div class="nine-foundations">
 
-      <section class="nine-section" id="industry">
-        <h2>Industry</h2>
-        <p>
-          Nine processes raw materials, biological matter, minerals,
-          Behemoth remains, and other resources produced by Creator.
-          Heavy industry operates constantly. Trains, freight vehicles,
-          conveyor systems, cranes, furnaces, processing equipment, pipes,
-          and enormous machines dominate the district.
-        </p>
-      </section>
+        <article class="nine-section nine-foundation" id="industry">
+          <span class="nine-row-number" aria-hidden="true">02</span>
 
-      <section class="nine-section" id="behemoths">
-        <h2>Behemoths</h2>
-        <p>
-          Behemoth remains are common throughout Nine. Some are processed
-          for industrial use, incorporated into machinery, or left where
-          they are because they are too large to move. Buildings, machines,
-          industrial waste, and enormous biological remains sometimes
-          become almost impossible to distinguish from one another.
-        </p>
-      </section>
+          <h3>Industry</h3>
 
-      <section class="nine-section" id="monsters">
-        <h2>Monsters</h2>
-        <p>
-          Nine has an unusually large population of monstrous and heavily
-          nonhuman residents because industrial work, creature handling,
-          biological processing, heavy labor, and dangerous environments
-          attract species that are particularly suited to them. Some
-          creatures are employees, mechanics, drivers, technicians,
-          contractors, business owners, neighbors, lovers, or families.
-        </p>
-      </section>
+          <p>
+            Nine processes raw materials, biological matter, minerals,
+            Behemoth remains, and other resources produced by Creator.
+            Heavy industry operates constantly. Trains, freight vehicles,
+            conveyor systems, cranes, furnaces, processing equipment,
+            pipes, and enormous machines dominate the district.
+          </p>
+        </article>
 
-      <section class="nine-section" id="monsterfucking">
-        <h2>Monsterfucking</h2>
-        <p>
-          Interspecies attraction is deeply embedded in Nine’s adult
-          culture. Humans, demi-humans, and monsters date, hook up, marry,
-          raise families, and form long-term relationships. Large size
-          differences, claws, fangs, tails, fur, scales, unusual anatomy,
-          and other monstrous traits are not inherently considered
-          incompatible with romance or sex. Some bars, clubs, brothels,
-          dating scenes, and private communities specifically cater to
-          human/monster and interspecies attraction.
-        </p>
-      </section>
+        <article class="nine-section nine-foundation" id="behemoths">
+          <span class="nine-row-number" aria-hidden="true">03</span>
 
-      <section class="nine-section" id="industrial-romance">
-        <h2>Industrial Romance</h2>
-        <p>
-          Nine’s working culture produces its own particular kind of
-          attraction. Huge mechanics covered in grease, scarred workers,
-          monstrous laborers, exhausted factory employees, enormous
-          creatures in protective gear, rough-looking truck drivers,
-          and physically powerful people are common sights. Dating
-          coworkers, meeting partners after shifts, workplace affairs,
-          and relationships between people from radically different
-          species are ordinary parts of local life.
-        </p>
-      </section>
+          <h3>Behemoths</h3>
 
-      <section class="nine-section" id="body-horror">
-        <h2>Body Horror</h2>
-        <p>
-          Nine’s industrial ecosystem produces bizarre forms of life.
-          Scrap-metal-and-flesh creatures crawl through machinery.
-          Centipede-like organisms inhabit pipes and tunnels. Some
-          creatures are all teeth, slime, raw muscle, exposed biological
-          material, or strange combinations of organic and manufactured
-          matter.
-        </p>
-      </section>
+          <p>
+            Behemoth remains are common throughout Nine. Some are processed
+            for industrial use, incorporated into machinery, or left where
+            they are because they are too large to move. Buildings,
+            machines, industrial waste, and enormous biological remains
+            sometimes become almost impossible to distinguish from
+            one another.
+          </p>
+        </article>
 
-      <section class="nine-section" id="workers">
-        <h2>Workers</h2>
-        <p>
-          Nine is full of factory workers, mechanics, engineers,
-          processors, drivers, cleaners, technicians, contractors,
-          laborers, creature handlers, and people whose lives revolve
-          around keeping the district functioning. Worker housing,
-          cheap apartments, bars, shops, clinics, food stalls, dating
-          scenes, and other ordinary necessities exist among the
-          industrial infrastructure.
-        </p>
-      </section>
+        <article class="nine-section nine-foundation" id="monsters">
+          <span class="nine-row-number" aria-hidden="true">04</span>
 
-      <section class="nine-section" id="environment">
-        <h2>Environment</h2>
-        <p>
-          Nine is dirty, loud, hot, wet, chemically stained, greasy,
-          and frequently humid. Strange alien growth pushes through
-          cracks in concrete and machinery. Waterways, vegetation,
-          wildlife, industrial waste, and monstrous life can exist
-          together in the same environment.
-        </p>
-      </section>
+          <h3>Monsters</h3>
 
-      <section class="nine-section" id="daily-life">
-        <h2>Daily Life</h2>
+          <p>
+            Nine has an unusually large population of monstrous and heavily
+            nonhuman residents because industrial work, creature handling,
+            biological processing, heavy labor, and dangerous environments
+            attract species that are particularly suited to them. Some
+            creatures are employees, mechanics, drivers, technicians,
+            contractors, business owners, neighbors, lovers, or families.
+          </p>
+        </article>
+
+        <article class="nine-section nine-foundation" id="workers">
+          <span class="nine-row-number" aria-hidden="true">05</span>
+
+          <h3>The workforce</h3>
+
+          <p>
+            Nine is full of factory workers, mechanics, engineers,
+            processors, drivers, cleaners, technicians, contractors,
+            laborers, creature handlers, and people whose lives revolve
+            around keeping the district functioning. Worker housing,
+            cheap apartments, bars, shops, clinics, food stalls, dating
+            scenes, and other ordinary necessities exist among the
+            industrial infrastructure.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="nine-biology" aria-labelledby="biology-heading">
+      <div class="nine-content-heading">
+        <h2 id="biology-heading">Organic matter / inorganic matter</h2>
+        <span>Distinction not guaranteed</span>
+      </div>
+
+      <p class="nine-biology-intro">
+        Nine's industrial ecosystem doesn't always respect the boundary
+        between a machine and a living thing. The district's biological
+        oddities are part of its environment, not an interruption to it.
+      </p>
+
+      <div class="nine-biology-grid">
+
+        <article class="nine-section nine-biology-item" id="body-horror">
+          <h3>Body horror</h3>
+
+          <p>
+            Scrap-metal-and-flesh creatures crawl through machinery.
+            Centipede-like organisms inhabit pipes and tunnels. Some
+            creatures are all teeth, slime, raw muscle, exposed biological
+            material, or strange combinations of organic and manufactured
+            matter.
+          </p>
+        </article>
+
+        <article class="nine-section nine-biology-item" id="environment">
+          <h3>Environment</h3>
+
+          <p>
+            Nine is dirty, loud, hot, wet, chemically stained, greasy,
+            and frequently humid. Strange alien growth pushes through
+            cracks in concrete and machinery. Waterways, vegetation,
+            wildlife, industrial waste, and monstrous life can exist
+            together in the same environment.
+          </p>
+        </article>
+
+        <article class="nine-section nine-biology-item" id="danger">
+          <h3>Hazards &amp; danger</h3>
+
+          <p>
+            Industrial accidents, toxic materials, malfunctioning
+            machinery, dangerous wildlife, criminal activity, unstable
+            structures, and hostile creatures are ordinary hazards.
+            Some parts of Nine are heavily regulated; others operate
+            with little oversight.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="nine-people" aria-labelledby="people-heading">
+      <div class="nine-content-heading">
+        <h2 id="people-heading">Work hard / love weird</h2>
+        <span>People are people</span>
+      </div>
+
+      <p class="nine-section nine-people-lead">
+        Nine's inhabitants aren't novelties, attractions, or a parade
+        of strange creatures for outsiders to gawk at. They're people
+        getting through the week. Their bodies, species, jobs, and
+        relationships are part of the same lived-in community.
+      </p>
+
+      <article class="nine-section nine-desire" id="monsterfucking">
+        <div class="nine-desire-title">
+          <small>06 / Adult culture</small>
+          <h3>Monsterfucking</h3>
+        </div>
+
+        <div class="nine-desire-copy">
+          <p>
+            Interspecies attraction is deeply embedded in Nine’s adult
+            culture. Humans, demi-humans, and monsters date, hook up,
+            marry, raise families, and form long-term relationships.
+            Large size differences, claws, fangs, tails, fur, scales,
+            unusual anatomy, and other monstrous traits are not inherently
+            considered incompatible with romance or sex. Some bars,
+            clubs, brothels, dating scenes, and private communities
+            specifically cater to human/monster and interspecies attraction.
+          </p>
+        </div>
+      </article>
+
+      <article class="nine-section nine-desire nine-desire-industrial" id="industrial-romance">
+        <div class="nine-desire-title">
+          <small>07 / Off the clock</small>
+          <h3>Industrial romance</h3>
+        </div>
+
+        <div class="nine-desire-copy">
+          <p>
+            Nine’s working culture produces its own particular kind of
+            attraction. Huge mechanics covered in grease, scarred workers,
+            monstrous laborers, exhausted factory employees, enormous
+            creatures in protective gear, rough-looking truck drivers,
+            and physically powerful people are common sights. Dating
+            coworkers, meeting partners after shifts, workplace affairs,
+            and relationships between people from radically different
+            species are ordinary parts of local life.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section class="nine-neighborhood" id="daily-life">
+      <div class="nine-neighborhood-main">
+        <p class="nine-kicker">08 / Life between shifts</p>
+
+        <h2>Yes, people actually live here.</h2>
+
         <p>
           Despite its grotesque surroundings, Nine is a functioning
           neighborhood where people live ordinary lives. Workers clock
@@ -446,50 +1124,80 @@
           grow up around machinery, and residents become accustomed
           to things outsiders would find horrifying.
         </p>
-      </section>
+      </div>
 
-      <section class="nine-section" id="danger">
-        <h2>Danger</h2>
-        <p>
-          Industrial accidents, toxic materials, malfunctioning machinery,
-          dangerous wildlife, criminal activity, unstable structures,
-          and hostile creatures are ordinary hazards. Some parts of Nine
-          are heavily regulated; others operate with little oversight.
-        </p>
-      </section>
+      <aside class="nine-neighborhood-aside">
+        <div>
+          <h3>Local survival skills</h3>
 
-      <section class="nine-section" id="culture">
-        <h2>Culture</h2>
-        <p>
-          Nine has a rough, practical working-class culture. People tend
-          to know how to repair things, improvise, survive unpleasant
-          conditions, and ignore whatever bizarre thing is making noises
-          inside the wall. Its monster population is not a novelty or
-          tourist attraction; they are part of the neighborhood.
-        </p>
-      </section>
+          <p>
+            Nine has a rough, practical working-class culture. People
+            tend to know how to repair things, improvise, survive
+            unpleasant conditions, and ignore whatever bizarre thing
+            is making noises inside the wall.
+          </p>
+        </div>
 
-      <section class="nine-section" id="atmosphere">
-        <h2>Atmosphere</h2>
-        <p>
-          Industrial, filthy, enormous, grotesque, hardworking, humid,
-          mechanical, biological, sexually charged, and intensely alive.
-          Nine is where Creator’s alien biology, monstrous inhabitants,
-          and Saint Jude’s Landing’s heavy industry collide most directly.
-        </p>
-      </section>
+        <div>
+          <h3>Neighborhood rule</h3>
 
-      <section class="nine-section nine-benoit" id="benoit">
+          <p>
+            If it's making a new noise, ask a mechanic. If it's moving
+            on its own, ask somebody who knows creatures. If it's
+            both, get two opinions.
+          </p>
+        </div>
+
+        <span class="nine-aside-stamp">Keep your shift<br>keep your head</span>
+      </aside>
+    </section>
+
+    <section class="nine-section" id="culture" style="margin-top: 52px;">
+      <div class="nine-content-heading">
+        <h2>Local culture</h2>
+        <span>09 / The people who keep it running</span>
+      </div>
+
+      <p>
+        Nine has a rough, practical working-class culture. People tend
+        to know how to repair things, improvise, survive unpleasant
+        conditions, and ignore whatever bizarre thing is making noises
+        inside the wall. Its monster population is not a novelty or
+        tourist attraction; they are part of the neighborhood.
+      </p>
+    </section>
+
+    <section class="nine-section" id="atmosphere" style="margin-top: 38px;">
+      <div class="nine-content-heading">
+        <h2>Atmosphere check</h2>
+        <span>10 / A perfectly normal Tuesday</span>
+      </div>
+
+      <p>
+        Industrial, filthy, enormous, grotesque, hardworking, humid,
+        mechanical, biological, sexually charged, and intensely alive.
+        Nine is where Creator’s alien biology, monstrous inhabitants,
+        and Saint Jude’s Landing’s heavy industry collide most directly.
+      </p>
+    </section>
+
+    <section class="nine-benoit" id="benoit">
+      <div class="nine-benoit-symbol" aria-hidden="true">↯</div>
+
+      <div>
+        <p class="nine-benoit-label">District resident / Local connection</p>
+
         <h2>Benoit</h2>
+
         <p>
           Benoit is associated with Nine.
         </p>
-      </section>
-
-    </div>
+      </div>
+    </section>
 
     <footer class="nine-footer">
-      ✳ NINE · SAINT JUDE’S LANDING · CREATOR ✳
+      <span>✳ Nine · Saint Jude’s Landing · Creator</span>
+      <span>Mind the machinery. Mind the wildlife. Get home safe.</span>
     </footer>
 
   </main>
