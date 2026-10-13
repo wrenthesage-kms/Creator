@@ -3,188 +3,519 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Doll — Creator</title>
+  <title>Doll ♡ Creator</title>
   <link rel="stylesheet" href="../style.css">
   <style>
     :root {
-      --doll-bg: #151015;
-      --doll-panel: #211821;
-      --doll-panel-soft: #2b202b;
-      --doll-pink: #ed91ad;
-      --doll-pink-light: #ffc2d3;
-      --doll-rose: #b96c8b;
-      --doll-cream: #f5e9df;
-      --doll-muted: #c5b0bd;
-      --doll-border: rgba(237, 145, 173, 0.27);
+      --doll-bg: #171217;
+      --doll-paper: #f1e4df;
+      --doll-ink: #271923;
+      --doll-pink: #f1a1bc;
+      --doll-pink-hot: #ff6e9e;
+      --doll-pink-pale: #ffdae5;
+      --doll-rose: #9d526f;
+      --doll-plum: #493044;
+      --doll-lilac: #c9a6d5;
+      --doll-muted: #c6b3bf;
+      --doll-line: rgba(241, 161, 188, .26);
+      --doll-card: #251b25;
+      --doll-card-alt: #302230;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       background:
-        radial-gradient(ellipse at 8% 7%, rgba(237, 145, 173, 0.12), transparent 32rem),
-        radial-gradient(ellipse at 94% 46%, rgba(185, 108, 139, 0.1), transparent 35rem),
+        radial-gradient(ellipse at 10% 0%, rgba(255, 110, 158, .12), transparent 34rem),
+        radial-gradient(ellipse at 100% 55%, rgba(201, 166, 213, .08), transparent 34rem),
+        repeating-linear-gradient(
+          135deg,
+          transparent 0,
+          transparent 22px,
+          rgba(255, 255, 255, .012) 23px,
+          transparent 24px
+        ),
         var(--doll-bg);
-      color: var(--doll-cream);
+      color: var(--doll-paper);
       font-family: Georgia, "Times New Roman", serif;
       line-height: 1.75;
     }
 
-    .doll-page {
-      width: min(1050px, 100%);
-      margin: 0 auto;
-      padding: 32px 22px 64px;
+    a {
+      color: var(--doll-pink-pale);
     }
 
-    .doll-topline {
+    .doll-page {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 26px 22px 50px;
+    }
+
+    .doll-masthead {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 12px;
-      margin-bottom: 24px;
+      padding: 0 2px 15px;
+      border-bottom: 1px solid var(--doll-line);
       color: var(--doll-muted);
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.73rem;
+      font-size: .69rem;
       font-weight: 800;
-      letter-spacing: 0.16em;
+      letter-spacing: .13em;
       text-transform: uppercase;
     }
 
-    .doll-topline span:last-child {
-      color: var(--doll-pink-light);
+    .doll-masthead strong {
+      color: var(--doll-pink);
+    }
+
+    .doll-masthead span:last-child {
       text-align: right;
     }
 
     .doll-hero {
       position: relative;
+      isolation: isolate;
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(190px, .7fr);
+      gap: 22px;
+      align-items: center;
       overflow: hidden;
-      padding: clamp(26px, 6vw, 58px);
-      border: 1px solid var(--doll-border);
-      border-radius: 32px 7px 32px 7px;
+      margin-top: 23px;
+      padding: clamp(24px, 5vw, 55px);
+      border: 1px solid var(--doll-line);
       background:
-        radial-gradient(ellipse at 92% 0%, rgba(237, 145, 173, 0.15), transparent 50%),
-        linear-gradient(140deg, rgba(185, 108, 139, 0.09), transparent 60%),
-        var(--doll-panel);
-      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.24);
+        radial-gradient(ellipse at 94% 12%, rgba(255, 110, 158, .19), transparent 46%),
+        linear-gradient(120deg, #2b1d2a, #211923 72%);
+      box-shadow: 0 20px 65px rgba(0, 0, 0, .24);
     }
 
-    .doll-hero::after {
-      content: "♡";
+    .doll-hero::before {
+      content: "";
       position: absolute;
-      right: 25px;
-      bottom: -70px;
-      color: rgba(237, 145, 173, 0.09);
-      font-family: Georgia, serif;
-      font-size: clamp(150px, 27vw, 280px);
-      line-height: 1;
-      pointer-events: none;
+      z-index: -1;
+      width: 310px;
+      height: 310px;
+      right: -100px;
+      top: -105px;
+      border: 1px solid rgba(241, 161, 188, .16);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 18px rgba(241, 161, 188, .025),
+        0 0 0 39px rgba(241, 161, 188, .025),
+        0 0 0 62px rgba(241, 161, 188, .02);
+    }
+
+    .doll-hero-copy {
+      min-width: 0;
+    }
+
+    .doll-stamp {
+      display: inline-block;
+      margin-bottom: 19px;
+      padding: 5px 10px;
+      transform: rotate(-2deg);
+      border: 1px solid var(--doll-pink-hot);
+      color: var(--doll-pink-pale);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .67rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
     }
 
     .doll-kicker {
-      position: relative;
-      margin: 0 0 12px;
+      margin: 0 0 5px;
       color: var(--doll-pink);
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.75rem;
+      font-size: .75rem;
       font-weight: 800;
-      letter-spacing: 0.21em;
+      letter-spacing: .18em;
       text-transform: uppercase;
     }
 
     .doll-hero h1 {
-      position: relative;
       margin: 0;
-      color: var(--doll-pink-light);
-      font-size: clamp(4rem, 13vw, 8rem);
-      letter-spacing: -0.075em;
-      line-height: 0.9;
+      color: var(--doll-pink-pale);
+      font-size: clamp(5rem, 15vw, 10rem);
+      font-weight: 700;
+      letter-spacing: -.095em;
+      line-height: .82;
       overflow-wrap: anywhere;
+      text-shadow: 5px 5px 0 rgba(255, 110, 158, .13);
     }
 
     .doll-subtitle {
-      position: relative;
       margin: 22px 0 0;
-      color: var(--doll-pink);
+      color: var(--doll-lilac);
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.88rem;
-      font-weight: 800;
-      letter-spacing: 0.11em;
+      font-size: .8rem;
+      font-weight: 900;
+      letter-spacing: .11em;
+      line-height: 1.6;
       text-transform: uppercase;
     }
 
     .doll-intro {
-      position: relative;
-      max-width: 690px;
-      margin: 22px 0 0;
-      font-size: 1.08rem;
+      max-width: 660px;
+      margin: 19px 0 0;
+      font-size: 1.04rem;
+    }
+
+    .doll-intro em {
+      color: var(--doll-pink-pale);
     }
 
     .doll-tags {
-      position: relative;
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 25px;
+      gap: 7px;
+      margin-top: 22px;
     }
 
     .doll-tag {
-      padding: 5px 11px;
-      border: 1px solid var(--doll-border);
-      border-radius: 12px 3px 12px 3px;
-      background: rgba(237, 145, 173, 0.07);
-      color: var(--doll-pink-light);
+      padding: 5px 9px;
+      border: 1px solid rgba(241, 161, 188, .3);
+      background: rgba(241, 161, 188, .06);
+      color: var(--doll-pink-pale);
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.73rem;
-      font-weight: 800;
-      letter-spacing: 0.045em;
+      font-size: .66rem;
+      font-weight: 900;
+      letter-spacing: .065em;
+    }
+
+    .doll-hero-aside {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      padding: 20px;
+      border: 1px dashed rgba(241, 161, 188, .45);
+      background: rgba(17, 12, 18, .28);
+      text-align: center;
+    }
+
+    .doll-hero-aside .doll-bow {
+      color: var(--doll-pink-hot);
+      font-size: 3rem;
+      line-height: 1;
+    }
+
+    .doll-hero-aside .doll-aside-title {
+      margin: 12px 0 5px;
+      color: var(--doll-pink-pale);
+      font-size: 1.65rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .doll-hero-aside p {
+      max-width: 220px;
+      margin: 8px 0 0;
+      color: var(--doll-muted);
+      font-size: .88rem;
+    }
+
+    .doll-danger-label {
+      display: inline-block;
+      margin-top: 17px;
+      padding: 6px 11px;
+      transform: rotate(2deg);
+      background: var(--doll-pink-hot);
+      color: #21131c;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .67rem;
+      font-weight: 1000;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .doll-jumpbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: 14px;
+      padding: 13px 15px;
+      border: 1px solid rgba(255, 255, 255, .07);
+      background: #201820;
+    }
+
+    .doll-jumpbar strong {
+      margin-right: 4px;
+      color: var(--doll-pink);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .67rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .doll-jumpbar a {
+      padding: 3px 8px;
+      border-bottom: 1px solid rgba(241, 161, 188, .38);
+      color: var(--doll-paper);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .75rem;
+      text-decoration: none;
+    }
+
+    .doll-jumpbar a:hover {
+      color: var(--doll-pink);
+      border-color: var(--doll-pink-hot);
     }
 
     .doll-section {
-      margin-top: 35px;
+      margin-top: 39px;
+      scroll-margin-top: 18px;
     }
 
     .doll-section-heading {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       gap: 12px;
       margin: 0 0 17px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--doll-border);
     }
 
-    .doll-section-heading span {
-      color: var(--doll-pink);
-      font-size: 1.1rem;
+    .doll-section-heading .doll-number {
+      display: inline-grid;
+      flex: 0 0 34px;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      transform: rotate(-5deg);
+      background: var(--doll-pink);
+      color: var(--doll-ink);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .75rem;
+      font-weight: 1000;
     }
 
     .doll-section-heading h2 {
       margin: 0;
-      color: var(--doll-pink-light);
+      color: var(--doll-pink-pale);
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 900;
-      letter-spacing: 0.12em;
+      letter-spacing: .105em;
+      line-height: 1.3;
       text-transform: uppercase;
+    }
+
+    .doll-section-heading .doll-heading-note {
+      margin-left: auto;
+      color: var(--doll-muted);
+      font-size: .8rem;
+      font-style: italic;
+      text-align: right;
+    }
+
+    .doll-profile-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(210px, .75fr);
+      gap: 14px;
+    }
+
+    .doll-profile {
+      padding: 9px 23px;
+      border: 1px solid var(--doll-line);
+      background: var(--doll-card);
+    }
+
+    .doll-detail {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .065);
+    }
+
+    .doll-detail:last-child {
+      border-bottom: 0;
+    }
+
+    .doll-detail strong {
+      color: var(--doll-pink);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .69rem;
+      letter-spacing: .075em;
+      text-transform: uppercase;
+    }
+
+    .doll-detail span {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .doll-profile-aside {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 23px;
+      border: 1px solid rgba(201, 166, 213, .27);
+      background:
+        linear-gradient(150deg, rgba(201, 166, 213, .11), transparent 70%),
+        var(--doll-card-alt);
+    }
+
+    .doll-profile-aside::after {
+      content: "♡";
+      position: absolute;
+      right: -6px;
+      bottom: -54px;
+      color: rgba(201, 166, 213, .08);
+      font-size: 180px;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .doll-profile-aside h3 {
+      position: relative;
+      margin: 0 0 11px;
+      color: var(--doll-lilac);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .8rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .doll-profile-aside p {
+      position: relative;
+      margin: 0;
+    }
+
+    .doll-profile-aside .doll-quote {
+      position: relative;
+      margin-top: 25px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(201, 166, 213, .28);
+      color: var(--doll-pink-pale);
+      font-size: 1.2rem;
+      font-style: italic;
+      line-height: 1.45;
+    }
+
+    .doll-paper-card {
+      padding: 24px;
+      background: var(--doll-paper);
+      color: var(--doll-ink);
+    }
+
+    .doll-paper-card h3 {
+      margin: 0 0 9px;
+      color: var(--doll-rose);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .83rem;
+      font-weight: 900;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+    }
+
+    .doll-paper-card p {
+      margin: 0;
+    }
+
+    .doll-paper-card p + p {
+      margin-top: 13px;
+    }
+
+    .doll-appearance {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .doll-appearance-main {
+      padding: clamp(22px, 4vw, 35px);
+      border-left: 5px solid var(--doll-pink-hot);
+      background: var(--doll-card);
+    }
+
+    .doll-appearance-main h3 {
+      margin: 0 0 12px;
+      color: var(--doll-pink-pale);
+      font-size: 1.7rem;
+      line-height: 1.15;
+    }
+
+    .doll-appearance-main p {
+      margin: 0;
+    }
+
+    .doll-appearance-main p + p {
+      margin-top: 13px;
+    }
+
+    .doll-appearance-stack {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .doll-mini {
+      padding: 17px;
+      border: 1px solid rgba(241, 161, 188, .18);
+      background: var(--doll-card-alt);
+    }
+
+    .doll-mini h3 {
+      margin: 0 0 7px;
+      color: var(--doll-pink);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .doll-mini p {
+      margin: 0;
+      font-size: .93rem;
+    }
+
+    .doll-style-note {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .doll-style-note article {
+      padding: 21px;
+      border: 1px dashed rgba(241, 161, 188, .3);
+      background: rgba(241, 161, 188, .045);
+    }
+
+    .doll-style-note h3 {
+      margin: 0 0 7px;
+      color: var(--doll-pink-pale);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .8rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .doll-style-note p {
+      margin: 0;
     }
 
     .doll-card {
       min-width: 0;
-      padding: 22px;
-      border: 1px solid rgba(255, 255, 255, 0.075);
-      border-radius: 19px 5px 19px 5px;
-      background: var(--doll-panel);
-    }
-
-    .doll-card h3 {
-      margin: 0 0 9px;
-      color: var(--doll-pink);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.91rem;
-      font-weight: 850;
-      letter-spacing: 0.035em;
+      padding: 23px;
+      border: 1px solid rgba(255, 255, 255, .075);
+      background: var(--doll-card);
     }
 
     .doll-card p {
@@ -192,68 +523,243 @@
     }
 
     .doll-card p + p {
-      margin-top: 13px;
+      margin-top: 14px;
     }
 
     .doll-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+      gap: 13px;
     }
 
     .doll-grid .doll-card {
       height: 100%;
     }
 
-    .doll-profile {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0 24px;
-      padding: 8px 22px;
-      border: 1px solid rgba(255, 255, 255, 0.075);
-      border-radius: 19px 5px 19px 5px;
-      background: var(--doll-panel);
-    }
-
-    .doll-detail {
-      display: grid;
-      grid-template-columns: 105px minmax(0, 1fr);
-      gap: 12px;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.065);
-    }
-
-    .doll-detail strong {
+    .doll-card h3 {
+      margin: 0 0 9px;
       color: var(--doll-pink);
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.73rem;
-      letter-spacing: 0.07em;
+      font-size: .85rem;
+      font-weight: 900;
+      letter-spacing: .035em;
       text-transform: uppercase;
     }
 
-    .doll-detail span {
-      overflow-wrap: anywhere;
-    }
-
-    .doll-full {
-      grid-column: 1 / -1;
-    }
-
-    .doll-callout {
-      padding: 24px;
-      border-left: 4px solid var(--doll-pink);
-      border-radius: 0 17px 17px 0;
+    .doll-card.doll-lilac-card {
+      border-color: rgba(201, 166, 213, .25);
       background:
-        linear-gradient(100deg, rgba(237, 145, 173, 0.075), transparent 85%),
-        var(--doll-panel);
+        linear-gradient(135deg, rgba(201, 166, 213, .07), transparent 75%),
+        var(--doll-card-alt);
     }
 
-    .doll-callout p {
+    .doll-card.doll-lilac-card h3 {
+      color: var(--doll-lilac);
+    }
+
+    .doll-temper-strip {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .doll-temper-banner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 25px;
+      background: var(--doll-pink);
+      color: var(--doll-ink);
+    }
+
+    .doll-temper-banner .doll-big-word {
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 700;
+      letter-spacing: -.07em;
+      line-height: .9;
+    }
+
+    .doll-temper-banner p {
+      margin: 14px 0 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .79rem;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    .doll-temper-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 25px;
+      border: 1px solid var(--doll-line);
+      background: var(--doll-card);
+    }
+
+    .doll-temper-copy h3 {
+      margin: 0 0 8px;
+      color: var(--doll-pink-pale);
+      font-size: 1.35rem;
+    }
+
+    .doll-temper-copy p {
       margin: 0;
     }
 
-    .doll-callout p + p {
+    .doll-temper-copy p + p {
       margin-top: 12px;
+    }
+
+    .doll-social {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+      gap: 14px;
+    }
+
+    .doll-social-main {
+      padding: clamp(22px, 4vw, 34px);
+      border: 1px solid var(--doll-line);
+      background:
+        linear-gradient(125deg, rgba(241, 161, 188, .08), transparent 70%),
+        var(--doll-card);
+    }
+
+    .doll-social-main h3 {
+      margin: 0 0 11px;
+      color: var(--doll-pink-pale);
+      font-size: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .doll-social-main p {
+      margin: 0;
+    }
+
+    .doll-social-main p + p {
+      margin-top: 13px;
+    }
+
+    .doll-social-side {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .doll-social-side article {
+      padding: 19px;
+      border-left: 3px solid var(--doll-lilac);
+      background: var(--doll-card-alt);
+    }
+
+    .doll-social-side h3 {
+      margin: 0 0 7px;
+      color: var(--doll-lilac);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .79rem;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .doll-social-side p {
+      margin: 0;
+    }
+
+    .doll-speech {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 14px;
+    }
+
+    .doll-speech-quote {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 27px;
+      background: var(--doll-plum);
+      color: var(--doll-pink-pale);
+    }
+
+    .doll-speech-quote .doll-quote-mark {
+      color: var(--doll-pink);
+      font-size: 3.5rem;
+      line-height: .7;
+    }
+
+    .doll-speech-quote p {
+      margin: 14px 0 0;
+      font-size: 1.45rem;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .doll-speech-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .doll-speech-list article {
+      padding: 18px;
+      border: 1px solid rgba(241, 161, 188, .18);
+      background: var(--doll-card);
+    }
+
+    .doll-speech-list h3 {
+      margin: 0 0 7px;
+      color: var(--doll-pink);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .78rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .doll-speech-list p {
+      margin: 0;
+      font-size: .94rem;
+    }
+
+    .doll-interest-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 14px;
+    }
+
+    .doll-interest-copy {
+      padding: 24px;
+      background: var(--doll-card);
+    }
+
+    .doll-interest-copy h3 {
+      margin: 0 0 10px;
+      color: var(--doll-pink);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .83rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .doll-interest-copy p {
+      margin: 0;
+    }
+
+    .doll-interest-copy p + p {
+      margin-top: 13px;
+    }
+
+    .doll-pill-panel {
+      padding: 23px;
+      border: 1px solid var(--doll-line);
+      background: var(--doll-card-alt);
+    }
+
+    .doll-pill-panel h3 {
+      margin: 0 0 14px;
+      color: var(--doll-pink-pale);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .8rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
     }
 
     .doll-list {
@@ -266,44 +772,256 @@
     }
 
     .doll-list li {
-      padding: 6px 11px;
-      border: 1px solid rgba(237, 145, 173, 0.23);
-      border-radius: 11px 3px 11px 3px;
-      background: rgba(237, 145, 173, 0.06);
-      font-size: 0.9rem;
+      padding: 6px 10px;
+      border: 1px solid rgba(241, 161, 188, .25);
+      background: rgba(241, 161, 188, .055);
+      color: var(--doll-paper);
+      font-size: .88rem;
     }
 
-    .doll-relationship {
-      border-color: rgba(237, 145, 173, 0.2);
+    .doll-dislikes .doll-list li {
+      border-color: rgba(201, 166, 213, .24);
+      background: rgba(201, 166, 213, .05);
+    }
+
+    .doll-dislikes h3 {
+      color: var(--doll-lilac);
+    }
+
+    .doll-habits {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .doll-habit {
+      padding: 18px;
+      border-top: 3px solid var(--doll-pink);
+      background: var(--doll-card);
+    }
+
+    .doll-habit:nth-child(even) {
+      border-top-color: var(--doll-lilac);
+    }
+
+    .doll-habit h3 {
+      margin: 0 0 8px;
+      color: var(--doll-pink-pale);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .78rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .doll-habit p {
+      margin: 0;
+      font-size: .91rem;
+    }
+
+    .doll-relationship-intro {
+      max-width: 750px;
+      margin: 0 0 17px;
+      color: var(--doll-muted);
+    }
+
+    .doll-relationship-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+      gap: 14px;
+    }
+
+    .doll-relationship-main {
+      padding: 25px;
+      border: 1px solid var(--doll-line);
+      background: var(--doll-card);
+    }
+
+    .doll-relationship-main h3 {
+      margin: 0 0 11px;
+      color: var(--doll-pink-pale);
+      font-size: 1.35rem;
+      line-height: 1.25;
+    }
+
+    .doll-relationship-main p {
+      margin: 0;
+    }
+
+    .doll-relationship-main p + p {
+      margin-top: 13px;
+    }
+
+    .doll-mold-note {
+      padding: 25px;
+      background: var(--doll-paper);
+      color: var(--doll-ink);
+      transform: rotate(.35deg);
+    }
+
+    .doll-mold-note .doll-note-label {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 4px 8px;
+      transform: rotate(-2deg);
+      background: var(--doll-pink-hot);
+      color: var(--doll-ink);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .67rem;
+      font-weight: 1000;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .doll-mold-note h3 {
+      margin: 0 0 9px;
+      color: var(--doll-rose);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .95rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .doll-mold-note p {
+      margin: 0;
+    }
+
+    .doll-mold-note p + p {
+      margin-top: 12px;
+    }
+
+    .doll-mold-note blockquote {
+      margin: 15px 0;
+      padding-left: 15px;
+      border-left: 3px solid var(--doll-pink-hot);
+      font-size: 1.17rem;
+      font-style: italic;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .doll-intimacy {
+      display: grid;
+      grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr);
+      gap: 14px;
+    }
+
+    .doll-intimacy-aside {
+      padding: 25px;
+      background: var(--doll-plum);
+    }
+
+    .doll-intimacy-aside .doll-heart {
+      color: var(--doll-pink);
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+
+    .doll-intimacy-aside h3 {
+      margin: 15px 0 10px;
+      color: var(--doll-pink-pale);
+      font-size: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .doll-intimacy-aside p {
+      margin: 0;
+    }
+
+    .doll-intimacy-copy {
+      padding: 24px;
+      border: 1px solid var(--doll-line);
+      background: var(--doll-card);
+    }
+
+    .doll-intimacy-copy p {
+      margin: 0;
+    }
+
+    .doll-intimacy-copy p + p {
+      margin-top: 14px;
+    }
+
+    .doll-core {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(26px, 5vw, 44px);
+      border: 1px solid var(--doll-pink-hot);
       background:
-        linear-gradient(120deg, rgba(237, 145, 173, 0.045), transparent),
-        var(--doll-panel);
+        radial-gradient(ellipse at 100% 0%, rgba(255, 110, 158, .17), transparent 45%),
+        var(--doll-card);
     }
 
-    .doll-relationship h3 {
-      color: var(--doll-pink-light);
+    .doll-core::after {
+      content: "NO.";
+      position: absolute;
+      right: 10px;
+      bottom: -48px;
+      color: rgba(241, 161, 188, .055);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(8rem, 22vw, 16rem);
+      font-weight: 1000;
+      letter-spacing: -.1em;
+      line-height: 1;
+      pointer-events: none;
     }
 
-    .doll-handbag {
-      border: 1px dashed rgba(237, 145, 173, 0.4);
-      background:
-        linear-gradient(110deg, rgba(237, 145, 173, 0.07), transparent),
-        var(--doll-panel-soft);
+    .doll-core h3 {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 15px;
+      color: var(--doll-pink-pale);
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      line-height: 1.15;
     }
 
-    .doll-handbag h3 {
-      color: var(--doll-pink-light);
+    .doll-core p {
+      position: relative;
+      z-index: 1;
+      max-width: 790px;
+      margin: 0;
+      font-size: 1.03rem;
+    }
+
+    .doll-core p + p {
+      margin-top: 14px;
+    }
+
+    .doll-notes {
+      padding: 25px;
+      border: 1px dashed rgba(201, 166, 213, .36);
+      background: rgba(201, 166, 213, .045);
+    }
+
+    .doll-notes h3 {
+      margin: 0 0 13px;
+      color: var(--doll-lilac);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .82rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .doll-notes p {
+      margin: 0;
+    }
+
+    .doll-notes p + p {
+      margin-top: 13px;
     }
 
     .doll-footer {
-      margin-top: 44px;
-      padding-top: 18px;
-      border-top: 1px solid var(--doll-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 48px;
+      padding-top: 17px;
+      border-top: 1px solid var(--doll-line);
       color: var(--doll-muted);
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.74rem;
-      letter-spacing: 0.13em;
-      text-align: center;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .11em;
       text-transform: uppercase;
     }
 
@@ -311,31 +1029,98 @@
       color: var(--doll-pink);
     }
 
-    @media (max-width: 650px) {
+    @media (max-width: 760px) {
       .doll-page {
-        padding: 20px 13px 42px;
-      }
-
-      .doll-grid,
-      .doll-profile {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .doll-detail {
-        grid-template-columns: 94px minmax(0, 1fr);
-      }
-
-      .doll-full {
-        grid-column: auto;
-      }
-
-      .doll-topline {
-        font-size: 0.63rem;
-        letter-spacing: 0.08em;
+        padding: 18px 13px 35px;
       }
 
       .doll-hero {
-        border-radius: 24px 5px 24px 5px;
+        grid-template-columns: minmax(0, 1fr);
+        padding: 28px 22px;
+      }
+
+      .doll-hero-aside {
+        min-height: auto;
+        padding: 20px;
+      }
+
+      .doll-hero-aside .doll-bow {
+        font-size: 2rem;
+      }
+
+      .doll-hero-aside .doll-aside-title {
+        margin-top: 8px;
+      }
+
+      .doll-profile-wrap,
+      .doll-appearance,
+      .doll-temper-strip,
+      .doll-social,
+      .doll-speech,
+      .doll-interest-layout,
+      .doll-relationship-grid,
+      .doll-intimacy {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .doll-habits {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .doll-section-heading .doll-heading-note {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .doll-masthead {
+        align-items: flex-start;
+        font-size: .59rem;
+        letter-spacing: .07em;
+      }
+
+      .doll-hero h1 {
+        font-size: clamp(4.5rem, 22vw, 7rem);
+      }
+
+      .doll-detail {
+        grid-template-columns: 88px minmax(0, 1fr);
+        gap: 9px;
+      }
+
+      .doll-profile {
+        padding: 8px 15px;
+      }
+
+      .doll-appearance-stack,
+      .doll-style-note,
+      .doll-grid,
+      .doll-speech-list {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .doll-card,
+      .doll-paper-card,
+      .doll-profile-aside,
+      .doll-interest-copy,
+      .doll-pill-panel,
+      .doll-relationship-main,
+      .doll-mold-note,
+      .doll-intimacy-aside,
+      .doll-intimacy-copy,
+      .doll-notes {
+        padding: 19px;
+      }
+
+      .doll-footer {
+        font-size: .59rem;
+        letter-spacing: .06em;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
       }
     }
   </style>
@@ -343,123 +1128,163 @@
 <body>
   <main class="doll-page">
 
-    <div class="doll-topline">
-      <span>♡ Creator Character Archive ♡</span>
-      <span>Saint Jude’s Landing</span>
+    <div class="doll-masthead">
+      <span><strong>♡ Creator</strong> / character corner</span>
+      <span>Velvet, Saint Jude’s Landing</span>
     </div>
 
     <header class="doll-hero">
-      <p class="doll-kicker">Ammonia’s Group · Velvet Native</p>
-      <h1>Doll</h1>
-      <p class="doll-subtitle">Mouse Demi-Human // Adult Woman</p>
-      <p class="doll-intro">
-        Tiny, pretty, and carrying a battered embroidered handbag that
-        contains live dynamite. Doll has absolutely no interest in being
-        treated like a porcelain ornament, and if somebody mistakes her
-        appearance for permission to talk down to her, they are about to
-        have a very fucking bad afternoon.
-      </p>
-      <div class="doll-tags">
-        <span class="doll-tag">BLUNT</span>
-        <span class="doll-tag">QUICK-TEMPERED</span>
-        <span class="doll-tag">PRACTICAL</span>
-        <span class="doll-tag">ABRASIVELY AFFECTIONATE</span>
-        <span class="doll-tag">SURPRISINGLY DANGEROUS</span>
+      <div class="doll-hero-copy">
+        <span class="doll-stamp">Cute face. Terrible idea.</span>
+        <p class="doll-kicker">Ammonia’s Group · Velvet Native</p>
+        <h1>Doll</h1>
+        <p class="doll-subtitle">Mouse Demi-Human // Adult Woman</p>
+
+        <p class="doll-intro">
+          Tiny, pretty, and carrying a battered embroidered handbag that
+          contains live dynamite. Doll has absolutely no interest in being
+          treated like a porcelain ornament, and if somebody mistakes her
+          appearance for permission to talk down to her, they are about to
+          have a very fucking bad afternoon.
+        </p>
+
+        <div class="doll-tags">
+          <span class="doll-tag">BLUNT</span>
+          <span class="doll-tag">QUICK-TEMPERED</span>
+          <span class="doll-tag">PRACTICAL</span>
+          <span class="doll-tag">ABRASIVELY AFFECTIONATE</span>
+          <span class="doll-tag">SURPRISINGLY DANGEROUS</span>
+        </div>
       </div>
+
+      <aside class="doll-hero-aside">
+        <div class="doll-bow" aria-hidden="true">୨୧</div>
+        <p class="doll-aside-title">Handle with absolutely no care.</p>
+        <p>
+          She is not a porcelain doll. She just looks like one.
+          Please keep your hands to yourself and your fingers out of her bag.
+        </p>
+        <span class="doll-danger-label">Contents may explode</span>
+      </aside>
     </header>
 
-    <section class="doll-section">
+    <nav class="doll-jumpbar" aria-label="Page sections">
+      <strong>Skip to the good bits →</strong>
+      <a href="#profile">Basics</a>
+      <a href="#appearance">Appearance</a>
+      <a href="#personality">Personality</a>
+      <a href="#temper">Temper</a>
+      <a href="#speech">Voice</a>
+      <a href="#interests">Interests</a>
+      <a href="#relationships">Relationships</a>
+      <a href="#intimacy">Intimacy</a>
+    </nav>
+
+    <section class="doll-section" id="profile">
       <div class="doll-section-heading">
-        <span>♡</span>
-        <h2>At a Glance</h2>
+        <span class="doll-number">01</span>
+        <h2>The Basics</h2>
+        <span class="doll-heading-note">Read the label first.</span>
       </div>
 
-      <div class="doll-profile">
-        <div class="doll-detail">
-          <strong>Name</strong>
-          <span>Doll</span>
+      <div class="doll-profile-wrap">
+        <div class="doll-profile">
+          <div class="doll-detail">
+            <strong>Name</strong>
+            <span>Doll</span>
+          </div>
+          <div class="doll-detail">
+            <strong>Species</strong>
+            <span>Mouse demi-human</span>
+          </div>
+          <div class="doll-detail">
+            <strong>Age</strong>
+            <span>Adult</span>
+          </div>
+          <div class="doll-detail">
+            <strong>Gender</strong>
+            <span>Female</span>
+          </div>
+          <div class="doll-detail">
+            <strong>Origin</strong>
+            <span>Velvet, Saint Jude’s Landing</span>
+          </div>
+          <div class="doll-detail">
+            <strong>Location</strong>
+            <span>Saint Jude’s Landing, Creator</span>
+          </div>
+          <div class="doll-detail">
+            <strong>Group</strong>
+            <span>Ammonia’s group</span>
+          </div>
+          <div class="doll-detail">
+            <strong>Build</strong>
+            <span>Small adult woman; delicate and feminine, slight rather than frail, compact rather than childlike</span>
+          </div>
+          <div class="doll-detail">
+            <strong>Skin</strong>
+            <span>Pale, translucent, with a soft porcelain-like appearance</span>
+          </div>
+          <div class="doll-detail">
+            <strong>Eyes</strong>
+            <span>Enormous light-brown eyes</span>
+          </div>
+          <div class="doll-detail">
+            <strong>Hair</strong>
+            <span>Messy strawberry-blonde bob with dusty-pink ends, soft and slightly uneven</span>
+          </div>
+          <div class="doll-detail">
+            <strong>Ears</strong>
+            <span>Large, rounded mouse ears with smooth, bald pink skin; expressive and subtly reactive to her mood</span>
+          </div>
+          <div class="doll-detail">
+            <strong>Face</strong>
+            <span>Rounded, youthful-looking adult face; extremely cute appearance contrasted sharply by her personality and mouth</span>
+          </div>
+          <div class="doll-detail">
+            <strong>Tail</strong>
+            <span>Small mouse tail, proportionate to her body and usually unobtrusive</span>
+          </div>
+          <div class="doll-detail">
+            <strong>Clothing</strong>
+            <span>
+              Feminine, thrifted, slightly eccentric clothing with the accumulated
+              look of things found, bought secondhand, repaired, altered, and
+              worn until they become hers. Cardigans, blouses, skirts, tights,
+              fitted trousers, old dresses, little jackets, and worn shoes.
+              She favors cute silhouettes without dressing like a porcelain doll.
+            </span>
+          </div>
+          <div class="doll-detail">
+            <strong>Signature Item</strong>
+            <span>A battered embroidered handbag carried almost everywhere. Contains live dynamite.</span>
+          </div>
         </div>
-        <div class="doll-detail">
-          <strong>Species</strong>
-          <span>Mouse demi-human</span>
-        </div>
-        <div class="doll-detail">
-          <strong>Age</strong>
-          <span>Adult</span>
-        </div>
-        <div class="doll-detail">
-          <strong>Gender</strong>
-          <span>Female</span>
-        </div>
-        <div class="doll-detail">
-          <strong>Origin</strong>
-          <span>Velvet, Saint Jude’s Landing</span>
-        </div>
-        <div class="doll-detail">
-          <strong>Location</strong>
-          <span>Saint Jude’s Landing, Creator</span>
-        </div>
-        <div class="doll-detail">
-          <strong>Group</strong>
-          <span>Ammonia’s group</span>
-        </div>
-        <div class="doll-detail">
-          <strong>Build</strong>
-          <span>Small adult woman; delicate and feminine, slight rather than frail, compact rather than childlike</span>
-        </div>
-        <div class="doll-detail">
-          <strong>Skin</strong>
-          <span>Pale, translucent, with a soft porcelain-like appearance</span>
-        </div>
-        <div class="doll-detail">
-          <strong>Eyes</strong>
-          <span>Enormous light-brown eyes</span>
-        </div>
-        <div class="doll-detail">
-          <strong>Hair</strong>
-          <span>Messy strawberry-blonde bob with dusty-pink ends, soft and slightly uneven</span>
-        </div>
-        <div class="doll-detail">
-          <strong>Ears</strong>
-          <span>Large, rounded mouse ears with smooth, bald pink skin; expressive and subtly reactive to her mood</span>
-        </div>
-        <div class="doll-detail">
-          <strong>Face</strong>
-          <span>Rounded, youthful-looking adult face; extremely cute appearance contrasted sharply by her personality and mouth</span>
-        </div>
-        <div class="doll-detail">
-          <strong>Tail</strong>
-          <span>Small mouse tail, proportionate to her body and usually unobtrusive</span>
-        </div>
-        <div class="doll-detail doll-full">
-          <strong>Clothing</strong>
-          <span>
-            Feminine, thrifted, slightly eccentric clothing with the accumulated
-            look of things found, bought secondhand, repaired, altered, and
-            worn until they become hers. Cardigans, blouses, skirts, tights,
-            fitted trousers, old dresses, little jackets, and worn shoes.
-            She favors cute silhouettes without dressing like a porcelain doll.
-          </span>
-        </div>
-        <div class="doll-detail doll-full">
-          <strong>Signature Possession</strong>
-          <span>
-            A battered embroidered handbag carried almost everywhere.
-            Contains live dynamite.
-          </span>
-        </div>
+
+        <aside class="doll-profile-aside">
+          <div>
+            <h3>General warning</h3>
+            <p>
+              Doll looks like somebody you might want to pinch on the cheek.
+              This is not a suggestion. Do not pinch her cheek.
+            </p>
+          </div>
+          <p class="doll-quote">
+            “I look cute. You're still a fucking idiot.”
+          </p>
+        </aside>
       </div>
     </section>
 
-    <section class="doll-section">
+    <section class="doll-section" id="appearance">
       <div class="doll-section-heading">
-        <span>♡</span>
+        <span class="doll-number">02</span>
         <h2>Appearance &amp; Style</h2>
       </div>
 
-      <div class="doll-grid">
-        <article class="doll-card">
-          <h3>Small, Not Fragile</h3>
+      <div class="doll-appearance">
+        <article class="doll-appearance-main">
+          <h3>Small, not fragile.</h3>
           <p>
             Doll is a small adult woman with a delicate, feminine build.
             She is slight without being frail, compact without being
@@ -467,10 +1292,6 @@
             to assume she needs protecting, but those assumptions reveal
             more about the strangers than they do about her.
           </p>
-        </article>
-
-        <article class="doll-card">
-          <h3>Porcelain Appearance</h3>
           <p>
             Her pale, translucent-looking skin has a soft porcelain quality.
             Enormous light-brown eyes, a rounded face, and a messy
@@ -480,40 +1301,58 @@
           </p>
         </article>
 
-        <article class="doll-card">
-          <h3>Expressive Ears</h3>
-          <p>
-            Her large, rounded mouse ears have smooth, bald pink skin.
-            They react subtly to her mood, offering small physical tells
-            that can accompany her expressions without replacing them.
-            Her small mouse tail is proportionate to her body and usually
-            unobtrusive.
-          </p>
-        </article>
+        <div class="doll-appearance-stack">
+          <article class="doll-mini">
+            <h3>Mouse ears</h3>
+            <p>
+              Large, rounded ears with smooth, bald pink skin. They react
+              subtly to her mood, offering small physical tells without
+              replacing her facial expressions.
+            </p>
+          </article>
 
-        <article class="doll-card">
-          <h3>Thrifted Femininity</h3>
+          <article class="doll-mini">
+            <h3>Mouse tail</h3>
+            <p>
+              Small and proportionate to her body, usually unobtrusive.
+              It is part of her anatomy, not a prop for every reaction.
+            </p>
+          </article>
+
+          <article class="doll-mini">
+            <h3>Thrifted femininity</h3>
+            <p>
+              Cardigans, blouses, skirts, tights, fitted trousers, old
+              dresses, little jackets, and worn shoes rotate through
+              her wardrobe.
+            </p>
+          </article>
+
+          <article class="doll-mini">
+            <h3>Nothing pristine</h3>
+            <p>
+              Her clothes have been found, repaired, altered, and worn.
+              She likes cute silhouettes without dressing like a
+              porcelain ornament.
+            </p>
+          </article>
+        </div>
+      </div>
+
+      <div class="doll-style-note">
+        <article>
+          <h3>Things become hers</h3>
           <p>
             Doll likes feminine, slightly eccentric clothing, especially
             pieces that look as though they have lived several lives before
-            reaching her. Cardigans, blouses, skirts, tights, fitted
-            trousers, old dresses, little jackets, and worn shoes all
-            rotate through her wardrobe.
+            reaching her. She appreciates imperfect finds and doesn't need
+            everything pristine or coordinated. Clothes acquire character
+            as she wears them, fixes them, changes them, and makes them her own.
           </p>
         </article>
 
-        <article class="doll-card">
-          <h3>Things Become Hers</h3>
-          <p>
-            Her wardrobe carries the marks of secondhand finds, repairs,
-            alterations, and repeated wear. She doesn't need everything
-            pristine or coordinated. Clothes acquire character as she
-            wears them, fixes them, changes them, and makes them her own.
-          </p>
-        </article>
-
-        <article class="doll-card doll-handbag">
-          <h3>The Handbag</h3>
+        <article>
+          <h3>The handbag</h3>
           <p>
             Her battered embroidered handbag is almost always with her.
             It belongs among her defining possessions, and people should
@@ -525,13 +1364,14 @@
       </div>
     </section>
 
-    <section class="doll-section">
+    <section class="doll-section" id="personality">
       <div class="doll-section-heading">
-        <span>♡</span>
+        <span class="doll-number">03</span>
         <h2>Personality</h2>
       </div>
 
-      <div class="doll-card">
+      <div class="doll-paper-card">
+        <h3>Kindness with teeth.</h3>
         <p>
           Doll is quick-tempered, blunt, practical, observant, affectionate,
           and perpetually ready to tell somebody exactly what the fuck is
@@ -571,15 +1411,20 @@
       </div>
     </section>
 
-    <section class="doll-section">
+    <section class="doll-section" id="temper">
       <div class="doll-section-heading">
-        <span>♡</span>
+        <span class="doll-number">04</span>
         <h2>Temper &amp; Aggression</h2>
       </div>
 
-      <div class="doll-grid">
-        <article class="doll-card">
-          <h3>A Very Short Fuse</h3>
+      <div class="doll-temper-strip">
+        <div class="doll-temper-banner">
+          <span class="doll-big-word">FUCK<br>OFF.</span>
+          <p>Her patience is not a renewable public resource.</p>
+        </div>
+
+        <div class="doll-temper-copy">
+          <h3>A very short fuse.</h3>
           <p>
             Doll's temper is fast. She can go from annoyed to furious with
             almost no visible transition, especially when somebody is
@@ -587,10 +1432,18 @@
             often the opening move, but threats and action can follow
             quickly.
           </p>
-        </article>
+          <p>
+            When she gets angry, she can become loud, pointed, and
+            increasingly specific about exactly what somebody did wrong.
+            She does not need to look imposing to make it clear that
+            she is serious.
+          </p>
+        </div>
+      </div>
 
+      <div class="doll-grid">
         <article class="doll-card">
-          <h3>Specific Threats</h3>
+          <h3>Specific threats</h3>
           <p>
             Her threats are not necessarily empty. When Doll starts
             getting very specific about somebody's kneecaps, the situation
@@ -600,7 +1453,7 @@
         </article>
 
         <article class="doll-card">
-          <h3>Perfectly Capable of Violence</h3>
+          <h3>Perfectly capable of violence</h3>
           <p>
             Doll is willing to become physically violent. Her small size
             does not prevent her from starting a fight, and she does not
@@ -609,8 +1462,8 @@
           </p>
         </article>
 
-        <article class="doll-card">
-          <h3>Protective Double Standards</h3>
+        <article class="doll-card doll-lilac-card">
+          <h3>Protective double standards</h3>
           <p>
             Doll can insult her friends all day. An outsider trying the
             exact same thing may discover that the privilege is not
@@ -619,94 +1472,136 @@
             or targets them.
           </p>
         </article>
+
+        <article class="doll-card">
+          <h3>Not mindless anger</h3>
+          <p>
+            Her temper is real, but it is not her only setting. Doll can
+            be practical, funny, observant, affectionate, and perfectly
+            capable of handling a situation without starting a fight.
+            She does not have to be furious to have a personality.
+          </p>
+        </article>
       </div>
     </section>
 
-    <section class="doll-section">
+    <section class="doll-section" id="affection">
       <div class="doll-section-heading">
-        <span>♡</span>
+        <span class="doll-number">05</span>
         <h2>Affection &amp; Social Behavior</h2>
       </div>
 
-      <div class="doll-card">
-        <p>
-          Doll's affection is abrasive and physical. She might shove
-          somebody, steal their food, complain about their face, sit
-          against them without asking, or give them an insulting nickname
-          while making absolutely certain they have eaten something.
-        </p>
-        <p>
-          She is comfortable with physical proximity when she trusts
-          somebody. She does not necessarily announce that she cares,
-          and she has little need to make every affectionate gesture
-          look conventionally sweet. Her actions and her mouth can
-          appear to contradict each other while expressing the same
-          underlying attachment.
-        </p>
-        <p>
-          Doll is not universally touchy or endlessly accommodating.
-          She has boundaries, expects people to respect her belongings,
-          and does not appreciate strangers treating her body or
-          possessions as public property. Her comfort with somebody
-          depends on the relationship, not on a general obligation
-          to be approachable.
-        </p>
+      <div class="doll-social">
+        <article class="doll-social-main">
+          <h3>She likes you. Unfortunately for you.</h3>
+          <p>
+            Doll's affection is abrasive and physical. She might shove
+            somebody, steal their food, complain about their face, sit
+            against them without asking, or give them an insulting nickname
+            while making absolutely certain they have eaten something.
+          </p>
+          <p>
+            She is comfortable with physical proximity when she trusts
+            somebody. She does not necessarily announce that she cares,
+            and she has little need to make every affectionate gesture
+            look conventionally sweet. Her actions and her mouth can
+            appear to contradict each other while expressing the same
+            underlying attachment.
+          </p>
+        </article>
+
+        <div class="doll-social-side">
+          <article>
+            <h3>Affection isn't an apology</h3>
+            <p>
+              She can be genuinely caring without becoming endlessly
+              patient or suddenly developing a soft, sugary way of speaking.
+            </p>
+          </article>
+
+          <article>
+            <h3>Boundaries still apply</h3>
+            <p>
+              Doll is not universally touchy or endlessly accommodating.
+              She expects people to respect her body and belongings.
+              Trust is personal, not a general invitation.
+            </p>
+          </article>
+
+          <article>
+            <h3>Her own terms</h3>
+            <p>
+              She does not owe everyone warmth, proximity, or an explanation
+              for why she does not want to be bothered.
+            </p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="doll-section">
+    <section class="doll-section" id="speech">
       <div class="doll-section-heading">
-        <span>♡</span>
+        <span class="doll-number">06</span>
         <h2>Speech &amp; Humor</h2>
       </div>
 
-      <div class="doll-grid">
-        <article class="doll-card">
-          <h3>Profanity Is Ordinary</h3>
+      <div class="doll-speech">
+        <aside class="doll-speech-quote">
+          <span class="doll-quote-mark" aria-hidden="true">“</span>
           <p>
-            Doll speaks quickly, conversationally, bluntly, and with
-            heavy profanity. Swearing is part of her ordinary vocabulary,
-            not a special mode she switches into only when angry. She can
-            fit an absurd amount of profanity into a structurally normal
-            sentence.
+            She can insult you, help you, and insult you again before
+            you've finished saying thank you.
           </p>
-        </article>
+        </aside>
 
-        <article class="doll-card">
-          <h3>Angry Rambling</h3>
-          <p>
-            When she gets worked up, Doll can ramble, elaborate, and become
-            increasingly specific about exactly what somebody did wrong.
-            Her temper may accelerate her speech, but she remains capable
-            of practical observations and perfectly clear explanations.
-          </p>
-        </article>
+        <div class="doll-speech-list">
+          <article>
+            <h3>Profanity is ordinary</h3>
+            <p>
+              Doll speaks quickly, conversationally, bluntly, and with
+              heavy profanity. Swearing is part of her ordinary vocabulary,
+              not a special mode she switches into only when angry. She can
+              fit an absurd amount of profanity into a structurally normal
+              sentence.
+            </p>
+          </article>
 
-        <article class="doll-card">
-          <h3>Dry &amp; Absurd</h3>
-          <p>
-            Her humor is dry, absurd, and frequently unintentional. Doll
-            enjoys watching people take themselves too seriously and may
-            say something outrageous with complete sincerity, without
-            pausing to acknowledge that it was funny.
-          </p>
-        </article>
+          <article>
+            <h3>Angry rambling</h3>
+            <p>
+              When she gets worked up, Doll can ramble, elaborate, and become
+              increasingly specific about exactly what somebody did wrong.
+              Her temper may accelerate her speech, but she remains capable
+              of practical observations and perfectly clear explanations.
+            </p>
+          </article>
 
-        <article class="doll-card">
-          <h3>Blunt Honesty</h3>
-          <p>
-            Doll doesn't instinctively soften her opinions to make them
-            easier to hear. She can be funny without trying, affectionate
-            without sounding sweet, and helpful while complaining about
-            the person she is helping.
-          </p>
-        </article>
+          <article>
+            <h3>Dry &amp; absurd</h3>
+            <p>
+              Her humor is dry, absurd, and frequently unintentional. Doll
+              enjoys watching people take themselves too seriously and may
+              say something outrageous with complete sincerity, without
+              pausing to acknowledge that it was funny.
+            </p>
+          </article>
+
+          <article>
+            <h3>Blunt honesty</h3>
+            <p>
+              Doll doesn't instinctively soften her opinions to make them
+              easier to hear. She can be funny without trying, affectionate
+              without sounding sweet, and helpful while complaining about
+              the person she is helping.
+            </p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="doll-section">
+    <section class="doll-section" id="intelligence">
       <div class="doll-section-heading">
-        <span>♡</span>
+        <span class="doll-number">07</span>
         <h2>Intelligence &amp; Practical Skills</h2>
       </div>
 
@@ -737,54 +1632,51 @@
       </div>
     </section>
 
-    <section class="doll-section">
+    <section class="doll-section" id="interests">
       <div class="doll-section-heading">
-        <span>♡</span>
-        <h2>Likes</h2>
+        <span class="doll-number">08</span>
+        <h2>Likes &amp; Dislikes</h2>
       </div>
 
-      <div class="doll-card">
-        <ul class="doll-list">
-          <li>Secondhand stores</li>
-          <li>Old clothing</li>
-          <li>Strange little objects</li>
-          <li>Broken things</li>
-          <li>Discarded objects with interesting history</li>
-          <li>Simple food</li>
-          <li>Absurdity</li>
-          <li>People she trusts</li>
-        </ul>
+      <div class="doll-interest-layout">
+        <div class="doll-pill-panel">
+          <h3>♡ Things she likes</h3>
+          <ul class="doll-list">
+            <li>Secondhand stores</li>
+            <li>Old clothing</li>
+            <li>Strange little objects</li>
+            <li>Broken things</li>
+            <li>Discarded objects with interesting history</li>
+            <li>Simple food</li>
+            <li>Absurdity</li>
+            <li>People she trusts</li>
+          </ul>
+        </div>
+
+        <div class="doll-pill-panel doll-dislikes">
+          <h3>♡ Things she doesn't</h3>
+          <ul class="doll-list">
+            <li>Being underestimated</li>
+            <li>Being treated as fragile</li>
+            <li>Condescension</li>
+            <li>Strangers touching her belongings</li>
+            <li>People bothering her</li>
+            <li>Unnecessary fussiness</li>
+            <li>People hurting those she loves</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section class="doll-section">
+    <section class="doll-section" id="habits">
       <div class="doll-section-heading">
-        <span>♡</span>
-        <h2>Dislikes</h2>
-      </div>
-
-      <div class="doll-card">
-        <ul class="doll-list">
-          <li>Being underestimated</li>
-          <li>Being treated as fragile</li>
-          <li>Condescension</li>
-          <li>Strangers touching her belongings</li>
-          <li>People bothering her</li>
-          <li>Unnecessary fussiness</li>
-          <li>People hurting those she loves</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="doll-section">
-      <div class="doll-section-heading">
-        <span>♡</span>
+        <span class="doll-number">09</span>
         <h2>Interests &amp; Habits</h2>
       </div>
 
-      <div class="doll-grid">
-        <article class="doll-card">
-          <h3>Secondhand Finds</h3>
+      <div class="doll-habits">
+        <article class="doll-habit">
+          <h3>Secondhand finds</h3>
           <p>
             Doll likes secondhand clothing and old things with signs
             of previous lives. She appreciates unusual finds, imperfect
@@ -793,8 +1685,8 @@
           </p>
         </article>
 
-        <article class="doll-card">
-          <h3>Repair &amp; Reuse</h3>
+        <article class="doll-habit">
+          <h3>Repair &amp; reuse</h3>
           <p>
             Repair, alterations, discarded machinery, and practical
             problem-solving all appeal to her. She is interested in
@@ -803,8 +1695,8 @@
           </p>
         </article>
 
-        <article class="doll-card">
-          <h3>The Bag Goes Everywhere</h3>
+        <article class="doll-habit">
+          <h3>The bag goes everywhere</h3>
           <p>
             Doll carries her battered embroidered handbag almost
             constantly. Anyone who tries to rummage through it without
@@ -812,8 +1704,8 @@
           </p>
         </article>
 
-        <article class="doll-card">
-          <h3>Purposeful Movement</h3>
+        <article class="doll-habit">
+          <h3>Purposeful movement</h3>
           <p>
             She moves quickly and purposefully, inspects interesting
             objects, and becomes increasingly specific when angry.
@@ -824,97 +1716,117 @@
       </div>
     </section>
 
-    <section class="doll-section">
+    <section class="doll-section" id="relationships">
       <div class="doll-section-heading">
-        <span>♡</span>
+        <span class="doll-number">10</span>
         <h2>Relationships</h2>
       </div>
 
-      <div class="doll-card doll-relationship">
-        <h3>Ammonia, Benoit, Riot &amp; Mold</h3>
-        <p>
-          Doll is close with Ammonia, Benoit, Riot, and Mold. She can
-          argue loudly with them, insult them freely, and still consider
-          them her people. Familiarity does not make her less blunt,
-          and affection does not require her to stop giving her friends
-          shit.
-        </p>
-        <p>
-          Ammonia, Benoit, Riot, and Doll are the members most often
-          present together, but the group is informal and mobile. Its
-          members leave and return on their own terms rather than
-          remaining constantly together. Their individual lives
-          continue outside the group.
-        </p>
-      </div>
+      <p class="doll-relationship-intro">
+        Doll's friendships are built on familiarity, loyalty, arguments,
+        and the freedom to be thoroughly unpleasant around people who
+        understand that she cares about them.
+      </p>
 
-      <div class="doll-card doll-relationship" style="margin-top: 14px;">
-        <h3>Mold</h3>
-        <p>
-          Doll first met Mold in a dirty alleyway a few years ago.
-          Her immediate reaction upon seeing this little trash fiend
-          was: <em>“Disgusting. I fucking love it.”</em>
-        </p>
-        <p>
-          Their friendship grew naturally from there. Doll genuinely
-          likes Mold's filthy, strange, disgusting nature rather than
-          merely tolerating it. Mold is one of the people she accepts
-          without needing them to become more socially conventional.
-        </p>
+      <div class="doll-relationship-grid">
+        <article class="doll-relationship-main">
+          <h3>Ammonia, Benoit, Riot &amp; Mold</h3>
+          <p>
+            Doll is close with Ammonia, Benoit, Riot, and Mold. She can
+            argue loudly with them, insult them freely, and still consider
+            them her people. Familiarity does not make her less blunt,
+            and affection does not require her to stop giving her friends
+            shit.
+          </p>
+          <p>
+            Ammonia, Benoit, Riot, and Doll are the members most often
+            present together, but the group is informal and mobile. Its
+            members leave and return on their own terms rather than
+            remaining constantly together. Their individual lives
+            continue outside the group.
+          </p>
+        </article>
+
+        <aside class="doll-mold-note">
+          <span class="doll-note-label">A treasured friendship. Somehow.</span>
+          <h3>Doll &amp; Mold</h3>
+          <p>
+            Doll first met Mold in a dirty alleyway a few years ago.
+            Her immediate reaction upon seeing this little trash fiend
+            was:
+          </p>
+          <blockquote>“Disgusting. I fucking love it.”</blockquote>
+          <p>
+            Their friendship grew naturally from there. Doll genuinely
+            likes Mold's filthy, strange, disgusting nature rather than
+            merely tolerating it. Mold is one of the people she accepts
+            without needing them to become more socially conventional.
+          </p>
+        </aside>
       </div>
     </section>
 
-    <section class="doll-section">
+    <section class="doll-section" id="intimacy">
       <div class="doll-section-heading">
-        <span>♡</span>
+        <span class="doll-number">11</span>
         <h2>Sexuality &amp; Intimacy</h2>
       </div>
 
-      <div class="doll-card">
-        <p>
-          Doll is blunt, curious, and unsentimental about sex and
-          intimacy. She does not treat sexual experience as a measure
-          of adulthood, attractiveness, or personal worth. She has
-          no interest in performing a particular kind of sweetness
-          simply because somebody else expects it from her.
-        </p>
-        <p>
-          Physical affection comes naturally when she trusts someone.
-          Depending on the relationship, she may become clingy,
-          possessive, teasing, or casually touchy. Her affection
-          remains recognizably hers: direct, physical, occasionally
-          abrasive, and not necessarily accompanied by romantic
-          declarations.
-        </p>
-        <p>
-          Doll is extremely direct about boundaries. She expects
-          people to understand that trusting somebody does not make
-          every interaction permissible, and she will not perform
-          sweetness to fit somebody else's fantasy of what a cute
-          woman should be like.
-        </p>
-        <p>
-          Her appearance should not be mistaken for childishness.
-          Doll is an adult woman, and her small stature, rounded
-          features, and feminine style are not substitutes for her
-          personality, agency, or adult relationships.
-        </p>
+      <div class="doll-intimacy">
+        <aside class="doll-intimacy-aside">
+          <span class="doll-heart" aria-hidden="true">♡</span>
+          <h3>Adult woman.<br>Her own terms.</h3>
+          <p>
+            Cute is an appearance, not a personality. Trust is not
+            automatic permission, and affection does not erase boundaries.
+          </p>
+        </aside>
+
+        <div class="doll-intimacy-copy">
+          <p>
+            Doll is blunt, curious, and unsentimental about sex and
+            intimacy. She does not treat sexual experience as a measure
+            of adulthood, attractiveness, or personal worth. She has
+            no interest in performing a particular kind of sweetness
+            simply because somebody else expects it from her.
+          </p>
+          <p>
+            Physical affection comes naturally when she trusts someone.
+            Depending on the relationship, she may become clingy,
+            possessive, teasing, or casually touchy. Her affection
+            remains recognizably hers: direct, physical, occasionally
+            abrasive, and not necessarily accompanied by romantic
+            declarations.
+          </p>
+          <p>
+            Doll is extremely direct about boundaries. She expects
+            people to understand that trusting somebody does not make
+            every interaction permissible, and she will not perform
+            sweetness to fit somebody else's fantasy of what a cute
+            woman should be like.
+          </p>
+          <p>
+            Her appearance should not be mistaken for childishness.
+            Doll is an adult woman, and her small stature, rounded
+            features, and feminine style are not substitutes for her
+            personality, agency, or adult relationships.
+          </p>
+        </div>
       </div>
     </section>
 
-    <section class="doll-section">
+    <section class="doll-section" id="core">
       <div class="doll-section-heading">
-        <span>♡</span>
+        <span class="doll-number">12</span>
         <h2>Core Trait</h2>
       </div>
 
-      <div class="doll-callout">
+      <div class="doll-core">
+        <h3>A tiny, pretty, foul-mouthed adult mouse demi-human who is significantly more dangerous than she looks.</h3>
         <p>
-          A tiny, pretty, foul-mouthed adult mouse demi-human who is
-          significantly more dangerous than she looks. Doll is practical,
-          affectionate in her own abrasive way, quick-tempered, observant,
-          and completely willing to start a fight she may need somebody
-          else to finish.
+          Doll is practical, affectionate in her own abrasive way,
+          quick-tempered, observant, and completely willing to start
+          a fight she may need somebody else to finish.
         </p>
         <p>
           She is not a delicate ornament, a helpless mascot, or a joke
@@ -925,14 +1837,14 @@
       </div>
     </section>
 
-    <section class="doll-section">
+    <section class="doll-section" id="notes">
       <div class="doll-section-heading">
-        <span>♡</span>
+        <span class="doll-number">13</span>
         <h2>Characterization Notes</h2>
       </div>
 
-      <div class="doll-card">
-        <h3>Small Doesn't Mean Helpless</h3>
+      <div class="doll-notes">
+        <h3>Do not mistake the packaging for the person.</h3>
         <p>
           Do not reduce Doll to “cute,” “angry,” “fragile,” or a joke
           character. Her small size and feminine appearance are parts
@@ -957,7 +1869,8 @@
     </section>
 
     <footer class="doll-footer">
-      <span>♡</span> Creator · Saint Jude’s Landing <span>♡</span>
+      <span>♡ Creator · Saint Jude’s Landing</span>
+      <span>Look, don't touch. ♡</span>
     </footer>
 
   </main>
