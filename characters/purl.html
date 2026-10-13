@@ -3,229 +3,540 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17110f">
 <title>Purl — Creator</title>
 <style>
 :root {
   --bg: #17110f;
   --panel: #211a18;
-  --panel2: #2c211e;
+  --panel-light: #2c211e;
   --text: #f0e7df;
   --muted: #c1aaa0;
   --orange: #ff7138;
-  --orange-soft: #ffbd91;
+  --orange-light: #ffbd91;
   --rust: #9d432b;
   --line: #583527;
+  --paper: #e9d8c9;
 }
 * { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   padding: 30px 16px 50px;
   background:
-    radial-gradient(ellipse at 87% 0%, rgba(255,113,56,.12), transparent 34%),
-    radial-gradient(ellipse at 0% 54%, rgba(157,67,43,.12), transparent 34%),
+    radial-gradient(ellipse at 85% 2%, rgba(255,113,56,.13), transparent 30%),
+    radial-gradient(ellipse at 0% 35%, rgba(157,67,43,.12), transparent 32%),
+    radial-gradient(ellipse at 100% 82%, rgba(255,189,145,.045), transparent 25%),
     var(--bg);
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.7;
 }
-.page { max-width: 1000px; margin: 0 auto; }
+
+::selection {
+  background: var(--orange);
+  color: #17110f;
+}
+
+a { color: var(--orange-light); }
+
+.page {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
 .topline {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 9px 18px;
   margin-bottom: 20px;
   color: var(--muted);
   font-size: 10px;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+
+.topline span:last-child {
+  color: var(--orange);
+  text-align: right;
+}
+
 .hero {
   position: relative;
+  isolation: isolate;
   overflow: hidden;
-  padding: 42px 36px 34px;
+  padding: 45px 38px 34px;
   border: 1px solid var(--line);
-  border-radius: 18px;
-  background: linear-gradient(135deg, #38251d, #211917 65%, #342019);
+  border-radius: 7px 25px 7px 25px;
+  background:
+    linear-gradient(115deg, transparent 0 58%, rgba(255,113,56,.045) 58% 59%, transparent 59%),
+    linear-gradient(135deg, #38251d 0%, #211917 61%, #342019 100%);
 }
-.hero::after {
-  content: "✷";
+
+.hero::before {
+  content: "P";
   position: absolute;
-  right: 14px;
-  bottom: -75px;
-  color: rgba(255,113,56,.08);
-  font-size: 270px;
+  z-index: -1;
+  top: -118px;
+  right: 6px;
+  color: rgba(255,113,56,.055);
+  font-size: clamp(300px, 50vw, 490px);
+  font-weight: 900;
+  letter-spacing: -40px;
   line-height: 1;
   pointer-events: none;
 }
+
+.hero::after {
+  content: "✳  ✳  ✳";
+  position: absolute;
+  right: 24px;
+  bottom: 17px;
+  color: rgba(255,189,145,.2);
+  font-size: 15px;
+  letter-spacing: 7px;
+  pointer-events: none;
+}
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
 .eyebrow {
-  margin: 0 0 8px;
+  margin: 0;
   color: var(--orange);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: bold;
   letter-spacing: 3px;
   text-transform: uppercase;
 }
+
+.sticker {
+  display: inline-block;
+  padding: 5px 10px;
+  transform: rotate(2deg);
+  border: 1px solid var(--orange);
+  background: var(--orange);
+  color: #25140e;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
 h1 {
   position: relative;
   z-index: 1;
   margin: 0;
-  color: var(--orange-soft);
-  font-size: clamp(46px, 9vw, 88px);
+  color: var(--orange-light);
+  font-size: clamp(65px, 13vw, 125px);
   font-weight: 900;
-  letter-spacing: -4px;
-  line-height: .95;
+  letter-spacing: -.09em;
+  line-height: .82;
 }
+
 .subtitle {
   position: relative;
   z-index: 1;
-  margin: 15px 0 0;
+  margin: 20px 0 0;
   color: #f5a47c;
-  font-size: 13px;
-  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
+
 .intro {
   position: relative;
   z-index: 1;
   max-width: 730px;
-  margin: 24px 0 0;
+  margin: 25px 0 0;
   color: #e6d7ce;
-  font-size: 16px;
+  font-size: 15px;
+  line-height: 1.9;
 }
+
+.intro strong { color: var(--orange-light); }
+
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 7px;
   margin-top: 24px;
 }
+
 .tag {
-  padding: 5px 10px;
+  padding: 5px 9px;
   border: 1px solid #78452f;
-  border-radius: 5px;
+  border-radius: 3px;
   background: rgba(255,113,56,.07);
-  color: var(--orange-soft);
-  font-size: 10px;
+  color: var(--orange-light);
+  font-size: 9px;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+
+.tape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 13px;
+  padding: 10px 14px;
+  border: 1px dashed #70432f;
+  border-radius: 3px;
+  color: #bca79b;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.tape strong {
+  color: var(--orange-light);
+  font-size: 10px;
+}
+
 .profile {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1px;
-  margin: 16px 0 34px;
+  margin: 16px 0 35px;
   overflow: hidden;
   border: 1px solid #493229;
-  border-radius: 12px;
+  border-radius: 7px 15px 7px 15px;
   background: #493229;
 }
-.fact { padding: 14px 16px; background: var(--panel); min-width: 0; }
+
+.fact {
+  min-width: 0;
+  padding: 15px 16px;
+  background: var(--panel);
+}
+
 .fact-label {
   display: block;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
   color: var(--orange);
   font-size: 9px;
   font-weight: bold;
-  letter-spacing: 2px;
+  letter-spacing: 1.8px;
   text-transform: uppercase;
 }
-.fact-value { font-size: 13px; }
-section { margin-top: 34px; }
+
+.fact-value {
+  color: var(--text);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+section { margin-top: 39px; }
+
 .section-head {
   display: flex;
-  align-items: baseline;
-  gap: 12px;
-  margin-bottom: 15px;
-  padding-bottom: 9px;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 17px;
+  padding-bottom: 11px;
   border-bottom: 1px solid var(--line);
 }
-.section-number { color: var(--orange); font-size: 11px; letter-spacing: 1px; }
-h2 { margin: 0; color: var(--orange-soft); font-size: 20px; letter-spacing: .5px; }
-h3 { margin: 0 0 8px; color: #ffb28c; font-size: 13px; letter-spacing: .4px; }
+
+.section-number {
+  display: inline-flex;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-5deg);
+  border: 1px solid var(--orange);
+  border-radius: 5px;
+  color: var(--orange);
+  font-size: 10px;
+  font-weight: bold;
+}
+
+h2 {
+  margin: 0;
+  color: var(--orange-light);
+  font-size: clamp(18px, 3vw, 23px);
+  letter-spacing: .3px;
+  line-height: 1.3;
+}
+
+h3 {
+  margin: 0 0 9px;
+  color: #ffb28c;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
 p { margin: 0 0 12px; }
 p:last-child { margin-bottom: 0; }
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
+
 .card {
   min-width: 0;
-  padding: 19px;
+  padding: 20px;
   border: 1px solid #483128;
-  border-radius: 10px;
+  border-radius: 5px 15px 5px 15px;
   background: var(--panel);
 }
-.card p, .card li { color: #dfd0c8; font-size: 13px; }
-.card ul { margin: 0; padding-left: 18px; }
-.card li { margin: 5px 0; }
-.wide { grid-column: 1 / -1; }
-.highlight {
-  padding: 22px 24px;
-  border-left: 3px solid var(--orange);
-  border-radius: 0 10px 10px 0;
-  background: linear-gradient(90deg, rgba(255,113,56,.09), rgba(255,113,56,.015));
+
+.card p,
+.card li {
+  color: #dfd0c8;
+  font-size: 13px;
+  line-height: 1.85;
 }
-.highlight p { color: #e8d8cf; }
+
+.card ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.card li { margin: 6px 0; }
+.card li::marker { color: var(--orange); }
+
+.wide { grid-column: 1 / -1; }
+
+.highlight {
+  padding: 23px 25px;
+  border: 1px solid #56392b;
+  border-left: 4px solid var(--orange);
+  border-radius: 4px 15px 4px 15px;
+  background:
+    linear-gradient(110deg, rgba(255,113,56,.09), transparent 80%),
+    var(--panel);
+}
+
+.highlight p {
+  color: #e8d8cf;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.highlight strong { color: var(--orange-light); }
+
+.note {
+  margin-top: 12px;
+  padding: 13px 15px;
+  border: 1px dashed #68432f;
+  border-radius: 4px;
+  color: #cbb5a7;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.note strong { color: var(--orange-light); }
+
+.satchel-intro {
+  margin-bottom: 15px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 .satchel-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
 }
+
 .satchel-item {
-  padding: 13px;
+  position: relative;
+  min-width: 0;
+  padding: 15px;
   border: 1px solid #56392b;
-  border-radius: 8px;
+  border-radius: 4px 12px 4px 12px;
   background: #291e19;
   color: #e8d8cf;
   font-size: 12px;
+  line-height: 1.75;
 }
+
+.satchel-item::before {
+  content: "✳";
+  display: block;
+  margin-bottom: 8px;
+  color: var(--orange);
+  font-size: 13px;
+}
+
 .satchel-item strong {
   display: block;
-  margin-bottom: 3px;
-  color: var(--orange-soft);
-  font-size: 12px;
+  margin-bottom: 5px;
+  color: var(--orange-light);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
+
+.quote-card {
+  position: relative;
+  padding: 25px 27px;
+  overflow: hidden;
+  border: 1px solid #70432f;
+  border-radius: 5px 18px 5px 18px;
+  background: linear-gradient(130deg, #35231b, #211a18);
+}
+
+.quote-card::after {
+  content: "“";
+  position: absolute;
+  top: -47px;
+  right: 13px;
+  color: rgba(255,113,56,.1);
+  font-family: Georgia, serif;
+  font-size: 180px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.quote-card p {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  color: #f0dfd3;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.quote-card p + p { margin-top: 12px; }
+
+.member-area {
+  padding: 23px;
+  border: 1px solid #483128;
+  border-radius: 5px 18px 5px 18px;
+  background: var(--panel);
+}
+
+.member-area > p {
+  color: #dfd0c8;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
 .member-strip {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 8px;
-  margin-top: 14px;
+  margin-top: 19px;
 }
+
 .member {
-  padding: 7px 11px;
+  min-width: 0;
+  padding: 12px 9px;
   border: 1px solid #56392b;
-  border-radius: 6px;
+  border-radius: 4px;
   background: #291e19;
-  color: var(--orange-soft);
-  font-size: 11px;
-  letter-spacing: .5px;
+  text-align: center;
 }
+
+.member strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--orange-light);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.member span {
+  display: block;
+  color: #bca79b;
+  font-size: 9px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.two-lists {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.list-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 13px;
+}
+
+.list-symbol {
+  display: inline-flex;
+  width: 25px;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #78452f;
+  border-radius: 50%;
+  color: var(--orange);
+  font-size: 11px;
+}
+
+.list-title h3 { margin: 0; }
+
 footer {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 44px;
-  padding-top: 16px;
+  margin-top: 48px;
+  padding-top: 17px;
   border-top: 1px solid var(--line);
   color: #a48b7e;
-  font-size: 10px;
+  font-size: 9px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
 }
-@media (max-width: 650px) {
-  body { padding: 18px 11px 35px; }
-  .hero { padding: 32px 22px 26px; }
-  h1 { letter-spacing: -2px; }
+
+footer span:last-child { color: var(--orange); }
+
+@media (max-width: 720px) {
   .profile { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .grid { grid-template-columns: 1fr; }
   .satchel-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .wide { grid-column: auto; }
-  .card { padding: 16px; }
+  .member-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
-@media (max-width: 390px) {
-  .satchel-grid { grid-template-columns: 1fr; }
+
+@media (max-width: 520px) {
+  body { padding: 18px 11px 35px; }
+  .hero { padding: 31px 21px 28px; }
+  .hero::before { top: -45px; right: -28px; }
+  h1 { letter-spacing: -.075em; }
+  .hero::after { right: 13px; bottom: 12px; }
+  .intro { font-size: 14px; }
+  .tape { align-items: flex-start; flex-direction: column; gap: 5px; }
+  .grid,
+  .two-lists { grid-template-columns: 1fr; }
+  .wide { grid-column: auto; }
+  .card { padding: 17px; }
+  .highlight,
+  .quote-card,
+  .member-area { padding: 19px; }
+  .satchel-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .member-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  section { margin-top: 32px; }
+}
+
+@media (max-width: 350px) {
+  .satchel-grid,
+  .member-strip { grid-template-columns: 1fr; }
+  .profile { grid-template-columns: 1fr 1fr; }
+  .fact { padding: 12px; }
+  .fact-value { font-size: 11px; }
 }
 </style>
 </head>
@@ -234,13 +545,18 @@ footer {
 
   <div class="topline">
     <span>CREATOR / SAINT JUDE'S LANDING</span>
-    <span>GOOD TEETH · MEMBER PROFILE</span>
+    <span>GOOD TEETH · BAND MEMBER</span>
   </div>
 
   <header class="hero">
-    <p class="eyebrow">Drums · Curiosity · Things Found Along the Way</p>
+    <div class="hero-top">
+      <p class="eyebrow">Drums · Curiosity · Things Found Along the Way</p>
+      <span class="sticker">Probably Has One in His Bag</span>
+    </div>
+
     <h1>PURL</h1>
-    <p class="subtitle">Hang On. What's That?</p>
+    <p class="subtitle">Hang on. What's that?</p>
+
     <p class="intro">
       A cheerful, peculiar British salamander demi-human with an endless appetite
       for novelty. Purl is curious, sociable, easily fascinated, and perfectly
@@ -249,6 +565,7 @@ footer {
       The world is full of things he hasn't encountered yet, and he would very much
       like to get on with encountering them.
     </p>
+
     <div class="tags">
       <span class="tag">British Salamander Demi-Human</span>
       <span class="tag">Age 21</span>
@@ -257,6 +574,11 @@ footer {
       <span class="tag">Violent Orange</span>
     </div>
   </header>
+
+  <div class="tape">
+    <span>SAINT JUDE'S LANDING</span>
+    <strong>WARNING: MAY STOP MID-CONVERSATION TO INVESTIGATE A ROCK</strong>
+  </div>
 
   <div class="profile">
     <div class="fact">
@@ -296,8 +618,9 @@ footer {
   <section>
     <div class="section-head">
       <span class="section-number">01</span>
-      <h2>Appearance</h2>
+      <h2>What Does He Look Like?</h2>
     </div>
+
     <div class="grid">
       <article class="card">
         <h3>Face & Eyes</h3>
@@ -308,6 +631,7 @@ footer {
           visible before he even starts asking questions.
         </p>
       </article>
+
       <article class="card">
         <h3>Skin & Hair</h3>
         <p>
@@ -317,6 +641,7 @@ footer {
           and slightly untidy, rarely staying perfectly arranged for long.
         </p>
       </article>
+
       <article class="card">
         <h3>Build & Tail</h3>
         <p>
@@ -329,6 +654,7 @@ footer {
           enough to help with balance and expressive enough to reveal his mood.
         </p>
       </article>
+
       <article class="card">
         <h3>Ears & Clothing</h3>
         <p>
@@ -341,8 +667,9 @@ footer {
           his clothing or satchel.
         </p>
       </article>
+
       <article class="card wide">
-        <h3>The Satchel</h3>
+        <h3>The Satchel: His Other Constant Companion</h3>
         <p>
           Purl carries a small satchel almost everywhere. It is stuffed with things
           he has decided might become useful, interesting, or entertaining. Some
@@ -362,8 +689,14 @@ footer {
   <section>
     <div class="section-head">
       <span class="section-number">02</span>
-      <h2>What's in the Bag?</h2>
+      <h2>Inventory of Questionable Importance</h2>
     </div>
+
+    <p class="satchel-intro">
+      Contents vary. Organization is theoretical. Everything has a reason for being there,
+      even if Purl needs a minute to remember it.
+    </p>
+
     <div class="satchel-grid">
       <div class="satchel-item">
         <strong>Actually Useful</strong>
@@ -395,8 +728,9 @@ footer {
   <section>
     <div class="section-head">
       <span class="section-number">03</span>
-      <h2>Curiosity, as a Lifestyle</h2>
+      <h2>Curiosity Is a Lifestyle</h2>
     </div>
+
     <div class="grid">
       <article class="card">
         <h3>Personally Curious</h3>
@@ -412,6 +746,7 @@ footer {
           performance behind it.
         </p>
       </article>
+
       <article class="card">
         <h3>People Are Interesting, Too</h3>
         <p>
@@ -425,6 +760,7 @@ footer {
           little details that make one person different from another.
         </p>
       </article>
+
       <article class="card wide">
         <h3>Collecting Experiences</h3>
         <p>
@@ -446,6 +782,7 @@ footer {
       <span class="section-number">04</span>
       <h2>Cheerful, Not Oblivious</h2>
     </div>
+
     <div class="highlight">
       <p>
         Purl is genuinely cheerful, but he is not relentlessly positive, incapable
@@ -462,13 +799,21 @@ footer {
         notice something interesting.
       </p>
     </div>
+
+    <div class="note">
+      <strong>Important distinction:</strong> Purl isn't oblivious to discomfort,
+      danger, or other people's feelings. His curiosity can coexist with serious
+      emotions. Finding something interesting in a bad situation doesn't mean
+      he thinks the situation is good.
+    </div>
   </section>
 
   <section>
     <div class="section-head">
       <span class="section-number">05</span>
-      <h2>Britishness</h2>
+      <h2>Britishness, Without the Cartoon</h2>
     </div>
+
     <div class="grid">
       <article class="card">
         <h3>Ordinary, Not Caricatured</h3>
@@ -482,6 +827,7 @@ footer {
           He can also be startlingly blunt when surprised.
         </p>
       </article>
+
       <article class="card">
         <h3>A Particular Kind of Complaint</h3>
         <p>
@@ -500,9 +846,10 @@ footer {
   <section>
     <div class="section-head">
       <span class="section-number">06</span>
-      <h2>Food</h2>
+      <h2>Food Is an Adventure</h2>
     </div>
-    <div class="highlight">
+
+    <div class="quote-card">
       <p>
         Purl likes food. A lot. He is willing to try almost anything at least once,
         especially if he has never encountered it before.
@@ -524,6 +871,7 @@ footer {
       <span class="section-number">07</span>
       <h2>Life on Tour</h2>
     </div>
+
     <div class="grid">
       <article class="card">
         <h3>Every City Is New</h3>
@@ -536,6 +884,7 @@ footer {
           He wants to explore. Constantly.
         </p>
       </article>
+
       <article class="card">
         <h3>The Detour Problem</h3>
         <p>
@@ -547,6 +896,7 @@ footer {
           He maintains that the detours were worth it. They usually were.
         </p>
       </article>
+
       <article class="card wide">
         <h3>Things Worth Remembering</h3>
         <p>
@@ -566,8 +916,9 @@ footer {
   <section>
     <div class="section-head">
       <span class="section-number">08</span>
-      <h2>Affection</h2>
+      <h2>How Purl Shows He Cares</h2>
     </div>
+
     <div class="grid">
       <article class="card">
         <h3>Little Gifts</h3>
@@ -581,6 +932,7 @@ footer {
           his attention and made him think of someone else.
         </p>
       </article>
+
       <article class="card">
         <h3>Easy Closeness</h3>
         <p>
@@ -599,9 +951,10 @@ footer {
   <section>
     <div class="section-head">
       <span class="section-number">09</span>
-      <h2>GOOD TEETH</h2>
+      <h2>GOOD TEETH: Behind the Kit</h2>
     </div>
-    <div class="card">
+
+    <div class="member-area">
       <p>
         Purl is GOOD TEETH's drummer and the physical engine of the band's sound.
         His playing drives catchy electronic music, supports vulnerable passages,
@@ -620,12 +973,28 @@ footer {
         is made by five musicians reacting to one another, experimenting, changing
         arrangements, and allowing unexpected ideas to become something new.
       </p>
+
       <div class="member-strip">
-        <span class="member">IVES · VOCALS</span>
-        <span class="member">RENGA · SYNTH / KEYBOARD</span>
-        <span class="member">TŌGO · ELECTRIC GUITAR</span>
-        <span class="member">PURL · DRUMS</span>
-        <span class="member">RILEY · BASS</span>
+        <div class="member">
+          <strong>IVES</strong>
+          <span>Vocals</span>
+        </div>
+        <div class="member">
+          <strong>RENGA</strong>
+          <span>Synth / Keyboard</span>
+        </div>
+        <div class="member">
+          <strong>TŌGO</strong>
+          <span>Electric Guitar</span>
+        </div>
+        <div class="member">
+          <strong>PURL</strong>
+          <span>Drums</span>
+        </div>
+        <div class="member">
+          <strong>RILEY</strong>
+          <span>Bass</span>
+        </div>
       </div>
     </div>
   </section>
@@ -633,10 +1002,12 @@ footer {
   <section>
     <div class="section-head">
       <span class="section-number">10</span>
-      <h2>Habits & Little Things</h2>
+      <h2>Small, Extremely Purl Things</h2>
     </div>
+
     <div class="grid">
       <article class="card">
+        <h3>On Any Given Day</h3>
         <ul>
           <li>Carries his satchel everywhere.</li>
           <li>Touches the brim of his cap while thinking.</li>
@@ -645,7 +1016,9 @@ footer {
           <li>Wanders toward anything interesting.</li>
         </ul>
       </article>
+
       <article class="card">
+        <h3>And Then Somehow</h3>
         <ul>
           <li>Shares food without being asked.</li>
           <li>Forgets where he put things while holding them.</li>
@@ -660,11 +1033,15 @@ footer {
   <section>
     <div class="section-head">
       <span class="section-number">11</span>
-      <h2>Likes & Dislikes</h2>
+      <h2>Things He Likes / Things That Can Get Lost</h2>
     </div>
-    <div class="grid">
+
+    <div class="two-lists">
       <article class="card">
-        <h3>Likes</h3>
+        <div class="list-title">
+          <span class="list-symbol">+</span>
+          <h3>Good Things</h3>
+        </div>
         <ul>
           <li>New places and long walks</li>
           <li>Strange food and interesting animals</li>
@@ -675,8 +1052,12 @@ footer {
           <li>Discovering something he has never seen before</li>
         </ul>
       </article>
+
       <article class="card">
-        <h3>Dislikes</h3>
+        <div class="list-title">
+          <span class="list-symbol">−</span>
+          <h3>Absolutely Not</h3>
+        </div>
         <ul>
           <li>Being bored</li>
           <li>People destroying interesting things for no reason</li>
@@ -695,6 +1076,7 @@ footer {
       <span class="section-number">12</span>
       <h2>The Whole Purl</h2>
     </div>
+
     <div class="highlight">
       <p>
         Purl wants to see what happens next. He wants to know what is around the
@@ -717,7 +1099,7 @@ footer {
 
   <footer>
     <span>CREATOR · SAINT JUDE'S LANDING</span>
-    <span>GOOD TEETH ARCHIVE</span>
+    <span>GOOD TEETH · LOUD THINGS, STRANGE THINGS</span>
   </footer>
 
 </div>
