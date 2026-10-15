@@ -676,7 +676,16 @@ p {
     radial-gradient(ellipse at 50% 100%, rgba(20, 67, 63, .8), transparent 50%),
     linear-gradient(165deg, #40355d 0%, #8a527c 39%, #df977c 64%, #f6c18e 100%);
 }
-
+.landscape-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+}
 .landscape-sun {
   position: absolute;
   top: 13%;
@@ -743,7 +752,10 @@ p {
   right: 14px;
   bottom: 14px;
   z-index: 3;
-  color: rgba(255, 255, 255, .85);
+  padding: 5px 9px;
+  border-radius: 3px;
+  background: rgba(23, 21, 27, 0.72);
+  color: rgba(255, 255, 255, 0.95);
   font-family: var(--serif);
   font-size: 12px;
   font-style: italic;
