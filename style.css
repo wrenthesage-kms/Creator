@@ -661,7 +661,7 @@ p {
   border-bottom: 1px solid var(--pink);
 }
 
-/* Original abstract landscape illustration */
+/* Landscape image */
 
 .world-art {
   min-width: 0;
@@ -676,6 +676,7 @@ p {
     radial-gradient(ellipse at 50% 100%, rgba(20, 67, 63, .8), transparent 50%),
     linear-gradient(165deg, #40355d 0%, #8a527c 39%, #df977c 64%, #f6c18e 100%);
 }
+
 .landscape-image {
   position: absolute;
   inset: 0;
@@ -686,6 +687,7 @@ p {
   object-fit: cover;
   object-position: center;
 }
+
 .landscape-sun {
   position: absolute;
   top: 13%;
@@ -907,15 +909,6 @@ p {
 
 .place-city .place-visual {
   background: linear-gradient(145deg, #5a326b, #ad5d8a 53%, #f0a47f);
-}
-
-.place-industrial .place-visual {
-  background: url("nine.PNG") center / cover no-repeat;
-}
-
-.place-industrial .place-decoration,
-.place-industrial .place-symbol {
-  display: none;
 }
 
 .place-hollow .place-visual {
@@ -1168,6 +1161,7 @@ p {
   color: var(--bg);
   transform: rotate(45deg);
 }
+
 /* Location card images */
 
 .place-visual {
@@ -1185,6 +1179,7 @@ p {
   object-fit: cover;
   object-position: center;
 }
+
 /* People */
 
 .people-section {
