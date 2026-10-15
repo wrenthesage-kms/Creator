@@ -25,7 +25,7 @@ The project continues to grow as I develop its world, expand its cast, and explo
 
 The website is the best place to explore the project as it develops.
 
-**Website:** [Visit Creator](https://wrenthesage.github.io/Creator/)
+**Website:** [Visit Creator]([https://wrenthesage-kms.github.io/Creator/index.html#home])
 
 You can also browse this repository to see how the website is built.
 
