@@ -1,55 +1,64 @@
 # COPYRIGHT NOTICE — CREATOR
 
-**Copyright © 2026 Sage the Wren. All rights reserved.**
+**Copyright © 2026 Wren the Sage. All rights reserved.**
 
-Creator is an original fictional universe and creative project created and owned by Sage the Wren.
+Creator is an original fictional universe and creative project created and developed by Wren the Sage.
 
-This copyright claim applies to the original creative content associated with Creator, including, but not limited to:
+This notice applies to the original creative expression comprising Creator, including but not limited to the following:
 
-- **Worldbuilding and lore:** the setting, fictional world, history, mythology, cultures, geography, ecosystems, locations, districts, communities, and original concepts expressed through the work.
-- **Characters:** original characters, their designs, personalities, histories, relationships, and individual storylines.
-- **Written content:** descriptions, biographies, character profiles, narratives, dialogue, worldbuilding text, and other original writing.
-- **Visual content:** original illustrations, character artwork, designs, graphics, and other creative imagery.
-- **Original creative arrangements:** the distinctive selection, coordination, and arrangement of the above material.
+- **Worldbuilding and lore:** original descriptions of the world, its history, geography, ecosystems, cultures, communities, fictional events, and setting.
+- **Characters:** original character designs, names where protectable by law, personalities, backgrounds, histories, relationships, and storylines.
+- **Written content:** original writing, character profiles, biographies, location descriptions, narratives, dialogue, and other literary material.
+- **Visual content:** original illustrations, artwork, graphics, character designs, and other visual assets.
+- **Creative arrangements:** original selection, coordination, and arrangement of creative material.
 
-Creator is an independent original work. Its characters, setting, lore, and creative content are not offered as public-domain material or as an open-source fictional universe.
+Creator is an independent creative work. Its original creative content is not offered as public-domain material.
 
 ## ALL RIGHTS RESERVED
 
-**No permission is granted to reproduce, republish, redistribute, adapt, or create derivative works from Creator's original creative content without the copyright owner's prior written permission, except where permitted by applicable law.**
+No general permission is granted to reproduce, republish, redistribute, adapt, or create derivative works from Creator's protected creative expression without prior written permission from the copyright owner, except where permitted by applicable law or an applicable license.
 
-In particular, without prior written permission, you may not:
+Without appropriate authorization, you may not:
 
-- Copy or republish Creator's lore, character profiles, biographies, or other original writing as your own work.
-- Reproduce or redistribute Creator's original artwork, character designs, or other protected visual content.
-- Repackage, mirror, or republish Creator's creative material as another fictional universe, website, project, or product.
-- Use Creator's original characters, writing, artwork, or other protected creative expression in a commercial product or other derivative work.
-- Claim authorship of, or falsely represent ownership of, Creator's original creative content.
-- Incorporate Creator's protected creative content into AI training datasets or other datasets for machine learning without permission, to the extent such use is subject to the copyright owner's exclusive rights.
+- Reproduce or republish Creator's original writing, lore, character profiles, or other protected literary content.
+- Copy or redistribute Creator's original artwork, illustrations, or other protected visual content.
+- Repackage or present Creator's protected creative expression as your own original work.
+- Incorporate Creator's protected creative expression into another fictional universe, website, project, or product without permission.
+- Use Creator's protected creative expression commercially without appropriate authorization.
+- Misrepresent authorship or ownership of Creator's original creative material.
 
-**Public availability is not a transfer of ownership or a general license to use this creative work.**
+The public availability of this repository does not, by itself, grant a general license to use Creator's original fictional universe or its protected creative content.
 
-The presence of this project on GitHub does not constitute permission to use its original fictional universe, characters, lore, writing, or artwork in other projects.
+## ARTIFICIAL INTELLIGENCE AND DATASETS
+
+No permission is granted by this notice to use Creator's protected creative expression in AI training datasets, machine-learning datasets, or similar collections where such use requires authorization under applicable law.
+
+This statement does not claim rights beyond those provided by applicable law and does not override legally permitted uses.
 
 ## SOURCE CODE AND THIRD-PARTY MATERIALS
 
-This notice does not claim ownership of third-party material, software, libraries, fonts, images, or other content belonging to their respective owners. Such materials remain subject to their applicable licenses and rights.
+The website's source code and Creator's original fictional content are distinct categories of material.
 
-Copyright in original website code and other original contributions is reserved to their respective copyright owners, subject to applicable law.
+This notice does not claim ownership of third-party software, libraries, fonts, images, or other material belonging to their respective owners. Such material remains subject to its applicable licenses and rights.
 
-This notice does not override applicable law, existing licenses, or rights that cannot legally be restricted.
+Original website code is subject to the rights of its respective copyright owner, unless an applicable license states otherwise.
 
-## PERMISSION AND CONTACT
+No provision of this notice overrides applicable law, existing licenses, or rights that cannot legally be restricted.
 
-Requests for permission to use Creator's original creative content must be made directly to the copyright owner and must receive explicit written authorization before the proposed use.
+## PERMISSION REQUESTS
 
-**Creator is not an invitation to take, reproduce, or republish someone else's original creative work.**
+Requests to reproduce, adapt, republish, or otherwise use Creator's protected creative expression should be directed to the copyright owner.
 
-Unauthorized use may result in appropriate legal action where available under applicable law.
+Permission must be explicitly granted in writing before the proposed use, except where permitted by applicable law or an applicable license.
 
----
+The absence of a response does not constitute permission.
+
+## COPYRIGHT OWNER
 
 **Creator**  
-Original fictional universe and creative project  
-Copyright © 2026 Sage the Wren  
-All rights reserved.
+Original fictional universe and creative project
+
+**Created and developed by Wren the Sage**  
+GitHub: [@wrenthesage](https://github.com/wrenthesage)
+
+Copyright © 2026 Wren the Sage. All rights reserved.
