@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#211b2b">
+
+<title>The Rat Hole — Wren the Sage</title>
+<meta name="description" content="A little corner of the internet for the bots, monsters, music, art, and other questionable things made by Wren the Sage.">
+<meta property="og:title" content="The Rat Hole">
+<meta property="og:description" content="Welcome, Dirty Rat. Mind the teeth.">
+<meta property="og:type" content="website">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #211b2b;
+  --panel: #2a2336;
+  --panel2: #342a42;
+  --ink: #f5efff;
+  --muted: #b8aabd;
+  --pink: #f49bc7;
+  --purple: #bba3ff;
+  --lime: #d7ff75;
+  --blue: #91d8ff;
+  --line: #574866;
+  --mono: 'DM Mono', monospace;
+  --sans: 'DM Sans', sans-serif;
+  --display: 'Space Grotesk', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 25px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.6;
+  background-image:
+    radial-gradient(ellipse at 8% 0%, #563a6340, transparent 35%),
+    radial-gradient(ellipse at 95% 35%, #7c386126, transparent 30%);
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: var(--lime);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--pink);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 4px;
+}
+
+.wrap {
+  width: min(1320px, calc(100% - 36px));
+  margin-inline: auto;
+}
+
+/* TOP BAR */
+
+.topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font: 10px var(--mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.topline strong {
+  color: var(--lime);
+  font-weight: 500;
+}
+
+/* NAVIGATION */
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 11px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #2a2336b8;
+  color: var(--muted);
+  font: 10px var(--mono);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  transition: background .2s, color .2s, border-color .2s;
+}
+
+.site-nav a:hover {
+  background: var(--lime);
+  color: var(--bg);
+  border-color: var(--lime);
+}
+
+/* HERO */
+
+.hero {
+  padding: clamp(30px, 6vw, 70px) 0 32px;
+}
+
+.hero-banner {
+  width: 100%;
+  aspect-ratio: 3.2 / 1;
+  min-height: 130px;
+  max-height: 360px;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 28px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+}
+
+.eyebrow {
+  color: var(--pink);
+  font: 11px var(--mono);
+  letter-spacing: .19em;
+  text-transform: uppercase;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 270px);
+  gap: clamp(20px, 5vw, 70px);
+  align-items: center;
+}
+
+.hero h1 {
+  margin: 20px 0;
+  font: 700 clamp(48px, 10vw, 112px)/.84 var(--display);
+  letter-spacing: -.085em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.hero h1 .accent {
+  color: var(--lime);
+}
+
+.hero h1 .pink {
+  color: var(--pink);
+}
+
+.hero-copy {
+  max-width: 700px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.hero-copy strong {
+  color: var(--ink);
+}
+
+.hero-stamp {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 7px 10px;
+  border: 1px solid var(--pink);
+  border-radius: 4px;
+  color: var(--pink);
+  font: 10px var(--mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  transform: rotate(-2deg);
+}
+
+.hero-mascot {
+  width: 100%;
+  aspect-ratio: 1;
+  display: block;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #2a233650;
+}
+
+/* IMAGE PLACEHOLDERS */
+
+.image-slot {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, #342a42 0%, #211b2b 100%);
+  border: 1px solid var(--line);
+}
+
+.image-slot img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.image-slot .image-placeholder {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
+  color: var(--muted);
+  text-align: center;
+  font: 10px var(--mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.image-slot.image-missing .image-placeholder {
+  display: flex;
+}
+
+.image-placeholder .placeholder-mark {
+  color: var(--lime);
+  font: 30px var(--display);
+}
+
+/* TICKER */
+
+.ticker {
+  overflow: hidden;
+  white-space: nowrap;
+  background: var(--lime);
+  color: var(--bg);
+  border-block: 1px solid var(--lime);
+  font: 500 11px var(--mono);
+  letter-spacing: .09em;
+  padding: 10px 0;
+}
+
+.ticker-track {
+  display: inline-block;
+  min-width: max-content;
+  animation: ticker-scroll 38s linear infinite;
+}
+
+.ticker-track span {
+  padding-right: 30px;
+}
+
+.ticker:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes ticker-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* GENERAL SECTIONS */
+
+section {
+  scroll-margin-top: 20px;
+}
+
+.section {
+  padding: 36px 0 12px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 18px;
+  margin: 0 0 18px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font: 700 clamp(25px, 4vw, 39px)/1 var(--display);
+  letter-spacing: -.055em;
+}
+
+.section-heading h2 .accent {
+  color: var(--lime);
+}
+
+.section-heading p {
+  margin: 0;
+  color: var(--muted);
+  font: 10px var(--mono);
+  letter-spacing: .08em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.section-intro {
+  max-width: 680px;
+  margin: -5px 0 22px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* FEATURED RAT */
+
+.rat-feature {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: linear-gradient(130deg, #342a42, #272030);
+}
+
+.rat-art {
+  min-height: 300px;
+  aspect-ratio: 1.1 / 1;
+  border: 0;
+  border-right: 1px solid var(--line);
+  border-radius: 0;
+}
+
+.rat-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(22px, 4vw, 46px);
+}
+
+.rat-number {
+  color: var(--lime);
+  font: 11px var(--mono);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.rat-copy h3 {
+  margin: 14px 0 5px;
+  font: 700 clamp(30px, 5vw, 54px)/.98 var(--display);
+  letter-spacing: -.065em;
+}
+
+.rat-title {
+  margin: 0 0 18px;
+  color: var(--pink);
+  font: 12px var(--mono);
+}
+
+.rat-copy p {
+  max-width: 500px;
+  margin: 0 0 15px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.rat-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 4px 0 18px;
+  padding: 6px 9px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--lime);
+  font: 10px var(--mono);
+  text-transform: uppercase;
+}
+
+.rat-status::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--lime);
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 8px;
+}
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 10px 15px;
+  border: 1px solid var(--lime);
+  border-radius: 6px;
+  background: var(--lime);
+  color: var(--bg);
+  font: 500 11px var(--mono);
+  text-transform: uppercase;
+  transition: background .2s, color .2s, transform .2s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  background: transparent;
+  color: var(--lime);
+}
+
+.button.secondary {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.button.secondary:hover {
+  border-color: var(--pink);
+  color: var(--pink);
+}
+
+/* RAT OF THE WEEK INFO */
+
+.rat-rules {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.rule-card {
+  padding: 17px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #2a2336b8;
+}
+
+.rule-card .rule-number {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--pink);
+  font: 11px var(--mono);
+}
+
+.rule-card h4 {
+  margin: 0 0 5px;
+  font: 600 16px var(--display);
+}
+
+.rule-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* CREATIVE WORK GRID */
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.work-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: linear-gradient(145deg, #30263e, #251f30);
+  color: var(--ink);
+  transition: transform .2s, border-color .2s;
+}
+
+.work-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--pink);
+  color: var(--ink);
+}
+
+.work-art {
+  aspect-ratio: 1.65 / 1;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+}
+
+.work-card:nth-child(3n + 2) .work-art {
+  background: linear-gradient(135deg, #3d2945, #24202f);
+}
+
+.work-card:nth-child(3n) .work-art {
+  background: linear-gradient(135deg, #283b48, #24202f);
+}
+
+.work-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px;
+}
+
+.work-label {
+  margin-bottom: 8px;
+  color: var(--pink);
+  font: 10px var(--mono);
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.work-copy h3 {
+  margin: 0 0 8px;
+  font: 700 clamp(18px, 2.3vw, 25px)/1.1 var(--display);
+  letter-spacing: -.04em;
+}
+
+.work-copy p {
+  flex: 1;
+  margin: 0 0 17px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  color: var(--lime);
+  font: 10px var(--mono);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.card-link span {
+  transition: transform .2s;
+}
+
+.work-card:hover .card-link span {
+  transform: translateX(4px);
+}
+
+/* WIDE FEATURE CARDS */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.feature-card {
+  display: grid;
+  grid-template-columns: minmax(100px, .7fr) minmax(0, 1.3fr);
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #2a2336b8;
+  color: var(--ink);
+  transition: border-color .2s, transform .2s;
+}
+
+.feature-card:hover {
+  border-color: var(--purple);
+  transform: translateY(-2px);
+  color: var(--ink);
+}
+
+.feature-art {
+  height: 100%;
+  min-height: 170px;
+  border: 0;
+  border-right: 1px solid var(--line);
+  border-radius: 0;
+}
+
+.feature-copy {
+  align-self: center;
+  padding: 18px;
+}
+
+.feature-copy .work-label {
+  color: var(--blue);
+}
+
+.feature-copy h3 {
+  margin: 0 0 7px;
+  font: 700 22px/1.05 var(--display);
+  letter-spacing: -.045em;
+}
+
+.feature-copy p {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* ABOUT / SUPPORT */
+
+.closing-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 13px;
+}
+
+.closing-card {
+  padding: clamp(20px, 4vw, 34px);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: linear-gradient(145deg, #30263e, #251f30);
+}
+
+.closing-card h3 {
+  margin: 0 0 12px;
+  font: 700 clamp(22px, 3vw, 30px)/1 var(--display);
+  letter-spacing: -.05em;
+}
+
+.closing-card p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.closing-card strong {
+  color: var(--ink);
+}
+
+.closing-card.support {
+  border-color: #745276;
+  background:
+    radial-gradient(ellipse at 100% 0%, #f49bc71b, transparent 60%),
+    linear-gradient(145deg, #30263e, #251f30);
+}
+
+.closing-card.support h3 {
+  color: var(--pink);
+}
+
+/* FOOTER */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 48px;
+  padding: 22px 0 32px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font: 10px var(--mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.footer strong {
+  color: var(--pink);
+  font-weight: 500;
+}
+
+.back-to-top {
+  color: var(--lime);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+  .hero-layout {
+    grid-template-columns: minmax(0, 1fr) 180px;
+    gap: 25px;
+  }
+
+  .work-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rat-feature {
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  }
+
+  .rat-art {
+    min-height: 240px;
+  }
+
+  .feature-card {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-art {
+    aspect-ratio: 2 / 1;
+    min-height: 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 600px) {
+  .wrap {
+    width: calc(100% - 22px);
+  }
+
+  .topline {
+    font-size: 9px;
+  }
+
+  .topline span:last-child {
+    text-align: right;
+  }
+
+  .site-nav {
+    gap: 6px;
+  }
+
+  .site-nav a {
+    padding: 7px 9px;
+    font-size: 9px;
+  }
+
+  .hero {
+    padding-top: 26px;
+  }
+
+  .hero-banner {
+    aspect-ratio: 2 / 1;
+    min-height: 100px;
+    margin-bottom: 23px;
+  }
+
+  .hero-layout {
+    grid-template-columns: minmax(0, 1fr) 90px;
+    gap: 13px;
+  }
+
+  .hero h1 {
+    font-size: clamp(41px, 12vw, 68px);
+  }
+
+  .hero-copy {
+    font-size: 13px;
+  }
+
+  .hero-mascot {
+    align-self: start;
+  }
+
+  .section {
+    padding-top: 29px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .section-heading p {
+    text-align: left;
+  }
+
+  .rat-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .rat-art {
+    aspect-ratio: 1.4 / 1;
+    min-height: 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .rat-copy {
+    padding: 22px;
+  }
+
+  .rat-rules {
+    grid-template-columns: 1fr;
+  }
+
+  .work-grid {
+    gap: 9px;
+  }
+
+  .work-copy {
+    padding: 12px;
+  }
+
+  .work-copy h3 {
+    font-size: 19px;
+  }
+
+  .work-copy p {
+    font-size: 12px;
+  }
+
+  .work-label {
+    font-size: 9px;
+  }
+
+  .feature-grid,
+  .closing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card {
+    grid-template-columns: 115px minmax(0, 1fr);
+  }
+
+  .feature-art {
+    aspect-ratio: auto;
+    min-height: 150px;
+    border-right: 1px solid var(--line);
+    border-bottom: 0;
+  }
+
+  .feature-copy {
+    padding: 14px;
+  }
+
+  .feature-copy h3 {
+    font-size: 19px;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body id="top">
+
+<div class="wrap">
+
+  <div class="topline">
+    <span><strong>WREN THE SAGE</strong> / independent creative nonsense</span>
+    <span>PROPERTY OF THE DIRTY RATS ♡</span>
+  </div>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="#top">The Rat Hole</a>
+    <a href="#rat-of-the-week">Rat of the Week</a>
+    <a href="#bots">Bots & Characters</a>
+    <a href="#worlds">Original Worlds</a>
+    <a href="#music">GOOD TEETH</a>
+    <a href="#art">Art & Models</a>
+    <a href="#support">Support Me</a>
+  </nav>
+
+  <header class="hero">
+
+    <!-- Replace IMAGE.PNG with your existing Rat Hole banner path. -->
+    <div class="image-slot hero-banner">
+      <img src="IMAGE.PNG" alt="The Rat Hole banner" data-placeholder="Rat Hole banner">
+      <div class="image-placeholder">
+        <span class="placeholder-mark">✦</span>
+        <span>Rat Hole banner · IMAGE.PNG</span>
+      </div>
+    </div>
+
+    <div class="hero-layout">
+
+      <div>
+        <div class="eyebrow">✦ You found the hole. Welcome home. ✦</div>
+
+        <h1>
+          THE RAT<br>
+          <span class="accent">HOLE</span><span class="pink">.</span>
+        </h1>
+
+        <div class="hero-copy">
+          <p>
+            Welcome, <strong>Dirty Rat.</strong> This is the little corner of
+            the internet where I keep all the things I make, all the characters
+            I get emotionally attached to, and all the questionable ideas
+            that escape containment.
+          </p>
+
+          <p>
+            AI roleplay bots. Original characters. Strange worlds.
+            Music. Art. Monsters. A frankly unreasonable amount of
+            creative bullshit.
+          </p>
+
+          <p>
+            Have a look around. Touch things. Don't lick anything
+            without asking first.
+          </p>
+        </div>
+
+        <div class="hero-stamp">UNSUPERVISED SINCE FOREVER</div>
+      </div>
+
+      <!-- Replace IMAGE.PNG with your existing Gewpy mascot image. -->
+      <div class="image-slot hero-mascot">
+        <img src="IMAGE.PNG" alt="Gewpy, the Rat Hole mascot" data-placeholder="Gewpy mascot">
+        <div class="image-placeholder">
+          <span class="placeholder-mark">♡</span>
+          <span>Gewpy · IMAGE.PNG</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+</div>
+
+<div class="ticker" aria-label="Rat Hole announcements">
+  <div class="ticker-track">
+    <span>♡ DIRTY RATS UNITE ✦ YOU ARE IN THE HOLE NOW ✦ PLEASE KEEP YOUR LIMBS INSIDE THE CREATIVE EXPERIENCE ✦ RAT OF THE WEEK ✦ MADE WITH LOVE AND QUESTIONABLE JUDGMENT ✦ </span>
+    <span aria-hidden="true">♡ DIRTY RATS UNITE ✦ YOU ARE IN THE HOLE NOW ✦ PLEASE KEEP YOUR LIMBS INSIDE THE CREATIVE EXPERIENCE ✦ RAT OF THE WEEK ✦ MADE WITH LOVE AND QUESTIONABLE JUDGMENT ✦ </span>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- RAT OF THE WEEK -->
+
+  <section class="section" id="rat-of-the-week">
+
+    <div class="section-heading">
+      <h2>Rat of the <span class="accent">Week.</span></h2>
+      <p>THE PEOPLE HAVE SPOKEN. PROBABLY.</p>
+    </div>
+
+    <p class="section-intro">
+      Every week, one rat gets the crown. Nominate your favorite menace,
+      campaign shamelessly, and help decide who deserves the dubious honor.
+    </p>
+
+    <article class="rat-feature">
+
+      <!-- Replace IMAGE.PNG with the current winning rat's image. -->
+      <div class="image-slot rat-art">
+        <img src="IMAGE.PNG" alt="The Honorable Crumb, inaugural Rat of the Week" data-placeholder="Winning rat portrait">
+        <div class="image-placeholder">
+          <span class="placeholder-mark">♛</span>
+          <span>Winning rat portrait · IMAGE.PNG</span>
+        </div>
+      </div>
+
+      <div class="rat-copy">
+
+        <div class="rat-number">RAT NO. 001 · INAUGURAL CROWN</div>
+
+        <h3>The Honorable Crumb</h3>
+
+        <div class="rat-title">UNLICENSED DENTIST</div>
+
+        <p>
+          The first rat to ascend the throne. A historic moment for
+          democracy, bad decisions, and whatever the hell is going on
+          in this household.
+        </p>
+
+        <p>
+          The crown is ceremonial. The dental license is nonexistent.
+          The threat to public safety is, regrettably, ongoing.
+        </p>
+
+        <div class="rat-status">Founding Rat · Week One</div>
+
+        <div class="button-row">
+          <!-- Replace the href when your voting page is ready. -->
+          <a class="button" href="https://ko-fi.com/" target="_blank" rel="noopener noreferrer">
+            Vote for a Rat ↗
+          </a>
+
+          <!-- Replace the href when your nominations page is ready. -->
+          <a class="button secondary" href="https://ko-fi.com/" target="_blank" rel="noopener noreferrer">
+            Nominate a Menace ↗
+          </a>
+        </div>
+
+      </div>
+    </article>
+
+    <div class="rat-rules">
+
+      <article class="rule-card">
+        <span class="rule-number">01 // NOMINATE</span>
+        <h4>Put a Rat Forward</h4>
+        <p>
+          Got a favorite? Nominate them and make your case.
+          Campaign posters, propaganda, and shameless favoritism encouraged.
+        </p>
+      </article>
+
+      <article class="rule-card">
+        <span class="rule-number">02 // VOTE</span>
+        <h4>Pick Your Menace</h4>
+        <p>
+          Voting runs for one week. The rat with the highest total wins.
+          In the event of a tie, the finalists face a runoff.
+        </p>
+      </article>
+
+      <article class="rule-card">
+        <span class="rule-number">03 // CROWN</span>
+        <h4>Make History</h4>
+        <p>
+          The winner gets the crown, the title, and a permanent place
+          in the Rat of the Week hall of questionable fame.
+        </p>
+      </article>
+
+    </div>
+
+    <div class="button-row">
+      <!-- Replace RAT-ARCHIVE.html with your eventual archive page. -->
+      <a class="button secondary" href="RAT-ARCHIVE.html">
+        Past Winners & The Rat Hall ↗
+      </a>
+    </div>
+
+  </section>
+
+  <!-- BOTS AND CHARACTERS -->
+
+  <section class="section" id="bots">
+
+    <div class="section-heading">
+      <h2>The <span class="accent">Bots.</span></h2>
+      <p>FICTIONAL PEOPLE, REAL PROBLEMS.</p>
+    </div>
+
+    <p class="section-intro">
+      Roleplay bots, character collections, horror, romance, weird little
+      guys, and the occasional creature that probably should not be
+      allowed near a functioning society.
+    </p>
+
+    <div class="work-grid">
+
+      <a class="work-card" href="https://janitorai.com/" target="_blank" rel="noopener noreferrer">
+        <div class="image-slot work-art">
+          <img src="IMAGE.PNG" alt="JanitorAI character collection" loading="lazy" data-placeholder="JanitorAI collection">
+          <div class="image-placeholder">
+            <span class="placeholder-mark">♡</span>
+            <span>IMAGE.PNG</span>
+          </div>
+        </div>
+        <div class="work-copy">
+          <span class="work-label">01 / ROLEPLAY</span>
+          <h3>JanitorAI Bots</h3>
+          <p>
+            The main collection. Characters to meet, disasters to date,
+            and stories to get hopelessly invested in.
+          </p>
+          <span class="card-link">Visit the collection <span>↗</span></span>
+        </div>
+      </a>
+
+      <a class="work-card" href="https://janitorai.com/" target="_blank" rel="noopener noreferrer">
+        <div class="image-slot work-art">
+          <img src="IMAGE.PNG" alt="Additional roleplay bots" loading="lazy" data-placeholder="Other bots">
+          <div class="image-placeholder">
+            <span class="placeholder-mark">✦</span>
+            <span>IMAGE.PNG</span>
+          </div>
+        </div>
+        <div class="work-copy">
+          <span class="work-label">02 / THE EXTRAS</span>
+          <h3>Other Bots</h3>
+          <p>
+            The characters and concepts that refuse to fit neatly
+            into a single collection.
+          </p>
+          <span class="card-link">Find more bots <span>↗</span></span>
+        </div>
+      </a>
+
+      <a class="work-card" href="https://janitorai.com/" target="_blank" rel="noopener noreferrer">
+        <div class="image-slot work-art">
+          <img src="IMAGE.PNG" alt="Horror and monster characters" loading="lazy" data-placeholder="Horror and monsters">
+          <div class="image-placeholder">
+            <span class="placeholder-mark">☠</span>
+            <span>IMAGE.PNG</span>
+          </div>
+        </div>
+        <div class="work-copy">
+          <span class="work-label">03 / HORROR</span>
+          <h3>Monsters & Mayhem</h3>
+          <p>
+            Horror characters, creatures, unsettling encounters,
+            and things lurking just outside the light.
+          </p>
+          <span class="card-link">Enter at your own risk <span>↗</span></span>
+        </div>
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- ORIGINAL WORLDS -->
+
+  <section class="section" id="worlds">
+
+    <div class="section-heading">
+      <h2>Worlds & <span class="accent">Characters.</span></h2>
+      <p>ORIGINAL WORLDS. ORIGINAL PROBLEMS.</p>
+    </div>
+
+    <p class="section-intro">
+      Places that live in my head rent-free, the people who inhabit them,
+      and the complicated webs connecting everyone.
+    </p>
+
+    <div class="feature-grid">
+
+      <a class="feature-card" href="CREATOR-LINK-GOES-HERE">
+        <div class="image-slot feature-art">
+          <img src="IMAGE.PNG" alt="Creator and Saint Jude's Landing" loading="lazy" data-placeholder="Creator">
+          <div class="image-placeholder">
+            <span class="placeholder-mark">✦</span>
+            <span>IMAGE.PNG</span>
+          </div>
+        </div>
+        <div class="feature-copy">
+          <span class="work-label">ORIGINAL SETTING</span>
+          <h3>Creator</h3>
+          <p>
+            An alien world full of strange life, crowded cities,
+            monsters, and people trying to get on with their lives.
+          </p>
+          <span class="card-link">Explore Creator <span>↗</span></span>
+        </div>
+      </a>
+
+      <a class="feature-card" href="relationships.html">
+        <div class="image-slot feature-art">
+          <img src="IMAGE.PNG" alt="Who's Who With Whom relationship web" loading="lazy" data-placeholder="Relationship web">
+          <div class="image-placeholder">
+            <span class="placeholder-mark">♡</span>
+            <span>IMAGE.PNG</span>
+          </div>
+        </div>
+        <div class="feature-copy">
+          <span class="work-label">INTERACTIVE PROJECT</span>
+          <h3>Who's Who With Whom?</h3>
+          <p>
+            Friends, found family, connections, and a whole lot of
+            tangled interpersonal business.
+          </p>
+          <span class="card-link">Untangle the web <span>↗</span></span>
+        </div>
+      </a>
+
+      <a class="feature-card" href="DEMI-EARTH-LINK-GOES-HERE">
+        <div class="image-slot feature-art">
+          <img src="IMAGE.PNG" alt="Demi-Earth characters" loading="lazy" data-placeholder="Demi-Earth">
+          <div class="image-placeholder">
+            <span class="placeholder-mark">✦</span>
+            <span>IMAGE.PNG</span>
+          </div>
+        </div>
+        <div class="feature-copy">
+          <span class="work-label">ORIGINAL SETTING</span>
+          <h3>Demi-Earth</h3>
+          <p>
+            A familiar world populated by humans, demi-humans,
+            monsters, and an alarming number of attractive problems.
+          </p>
+          <span class="card-link">Meet the characters <span>↗</span></span>
+        </div>
+      </a>
+
+      <a class="feature-card" href="CHARACTER-COLLECTION-LINK-GOES-HERE">
+        <div class="image-slot feature-art">
+          <img src="IMAGE.PNG" alt="Original character collection" loading="lazy" data-placeholder="Original characters">
+          <div class="image-placeholder">
+            <span class="placeholder-mark">♡</span>
+            <span>IMAGE.PNG</span>
+          </div>
+        </div>
+        <div class="feature-copy">
+          <span class="work-label">CHARACTERS</span>
+          <h3>Meet the Menaces</h3>
+          <p>
+            Character pages, personalities, histories, and the
+            delightful disasters that make them who they are.
+          </p>
+          <span class="card-link">Browse characters <span>↗</span></span>
+        </div>
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- GOOD TEETH -->
+
+  <section class="section" id="music">
+
+    <div class="section-heading">
+      <h2><span class="accent">GOOD TEETH.</span></h2>
+      <p>FIVE PEOPLE. ONE BAND. MANY FEELINGS.</p>
+    </div>
+
+    <p class="section-intro">
+      Music, album concepts, characters, and roleplay projects centered
+      around GOOD TEETH — the band that has taken up permanent residence
+      in my brain.
+    </p>
+
+    <div class="feature-grid">
+
+      <a class="feature-card" href="GOOD-TEETH-MUSIC-LINK-GOES-HERE">
+        <div class="image-slot feature-art">
+          <img src="IMAGE.PNG" alt="GOOD TEETH band artwork" loading="lazy" data-placeholder="GOOD TEETH band art">
+          <div class="image-placeholder">
+            <span class="placeholder-mark">♫</span>
+            <span>IMAGE.PNG</span>
+          </div>
+        </div>
+        <div class="feature-copy">
+          <span class="work-label">THE BAND</span>
+          <h3>GOOD TEETH Music</h3>
+          <p>
+            Songs, demos, album art, and the sounds of five musicians
+            doing their thing.
+          </p>
+          <span class="card-link">Listen in <span>↗</span></span>
+        </div>
+      </a>
+
+      <a class="feature-card" href="GOOD-TEETH-BOTS-LINK-GOES-HERE">
+        <div class="image-slot feature-art">
+          <img src="IMAGE.PNG" alt="GOOD TEETH roleplay bots" loading="lazy" data-placeholder="GOOD TEETH bots">
+          <div class="image-placeholder">
+            <span class="placeholder-mark">♡</span>
+            <span>IMAGE.PNG</span>
+          </div>
+        </div>
+        <div class="feature-copy">
+          <span class="work-label">ROLEPLAY</span>
+          <h3>GOOD TEETH Bots</h3>
+          <p>
+            Ives, Tōgo, Renga, Riley, Purl, and the worlds around
+            them — ready for their close-up.
+          </p>
+          <span class="card-link">Meet the band <span>↗</span></span>
+        </div>
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- ART AND MODELS -->
+
+  <section class="section" id="art">
+
+    <div class="section-heading">
+      <h2>Art & <span class="accent">Models.</span></h2>
+      <p>MADE, TRAINED, TWEAKED, REPEATED.</p>
+    </div>
+
+    <p class="section-intro">
+      Character art, custom models, experiments, and other visual
+      rabbit holes. This is where the pictures live.
+    </p>
+
+    <div class="work-grid">
+
+      <a class="work-card" href="https://tensor.art/" target="_blank" rel="noopener noreferrer">
+        <div class="image-slot work-art">
+          <img src="IMAGE.PNG" alt="Tensor.Art models" loading="lazy" data-placeholder="Tensor.Art models">
+          <div class="image-placeholder">
+            <span class="placeholder-mark">✦</span>
+            <span>IMAGE.PNG</span>
+          </div>
+        </div>
+        <div class="work-copy">
+          <span class="work-label">MODELS</span>
+          <h3>Tensor.Art</h3>
+          <p>
+            Models, checkpoints, experiments, and the tools
+            behind the character images.
+          </p>
+          <span class="card-link">Explore models <span>↗</span></span>
+        </div>
+      </a>
+
+      <a class="work-card" href="TENSORART-GALLERY-LINK-GOES-HERE">
+        <div class="image-slot work-art">
+          <img src="IMAGE.PNG" alt="Tensor.Art gallery" loading="lazy" data-placeholder="Art gallery">
+          <div class="image-placeholder">
+            <span class="placeholder-mark">♡</span>
+            <span>IMAGE.PNG</span>
+          </div>
+        </div>
+        <div class="work-copy">
+          <span class="work-label">GALLERY</span>
+          <h3>Character Art</h3>
+          <p>
+            The faces, creatures, outfits, scenes, and visual
+            experiments that come out of my art workflow.
+          </p>
+          <span class="card-link">See the art <span>↗</span></span>
+        </div>
+      </a>
+
+      <a class="work-card" href="https://github.com/wrenthesage-kms/Creator" target="_blank" rel="noopener noreferrer">
+        <div class="image-slot work-art">
+          <img src="IMAGE.PNG" alt="Website and creative projects" loading="lazy" data-placeholder="Website projects">
+          <div class="image-placeholder">
+            <span class="placeholder-mark">⌘</span>
+            <span>IMAGE.PNG</span>
+          </div>
+        </div>
+        <div class="work-copy">
+          <span class="work-label">WEB PROJECTS</span>
+          <h3>Websites & Experiments</h3>
+          <p>
+            Interactive pages, character relationship webs,
+            and little internet places built for my worlds.
+          </p>
+          <span class="card-link">Visit the Creator repo <span>↗</span></span>
+        </div>
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- SUPPORT AND ABOUT -->
+
+  <section class="section" id="support">
+
+    <div class="section-heading">
+      <h2>Help Feed the <span class="accent">Rats.</span></h2>
+      <p>INDEPENDENT CREATOR. UNLIMITED IDEAS. FINITE ENERGY.</p>
+    </div>
+
+    <div class="closing-grid">
+
+      <article class="closing-card support">
+        <div class="eyebrow">♡ KEEP THE LIGHTS ON</div>
+        <h3>Buy Me a Coffee.<br>Or a Rat Snack.</h3>
+
+        <p>
+          I make characters, bots, art, music, models, and whole
+          imaginary worlds. If you enjoy what I do and want to help
+          me keep doing it, support is deeply appreciated.
+        </p>
+
+        <p>
+          Every little bit helps fund the creative tools, subscriptions,
+          and other necessities that keep this little operation running.
+        </p>
+
+        <div class="button-row">
+          <a class="button" href="https://ko-fi.com/" target="_blank" rel="noopener noreferrer">
+            Find Me on Ko-fi ↗
+          </a>
+        </div>
+      </article>
+
+      <article class="closing-card">
+        <div class="eyebrow">✦ THE RAT BEHIND THE HOLE</div>
+        <h3>Hi. I'm Wren.</h3>
+
+        <p>
+          I'm an independent creator with a brain full of characters
+          and more ideas than available hours in a day.
+        </p>
+
+        <p>
+          I make things because I love making things. Sometimes they're
+          heartfelt. Sometimes they're ridiculous. Sometimes I accidentally
+          invent an entire world because a character wouldn't leave me alone.
+        </p>
+
+        <p>
+          <strong>Thanks for being here, Dirty Rat.</strong> Have fun.
+          Be kind to each other. And please do not give Gewpy the keys.
+        </p>
+
+        <div class="button-row">
+          <a class="button secondary" href="https://github.com/wrenthesage-kms/Creator" target="_blank" rel="noopener noreferrer">
+            My GitHub ↗
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+
+  <footer class="footer">
+    <span><strong>THE RAT HOLE</strong> · PROPERTY OF WREN THE SAGE</span>
+    <span>MADE WITH LOVE, CHAOS, AND QUESTIONABLE JUDGMENT ♡</span>
+    <a class="back-to-top" href="#top">BACK TO THE TOP ↑</a>
+  </footer>
+
+</main>
+
+<script>
+/*
+  IMAGE PLACEHOLDERS
+  Every image starts with src="IMAGE.PNG".
+  When a real image path is added, it displays normally.
+  Until then, the styled placeholder remains visible.
+*/
+
+document.querySelectorAll('[data-placeholder]').forEach(function (img) {
+  const slot = img.closest('.image-slot');
+
+  function showPlaceholder() {
+    if (slot) {
+      slot.classList.add('image-missing');
+    }
+    img.style.display = 'none';
+  }
+
+  img.addEventListener('error', showPlaceholder);
+
+  if (img.complete && img.naturalWidth === 0) {
+    showPlaceholder();
+  } else if (img.complete && img.naturalWidth > 0) {
+    if (slot) {
+      slot.classList.remove('image-missing');
+    }
+  }
+});
+</script>
+
+</body>
+</html>
