@@ -910,7 +910,12 @@ p {
 }
 
 .place-industrial .place-visual {
-  background: linear-gradient(145deg, #55424a, #9d6658 52%, #e1a26b);
+  background: url("nine.PNG") center / cover no-repeat;
+}
+
+.place-industrial .place-decoration,
+.place-industrial .place-symbol {
+  display: none;
 }
 
 .place-hollow .place-visual {
