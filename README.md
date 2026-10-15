@@ -27,7 +27,45 @@ The website is the best place to explore the project as it develops.
 
 **Website:** [Visit Creator](https://wrenthesage.github.io/Creator/)
 
-You can also browse this repository to see the website's underlying implementation.
+You can also browse this repository to see how the website is built.
+
+---
+
+## LIKE THE WEBSITE? MAKE YOUR OWN.
+
+Seriously. Go for it.
+
+If you like the layout, the way the website organizes information, the relationship web, the navigation, or the general idea of presenting a creative project this way, you're welcome to use those ideas to build something for your own work.
+
+Want to make a relationship web for your characters? Do it.
+
+Want to build a website for your own fictional universe with location pages, character profiles, interconnected relationships, or a similar structure? Hell yeah.
+
+**I'm happy for people to take inspiration from the website's structure, organization, and functionality to develop their own projects.**
+
+You don't need my permission to independently create a similar concept or implement similar functionality, subject to applicable law and any relevant third-party rights.
+
+What I care about is the distinction between using a similar approach and taking someone else's creative work.
+
+### PLEASE DON'T COPY MY ACTUAL CONTENT.
+
+You are welcome to make your own version of the *idea*.
+
+Please don't take my actual words, lore, character profiles, original fictional setting, artwork, or other protected creative expression and pass them off as part of your own project.
+
+That means:
+
+- Build a relationship web for your own characters. Just don't populate it with mine without permission.
+- Make your own character profiles. Don't copy and repost my biographies, descriptions, or writing.
+- Build your own fictional universe. Don't lift Creator's lore and present it as your own.
+- Make a website with a similar layout or functionality. Don't simply duplicate my website, replace a few names, and call it yours.
+- Take inspiration from the way I organize information. Write your own content and develop your own creative identity.
+
+**Use the framework. Make it yours. Leave my creative work mine.**
+
+I'm not interested in gatekeeping website layouts or telling people they can't build something inspired by what I've made. I want people to create things they're excited about.
+
+The boundary is copying my original creative expression, not independently developing a similar tool or presentation.
 
 ---
 
@@ -39,42 +77,40 @@ Creator is my original fictional universe and creative project.
 
 Its original creative expression includes, but is not limited to:
 
-- The fictional world's original lore, history, geography, cultures, and worldbuilding.
-- Original characters, their designs, personalities, backgrounds, relationships, and storylines.
+- Original lore, worldbuilding, history, geography, cultures, and fictional settings.
+- Original characters, their distinctive designs, personalities, backgrounds, relationships, and storylines.
 - Original locations, communities, fictional events, and narratives.
-- Original writing, character profiles, biographies, and descriptions.
+- Original writing, character profiles, biographies, dialogue, and descriptions.
 - Original artwork, illustrations, graphics, and visual designs.
-- The original selection and arrangement of creative material.
+- Original website text and other protected creative material.
 
-**Public access to this repository does not grant general permission to reproduce, republish, redistribute, adapt, or create derivative works from Creator's protected creative content.**
+These rights do not extend to general ideas, concepts, methods, systems, or functionality that are not protected by copyright.
+
+**The public availability of this repository does not grant general permission to reproduce, republish, or redistribute my protected creative content.**
 
 You may not claim authorship of my original work or present my protected creative material as your own.
 
-Permission must be obtained before using Creator's protected creative expression, except where permitted by applicable law or an applicable license.
+See [COPYRIGHT.md](COPYRIGHT.md) for further details.
 
-The repository's public availability does not place Creator in the public domain and does not, by itself, grant a general license to use its original fictional universe, characters, lore, writing, or artwork.
+### WEBSITE STRUCTURE AND FUNCTIONALITY
 
-### SOURCE CODE AND CREATIVE CONTENT
+The website's general organizational ideas, layout concepts, and functionality are distinct from its original creative content.
 
-The website's implementation and the fictional universe presented through it are distinct.
+I welcome people building similar websites and tools for their own creative projects.
 
-Viewing the website or examining its source code does not, by itself, grant permission to reproduce or reuse Creator's protected lore, characters, writing, or artwork.
+This permission to take inspiration from the website's structure and functionality does not grant permission to copy its original writing, lore, character content, artwork, or other protected creative expression.
 
 Third-party software, libraries, fonts, images, and other materials remain subject to their respective owners' rights and applicable licenses.
-
-For further details, see [COPYRIGHT.md](COPYRIGHT.md).
 
 ---
 
 ## PERMISSIONS
 
-Interested in using Creator's original creative material?
+If you want to use my original creative content in a way that requires permission, please contact me before doing so.
 
-Please contact me to request permission before reproducing, adapting, republishing, or otherwise using protected content.
+If you want to build your own website, relationship web, character directory, or similar creative tool inspired by this project, go make something cool.
 
-Permission must be explicitly granted in writing, except where permitted by applicable law or an applicable license.
-
-The absence of a response should not be interpreted as permission.
+**You can build something like mine without making it mine.**
 
 ---
 
@@ -83,6 +119,8 @@ The absence of a response should not be interpreted as permission.
 Created and developed by **Wren the Sage**.
 
 GitHub: [@wrenthesage](https://github.com/wrenthesage)
+
+Ko-fi: [sagethewren](https://ko-fi.com/sagethewren)
 
 Creator is an independent original creative project developed through ongoing worldbuilding, character creation, writing, and visual development.
 
