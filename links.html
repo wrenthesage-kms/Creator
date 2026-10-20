@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#211426">
-  <meta name="description" content="Wren the Sage's little corner of the internet. Find my projects, support my work, and explore Creator.">
+  <meta name="description" content="Wren the Sage's little corner of the internet. Find my links, creative projects, schedule, and original universe, Creator.">
 
   <title>Find Wren · The Rat Hole</title>
 
@@ -60,6 +60,8 @@
       margin: 0 auto;
     }
 
+    /* TOP BAR */
+
     .topline {
       display: flex;
       align-items: center;
@@ -67,9 +69,9 @@
       gap: 12px;
       margin-bottom: 22px;
       color: var(--muted);
-      font-size: 0.75rem;
+      font-size: .75rem;
       font-weight: 800;
-      letter-spacing: 0.15em;
+      letter-spacing: .15em;
       text-transform: uppercase;
     }
 
@@ -77,6 +79,8 @@
       color: var(--lime);
       text-align: right;
     }
+
+    /* INTRODUCTION */
 
     .hero {
       position: relative;
@@ -104,9 +108,9 @@
       z-index: 1;
       margin: 0 0 10px;
       color: var(--lime);
-      font-size: 0.75rem;
+      font-size: .75rem;
       font-weight: 900;
-      letter-spacing: 0.2em;
+      letter-spacing: .2em;
       text-transform: uppercase;
     }
 
@@ -117,8 +121,8 @@
       color: var(--pink);
       font-size: clamp(2.8rem, 11vw, 5.2rem);
       font-weight: 1000;
-      letter-spacing: -0.075em;
-      line-height: 0.95;
+      letter-spacing: -.075em;
+      line-height: .95;
       overflow-wrap: anywhere;
       text-shadow: 3px 3px 0 #8d4379;
     }
@@ -147,11 +151,13 @@
       transform: rotate(-2deg);
       border: 1px dashed var(--lime);
       color: var(--lime);
-      font-size: 0.72rem;
+      font-size: .72rem;
       font-weight: 900;
-      letter-spacing: 0.12em;
+      letter-spacing: .12em;
       text-transform: uppercase;
     }
+
+    /* SHARED SECTION HEADINGS */
 
     .section-heading {
       display: flex;
@@ -165,17 +171,19 @@
       margin: 0;
       color: var(--cream);
       font-size: 1.25rem;
-      letter-spacing: -0.035em;
+      letter-spacing: -.035em;
     }
 
     .section-heading span {
       color: var(--pink);
-      font-size: 0.75rem;
+      font-size: .72rem;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: .08em;
       text-align: right;
       text-transform: uppercase;
     }
+
+    /* EXTERNAL LINKS */
 
     .links {
       display: grid;
@@ -185,10 +193,10 @@
     .link-card {
       position: relative;
       display: flex;
-      min-height: 83px;
+      min-height: 78px;
       align-items: center;
       gap: 16px;
-      padding: 17px 20px;
+      padding: 15px 19px;
       overflow: hidden;
       border: 1px solid var(--border);
       border-radius: 5px 16px 5px 16px;
@@ -213,15 +221,15 @@
 
     .link-icon {
       display: grid;
-      width: 46px;
-      height: 46px;
-      flex: 0 0 46px;
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
       place-items: center;
       border: 1px solid var(--border);
       border-radius: 12px 4px 12px 4px;
-      background: #17121b;
+      background: var(--background);
       color: var(--pink);
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 900;
     }
 
@@ -238,7 +246,7 @@
     .link-title {
       display: block;
       color: var(--cream);
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       font-weight: 900;
     }
 
@@ -246,7 +254,7 @@
       display: block;
       margin-top: 2px;
       color: var(--muted);
-      font-size: 0.85rem;
+      font-size: .83rem;
       line-height: 1.45;
     }
 
@@ -260,6 +268,91 @@
     .link-card:hover .link-arrow {
       transform: translateX(4px);
     }
+
+    /* MY SCHEDULE */
+
+    .schedule {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 5px 18px 5px 18px;
+      background: var(--panel);
+      box-shadow: 5px 6px 0 var(--shadow);
+    }
+
+    .schedule-header {
+      padding: 19px 21px;
+      border-bottom: 1px dashed var(--border);
+      background: linear-gradient(110deg, #46253f, #2a1b30);
+    }
+
+    .schedule-header h3 {
+      margin: 0;
+      color: var(--pink);
+      font-size: 1.35rem;
+      font-weight: 1000;
+      letter-spacing: -.04em;
+    }
+
+    .schedule-header p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
+    .schedule-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .schedule-item {
+      display: grid;
+      grid-template-columns: 115px minmax(0, 1fr);
+      gap: 14px;
+      padding: 16px 21px;
+      border-bottom: 1px solid #59415f70;
+    }
+
+    .schedule-item:last-child {
+      border-bottom: 0;
+    }
+
+    .schedule-label {
+      color: var(--lime);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .schedule-detail {
+      min-width: 0;
+    }
+
+    .schedule-detail strong {
+      display: block;
+      color: var(--cream);
+      font-size: .94rem;
+    }
+
+    .schedule-detail p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.5;
+    }
+
+    .schedule-note {
+      margin: 0;
+      padding: 13px 21px;
+      border-top: 1px dashed var(--border);
+      background: #17121b70;
+      color: var(--lavender);
+      font-size: .78rem;
+      font-style: italic;
+    }
+
+    /* CREATOR PROJECTS */
 
     .project-grid {
       display: grid;
@@ -290,9 +383,9 @@
 
     .project-number {
       color: var(--lime);
-      font-size: 0.7rem;
+      font-size: .7rem;
       font-weight: 900;
-      letter-spacing: 0.12em;
+      letter-spacing: .12em;
     }
 
     .project-title {
@@ -307,62 +400,108 @@
       display: block;
       margin-top: 7px;
       color: var(--muted);
-      font-size: 0.78rem;
+      font-size: .78rem;
       line-height: 1.45;
     }
 
-    .support-panel {
-      margin-top: 36px;
-      padding: 24px;
+    /* GOOD TEETH FEATURE */
+
+    .music-panel {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 38px;
+      padding: 23px;
+      overflow: hidden;
+      border: 1px solid #a86691;
+      border-radius: 18px 5px 18px 5px;
+      background:
+        radial-gradient(circle at 100% 0%, #ff9acb18, transparent 55%),
+        linear-gradient(135deg, #35213b, #211827);
+      box-shadow: 6px 6px 0 var(--shadow);
+    }
+
+    .music-symbol {
+      display: grid;
+      width: 58px;
+      height: 58px;
+      flex: 0 0 58px;
+      place-items: center;
       border: 1px dashed var(--lime);
-      border-radius: 20px 5px 20px 5px;
+      border-radius: 50%;
+      color: var(--lime);
+      font-size: 1.8rem;
+      transform: rotate(-8deg);
+    }
+
+    .music-copy {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .music-copy .eyebrow {
+      margin-bottom: 4px;
+    }
+
+    .music-copy h2 {
+      margin: 0;
+      color: var(--pink);
+      font-size: 1.7rem;
+      font-weight: 1000;
+      letter-spacing: -.055em;
+    }
+
+    .music-copy p:last-child {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    .music-arrow {
+      flex: 0 0 auto;
+      color: var(--lime);
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+
+    .music-panel:hover {
+      border-color: var(--lime);
+    }
+
+    /* SMALL SUPPORT NOTE */
+
+    .support-note {
+      margin-top: 35px;
+      padding: 18px 21px;
+      border-left: 3px solid var(--lime);
       background: #25271c;
     }
 
-    .support-panel .eyebrow {
+    .support-note strong {
       color: var(--lime);
     }
 
-    .support-panel h2 {
-      margin: 0;
-      color: var(--cream);
-      font-size: 1.65rem;
-      letter-spacing: -0.05em;
-    }
-
-    .support-panel p {
-      margin: 10px 0 18px;
+    .support-note p {
+      margin: 5px 0 0;
       color: #d6d0c2;
+      font-size: .85rem;
     }
 
-    .support-link {
-      display: inline-flex;
-      min-height: 46px;
-      align-items: center;
-      justify-content: center;
-      padding: 11px 18px;
-      border: 2px solid var(--lime);
-      border-radius: 5px 13px 5px 13px;
-      background: var(--lime);
-      color: #211c20;
-      font-weight: 1000;
-      text-decoration: none;
-      transition:
-        transform 160ms ease,
-        background 160ms ease;
+    .support-note a {
+      color: var(--pink);
+      font-weight: 900;
+      text-underline-offset: 3px;
     }
 
-    .support-link:hover {
-      transform: translateY(-2px) rotate(-1deg);
-      background: #e8ffa8;
-    }
+    /* FOOTER */
 
     footer {
       margin-top: 38px;
       padding-top: 20px;
       border-top: 1px solid var(--border);
       color: var(--muted);
-      font-size: 0.8rem;
+      font-size: .8rem;
       text-align: center;
     }
 
@@ -378,14 +517,21 @@
 
     .footer-scribble {
       color: var(--lavender);
-      font-size: 0.9rem;
+      font-size: .9rem;
       font-weight: 900;
-      letter-spacing: 0.1em;
+      letter-spacing: .1em;
     }
 
-    @media (max-width: 480px) {
+    /* MOBILE */
+
+    @media (max-width: 520px) {
       body {
         padding: 16px 13px 30px;
+      }
+
+      .topline {
+        font-size: .65rem;
+        letter-spacing: .1em;
       }
 
       .project-grid {
@@ -418,11 +564,53 @@
       }
 
       .link-title {
-        font-size: 0.98rem;
+        font-size: .98rem;
       }
 
       .link-description {
-        font-size: 0.8rem;
+        font-size: .8rem;
+      }
+
+      .schedule-item {
+        grid-template-columns: 1fr;
+        gap: 5px;
+        padding: 14px 17px;
+      }
+
+      .schedule-header {
+        padding: 17px;
+      }
+
+      .schedule-note {
+        padding: 12px 17px;
+      }
+
+      .music-panel {
+        gap: 12px;
+        padding: 17px;
+      }
+
+      .music-symbol {
+        width: 43px;
+        height: 43px;
+        flex-basis: 43px;
+        font-size: 1.4rem;
+      }
+
+      .music-copy h2 {
+        font-size: 1.4rem;
+      }
+
+      .music-copy p:last-child {
+        font-size: .78rem;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+      }
+
+      .section-heading span {
+        max-width: 45%;
       }
     }
 
@@ -445,6 +633,8 @@
       <span>Internet creature / human-ish</span>
     </div>
 
+    <!-- INTRODUCTION -->
+
     <header class="hero">
       <p class="eyebrow">Oh, hey. You found me.</p>
 
@@ -455,21 +645,24 @@
       </p>
 
       <p class="intro">
-        I make characters, build weird little worlds, generate art,
-        write things, and generally refuse to be normal about my
-        interests. Here's where to find my stuff.
+        I make characters, build weird little worlds, create art,
+        and write things. This is the little corner of the internet
+        where you can find my projects, follow what I'm making,
+        and occasionally feed the rat.
       </p>
 
       <span class="rat-stamp">Certified Dirty Rat Territory</span>
     </header>
 
-    <section aria-labelledby="elsewhere-heading">
+    <!-- LINKS -->
+
+    <section aria-labelledby="links-heading">
       <div class="section-heading">
-        <h2 id="elsewhere-heading">Find me elsewhere</h2>
+        <h2 id="links-heading">Find me elsewhere</h2>
         <span>the important portals</span>
       </div>
 
-      <nav class="links" aria-label="Main links">
+      <nav class="links" aria-label="Wren's links">
 
         <a
           class="link-card featured"
@@ -481,8 +674,8 @@
           <span class="link-copy">
             <span class="link-title">Buy the rat a snack</span>
             <span class="link-description">
-              Support my work on Ko-fi. Every little bit helps keep
-              the lights on in this disaster of a creative operation.
+              Support my creative work on Ko-fi. Every little bit
+              is appreciated, never expected.
             </span>
           </span>
           <span class="link-arrow" aria-hidden="true">↗</span>
@@ -498,27 +691,140 @@
           <span class="link-copy">
             <span class="link-title">GitHub</span>
             <span class="link-description">
-              Website code, projects, and whatever I'm currently
-              trying to make the internet do.
+              My code, websites, and ongoing projects.
             </span>
           </span>
           <span class="link-arrow" aria-hidden="true">↗</span>
         </a>
 
-        <a class="link-card" href="index.html">
-          <span class="link-icon" aria-hidden="true">✳</span>
+        <a
+          class="link-card"
+          href="https://tensor.art/u/1025777086574402796"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="link-icon" aria-hidden="true">✿</span>
           <span class="link-copy">
-            <span class="link-title">Creator</span>
+            <span class="link-title">TensorArt · Profile One</span>
             <span class="link-description">
-              Enter my original fictional universe. Strange planet,
-              stranger people, absolutely no normal business.
+              My models, generations, and visual experiments.
             </span>
           </span>
-          <span class="link-arrow" aria-hidden="true">→</span>
+          <span class="link-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a
+          class="link-card"
+          href="https://tensor.art/u/1023551796372595744"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="link-icon" aria-hidden="true">✧</span>
+          <span class="link-copy">
+            <span class="link-title">TensorArt · Profile Two</span>
+            <span class="link-description">
+              More art, models, and character-style experiments.
+            </span>
+          </span>
+          <span class="link-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a
+          class="link-card"
+          href="https://forms.gle/yCbQHJDtZVwS8wxR9"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="link-icon" aria-hidden="true">＋</span>
+          <span class="link-copy">
+            <span class="link-title">Bot request box</span>
+            <span class="link-description">
+              Got a character idea? Send your request here.
+            </span>
+          </span>
+          <span class="link-arrow" aria-hidden="true">↗</span>
         </a>
 
       </nav>
     </section>
+
+    <!-- MY SCHEDULE -->
+
+    <section aria-labelledby="schedule-heading">
+      <div class="section-heading">
+        <h2 id="schedule-heading">My schedule</h2>
+        <span>the rat's current agenda</span>
+      </div>
+
+      <div class="schedule">
+
+        <div class="schedule-header">
+          <h3>What's happening? ♡</h3>
+          <p>
+            A little guide to what I'm working on and where things stand.
+          </p>
+        </div>
+
+        <ul class="schedule-list">
+
+          <li class="schedule-item">
+            <span class="schedule-label">Character bots</span>
+            <div class="schedule-detail">
+              <strong>Ongoing projects</strong>
+              <p>
+                Additional Demi-Earth bots for existing characters with new relationships, dynamics, etc. Updating personalities on multiple existing recent characters for non-smut bots. 
+              </p>
+            </div>
+          </li>
+
+          <li class="schedule-item">
+            <span class="schedule-label">Bot requests</span>
+            <div class="schedule-detail">
+              <strong>Submit an idea</strong>
+              <p>
+                Use the request form to send me a suggestion.
+                A request is not a guarantee of creation or a deadline.
+                <a href="https://forms.gle/yCbQHJDtZVwS8wxR9"
+                   target="_blank"
+                   rel="noopener noreferrer">Open the request box ↗</a>
+              </p>
+            </div>
+          </li>
+
+          <li class="schedule-item">
+            <span class="schedule-label">Creator</span>
+            <div class="schedule-detail">
+              <strong>Worldbuilding in progress</strong>
+              <p>
+                Characters, locations, relationships, and the many
+                moving parts of my original universe.
+              </p>
+            </div>
+          </li>
+
+          <li class="schedule-item">
+            <span class="schedule-label">Art &amp; models</span>
+            <div class="schedule-detail">
+              <strong>Whenever inspiration strikes</strong>
+              <p>
+                Style experiments, model training, generations,
+                and other visual shenanigans.
+              </p>
+            </div>
+          </li>
+
+        </ul>
+
+        <p class="schedule-note">
+          ♡ I create around real-life responsibilities and health.
+          Updates happen when they happen; thank you for being patient
+          with the rat.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- CREATOR -->
 
     <section aria-labelledby="creator-heading">
       <div class="section-heading">
@@ -533,8 +839,7 @@
           <span>
             <span class="project-title">Where the hell am I?</span>
             <span class="project-description">
-              Cities, communities, districts, and other places worth
-              getting lost in.
+              Cities, districts, communities, and places to get lost in.
             </span>
           </span>
         </a>
@@ -544,8 +849,7 @@
           <span>
             <span class="project-title">Meet the weirdos</span>
             <span class="project-description">
-              Characters, creatures, and the assorted problems
-              they bring with them.
+              Characters, creatures, and the trouble they bring along.
             </span>
           </span>
         </a>
@@ -555,8 +859,7 @@
           <span>
             <span class="project-title">Who's who with whom?</span>
             <span class="project-description">
-              Relationships, connections, complicated feelings,
-              and probably somebody's terrible decisions.
+              Relationships, connections, and complicated feelings.
             </span>
           </span>
         </a>
@@ -564,27 +867,44 @@
       </div>
     </section>
 
-    <section class="support-panel" aria-labelledby="support-heading">
-      <p class="eyebrow">A tiny plea from the rat nest</p>
+    <!-- GOOD TEETH -->
 
-      <h2 id="support-heading">Art is not free.<br>Being weird is, though.</h2>
-
-      <p>
-        I create around chronic illness, disability, and the general
-        circus of being alive. If you enjoy what I make and have a
-        little to spare, supporting me helps keep these projects going.
-        No guilt trips. No obligation. Just gratitude.
-      </p>
-
+    <section aria-label="GOOD TEETH music">
       <a
-        class="support-link"
-        href="https://ko-fi.com/sagethewren"
+        class="music-panel"
+        href="https://suno.com/@goodteeth"
         target="_blank"
         rel="noopener noreferrer"
+        style="text-decoration: none;"
       >
-        Feed the rat ♡
+        <span class="music-symbol" aria-hidden="true">♫</span>
+
+        <span class="music-copy">
+          <span class="eyebrow">Music from Creator</span>
+          <h2>GOOD TEETH</h2>
+          <p>
+            Five musicians. One band. Get your teeth into the music.
+          </p>
+        </span>
+
+        <span class="music-arrow" aria-hidden="true">↗</span>
       </a>
     </section>
+
+    <!-- SUPPORT -->
+
+    <aside class="support-note">
+      <strong>Art is not free. Being weird is, though. ♡</strong>
+      <p>
+        If you enjoy what I make and want to help support it,
+        <a href="https://ko-fi.com/sagethewren"
+           target="_blank"
+           rel="noopener noreferrer">Ko-fi is here</a>.
+        No guilt trips and no obligation. Just gratitude.
+      </p>
+    </aside>
+
+    <!-- FOOTER -->
 
     <footer>
       <p class="footer-scribble">MADE WITH TEETH, TAPE &amp; SPITE</p>
@@ -606,15 +926,9 @@
           target="_blank"
           rel="noopener noreferrer"
         >Copyright &amp; reuse policy</a>
-        ·
-        <a
-          href="https://github.com/wrenthesage"
-          target="_blank"
-          rel="noopener noreferrer"
-        >GitHub</a>
       </p>
 
-      <p>Go drink some water. Or don't. I'm not your supervisor.</p>
+      <p>Go drink some water. Or don't. I'm not your mother.</p>
     </footer>
 
   </main>
